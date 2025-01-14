@@ -186,7 +186,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;strong&gt;However, using [size +1] may cause inefficiency.&lt;/strong&gt; For example, resizing a alist from 100 to 1000 may need nearly 500,000 operations, for it need to create 100 to 1000 boxes respectively.&lt;/p&gt;
-&lt;img src=&#34;https://Timlin15.github.io/images/image-20241120225227559&#34; alt=&#34;image-20241120225227559&#34; style=&#34;zoom:25%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241120225227559&#34; alt=&#34;image-20241120225227559&#34; style=&#34;zoom:25%;&#34; /&gt;
 &lt;p&gt;To fix this, using the multiply can lead to surprisingly great performance.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -240,7 +240,7 @@
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Right-click on your breakpoint and you’ll see a box pop up that says “Condition:”. In the box, type in what condition you want the code to stop.
-&lt;img src=&#34;https://Timlin15.github.io/images/image-20241120212458406&#34; alt=&#34;image-20241120212458406&#34; style=&#34;zoom: 50%;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241120212458406&#34; alt=&#34;image-20241120212458406&#34; style=&#34;zoom: 50%;&#34; /&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;ol&gt;
@@ -302,8 +302,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Instead of using a naked recursion which user can gain free access to the variables in the middle of the list, SLList class act as a middle man between user  and raw data structure. It&amp;rsquo;s a kind of &lt;strong&gt;encapsulation&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;​					&lt;img src=&#34;https://Timlin15.github.io/images/image-20241120225700125&#34; alt=&#34;image-20241120225700125&#34; style=&#34;zoom: 50%;&#34; /&gt;&lt;/p&gt;
-&lt;img src=&#34;https://Timlin15.github.io/images/image-20241120225713719&#34; alt=&#34;image-20241120225713719&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;​					&lt;img src=&#34;https://Timlin15.github.io/image-20241120225700125&#34; alt=&#34;image-20241120225700125&#34; style=&#34;zoom: 50%;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241120225713719&#34; alt=&#34;image-20241120225713719&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;h3 id=&#34;22-sentinel-nodes&#34;&gt;2.2 Sentinel Nodes
 &lt;/h3&gt;&lt;p&gt;​	Notes:&lt;/p&gt;
 &lt;ul&gt;
@@ -468,7 +468,7 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Encoding of billions of bytes of video data.&lt;/p&gt;
-&lt;img src=&#34;https://Timlin15.github.io/images/image-20241125230733031&#34; alt=&#34;image-20241125230733031&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241125230733031&#34; alt=&#34;image-20241125230733031&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;32-simplification-model&#34;&gt;3.2 Simplification model
@@ -991,7 +991,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;ul&gt;
 &lt;li&gt;connect(p, q): Change entries that equal id[p] to id[q]&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;https://Timlin15.github.io/images/image-20241129160202707.png&#34; alt=&#34;image-20241129160202707&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241129160202707.png&#34; alt=&#34;image-20241129160202707&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -1024,7 +1024,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Unlocks a pretty amazing universe of math that we won’t discuss.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241129160642472.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20241129160642472.png&#34;
 	
 	
 	
@@ -1139,7 +1139,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;img src=&#34;https://Timlin15.github.io/images/image-20241129161456292.png&#34; alt=&#34;image-20241129161456292&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241129161456292.png&#34; alt=&#34;image-20241129161456292&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;h4 id=&#34;514-path-compression-a-clever-idea&#34;&gt;5.1.4 &lt;strong&gt;Path Compression: A Clever Idea&lt;/strong&gt;
 &lt;/h4&gt;&lt;p&gt;Below is the topology of the worst case if we use WeightedQuickUnion&lt;/p&gt;
 &lt;ul&gt;
@@ -1149,7 +1149,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;https://Timlin15.github.io/images/image-20241201094054221.png&#34; alt=&#34;image-20241201094054221&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241201094054221.png&#34; alt=&#34;image-20241201094054221&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;h2 id=&#34;5setsmapsbinary-search-trees&#34;&gt;5.Sets,Maps,Binary Search Trees
 &lt;/h2&gt;&lt;p&gt;Among the most important interfaces in the java.util library are those that extend the Collection interface (btw interfaces can extend other interfaces).&lt;/p&gt;
 &lt;ul&gt;
@@ -1164,7 +1164,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;h3 id=&#34;51binary-search-trees&#34;&gt;5.1&lt;strong&gt;Binary Search Trees&lt;/strong&gt;
 &lt;/h3&gt;&lt;p&gt;To a ordered list, there is a fundamental problem: slow search, though it&amp;rsquo;s ordered.&lt;/p&gt;
 &lt;p&gt;So, how to improve it?&lt;/p&gt;
-&lt;img src=&#34;https://Timlin15.github.io/images/image-20241203143212350.png&#34; alt=&#34;image-20241203143212350&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241203143212350.png&#34; alt=&#34;image-20241203143212350&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;h4 id=&#34;511bst-definition&#34;&gt;5.1.1.BST definition
 &lt;/h4&gt;&lt;p&gt;A tree consists of:&lt;/p&gt;
 &lt;ul&gt;
@@ -1284,11 +1284,11 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;ul&gt;
 &lt;li&gt;Garbage collected&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;https://Timlin15.github.io/images/image-20241203150023102.png&#34; alt=&#34;image-20241203150023102&#34; style=&#34;zoom: 67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241203150023102.png&#34; alt=&#34;image-20241203150023102&#34; style=&#34;zoom: 67%;&#34; /&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;#2: with one children&lt;/p&gt;
-&lt;img src=&#34;https://Timlin15.github.io/images/image-20241203150229562.png&#34; alt=&#34;image-20241203150229562&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241203150229562.png&#34; alt=&#34;image-20241203150229562&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;p&gt;Goal:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Maintain BST property.&lt;/li&gt;
@@ -1302,10 +1302,10 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;ul&gt;
 &lt;li&gt;Flat will be garbage collected (along with its instance variables).&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;https://Timlin15.github.io/images/image-20241203150430463.png&#34; alt=&#34;image-20241203150430463&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241203150430463.png&#34; alt=&#34;image-20241203150430463&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;p&gt;#3: hard challenge&lt;/p&gt;
 &lt;p&gt;Delete k&lt;/p&gt;
-&lt;img src=&#34;https://Timlin15.github.io/images/image-20241203150515038.png&#34; alt=&#34;image-20241203150515038&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241203150515038.png&#34; alt=&#34;image-20241203150515038&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;p&gt;Goal:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Find a new root node.&lt;/li&gt;
@@ -1352,7 +1352,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;https://Timlin15.github.io/images/image-20241210144500625.png&#34; alt=&#34;image-20241210144500625&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241210144500625.png&#34; alt=&#34;image-20241210144500625&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;p&gt;Height is balanced, but we have a new problem:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Leaf nodes can get too juicy.&lt;/li&gt;
@@ -1369,11 +1369,11 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;Pulling item out of full node splits it into left and right.&lt;/li&gt;
 &lt;li&gt;Parent node now has three children!&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;https://Timlin15.github.io/images/image-20241210144808711.png&#34; alt=&#34;image-20241210144808711&#34; style=&#34;zoom: 50%;&#34; /&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241210145102441.png&#34; alt=&#34;image-20241210145102441&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241210144808711.png&#34; alt=&#34;image-20241210144808711&#34; style=&#34;zoom: 50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241210145102441.png&#34; alt=&#34;image-20241210145102441&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241210145414607.png&#34; alt=&#34;image-20241210145414607&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241210145414607.png&#34; alt=&#34;image-20241210145414607&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;p&gt;B-tree&amp;rsquo;s name:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;B-trees of order L=3 (like we used today) are also called a 2-3-4 tree or a 2-4 tree.
@@ -1431,18 +1431,18 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;Can think of as temporarily merging G and P, then sending G down and &lt;strong&gt;left&lt;/strong&gt;.&lt;/li&gt;
 &lt;li&gt;Preserves search tree property. No change to semantics of tree.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241210153123578.png&#34; alt=&#34;image-20241210153123578&#34; style=&#34;zoom: 67%;&#34; /&gt;
+&lt;img src=&#34;\image-20241210153123578.png&#34; alt=&#34;image-20241210153123578&#34; style=&#34;zoom: 67%;&#34; /&gt;
 &lt;h4 id=&#34;712red-black-trees&#34;&gt;7.1.2.&lt;strong&gt;Red-Black Trees&lt;/strong&gt;
 &lt;/h4&gt;&lt;p&gt;Our goal: Build a BST that is structurally identical to a 2-3 tree.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Since 2-3 trees are balanced, so will our special BSTs.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Possibility 1: Create dummy “glue” nodes.&lt;/p&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241210153447794.png&#34; alt=&#34;image-20241210153447794&#34; style=&#34;zoom: 67%;&#34; /&gt;
+&lt;img src=&#34;\image-20241210153447794.png&#34; alt=&#34;image-20241210153447794&#34; style=&#34;zoom: 67%;&#34; /&gt;
 &lt;p&gt;Result is inelegant. Wasted link. Code will be ugly.&lt;/p&gt;
 &lt;p&gt;Possibility 2: Create “glue” links with the smaller item &lt;strong&gt;off to the left&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Idea is commonly used in practice (e.g. java.util.TreeSet). For convenience, we’ll mark glue links as “&lt;strong&gt;red&lt;/strong&gt;”.&lt;/p&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241210154000144.png&#34; alt=&#34;image-20241210154000144&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;\image-20241210154000144.png&#34; alt=&#34;image-20241210154000144&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;p&gt;A BST with left glue links that represents a 2-3 tree is often called a “Left Leaning Red Black Binary Search Tree” or LLRB.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;LLRBs are normal BSTs!&lt;/li&gt;
@@ -1453,11 +1453,11 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/h3&gt;&lt;h4 id=&#34;721-insertion-color&#34;&gt;7.2.1. &lt;strong&gt;Insertion Color&lt;/strong&gt;
 &lt;/h4&gt;&lt;p&gt;Use red link when the numbers are on the same leaves&lt;/p&gt;
 &lt;h4 id=&#34;722insertion-on-the-right&#34;&gt;7.2.2.&lt;strong&gt;Insertion on the Right&lt;/strong&gt;
-&lt;/h4&gt;&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241210155513197.png&#34; alt=&#34;image-20241210155513197&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;/h4&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20241210155513197.png&#34; alt=&#34;image-20241210155513197&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;p&gt;But it&amp;rsquo;s not leaning left, instead it&amp;rsquo;s right leaning. So we can use rotateLeft(E)&lt;/p&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241210155620133.png&#34; alt=&#34;image-20241210155620133&#34; style=&#34;zoom: 67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241210155620133.png&#34; alt=&#34;image-20241210155620133&#34; style=&#34;zoom: 67%;&#34; /&gt;
 &lt;h4 id=&#34;723-double-insertion-on-the-left&#34;&gt;7.2.3. &lt;strong&gt;Double Insertion on the Left&lt;/strong&gt;
-&lt;/h4&gt;&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241210155858754.png&#34; alt=&#34;image-20241210155858754&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;/h4&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20241210155858754.png&#34; alt=&#34;image-20241210155858754&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;h4 id=&#34;724splitting-temporary-4-nodes&#34;&gt;7.2.4.&lt;strong&gt;Splitting Temporary 4-Nodes&lt;/strong&gt;
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;Flip the colors of all edges touching B.
@@ -1466,7 +1466,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241212180658141.png&#34; alt=&#34;image-20241212180658141&#34; style=&#34;zoom: 67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241212180658141.png&#34; alt=&#34;image-20241212180658141&#34; style=&#34;zoom: 67%;&#34; /&gt;
 &lt;h3 id=&#34;73runtime-and-implementation&#34;&gt;7.3.&lt;strong&gt;Runtime and Implementation&lt;/strong&gt;
 &lt;/h3&gt;&lt;p&gt;The runtime analysis for LLRBs is simple if you trust the 2-3 tree runtime.&lt;/p&gt;
 &lt;ul&gt;
@@ -1677,7 +1677,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;ul&gt;
 &lt;li&gt;If bucket h is empty, we create a new list containing x and store it at index h.&lt;/li&gt;
 &lt;li&gt;If bucket h is already a list, we add x to this list if it is not already present.
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241213090954388.png&#34; alt=&#34;image-20241213090954388&#34; style=&#34;zoom:33%;&#34; /&gt;&lt;/li&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241213090954388.png&#34; alt=&#34;image-20241213090954388&#34; style=&#34;zoom:33%;&#34; /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;table&gt;
   &lt;thead&gt;
@@ -1717,7 +1717,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;&lt;em&gt;Data&lt;/em&gt; is converted by a &lt;strong&gt;hash function&lt;/strong&gt; into an integer representation called a &lt;strong&gt;hash code&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The &lt;strong&gt;hash code&lt;/strong&gt; is then &lt;strong&gt;reduced&lt;/strong&gt; to a valid &lt;em&gt;index&lt;/em&gt;, usually using the modulus operator, e.g. 2348762878 % 10 = 8.&lt;/p&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241213091214134.png&#34; alt=&#34;image-20241213091214134&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241213091214134.png&#34; alt=&#34;image-20241213091214134&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Suppose we have:&lt;/p&gt;
@@ -1821,7 +1821,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;!n.key.equals(“cow”) so go to next.&lt;/li&gt;
 &lt;li&gt;n.key.equals(“cow”), so: return n.value&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241213094636242.png&#34; alt=&#34;image-20241213094636242&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241213094636242.png&#34; alt=&#34;image-20241213094636242&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;p&gt;Warning #1: Never store objects that can change in a HashSet or HashMap!&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;If an object’s variables changes, then its hashCode changes. May result in items getting lost.&lt;/li&gt;
@@ -1921,7 +1921,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;Min-heap: Every node is less than or equal to both of its children.&lt;/li&gt;
 &lt;li&gt;Complete: Missing items only at the bottom level (if any), all nodes are as far left as possible.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241215103312312.png&#34; alt=&#34;image-20241215103312312&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241215103312312.png&#34; alt=&#34;image-20241215103312312&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;p&gt;Given a heap, how do we implement PQ operations?&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;getSmallest() - return the item in the root node.&lt;/li&gt;
@@ -1952,7 +1952,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;   &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241215103726331.png&#34; alt=&#34;image-20241215103726331&#34; style=&#34;zoom: 50%;&#34; /&gt;
+&lt;/div&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20241215103726331.png&#34; alt=&#34;image-20241215103726331&#34; style=&#34;zoom: 50%;&#34; /&gt;
 &lt;p&gt;1b:Variable-Width Nodes&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1968,7 +1968,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;   &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241215103810105.png&#34; alt=&#34;image-20241215103810105&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;/div&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20241215103810105.png&#34; alt=&#34;image-20241215103810105&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;p&gt;1c:Sibling Tree&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1986,7 +1986,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;   &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241215103857869.png&#34; alt=&#34;image-20241215103857869&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;/div&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20241215103857869.png&#34; alt=&#34;image-20241215103857869&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;h4 id=&#34;932approach-2&#34;&gt;9.3.2.Approach 2
 &lt;/h4&gt;&lt;p&gt;Approach 2: Store keys in an array. Store parentIDs in an array.&lt;/p&gt;
 &lt;ul&gt;
@@ -2006,7 +2006,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;   &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cParzival%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20241215104107191.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241215104107191.png&#34;
 	
 	
 	
@@ -2034,7 +2034,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;   &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cParzival%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20241215104220381.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241215104220381.png&#34;
 	
 	
 	
@@ -2086,7 +2086,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cParzival%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20241215104504515.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241215104504515.png&#34;
 	
 	
 	
@@ -2181,7 +2181,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cParzival%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20241215105118776.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241215105118776.png&#34;
 	
 	
 	
@@ -2191,7 +2191,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cParzival%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20241215105133444.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241215105133444.png&#34;
 	
 	
 	
@@ -2227,7 +2227,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cParzival%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20241215110130310.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241215110130310.png&#34;
 	
 	
 	
@@ -2304,9 +2304,9 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;Postorder: ACBEGFD&lt;/li&gt;
 &lt;li&gt;Level order: DBFACEG&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241215131531936.png&#34; alt=&#34;image-20241215131531936&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241215131531936.png&#34; alt=&#34;image-20241215131531936&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;p&gt;Example: Preorder Traversal for printing directory listing:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cParzival%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20241215110414827.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241215110414827.png&#34;
 	
 	
 	
@@ -2317,7 +2317,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Example: Postorder Traversal for gathering file sizes.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cParzival%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20241215110511471.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241215110511471.png&#34;
 	
 	
 	
@@ -2344,7 +2344,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;No edges that connect a vertex to itself, i.e. no “loops”.&lt;/li&gt;
 &lt;li&gt;No two edges that connect the same vertices, i.e. no “parallel edges”.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cParzival%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20241215110741939.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20241215110741939.png&#34;
 	
 	
 	
@@ -2396,7 +2396,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;Called “depth first” because you go as deep as possible.&lt;/li&gt;
 &lt;li&gt;DFS is a very powerful technique that can be used for many types of graph problems.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241215212452979.png&#34; alt=&#34;image-20241215212452979&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241215212452979.png&#34; alt=&#34;image-20241215212452979&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;h3 id=&#34;104tree-vs-graph-traversals&#34;&gt;10.4.&lt;strong&gt;Tree Vs. Graph Traversals&lt;/strong&gt;
 &lt;/h3&gt;&lt;p&gt;Just as there are many tree traversals:&lt;/p&gt;
 &lt;ul&gt;
@@ -2414,7 +2414,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241215132218503.png&#34; alt=&#34;image-20241215132218503&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241215132218503.png&#34; alt=&#34;image-20241215132218503&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;h2 id=&#34;11graphs-ii-graph-traversal-implementations&#34;&gt;11.Graphs II: Graph Traversal Implementations
 &lt;/h2&gt;&lt;h3 id=&#34;111bfs-answer&#34;&gt;11.1.&lt;strong&gt;BFS Answer&lt;/strong&gt;
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Breadth First Search.&lt;/strong&gt;&lt;/p&gt;
@@ -2449,9 +2449,9 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241215210344373.png&#34; alt=&#34;image-20241215210344373&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241215210344373.png&#34; alt=&#34;image-20241215210344373&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;p&gt;The Queue will turned form [ ]-&amp;gt;[0]-&amp;gt;[1]-&amp;gt;[2,4]-&amp;gt;[4,5]-&amp;gt;[5,3]-&amp;gt;[3,6,8]-&amp;gt;[6,8]-&amp;gt;[8,7]-&amp;gt;[7]-&amp;gt;[ ]&lt;/p&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241215210958127.png&#34; alt=&#34;image-20241215210958127&#34; style=&#34;zoom: 50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241215210958127.png&#34; alt=&#34;image-20241215210958127&#34; style=&#34;zoom: 50%;&#34; /&gt;
 &lt;h3 id=&#34;112graph-api&#34;&gt;11.2.Graph API
 &lt;/h3&gt;&lt;p&gt;To Implement our graph algorithms like BreadthFirstPaths and DepthFirstPaths, we need:&lt;/p&gt;
 &lt;ul&gt;
@@ -2515,8 +2515,8 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;Common approach: Maintain array of lists indexed by vertex number.&lt;/li&gt;
 &lt;li&gt;Most popular approach for representing graphs.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241215211354917.png&#34; alt=&#34;image-20241215211354917&#34; style=&#34;zoom: 33%;&#34; /&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241215211410007.png&#34; alt=&#34;image-20241215211410007&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241215211354917.png&#34; alt=&#34;image-20241215211354917&#34; style=&#34;zoom: 33%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241215211410007.png&#34; alt=&#34;image-20241215211410007&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;p&gt;Runtime: Θ(V + E)&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;V is total number of vertices&lt;/li&gt;
@@ -2756,7 +2756,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;ANY recursive algorithm can be implemented using iteration and a stack.&lt;/li&gt;
 &lt;li&gt;In 61C, you’ll learn how recursive calls are implemented at a low level using a stack, i.e. in REAL recursive code, there is an explicit stack being utilized (but below the level of abstraction that you usually think about).&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241216224559508.png&#34; alt=&#34;image-20241216224559508&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241216224559508.png&#34; alt=&#34;image-20241216224559508&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;p&gt;The Stack will go from []-&amp;gt;[0]-&amp;gt;[1]-&amp;gt;[4,2]-&amp;gt;[5,3,2]-&amp;gt;[8,6,3,2]-&amp;gt;[6,3,2]-&amp;gt;[7,3,2]-&amp;gt;[3,2]-&amp;gt;[2]-&amp;gt;[]&lt;/p&gt;
 &lt;p&gt;Visit order [0,1,4,5,8,6,7,3,2]&lt;/p&gt;
 &lt;h2 id=&#34;12shortest-path&#34;&gt;12.Shortest Path
@@ -2805,17 +2805,17 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;ul&gt;
 &lt;li&gt;Algorithm begins in state below. All vertices unmarked. All distances infinite. No edges in the SPT.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241216230309433.png&#34; alt=&#34;image-20241216230309433&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241216230309433.png&#34; alt=&#34;image-20241216230309433&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;p&gt;Bad algorithm #1: Perform a depth first search. When you visit v:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;For each edge from v to w, if w is not already part of SPT, add the edge.****&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241216230342337.png&#34; alt=&#34;image-20241216230342337&#34; style=&#34;zoom: 33%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241216230342337.png&#34; alt=&#34;image-20241216230342337&#34; style=&#34;zoom: 33%;&#34; /&gt;
 &lt;p&gt;Bad algorithm #2: Perform a depth first search. When you visit v:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;For each edge from v to w, add edge to the SPT &lt;strong&gt;only if that edge yields better distance&lt;/strong&gt;.(We’ll call this process “edge &lt;strong&gt;relaxation&lt;/strong&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241216230814353.png&#34; alt=&#34;image-20241216230814353&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241216230814353.png&#34; alt=&#34;image-20241216230814353&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;p&gt;Dijkstra’s Algorithm: Perform a &lt;strong&gt;best first search&lt;/strong&gt; (closest first). When you visit v:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;For each from v to w, &lt;strong&gt;relax that edge&lt;/strong&gt;. i.e.  add edge &lt;strong&gt;only if that edge yields better distance&lt;/strong&gt;. See &lt;a class=&#34;link&#34; href=&#34;https://docs.google.com/presentation/d/1_bw2z1ggUkquPdhl7gwdVBoTaoJmaZdpkV6MoAgxlJc/pub?start=false&amp;amp;loop=false&amp;amp;delayms=3000&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2824,7 +2824,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;Visit vertices in &lt;strong&gt;order of&lt;/strong&gt; &lt;strong&gt;best-known distance&lt;/strong&gt; from source,i.e. the vertices&amp;rsquo; distance to source. On visit, &lt;strong&gt;relax&lt;/strong&gt; every edge from the visited vertex. Once visited, the vertex is finalized, its distance can&amp;rsquo;t be changed. Because before visiting, it is the smallest in the PQ, you can&amp;rsquo;t expect the further vertex adding a positive number bigger than the finalized value, if all distance is positive.&lt;/li&gt;
 &lt;li&gt;So Dijkstra’s is guaranteed to return a correct result if all edges are non-negative.  And you don;t need to check if relax is needed if you point at a finalized vertex.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241216230913593.png&#34; alt=&#34;image-20241216230913593&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241216230913593.png&#34; alt=&#34;image-20241216230913593&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;p&gt;Proof sketch: Assume all edges have non-negative weights.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;At start, distTo[source] = 0, which is optimal.&lt;/li&gt;
@@ -2857,7 +2857,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241217094048506.png&#34; alt=&#34;image-20241217094048506&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241217094048506.png&#34; alt=&#34;image-20241217094048506&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;p&gt;How do we get our estimate?&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Estimate is an arbitrary &lt;strong&gt;heuristic&lt;/strong&gt; h(v, goal).&lt;/li&gt;
@@ -2925,7 +2925,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;ul&gt;
 &lt;li&gt;Example: Directly connecting buildings by power lines.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241217102245748.png&#34; alt=&#34;image-20241217102245748&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241217102245748.png&#34; alt=&#34;image-20241217102245748&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;p&gt;A shortest paths tree depends on the start vertex:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Because it tells you how to get from a source to EVERYTHING.&lt;/li&gt;
@@ -2980,7 +2980,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241217103326158.png&#34; alt=&#34;image-20241217103326158&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241217103326158.png&#34; alt=&#34;image-20241217103326158&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
@@ -3113,7 +3113,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;No crossing edge has lower weight (consider in increasing order).&lt;/li&gt;
 &lt;li&gt;It is fundamental a implementation of the &lt;strong&gt;Cut property&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241217105424671.png&#34; alt=&#34;image-20241217105424671&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241217105424671.png&#34; alt=&#34;image-20241217105424671&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Kruskal’s Implementation (Pseudocode)&lt;/strong&gt;&lt;/p&gt;
@@ -3300,7 +3300,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;ul&gt;
 &lt;li&gt;When nodes are sorted in diagram, arrows all point rightwards.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241231091241775.png&#34; alt=&#34;image-20241231091241775&#34; style=&#34;zoom: 50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241231091241775.png&#34; alt=&#34;image-20241231091241775&#34; style=&#34;zoom: 50%;&#34; /&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -3327,14 +3327,14 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;For example, below we see Dijkstra’s just before vertex C is visited.&lt;/li&gt;
 &lt;li&gt;Relaxation on E succeeds, but distance to F will never be updated.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241231092413326.png&#34; alt=&#34;image-20241231092413326&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241231092413326.png&#34; alt=&#34;image-20241231092413326&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;p&gt;How to imply a feasible algorithm to find the shortest path in a graph with negative edges.&lt;/p&gt;
 &lt;p&gt;One simple idea: Visit vertices in topological order.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;On each visit, relax all outgoing edges.&lt;/li&gt;
 &lt;li&gt;Each vertex is visited only when all possible info about it has been used!&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241231093030345.png&#34; alt=&#34;image-20241231093030345&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241231093030345.png&#34; alt=&#34;image-20241231093030345&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;p&gt;Visit vertices in topological order.(From left to right)&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;When we visit a vertex: relax all of its going edges.&lt;/li&gt;
@@ -3375,13 +3375,13 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;Perhaps the most important unsolved problem in mathematics.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Question: Solve the LPT problem on a directed acyclic graph. Algorithm must be O(E + V) runtime.&lt;/p&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241231095203506.png&#34; alt=&#34;image-20241231095203506&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241231095203506.png&#34; alt=&#34;image-20241231095203506&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;ul&gt;
 &lt;li&gt;Form a new copy of the graph G’ with signs of all edge weights flipped.&lt;/li&gt;
 &lt;li&gt;Run DAGSPT on G’ yielding result X.&lt;/li&gt;
 &lt;li&gt;Flip signs of all values in X.distTo. X.edgeTo is already correct.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241231094054743.png&#34; alt=&#34;image-20241231094054743&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241231094054743.png&#34; alt=&#34;image-20241231094054743&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;h3 id=&#34;144reductions-definition&#34;&gt;14.4.Reductions: Definition
 &lt;/h3&gt;&lt;p&gt;The problem solving we just used probably felt a little different than usual:&lt;/p&gt;
 &lt;ul&gt;
@@ -3395,7 +3395,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cParzival%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20241231095256586.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241231095256586.png&#34;
 	
 	
 	
