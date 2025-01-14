@@ -2,136 +2,125 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/zh-cn/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+    <loc>https://Timlin15.github.io/zh-cn/</loc>
+    <lastmod>2025-01-14T11:20:35+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/"
+                href="https://Timlin15.github.io/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="//localhost:1313/zh-cn/"
+                href="https://Timlin15.github.io/zh-cn/"
                 />
   </url><url>
-    <loc>//localhost:1313/zh-cn/categories/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+    <loc>https://Timlin15.github.io/zh-cn/p/2025%E5%B9%B4%E5%A4%A7%E8%87%B4%E8%A7%84%E5%88%92/</loc>
+    <lastmod>2025-01-14T11:20:35+08:00</lastmod>
+  </url><url>
+    <loc>https://Timlin15.github.io/zh-cn/post/</loc>
+    <lastmod>2025-01-14T11:20:35+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/categories/"
+                href="https://Timlin15.github.io/post/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="//localhost:1313/zh-cn/categories/"
+                href="https://Timlin15.github.io/zh-cn/post/"
                 />
   </url><url>
-    <loc>//localhost:1313/zh-cn/p/test-chinese/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+    <loc>https://Timlin15.github.io/zh-cn/p/cs61b%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2025-01-14T11:19:48+08:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/zh-cn/post/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="//localhost:1313/zh-cn/post/"
-                />
+    <loc>https://Timlin15.github.io/zh-cn/p/cs61a%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2025-01-14T11:18:34+08:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/zh-cn/categories/test/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/categories/test/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="//localhost:1313/zh-cn/categories/test/"
-                />
-  </url><url>
-    <loc>//localhost:1313/zh-cn/categories/%E6%B5%8B%E8%AF%95/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/zh-cn/page/</loc>
+    <loc>https://Timlin15.github.io/zh-cn/page/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/page/"
+                href="https://Timlin15.github.io/page/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="//localhost:1313/zh-cn/page/"
+                href="https://Timlin15.github.io/zh-cn/page/"
                 />
   </url><url>
-    <loc>//localhost:1313/zh-cn/archives/</loc>
+    <loc>https://Timlin15.github.io/zh-cn/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/archives/"
+                href="https://Timlin15.github.io/archives/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="//localhost:1313/zh-cn/archives/"
+                href="https://Timlin15.github.io/zh-cn/archives/"
                 />
   </url><url>
-    <loc>//localhost:1313/zh-cn/tags/</loc>
+    <loc>https://Timlin15.github.io/zh-cn/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/tags/"
+                href="https://Timlin15.github.io/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="//localhost:1313/zh-cn/tags/"
+                href="https://Timlin15.github.io/zh-cn/categories/"
                 />
   </url><url>
-    <loc>//localhost:1313/zh-cn/%E5%85%B3%E4%BA%8E/</loc>
+    <loc>https://Timlin15.github.io/zh-cn/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/about/"
+                href="https://Timlin15.github.io/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="//localhost:1313/zh-cn/%E5%85%B3%E4%BA%8E/"
+                href="https://Timlin15.github.io/zh-cn/tags/"
                 />
   </url><url>
-    <loc>//localhost:1313/zh-cn/search/</loc>
+    <loc>https://Timlin15.github.io/zh-cn/%E5%85%B3%E4%BA%8E/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/search/"
+                href="https://Timlin15.github.io/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="//localhost:1313/zh-cn/search/"
+                href="https://Timlin15.github.io/zh-cn/%E5%85%B3%E4%BA%8E/"
                 />
   </url><url>
-    <loc>//localhost:1313/zh-cn/%E5%8F%8B%E9%93%BE/</loc>
+    <loc>https://Timlin15.github.io/zh-cn/search/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/links/"
+                href="https://Timlin15.github.io/search/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="//localhost:1313/zh-cn/%E5%8F%8B%E9%93%BE/"
+                href="https://Timlin15.github.io/zh-cn/search/"
+                />
+  </url><url>
+    <loc>https://Timlin15.github.io/zh-cn/%E5%8F%8B%E9%93%BE/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://Timlin15.github.io/links/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://Timlin15.github.io/zh-cn/%E5%8F%8B%E9%93%BE/"
                 />
   </url>
 </urlset>

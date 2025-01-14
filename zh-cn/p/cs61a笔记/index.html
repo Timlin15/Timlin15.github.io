@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="CS61A Function The principle of designing a function: Give each function exactly a job\nDon&rsquo;t repeat yourself. Implement a process just once, but execute it many times.\nDefine functions generally\nHigher-order functions(A function that takes a function as an argument value or returns a function as a return vales): express general methods of computation.\nremove repetition from programs\nseparate concerns among functions\nthe inner function need to be defined as a real function(f) rather than a value evaluated by the function such as f(x) in a higher-order function. It actually act as a function that its output is some functions.\n">
+<title>CS61A笔记</title>
+
+<link rel='canonical' href='https://Timlin15.github.io/zh-cn/p/cs61a%E7%AC%94%E8%AE%B0/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="CS61A笔记">
+<meta property='og:description' content="CS61A Function The principle of designing a function: Give each function exactly a job\nDon&rsquo;t repeat yourself. Implement a process just once, but execute it many times.\nDefine functions generally\nHigher-order functions(A function that takes a function as an argument value or returns a function as a return vales): express general methods of computation.\nremove repetition from programs\nseparate concerns among functions\nthe inner function need to be defined as a real function(f) rather than a value evaluated by the function such as f(x) in a higher-order function. It actually act as a function that its output is some functions.\n">
+<meta property='og:url' content='https://Timlin15.github.io/zh-cn/p/cs61a%E7%AC%94%E8%AE%B0/'>
+<meta property='og:site_name' content='Tim&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-01-14T11:18:34&#43;08:00'/><meta property='article:modified_time' content='2025-01-14T11:18:34&#43;08:00'/>
+<meta name="twitter:title" content="CS61A笔记">
+<meta name="twitter:description" content="CS61A Function The principle of designing a function: Give each function exactly a job\nDon&rsquo;t repeat yourself. Implement a process just once, but execute it many times.\nDefine functions generally\nHigher-order functions(A function that takes a function as an argument value or returns a function as a return vales): express general methods of computation.\nremove repetition from programs\nseparate concerns among functions\nthe inner function need to be defined as a real function(f) rather than a value evaluated by the function such as f(x) in a higher-order function. It actually act as a function that its output is some functions.\n">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/zh-cn/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu14212241814925016602.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">⌨️</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/zh-cn">Tim&#39;s Blog</a></h1>
+            <h2 class="site-description">欢迎👋</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/zh-cn/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-cn/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-cn/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>档案</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-cn/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-cn/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://Timlin15.github.io/" >English</option>
+                                
+                                    <option value="https://Timlin15.github.io/zh-cn/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#function">Function</a>
+      <ol>
+        <li><a href="#the-principle-of-designing-a-function">The principle of designing a function:</a></li>
+        <li><a href="#higher-order-functionsa-function-that-takes-a-function-as-an-argument-value-or-returns-a-function-as-a-return-vales">Higher-order functions(A function that takes a function as an argument value or returns a function as a return vales):</a></li>
+        <li><a href="#truefalse">True/False:</a></li>
+      </ol>
+    </li>
+    <li><a href="#recursion">Recursion</a>
+      <ol>
+        <li><a href="#skipping-questions">Skipping questions：</a></li>
+        <li><a href="#difference-between-iteration-and-recursion">difference between iteration and recursion</a></li>
+      </ol>
+    </li>
+    <li><a href="#abstraction">Abstraction</a></li>
+    <li><a href="#containers">Containers</a>
+      <ol>
+        <li><a href="#strings-are-sequences">Strings are Sequences</a></li>
+        <li><a href="#comprehensions">Comprehensions</a></li>
+      </ol>
+    </li>
+    <li><a href="#data-abstraction">Data abstraction</a>
+      <ol>
+        <li><a href="#abstraction-barriers">Abstraction Barriers</a></li>
+      </ol>
+    </li>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#lab-05-mutability-iterators">Lab 05 Mutability, Iterators</a></li>
+    <li><a href="#hw-05">HW 05</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/zh-cn/p/cs61a%E7%AC%94%E8%AE%B0/">CS61A笔记</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-01-14</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="cs61a">CS61A
+</h1><h2 id="function">Function
+</h2><h3 id="the-principle-of-designing-a-function">The principle of designing a function:
+</h3><ul>
+<li>
+<p>Give each function exactly a job</p>
+</li>
+<li>
+<p>Don&rsquo;t repeat yourself. Implement a process just once, but execute it many times.</p>
+</li>
+<li>
+<p>Define functions generally</p>
+</li>
+</ul>
+<h3 id="higher-order-functionsa-function-that-takes-a-function-as-an-argument-value-or-returns-a-function-as-a-return-vales">Higher-order functions(A function that takes a function as an argument value or returns a function as a return vales):
+</h3><ul>
+<li>
+<p>express general methods of computation.</p>
+</li>
+<li>
+<p>remove repetition from programs</p>
+</li>
+<li>
+<p>separate concerns among functions</p>
+</li>
+<li>
+<p>the inner function need to be defined as a real function(f) rather than a value evaluated by the function such as f(x) in a higher-order function. It actually act as a function that its output is some functions.</p>
+</li>
+</ul>
+<h3 id="truefalse">True/False:
+</h3><ul>
+<li>&lsquo;and&rsquo; will return the first  False value it meets or it will return the last True value</li>
+<li>&lsquo;or&rsquo; will return the first True value</li>
+</ul>
+<h2 id="recursion">Recursion
+</h2><h3 id="skipping-questions">Skipping questions：
+</h3><ul>
+<li>Call expressions don&rsquo;t allow you to skip evaluating part of the call expressions</li>
+</ul>
+<p>​	every parts of the statement will be executed</p>
+<ul>
+<li>
+<p>Control expressions(and/or) allow you to skip evaluating some sub-expressions</p>
+<p>​	e.g. return if -100 &gt; 0 and sqrt(-100) &gt; 10 will not lead to a error</p>
+</li>
+</ul>
+<h3 id="difference-between-iteration-and-recursion">difference between iteration and recursion
+</h3><p>sometimes recursion can simplify the code</p>
+<h2 id="abstraction">Abstraction
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="err">：</span>
+</span></span><span class="line"><span class="cl">    	<span class="k">return</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Is fact implemented correctly?</p>
+<ol>
+<li>Verify the base case.</li>
+<li>Treat fact as a functional abstraction!(focus on what&rsquo;s it function)</li>
+<li>Assume that fact(n-1) is correct.</li>
+<li>Verify that fact(n) is correct, assuming that fact(n-1) correct.</li>
+</ol>
+<h2 id="containers">Containers
+</h2><h3 id="strings-are-sequences">Strings are Sequences
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="s1">&#39;here&#39;</span> <span class="ow">in</span> <span class="s1">&#39;Where</span><span class="se">\&#39;</span><span class="s1">s Waldo&#39;</span> 
+</span></span><span class="line"><span class="cl"><span class="kc">True</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="mi">234</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="kc">False</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="kc">False</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>In list you can only search for one word each time</p>
+<p>When working with strings, we usually care about whole words more than letters.</p>
+<h3 id="comprehensions">Comprehensions
+</h3><p>Both list and dictionary can use comprehension to define them</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># dictionary</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span><span class="o">&lt;</span><span class="n">key</span> <span class="n">exp</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">value</span> <span class="n">exp</span><span class="o">&gt;</span> <span class="k">for</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="nb">iter</span> <span class="n">exp</span><span class="o">&gt;</span> <span class="k">if</span> <span class="o">&lt;</span><span class="nb">filter</span> <span class="n">exp</span><span class="o">&gt;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># list</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="o">&lt;</span><span class="n">value</span> <span class="n">exp</span><span class="o">&gt;</span> <span class="k">for</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="nb">iter</span> <span class="n">exp</span><span class="o">&gt;</span> <span class="k">if</span> <span class="o">&lt;</span><span class="nb">filter</span> <span class="n">exp</span><span class="o">&gt;</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The parent frame of the comprehensions is the current frame</p>
+<h2 id="data-abstraction">Data abstraction
+</h2><h3 id="abstraction-barriers">Abstraction Barriers
+</h3><p><img src="C:%5cUsers%5cParzival%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20241009092505400.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20241009092505400"
+	
+	
+></p>
+<blockquote>
+<p>The higher the more abstract. Taking <strong>computing fraction</strong> as example</p>
+</blockquote>
+<img src="C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241009093101858.png" alt="image-20241009093101858" style="zoom:50%;" />
+<p>This example violates the abstraction barriers. Here&rsquo;s how</p>
+<ul>
+<li>
+<p><strong>Does not use constructors</strong>: instead of using <code>list</code> &lsquo;[1, 2]&rsquo;, it should use <code>rational</code></p>
+</li>
+<li>
+<p><strong>No selectors</strong>: instead of using <code>list element</code> to imply numer and denom, it should use <code> numer</code> and <code>denom</code></p>
+</li>
+<li>
+<p><strong>No constructor</strong>: use <code>add_rational</code>, this will make your code more readable!</p>
+</li>
+</ul>
+<p>All in all, the data abstraction should make a data/func&rsquo;s detail the same as its name!</p>
+<hr>
+<blockquote>
+<p>An elegant way to obtain the minimum number form <code>cat</code> project</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">minimum_mewtations</span><span class="p">(</span><span class="n">typed</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">limit</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;A diff function that computes the edit distance from TYPED to SOURCE.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    This function takes in a string TYPED, a string SOURCE, and a number LIMIT.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Arguments:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        typed: a starting word
+</span></span></span><span class="line"><span class="cl"><span class="s2">        source: a string representing a desired goal word
+</span></span></span><span class="line"><span class="cl"><span class="s2">        limit: a number representing an upper bound on the number of edits
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; big_limit = 10
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; minimum_mewtations(&#34;cats&#34;, &#34;scat&#34;, big_limit)       # cats -&gt; scats -&gt; scat
+</span></span></span><span class="line"><span class="cl"><span class="s2">    2
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; minimum_mewtations(&#34;purng&#34;, &#34;purring&#34;, big_limit)   # purng -&gt; purrng -&gt; purring
+</span></span></span><span class="line"><span class="cl"><span class="s2">    2
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; minimum_mewtations(&#34;ckiteus&#34;, &#34;kittens&#34;, big_limit) # ckiteus -&gt; kiteus -&gt; kitteus -&gt; kittens
+</span></span></span><span class="line"><span class="cl"><span class="s2">    3
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">typed_words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">typed</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">source_words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">all</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">limit</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span> <span class="c1"># Base cases should go here, you may add more base cases as needed.</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># BEGIN</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;*** YOUR CODE HERE ***&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># END</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Recursive cases should go below here</span>
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">typed_words</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># Feel free to remove or add additional cases</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># BEGIN</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;*** YOUR CODE HERE ***&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">typed</span><span class="p">)</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">source</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">source_words</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">source</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">typed</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># END</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">add</span> <span class="o">=</span> <span class="n">minimum_mewtations</span><span class="p">(</span><span class="n">typed</span><span class="p">[</span><span class="mi">0</span><span class="p">:],</span> <span class="n">source</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">limit</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">typed_words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">source_words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">else</span> <span class="n">minimum_mewtations</span><span class="p">(</span><span class="n">typed</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">source</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">limit</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">remove</span> <span class="o">=</span> <span class="n">minimum_mewtations</span><span class="p">(</span><span class="n">typed</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">source</span><span class="p">[</span><span class="mi">0</span><span class="p">:],</span> <span class="n">limit</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">typed_words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">source_words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">else</span> <span class="n">minimum_mewtations</span><span class="p">(</span><span class="n">typed</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">source</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">limit</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">substitute</span> <span class="o">=</span> <span class="n">minimum_mewtations</span><span class="p">(</span><span class="n">typed</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">source</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">limit</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">typed_words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">source_words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">else</span> <span class="n">minimum_mewtations</span><span class="p">(</span><span class="n">typed</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">source</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">limit</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="n">remove</span><span class="p">,</span> <span class="n">substitute</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># END</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="syntax">Syntax
+</h2><p>Useful string methods for processing the contents of a file:</p>
+<ul>
+<li>
+<p><strong>.strip()</strong>:return a string without whitespace (spaces, tabs, etc.)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="s1">&#39; hello &#39;</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;hello&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>.split()</strong>:returns a list of strings that were separated by whitespace</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="s1">&#39;hi there&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="s1">&#39;hi&#39;</span><span class="p">,</span> <span class="s1">&#39;there&#39;</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>.replace(a. b)</strong>: returns a string with all instances of string <em>a</em> replaced by string <em>b</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="s1">&#39;2+2&#39;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="s1">&#39; + &#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;2 + 2&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>list</strong>: string can be seen as a string, processing it by slicing</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="s1">&#39;apples&#39;</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;apple&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>.join()</strong>: get the elements in argument separated by the thing before it</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;little&#39;</span><span class="p">,</span> <span class="s1">&#39;bug&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;a little bug&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="lab-05-mutability-iterators">Lab 05 Mutability, Iterators
+</h2><p>There are many other list mutation methods:</p>
+<ul>
+<li>
+<p><code>append(elem)</code>: Add <code>elem</code> to the end of the list. Return <code>None</code>.</p>
+</li>
+<li>
+<p><code>extend(s)</code>: Add all elements of iterable <code>s</code> to the end of the list. Return <code>None</code>.</p>
+</li>
+<li>
+<p><code>insert(i, elem)</code>: Insert <code>elem</code> at index <code>i</code>. If <code>i</code> is greater than or equal to the length of the list, then <code>elem</code> is inserted at the end. This does not replace any existing elements, but only adds the new element <code>elem</code>. Return <code>None</code>.</p>
+</li>
+<li>
+<p><code>remove(elem)</code>: Remove the first occurrence of <code>elem</code> in list. Return <code>None</code>. Errors if <code>elem</code> is not in the list.</p>
+</li>
+<li>
+<p><code>pop(i)</code>: Remove and return the element at index <code>i</code>.</p>
+</li>
+<li>
+<p><code>pop()</code>: Remove and return the last element.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="mi">2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<p>The difference of Where iteration and For iteration:</p>
+<ul>
+<li>
+<p><strong>Where iteration can be very useful when the range is variable</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">insert_items</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">before</span><span class="p">,</span> <span class="n">after</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Insert after into s after each occurrence of before and then return s.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; test_s = [1, 5, 8, 5, 2, 3]
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; new_s = insert_items(test_s, 5, 7)
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; new_s
+</span></span></span><span class="line"><span class="cl"><span class="s2">    [1, 5, 7, 8, 5, 7, 2, 3]
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; test_s
+</span></span></span><span class="line"><span class="cl"><span class="s2">    [1, 5, 7, 8, 5, 7, 2, 3]
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; new_s is test_s
+</span></span></span><span class="line"><span class="cl"><span class="s2">    True
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; double_s = [1, 2, 1, 2, 3, 3]
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; double_s = insert_items(double_s, 3, 4)
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; double_s
+</span></span></span><span class="line"><span class="cl"><span class="s2">    [1, 2, 1, 2, 3, 4, 3, 4]
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; large_s = [1, 4, 8]
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; large_s2 = insert_items(large_s, 4, 4)
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; large_s2
+</span></span></span><span class="line"><span class="cl"><span class="s2">    [1, 4, 4, 8]
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; large_s3 = insert_items(large_s2, 4, 6)
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; large_s3
+</span></span></span><span class="line"><span class="cl"><span class="s2">    [1, 4, 6, 4, 6, 8]
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; large_s3 is large_s
+</span></span></span><span class="line"><span class="cl"><span class="s2">    True
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;*** YOUR CODE HERE ***&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">before</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">s</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">after</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">s</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># if you ues for iteration, the changing length of list s is quite a big problem</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="hw-05">HW 05
+</h2><p>the yield, yield from, iter function, and the algorithms here are so hard!</p>
+<p>I can feel I&rsquo;m extremely weak at this part</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under MIT</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 Tim
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
