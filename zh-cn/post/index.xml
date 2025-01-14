@@ -186,7 +186,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;strong&gt;However, using [size +1] may cause inefficiency.&lt;/strong&gt; For example, resizing a alist from 100 to 1000 may need nearly 500,000 operations, for it need to create 100 to 1000 boxes respectively.&lt;/p&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241120225227559.png&#34; alt=&#34;image-20241120225227559&#34; style=&#34;zoom:25%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/images/image-20241120225227559&#34; alt=&#34;image-20241120225227559&#34; style=&#34;zoom:25%;&#34; /&gt;
 &lt;p&gt;To fix this, using the multiply can lead to surprisingly great performance.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -240,7 +240,7 @@
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Right-click on your breakpoint and you’ll see a box pop up that says “Condition:”. In the box, type in what condition you want the code to stop.
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241120212458406.png&#34; alt=&#34;image-20241120212458406&#34; style=&#34;zoom: 50%;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://Timlin15.github.io/images/image-20241120212458406&#34; alt=&#34;image-20241120212458406&#34; style=&#34;zoom: 50%;&#34; /&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;ol&gt;
@@ -302,8 +302,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Instead of using a naked recursion which user can gain free access to the variables in the middle of the list, SLList class act as a middle man between user  and raw data structure. It&amp;rsquo;s a kind of &lt;strong&gt;encapsulation&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;​					&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241120225700125.png&#34; alt=&#34;image-20241120225700125&#34; style=&#34;zoom: 50%;&#34; /&gt;&lt;/p&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241120225713719.png&#34; alt=&#34;image-20241120225713719&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;​					&lt;img src=&#34;https://Timlin15.github.io/images/image-20241120225700125&#34; alt=&#34;image-20241120225700125&#34; style=&#34;zoom: 50%;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://Timlin15.github.io/images/image-20241120225713719&#34; alt=&#34;image-20241120225713719&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;h3 id=&#34;22-sentinel-nodes&#34;&gt;2.2 Sentinel Nodes
 &lt;/h3&gt;&lt;p&gt;​	Notes:&lt;/p&gt;
 &lt;ul&gt;
@@ -468,7 +468,7 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Encoding of billions of bytes of video data.&lt;/p&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241125230733031.png&#34; alt=&#34;image-20241125230733031&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/images/image-20241125230733031&#34; alt=&#34;image-20241125230733031&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;32-simplification-model&#34;&gt;3.2 Simplification model
@@ -991,7 +991,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;ul&gt;
 &lt;li&gt;connect(p, q): Change entries that equal id[p] to id[q]&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241129160202707.png&#34; alt=&#34;image-20241129160202707&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/images/image-20241129160202707.png&#34; alt=&#34;image-20241129160202707&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -1024,7 +1024,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Unlocks a pretty amazing universe of math that we won’t discuss.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cParzival%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20241129160642472.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241129160642472.png&#34;
 	
 	
 	
@@ -1139,7 +1139,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241129161456292.png&#34; alt=&#34;image-20241129161456292&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/images/image-20241129161456292.png&#34; alt=&#34;image-20241129161456292&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;h4 id=&#34;514-path-compression-a-clever-idea&#34;&gt;5.1.4 &lt;strong&gt;Path Compression: A Clever Idea&lt;/strong&gt;
 &lt;/h4&gt;&lt;p&gt;Below is the topology of the worst case if we use WeightedQuickUnion&lt;/p&gt;
 &lt;ul&gt;
@@ -1149,7 +1149,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241201094054221.png&#34; alt=&#34;image-20241201094054221&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/images/image-20241201094054221.png&#34; alt=&#34;image-20241201094054221&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;h2 id=&#34;5setsmapsbinary-search-trees&#34;&gt;5.Sets,Maps,Binary Search Trees
 &lt;/h2&gt;&lt;p&gt;Among the most important interfaces in the java.util library are those that extend the Collection interface (btw interfaces can extend other interfaces).&lt;/p&gt;
 &lt;ul&gt;
@@ -1164,7 +1164,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;h3 id=&#34;51binary-search-trees&#34;&gt;5.1&lt;strong&gt;Binary Search Trees&lt;/strong&gt;
 &lt;/h3&gt;&lt;p&gt;To a ordered list, there is a fundamental problem: slow search, though it&amp;rsquo;s ordered.&lt;/p&gt;
 &lt;p&gt;So, how to improve it?&lt;/p&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241203143212350.png&#34; alt=&#34;image-20241203143212350&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/images/image-20241203143212350.png&#34; alt=&#34;image-20241203143212350&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;h4 id=&#34;511bst-definition&#34;&gt;5.1.1.BST definition
 &lt;/h4&gt;&lt;p&gt;A tree consists of:&lt;/p&gt;
 &lt;ul&gt;
@@ -1284,11 +1284,11 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;ul&gt;
 &lt;li&gt;Garbage collected&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241203150023102.png&#34; alt=&#34;image-20241203150023102&#34; style=&#34;zoom: 67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/images/image-20241203150023102.png&#34; alt=&#34;image-20241203150023102&#34; style=&#34;zoom: 67%;&#34; /&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;#2: with one children&lt;/p&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241203150229562.png&#34; alt=&#34;image-20241203150229562&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/images/image-20241203150229562.png&#34; alt=&#34;image-20241203150229562&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;p&gt;Goal:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Maintain BST property.&lt;/li&gt;
@@ -1302,10 +1302,10 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;ul&gt;
 &lt;li&gt;Flat will be garbage collected (along with its instance variables).&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241203150430463.png&#34; alt=&#34;image-20241203150430463&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/images/image-20241203150430463.png&#34; alt=&#34;image-20241203150430463&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;p&gt;#3: hard challenge&lt;/p&gt;
 &lt;p&gt;Delete k&lt;/p&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241203150515038.png&#34; alt=&#34;image-20241203150515038&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/images/image-20241203150515038.png&#34; alt=&#34;image-20241203150515038&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;p&gt;Goal:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Find a new root node.&lt;/li&gt;
@@ -1314,7 +1314,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/ul&gt;
 &lt;p&gt;In this case, you can choose predecessor &lt;code&gt;g&lt;/code&gt; or successer&lt;code&gt;m&lt;/code&gt; to be the new root, why?&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;They are both larger than the left side and minor than the right side&lt;/strong&gt;&lt;/p&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241203154207568.png&#34; alt=&#34;image-20241203154207568&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/images/image-20241203154207568.png&#34; alt=&#34;image-20241203154207568&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;h2 id=&#34;6b-trees&#34;&gt;6.B-Trees
 &lt;/h2&gt;&lt;h3 id=&#34;61intro&#34;&gt;6.1.Intro
 &lt;/h3&gt;&lt;p&gt;BSTs have:&lt;/p&gt;
@@ -1352,7 +1352,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241210144500625.png&#34; alt=&#34;image-20241210144500625&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/images/image-20241210144500625.png&#34; alt=&#34;image-20241210144500625&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;p&gt;Height is balanced, but we have a new problem:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Leaf nodes can get too juicy.&lt;/li&gt;
@@ -1369,7 +1369,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;Pulling item out of full node splits it into left and right.&lt;/li&gt;
 &lt;li&gt;Parent node now has three children!&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241210144808711.png&#34; alt=&#34;image-20241210144808711&#34; style=&#34;zoom: 50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/images/image-20241210144808711.png&#34; alt=&#34;image-20241210144808711&#34; style=&#34;zoom: 50%;&#34; /&gt;
 &lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241210145102441.png&#34; alt=&#34;image-20241210145102441&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -3527,7 +3527,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/div&gt;&lt;p&gt;The parent frame of the comprehensions is the current frame&lt;/p&gt;
 &lt;h2 id=&#34;data-abstraction&#34;&gt;Data abstraction
 &lt;/h2&gt;&lt;h3 id=&#34;abstraction-barriers&#34;&gt;Abstraction Barriers
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;C:%5cUsers%5cParzival%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20241009092505400.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241009092505400&#34;
 	
 	
 	
@@ -3540,7 +3540,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;blockquote&gt;
 &lt;p&gt;The higher the more abstract. Taking &lt;strong&gt;computing fraction&lt;/strong&gt; as example&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;img src=&#34;C:\Users\Parzival\AppData\Roaming\Typora\typora-user-images\image-20241009093101858.png&#34; alt=&#34;image-20241009093101858&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/images/image-20241009093101858&#34; alt=&#34;image-20241009093101858&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;p&gt;This example violates the abstraction barriers. Here&amp;rsquo;s how&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
