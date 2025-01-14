@@ -3527,20 +3527,11 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/div&gt;&lt;p&gt;The parent frame of the comprehensions is the current frame&lt;/p&gt;
 &lt;h2 id=&#34;data-abstraction&#34;&gt;Data abstraction
 &lt;/h2&gt;&lt;h3 id=&#34;abstraction-barriers&#34;&gt;Abstraction Barriers
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241009092505400&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;image-20241009092505400&#34;
-	
-	
-&gt;&lt;/p&gt;
+&lt;/h3&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20241009092505400.png&#34; alt=&#34;image-20241009092505400&#34; style=&#34;zoom: 33%;&#34; /&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The higher the more abstract. Taking &lt;strong&gt;computing fraction&lt;/strong&gt; as example&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;img src=&#34;https://Timlin15.github.io/images/image-20241009093101858&#34; alt=&#34;image-20241009093101858&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241009093101858.png&#34; alt=&#34;image-20241009093101858&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;p&gt;This example violates the abstraction barriers. Here&amp;rsquo;s how&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
