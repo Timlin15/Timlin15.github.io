@@ -289,36 +289,36 @@
         
         <div class="widget--toc">
             <nav id="TableOfContents">
-  <ol>
+  <ul>
     <li><a href="#function">Function</a>
-      <ol>
+      <ul>
         <li><a href="#the-principle-of-designing-a-function">The principle of designing a function:</a></li>
         <li><a href="#higher-order-functionsa-function-that-takes-a-function-as-an-argument-value-or-returns-a-function-as-a-return-vales">Higher-order functions(A function that takes a function as an argument value or returns a function as a return vales):</a></li>
         <li><a href="#truefalse">True/False:</a></li>
-      </ol>
+      </ul>
     </li>
     <li><a href="#recursion">Recursion</a>
-      <ol>
+      <ul>
         <li><a href="#skipping-questions">Skipping questions：</a></li>
         <li><a href="#difference-between-iteration-and-recursion">difference between iteration and recursion</a></li>
-      </ol>
+      </ul>
     </li>
     <li><a href="#abstraction">Abstraction</a></li>
     <li><a href="#containers">Containers</a>
-      <ol>
+      <ul>
         <li><a href="#strings-are-sequences">Strings are Sequences</a></li>
         <li><a href="#comprehensions">Comprehensions</a></li>
-      </ol>
+      </ul>
     </li>
     <li><a href="#data-abstraction">Data abstraction</a>
-      <ol>
+      <ul>
         <li><a href="#abstraction-barriers">Abstraction Barriers</a></li>
-      </ol>
+      </ul>
     </li>
     <li><a href="#syntax">Syntax</a></li>
     <li><a href="#lab-05-mutability-iterators">Lab 05 Mutability, Iterators</a></li>
     <li><a href="#hw-05">HW 05</a></li>
-  </ol>
+  </ul>
 </nav>
         </div>
     </section>
@@ -836,47 +836,51 @@
      
     
         
-    <div class="disqus-container">
-    <div id="disqus_thread"></div>
-<script>
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+    <script src="https://utteranc.es/client.js" 
+        repo=""
+        issue-term="pathname"
+        
+        crossorigin="anonymous"
+        async
+        >
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
 
 <style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
+    .utterances {
+        max-width: unset;
     }
 </style>
 
 <script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (typeof DISQUS == 'object') {
-            DISQUS.reset({
-                reload: true
-            });
+    let utterancesLoaded = false;
+
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
         }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+
+        
+        utterancesLoaded = true;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (!utterancesLoaded) return;
+        setUtterancesTheme(e.detail)
     })
 </script>
+
 
     
 
