@@ -1422,18 +1422,18 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;Can think of as temporarily merging G and P, then sending G down and &lt;strong&gt;left&lt;/strong&gt;.&lt;/li&gt;
 &lt;li&gt;Preserves search tree property. No change to semantics of tree.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;\image-20241210153123578.png&#34; alt=&#34;image-20241210153123578&#34; style=&#34;zoom: 67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241210153123578.png&#34; alt=&#34;image-20241210153123578&#34; style=&#34;zoom: 67%;&#34; /&gt;
 &lt;h4 id=&#34;712red-black-trees&#34;&gt;7.1.2.&lt;strong&gt;Red-Black Trees&lt;/strong&gt;
 &lt;/h4&gt;&lt;p&gt;Our goal: Build a BST that is structurally identical to a 2-3 tree.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Since 2-3 trees are balanced, so will our special BSTs.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Possibility 1: Create dummy “glue” nodes.&lt;/p&gt;
-&lt;img src=&#34;\image-20241210153447794.png&#34; alt=&#34;image-20241210153447794&#34; style=&#34;zoom: 67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241210153447794.png&#34; alt=&#34;image-20241210153447794&#34; style=&#34;zoom: 67%;&#34; /&gt;
 &lt;p&gt;Result is inelegant. Wasted link. Code will be ugly.&lt;/p&gt;
 &lt;p&gt;Possibility 2: Create “glue” links with the smaller item &lt;strong&gt;off to the left&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Idea is commonly used in practice (e.g. java.util.TreeSet). For convenience, we’ll mark glue links as “&lt;strong&gt;red&lt;/strong&gt;”.&lt;/p&gt;
-&lt;img src=&#34;\image-20241210154000144.png&#34; alt=&#34;image-20241210154000144&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241210154000144.png&#34; alt=&#34;image-20241210154000144&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;p&gt;A BST with left glue links that represents a 2-3 tree is often called a “Left Leaning Red Black Binary Search Tree” or LLRB.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;LLRBs are normal BSTs!&lt;/li&gt;
@@ -1997,7 +1997,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;   &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241215104107191.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20241215104107191.png&#34;
 	
 	
 	
@@ -2025,7 +2025,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;   &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241215104220381.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20241215104220381.png&#34;
 	
 	
 	
@@ -2077,7 +2077,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241215104504515.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20241215104504515.png&#34;
 	
 	
 	
@@ -2172,7 +2172,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241215105118776.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20241215105118776.png&#34;
 	
 	
 	
@@ -2182,7 +2182,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241215105133444.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20241215105133444.png&#34;
 	
 	
 	
@@ -2218,7 +2218,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241215110130310.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20241215110130310.png&#34;
 	
 	
 	
@@ -2297,7 +2297,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/ul&gt;
 &lt;img src=&#34;https://Timlin15.github.io/image-20241215131531936.png&#34; alt=&#34;image-20241215131531936&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;p&gt;Example: Preorder Traversal for printing directory listing:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241215110414827.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20241215110414827.png&#34;
 	
 	
 	
@@ -2308,7 +2308,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Example: Postorder Traversal for gathering file sizes.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241215110511471.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20241215110511471.png&#34;
 	
 	
 	
@@ -3386,7 +3386,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/images/image-20241231095256586.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20241231095256586.png&#34;
 	
 	
 	
