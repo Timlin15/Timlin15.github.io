@@ -186,7 +186,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;strong&gt;However, using [size +1] may cause inefficiency.&lt;/strong&gt; For example, resizing a alist from 100 to 1000 may need nearly 500,000 operations, for it need to create 100 to 1000 boxes respectively.&lt;/p&gt;
-&lt;img src=&#34;https://Timlin15.github.io/image-20241120225227559&#34; alt=&#34;image-20241120225227559&#34; style=&#34;zoom:25%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241120225227559.png&#34; alt=&#34;image-20241120225227559&#34; style=&#34;zoom:25%;&#34; /&gt;
 &lt;p&gt;To fix this, using the multiply can lead to surprisingly great performance.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -240,7 +240,7 @@
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Right-click on your breakpoint and you’ll see a box pop up that says “Condition:”. In the box, type in what condition you want the code to stop.
-&lt;img src=&#34;https://Timlin15.github.io/image-20241120212458406&#34; alt=&#34;image-20241120212458406&#34; style=&#34;zoom: 50%;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241120212458406.png&#34; alt=&#34;image-20241120212458406&#34; style=&#34;zoom: 50%;&#34; /&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;ol&gt;
@@ -302,8 +302,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Instead of using a naked recursion which user can gain free access to the variables in the middle of the list, SLList class act as a middle man between user  and raw data structure. It&amp;rsquo;s a kind of &lt;strong&gt;encapsulation&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;​					&lt;img src=&#34;https://Timlin15.github.io/image-20241120225700125&#34; alt=&#34;image-20241120225700125&#34; style=&#34;zoom: 50%;&#34; /&gt;&lt;/p&gt;
-&lt;img src=&#34;https://Timlin15.github.io/image-20241120225713719&#34; alt=&#34;image-20241120225713719&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;​					&lt;img src=&#34;https://Timlin15.github.io/image-20241120225700125.png&#34; alt=&#34;image-20241120225700125&#34; style=&#34;zoom: 50%;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241120225713719.png&#34; alt=&#34;image-20241120225713719&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;h3 id=&#34;22-sentinel-nodes&#34;&gt;2.2 Sentinel Nodes
 &lt;/h3&gt;&lt;p&gt;​	Notes:&lt;/p&gt;
 &lt;ul&gt;
@@ -468,7 +468,7 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Encoding of billions of bytes of video data.&lt;/p&gt;
-&lt;img src=&#34;https://Timlin15.github.io/image-20241125230733031&#34; alt=&#34;image-20241125230733031&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241125230733031.png&#34; alt=&#34;image-20241125230733031&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;32-simplification-model&#34;&gt;3.2 Simplification model
@@ -1024,16 +1024,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Unlocks a pretty amazing universe of math that we won’t discuss.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20241129160642472.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;image-20241129160642472&#34;
-	
-	
-&gt;&lt;/p&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-2024112916064247.png&#34; alt=&#34;image-2024112916064247&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;connect(5, 2)&lt;/p&gt;
