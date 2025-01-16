@@ -1305,7 +1305,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/ul&gt;
 &lt;p&gt;In this case, you can choose predecessor &lt;code&gt;g&lt;/code&gt; or successer&lt;code&gt;m&lt;/code&gt; to be the new root, why?&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;They are both larger than the left side and minor than the right side&lt;/strong&gt;&lt;/p&gt;
-&lt;img src=&#34;https://Timlin15.github.io/images/image-20241203154207568.png&#34; alt=&#34;image-20241203154207568&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20241203154207568.png&#34; alt=&#34;image-20241203154207568&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;h2 id=&#34;6b-trees&#34;&gt;6.B-Trees
 &lt;/h2&gt;&lt;h3 id=&#34;61intro&#34;&gt;6.1.Intro
 &lt;/h3&gt;&lt;p&gt;BSTs have:&lt;/p&gt;
