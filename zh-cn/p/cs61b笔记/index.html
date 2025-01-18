@@ -422,7 +422,31 @@
         <li><a href="#144reductions-definition">14.4.Reductions: Definition</a></li>
       </ul>
     </li>
-    <li><a href="#15tries">15.Tries</a></li>
+    <li><a href="#15tries">15.Tries</a>
+      <ul>
+        <li><a href="#151trie-implementation-and-performance">15.1.Trie Implementation and Performance</a></li>
+        <li><a href="#152alternate-child-tracking-strategies">15.2.Alternate Child Tracking Strategies</a></li>
+        <li><a href="#153trie-string-operations">15.3.Trie String Operations</a></li>
+        <li><a href="#154autocomplete">15.4.Autocomplete</a></li>
+      </ul>
+    </li>
+    <li><a href="#16basic-sorts">16.Basic Sorts</a>
+      <ul>
+        <li><a href="#161selection-sort">16.1.Selection Sort</a></li>
+        <li><a href="#162inplace-heapsort">16.2.Inplace Heapsort</a></li>
+      </ul>
+    </li>
+    <li><a href="#17mergesort-insertion-sort-and-quicksort">17.Mergesort, Insertion Sort, and Quicksort</a>
+      <ul>
+        <li><a href="#171naive-insertion-sort--and-in-place-insertion-sort">17.1.Naive Insertion Sort  and In-Place Insertion Sort</a></li>
+      </ul>
+    </li>
+    <li><a href="#18-partition-sort-aka-quicksort">18. Partition Sort, a.k.a. Quicksort</a>
+      <ul>
+        <li><a href="#181runtime">18.1.Runtime</a></li>
+        <li><a href="#182avoiding-quicksort-worst-case">18.2.<strong>Avoiding Quicksort Worst Case</strong></a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
         </div>
@@ -479,7 +503,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 23 分钟
+                    阅读时长: 26 分钟
                 </time>
             </div>
         
@@ -3830,7 +3854,474 @@ $$<h2 id="4iteration">4.Iteration
 	
 ></p>
 <h2 id="15tries">15.Tries
-</h2>
+</h2><img src="image-20250117170317617.png" alt="image-20250117170317617" style="zoom:50%;" />
+<p>For String keys, we can use a “Trie”. Key ideas:</p>
+<ul>
+<li>Every node stores only one letter.</li>
+<li>Nodes can be shared by multiple keys.</li>
+</ul>
+<img src="image-20250117172451357.png" alt="image-20250117172451357" style="zoom: 50%;" />
+<p>Above, we show the results of adding “sam”,&ldquo;a&rdquo;, &ldquo;sap&rdquo;, &ldquo;same&rdquo; and sad”.</p>
+<p>Two ways to have a search “miss”:</p>
+<ul>
+<li>If the final node is white.</li>
+<li>If we fall off the tree, e.g. contains(“sax”).</li>
+</ul>
+<p><img src="/image-20250117173106464.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20250117173106464"
+	
+	
+></p>
+<h3 id="151trie-implementation-and-performance">15.1.Trie Implementation and Performance
+</h3><p>The first approach might look something like the code below.</p>
+<ul>
+<li>Each node stores a letter, a map from c to all child nodes, and a color.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TrieSet</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">128</span><span class="p">;</span><span class="w"> </span><span class="c1">// ASCII</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="n">root</span><span class="p">;</span><span class="w">	</span><span class="c1">// root of trie</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Node</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isKey</span><span class="p">;</span><span class="w">   
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">DataIndexedCharMap</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">Node</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">R</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"> </span><span class="n">isKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataIndexedCharMap</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">R</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w"> 
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Each DataIndexedCharMap is an array of 128 possible links, mostly null.</p>
+<img src="image-20250117173513915.png" alt="image-20250117173513915" style="zoom:33%;" />
+<p>If we use a DataIndexedCharMap to track children, every node has R links.</p>
+<p>Observation: The letter stored inside each node is actually redundant.</p>
+<ul>
+<li>Can remove from the representation and things will work fine.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TrieSet</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">128</span><span class="p">;</span><span class="w"> </span><span class="c1">// ASCII</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="n">root</span><span class="p">;</span><span class="w">	</span><span class="c1">// root of trie</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Node</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/*private char ch;*/</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isKey</span><span class="p">;</span><span class="w">   
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">DataIndexedCharMap</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">Node</span><span class="p">(</span><span class="cm">/*char c*/</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">R</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="cm">/*ch = c*/</span><span class="p">;</span><span class="w"> </span><span class="n">isKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataIndexedCharMap</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">R</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>key type</th>
+          <th>get(x)</th>
+          <th>add(x)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Balanced BST</td>
+          <td>comparable</td>
+          <td>Θ(log N)</td>
+          <td>Θ(log N)</td>
+      </tr>
+      <tr>
+          <td>Resizing Separate Chaining Hash Table</td>
+          <td>hashable</td>
+          <td>Θ(1)assuming even spread</td>
+          <td>Θ(1)on average,assuming even spread</td>
+      </tr>
+      <tr>
+          <td>data indexed array</td>
+          <td>chars</td>
+          <td>Θ(1)</td>
+          <td>Θ(1)</td>
+      </tr>
+      <tr>
+          <td>Tries</td>
+          <td>Strings</td>
+          <td>Θ(1)</td>
+          <td>Θ(1)</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>One downside of the DataIndexedCharMap-based Trie is the huge memory cost of storing R links per node.</p>
+<ul>
+<li>Wasteful because most links are unused in real world usage.</li>
+</ul>
+<h3 id="152alternate-child-tracking-strategies">15.2.Alternate Child Tracking Strategies
+</h3><p>Using a DataIndexedCharMap is very memory hungry.</p>
+<ul>
+<li>Every node has to store R links, most of which are null.</li>
+</ul>
+<p>Can use ANY kind of map from character to node, e.g.</p>
+<ul>
+<li>
+<p>BST</p>
+<img src="image-20250117174824070.png" alt="image-20250117174824070" style="zoom:25%;" />
+</li>
+<li>
+<p>Hash Table</p>
+</li>
+</ul>
+<img src="image-20250117174848233.png" alt="image-20250117174848233" style="zoom:25%;" />
+<p>When our keys are strings, Tries give us slightly better performance on contains and add.</p>
+<ul>
+<li>Using BST or Hash Table will be slightly slower, but more memory efficient.</li>
+<li>Would have to do computational experiments to see which is best for your application.</li>
+<li>But where Tries really shine is their efficiency with special string operations!</li>
+</ul>
+<h3 id="153trie-string-operations">15.3.Trie String Operations
+</h3><p>Theoretical asymptotic speed improvement is nice. But the <strong>main appeal of tries</strong> is their ability to efficiently support string specific operations like <strong>prefix matching</strong>.</p>
+<ul>
+<li>Finding all keys that match a given prefix: keysWithPrefix(&ldquo;sa&rdquo;)</li>
+<li>Finding longest prefix of: longestPrefixOf(&ldquo;sample&rdquo;)</li>
+</ul>
+<h3 id="154autocomplete">15.4.Autocomplete
+</h3><p>Example, when I type “how are” into Google, I get 10 results.</p>
+<p>One way to do this is to create a Trie based map from strings to values</p>
+<ul>
+<li>Value represents how important Google thinks that string is.</li>
+<li>Can store billions of strings efficiently since they share nodes.</li>
+<li>When a user types in a string “hello”, we:
+<ul>
+<li>Call keysWithPrefix(&ldquo;hello&rdquo;).</li>
+<li>Return the 10 strings with the highest value.</li>
+</ul>
+</li>
+</ul>
+<h2 id="16basic-sorts">16.Basic Sorts
+</h2><h3 id="161selection-sort">16.1.Selection Sort
+</h3><p>The logic:</p>
+<ul>
+<li>Start from the first element.</li>
+<li>Find smallest item after it.</li>
+<li>Swap this item to the front and ‘fix’ it.</li>
+<li>Repeat for unfixed items until all items are fixed.</li>
+</ul>
+<p>Sort Properties:</p>
+<ul>
+<li>$Θ(N2)$ time if we use an array (or similar data structure).</li>
+</ul>
+<h3 id="162inplace-heapsort">16.2.Inplace Heapsort
+</h3><p>Idea: Instead of rescanning entire array looking for minimum, maintain a heap so that getting the minimum is fast!</p>
+<p>For reasons that will become clear soon, we’ll use a max-oriented heap.</p>
+<p>Naive heapsorting N items:</p>
+<ul>
+<li>Insert all items into a max heap, and discard input array. Create output array.</li>
+<li>Repeat N times:
+<ul>
+<li>Delete largest item from the max heap.</li>
+<li>Put largest item at the end of the unused part of the output array.</li>
+</ul>
+</li>
+</ul>
+<p>Heap sorting N items:</p>
+<ul>
+<li>Use a process known as <a class="link" href="https://docs.google.com/presentation/d/1SzcQC48OB9agStD0dFRgccU-tyjD6m3esrSC-GLxmNc/edit#slide=id.g463de7561_042"  target="_blank" rel="noopener"
+    >“bottom-up heapification”</a> to convert the array into a heap.</li>
+<li>Repeat N times:
+<ul>
+<li>Delete largest item from front of the heap.</li>
+<li>Put largest item at the end of the unused part of the array.</li>
+</ul>
+</li>
+</ul>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Best Case Runtime</th>
+          <th>Worst Case Runtime</th>
+          <th>Space</th>
+          <th>Demo</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a class="link" href="http://algs4.cs.princeton.edu/21elementary/Selection.java.html"  target="_blank" rel="noopener"
+    >Selection Sort</a></td>
+          <td>$Θ(N^2)$</td>
+          <td>$Θ(N^2)$</td>
+          <td>$Θ(1)$</td>
+          <td><a class="link" href="https://docs.google.com/presentation/d/1aleYBt-L8bwyaxw9tXPN3bMI5XxWxmpgfvvSEo9KxD0/edit#slide=id.g25f59ced8fc_0_506"  target="_blank" rel="noopener"
+    >Link</a></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="http://algs4.cs.princeton.edu/24pq/Heap.java.html"  target="_blank" rel="noopener"
+    >Heapsort</a> (in place)</td>
+          <td>$Θ(N)$</td>
+          <td>$Θ(N \log N)$</td>
+          <td>$Θ(1)$</td>
+          <td><a class="link" href="https://docs.google.com/presentation/d/1aleYBt-L8bwyaxw9tXPN3bMI5XxWxmpgfvvSEo9KxD0/edit#slide=id.g25f59ced8fc_0_1645"  target="_blank" rel="noopener"
+    >Link</a></td>
+          <td>Bad cache (61C) performance.</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="17mergesort-insertion-sort-and-quicksort">17.Mergesort, Insertion Sort, and Quicksort
+</h2><img src="image-20250117182506934.png" alt="image-20250117182506934" style="zoom:33%;" />
+<p>Merging can give us an improvement over vanilla selection sort:</p>
+<ul>
+<li>Selection sort the left half: Θ(N2).</li>
+<li>Selection sort the right half: Θ(N2).</li>
+<li>Merge the results: Θ(N).</li>
+</ul>
+<p>Runtime is still Θ(N2), but faster since N+2*(N/2)2 &lt; N2</p>
+<p>Mergesort has worst case runtime = Θ(N log N).</p>
+<ul>
+<li>Every level takes ~N AU.
+<ul>
+<li>Top level takes ~N AU.</li>
+<li>Next level takes ~N/2 + ~N/2 = ~N.</li>
+<li>One more level down: ~N/4 + ~N/4 + ~N/4 + ~N/4 = ~N.</li>
+</ul>
+</li>
+<li>Thus, total runtime is ~Nk, where k is the number of levels.
+<ul>
+<li>How many levels? Goes until we get to size 1.</li>
+<li>k = log2(N).</li>
+</ul>
+</li>
+<li>Overall runtime is Θ(N log N).</li>
+</ul>
+<p>Mergesort:</p>
+<ul>
+<li>Split items into 2 roughly even pieces.</li>
+<li>Mergesort each half (steps not shown, this is a recursive algorithm!)</li>
+<li>Merge the two sorted halves to form the final result.</li>
+<li>Also possible to do in-place merge sort, but algorithm is very complicated, and runtime performance suffers by a significant constant factor.</li>
+</ul>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Best Case Runtime</th>
+          <th>Worst Case Runtime</th>
+          <th>Space</th>
+          <th>Demo</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a class="link" href="http://algs4.cs.princeton.edu/21elementary/Selection.java.html"  target="_blank" rel="noopener"
+    >Selection Sort</a></td>
+          <td>Θ(N2)</td>
+          <td>Θ(N2)</td>
+          <td>Θ(1)</td>
+          <td><a class="link" href="https://docs.google.com/presentation/d/1MqmOxfh1c6gS4hk9hvuRR_hWXWTnCIXMqLGXwRX4Pvk/edit#slide=id.g26d398489b6_4_1032"  target="_blank" rel="noopener"
+    >Link</a></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="http://algs4.cs.princeton.edu/24pq/Heap.java.html"  target="_blank" rel="noopener"
+    >Heapsort</a> (in place)</td>
+          <td>Θ(N)*</td>
+          <td>Θ(N log N)</td>
+          <td>Θ(1)**</td>
+          <td><a class="link" href="https://docs.google.com/presentation/d/1MqmOxfh1c6gS4hk9hvuRR_hWXWTnCIXMqLGXwRX4Pvk/edit#slide=id.g26d398489b6_4_1033"  target="_blank" rel="noopener"
+    >Link</a></td>
+          <td>Bad cache (61C) performance.</td>
+      </tr>
+      <tr>
+          <td><a class="link" href="http://algs4.cs.princeton.edu/14analysis/Mergesort.java.html"  target="_blank" rel="noopener"
+    >Mergesort</a></td>
+          <td>Θ(N log N)</td>
+          <td>Θ(N log N)</td>
+          <td>Θ(N)</td>
+          <td><a class="link" href="https://docs.google.com/presentation/d/1MqmOxfh1c6gS4hk9hvuRR_hWXWTnCIXMqLGXwRX4Pvk/edit#slide=id.g26d398489b6_4_303"  target="_blank" rel="noopener"
+    >Link</a></td>
+          <td>Faster than heap sort.</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="171naive-insertion-sort--and-in-place-insertion-sort">17.1.Naive Insertion Sort  and In-Place Insertion Sort
+</h3><p>Naive Insertion Sort</p>
+<p>General strategy:</p>
+<ul>
+<li>Starting with an empty output sequence.</li>
+<li>Add each item from input, inserting into output at right point.</li>
+</ul>
+<p>In-Place Insertion Sort</p>
+<ul>
+<li>General strategy:
+<ul>
+<li>Repeat for i = 0 to N - 1:
+<ul>
+<li>Designate item i as the traveling item.</li>
+<li>Swap item backwards until traveler is in the right place among all previously examined items.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Best Case Runtime</th>
+          <th>Worst Case Runtime</th>
+          <th>Space</th>
+          <th>Demo</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a class="link" href="http://algs4.cs.princeton.edu/21elementary/Selection.java.html"  target="_blank" rel="noopener"
+    >Selection Sort</a></td>
+          <td>Θ(N2)</td>
+          <td>Θ(N2)</td>
+          <td>Θ(1)</td>
+          <td><a class="link" href="https://docs.google.com/presentation/d/1MqmOxfh1c6gS4hk9hvuRR_hWXWTnCIXMqLGXwRX4Pvk/edit#slide=id.g25e3164fbfa_0_1160"  target="_blank" rel="noopener"
+    >Link</a></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="http://algs4.cs.princeton.edu/24pq/Heap.java.html"  target="_blank" rel="noopener"
+    >Heapsort</a> (in place)</td>
+          <td>Θ(N)*</td>
+          <td>Θ(N log N)</td>
+          <td>Θ(1)</td>
+          <td><a class="link" href="https://docs.google.com/presentation/d/1MqmOxfh1c6gS4hk9hvuRR_hWXWTnCIXMqLGXwRX4Pvk/edit#slide=id.g25e3164fbfa_0_1161"  target="_blank" rel="noopener"
+    >Link</a></td>
+          <td>Bad cache (61C) performance.</td>
+      </tr>
+      <tr>
+          <td><a class="link" href="http://algs4.cs.princeton.edu/14analysis/Mergesort.java.html"  target="_blank" rel="noopener"
+    >Mergesort</a></td>
+          <td>Θ(N log N)</td>
+          <td>Θ(N log N)</td>
+          <td>Θ(N)</td>
+          <td><a class="link" href="https://docs.google.com/presentation/d/1MqmOxfh1c6gS4hk9hvuRR_hWXWTnCIXMqLGXwRX4Pvk/edit#slide=id.g25e3164fbfa_0_1162"  target="_blank" rel="noopener"
+    >Link</a></td>
+          <td>Fastest of these.</td>
+      </tr>
+      <tr>
+          <td><a class="link" href="http://algs4.cs.princeton.edu/21elementary/Insertion.java.html"  target="_blank" rel="noopener"
+    >Insertion Sort</a> (in place)</td>
+          <td>Θ(N)</td>
+          <td>Θ(N2)</td>
+          <td>Θ(1)</td>
+          <td><a class="link" href="https://docs.google.com/presentation/d/1MqmOxfh1c6gS4hk9hvuRR_hWXWTnCIXMqLGXwRX4Pvk/edit#slide=id.g25e3164fbfa_0_243"  target="_blank" rel="noopener"
+    >Link</a></td>
+          <td>Best for small N or almost sorted.</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="18-partition-sort-aka-quicksort">18. Partition Sort, a.k.a. Quicksort
+</h2><p>To partition an array a[] on element x=a[i] is to rearrange a[] so that:</p>
+<ul>
+<li>x moves to position j (may be the same as i)</li>
+<li>All entries to the left of x are &lt;= x.</li>
+</ul>
+<p>All entries to the right of x are &gt;= x</p>
+<img src="image-20250117203716707.png" alt="image-20250117203716707" style="zoom:33%;" />
+<p>Observations:</p>
+<ul>
+<li>5 is “in its place.” Exactly where it’d be if the array were sorted.</li>
+<li>Can sort two halves separately, e.g. through recursive use of partitioning.</li>
+</ul>
+<p>Quick sorting N items:</p>
+<ul>
+<li>Partition on leftmost item.</li>
+<li>Quicksort left half.</li>
+<li>Quicksort right half.</li>
+</ul>
+<h3 id="181runtime">18.1.Runtime
+</h3><p>Theoretical analysis:</p>
+<ul>
+<li>Partitioning costs Θ(K) time, where Θ(K) is the number of elements being partitioned (as we saw in our earlier “interview question”).</li>
+<li>The interesting twist: Overall runtime will depend crucially on where pivot ends up.</li>
+</ul>
+<ol>
+<li>Best Case: Pivot Always Lands in the Middle</li>
+</ol>
+<img src="image-20250117204229872.png" alt="image-20250117204229872" style="zoom:33%;" />
+<p>Overall runtime:</p>
+<p>Θ(NH) where H = Θ(log N)</p>
+<p>so: Θ(N log N)</p>
+<ol start="2">
+<li>Worst Case: Pivot Always Lands at Beginning of Array</li>
+</ol>
+<img src="image-20250117204334127.png" alt="image-20250117204334127" style="zoom:33%;" />
+<p>What is the runtime Θ(∙)?</p>
+<ul>
+<li>$N^2$</li>
+<li>but overall, the runtime is roughly $\Theta(\log N)$</li>
+</ul>
+<h3 id="182avoiding-quicksort-worst-case">18.2.<strong>Avoiding Quicksort Worst Case</strong>
+</h3><p>What can we do to avoid worst case behavior? Four philosophies:</p>
+<ol>
+<li><strong>Randomness</strong>: Pick a random pivot or shuffle before sorting.</li>
+<li><strong>Smarter pivot selection</strong>: Calculate or approximate the median.</li>
+<li><strong>Introspection</strong>: Switch to a safer sort if recursion goes to deep.</li>
+<li><strong>Try to cheat</strong>: If the array is already sorted, don’t sort (this doesn’t work).</li>
+</ol>
+<p>Implement: Create L and G pointers at left and right ends.</p>
+<ul>
+<li>L pointer is a friend to small items, and hates large or equal items.</li>
+<li>G pointer is a friend to large items, and hates small or equal items.</li>
+<li>Walk pointers towards each other, stopping on a hated item.
+<ul>
+<li>When both pointers have stopped, swap and move pointers by one.</li>
+</ul>
+</li>
+<li>When pointers cross, you are done. See <a class="link" href="https://docs.google.com/presentation/d/11vRyW0ZPrsxUhRHCBgkygy01PlL1amB66n9FZQN03wo/edit#slide=id.g25f68bd1986_0_4"  target="_blank" rel="noopener"
+    >This site</a></li>
+</ul>
+
 </section>
 
 

@@ -47,8 +47,8 @@
 &lt;/ul&gt;
 &lt;p&gt;第二周(1.13-1.19)&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 考几倍的期末&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成CS61B全部内容的笔记&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 考几倍的期末&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成CS61B全部内容的笔记&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 二刷CS61B software engineering内容后开始gitlet&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS70每周三课&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18.06进行开课准备&lt;/li&gt;
@@ -3397,7 +3397,474 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;15tries&#34;&gt;15.Tries
-&lt;/h2&gt;</description>
+&lt;/h2&gt;&lt;img src=&#34;image-20250117170317617.png&#34; alt=&#34;image-20250117170317617&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;For String keys, we can use a “Trie”. Key ideas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Every node stores only one letter.&lt;/li&gt;
+&lt;li&gt;Nodes can be shared by multiple keys.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img src=&#34;image-20250117172451357.png&#34; alt=&#34;image-20250117172451357&#34; style=&#34;zoom: 50%;&#34; /&gt;
+&lt;p&gt;Above, we show the results of adding “sam”,&amp;ldquo;a&amp;rdquo;, &amp;ldquo;sap&amp;rdquo;, &amp;ldquo;same&amp;rdquo; and sad”.&lt;/p&gt;
+&lt;p&gt;Two ways to have a search “miss”:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If the final node is white.&lt;/li&gt;
+&lt;li&gt;If we fall off the tree, e.g. contains(“sax”).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20250117173106464.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250117173106464&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;151trie-implementation-and-performance&#34;&gt;15.1.Trie Implementation and Performance
+&lt;/h3&gt;&lt;p&gt;The first approach might look something like the code below.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Each node stores a letter, a map from c to all child nodes, and a color.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Java&#34; data-lang=&#34;Java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;TrieSet&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;128&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// ASCII&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Node&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;	&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// root of trie&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Node&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;boolean&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;isKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;   
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DataIndexedCharMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Node&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Node&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;boolean&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;       &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ch&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;isKey&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;       &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DataIndexedCharMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Each DataIndexedCharMap is an array of 128 possible links, mostly null.&lt;/p&gt;
+&lt;img src=&#34;image-20250117173513915.png&#34; alt=&#34;image-20250117173513915&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;p&gt;If we use a DataIndexedCharMap to track children, every node has R links.&lt;/p&gt;
+&lt;p&gt;Observation: The letter stored inside each node is actually redundant.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Can remove from the representation and things will work fine.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Java&#34; data-lang=&#34;Java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;TrieSet&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;128&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// ASCII&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Node&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;	&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// root of trie&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Node&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/*private char ch;*/&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;boolean&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;isKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;   
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DataIndexedCharMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Node&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Node&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/*char c*/&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;boolean&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;       &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/*ch = c*/&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;isKey&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;       &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DataIndexedCharMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;key type&lt;/th&gt;
+          &lt;th&gt;get(x)&lt;/th&gt;
+          &lt;th&gt;add(x)&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Balanced BST&lt;/td&gt;
+          &lt;td&gt;comparable&lt;/td&gt;
+          &lt;td&gt;Θ(log N)&lt;/td&gt;
+          &lt;td&gt;Θ(log N)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Resizing Separate Chaining Hash Table&lt;/td&gt;
+          &lt;td&gt;hashable&lt;/td&gt;
+          &lt;td&gt;Θ(1)assuming even spread&lt;/td&gt;
+          &lt;td&gt;Θ(1)on average,assuming even spread&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;data indexed array&lt;/td&gt;
+          &lt;td&gt;chars&lt;/td&gt;
+          &lt;td&gt;Θ(1)&lt;/td&gt;
+          &lt;td&gt;Θ(1)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Tries&lt;/td&gt;
+          &lt;td&gt;Strings&lt;/td&gt;
+          &lt;td&gt;Θ(1)&lt;/td&gt;
+          &lt;td&gt;Θ(1)&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;One downside of the DataIndexedCharMap-based Trie is the huge memory cost of storing R links per node.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Wasteful because most links are unused in real world usage.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;152alternate-child-tracking-strategies&#34;&gt;15.2.Alternate Child Tracking Strategies
+&lt;/h3&gt;&lt;p&gt;Using a DataIndexedCharMap is very memory hungry.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Every node has to store R links, most of which are null.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Can use ANY kind of map from character to node, e.g.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;BST&lt;/p&gt;
+&lt;img src=&#34;image-20250117174824070.png&#34; alt=&#34;image-20250117174824070&#34; style=&#34;zoom:25%;&#34; /&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Hash Table&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img src=&#34;image-20250117174848233.png&#34; alt=&#34;image-20250117174848233&#34; style=&#34;zoom:25%;&#34; /&gt;
+&lt;p&gt;When our keys are strings, Tries give us slightly better performance on contains and add.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Using BST or Hash Table will be slightly slower, but more memory efficient.&lt;/li&gt;
+&lt;li&gt;Would have to do computational experiments to see which is best for your application.&lt;/li&gt;
+&lt;li&gt;But where Tries really shine is their efficiency with special string operations!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;153trie-string-operations&#34;&gt;15.3.Trie String Operations
+&lt;/h3&gt;&lt;p&gt;Theoretical asymptotic speed improvement is nice. But the &lt;strong&gt;main appeal of tries&lt;/strong&gt; is their ability to efficiently support string specific operations like &lt;strong&gt;prefix matching&lt;/strong&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Finding all keys that match a given prefix: keysWithPrefix(&amp;ldquo;sa&amp;rdquo;)&lt;/li&gt;
+&lt;li&gt;Finding longest prefix of: longestPrefixOf(&amp;ldquo;sample&amp;rdquo;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;154autocomplete&#34;&gt;15.4.Autocomplete
+&lt;/h3&gt;&lt;p&gt;Example, when I type “how are” into Google, I get 10 results.&lt;/p&gt;
+&lt;p&gt;One way to do this is to create a Trie based map from strings to values&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Value represents how important Google thinks that string is.&lt;/li&gt;
+&lt;li&gt;Can store billions of strings efficiently since they share nodes.&lt;/li&gt;
+&lt;li&gt;When a user types in a string “hello”, we:
+&lt;ul&gt;
+&lt;li&gt;Call keysWithPrefix(&amp;ldquo;hello&amp;rdquo;).&lt;/li&gt;
+&lt;li&gt;Return the 10 strings with the highest value.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;16basic-sorts&#34;&gt;16.Basic Sorts
+&lt;/h2&gt;&lt;h3 id=&#34;161selection-sort&#34;&gt;16.1.Selection Sort
+&lt;/h3&gt;&lt;p&gt;The logic:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Start from the first element.&lt;/li&gt;
+&lt;li&gt;Find smallest item after it.&lt;/li&gt;
+&lt;li&gt;Swap this item to the front and ‘fix’ it.&lt;/li&gt;
+&lt;li&gt;Repeat for unfixed items until all items are fixed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sort Properties:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$Θ(N2)$ time if we use an array (or similar data structure).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;162inplace-heapsort&#34;&gt;16.2.Inplace Heapsort
+&lt;/h3&gt;&lt;p&gt;Idea: Instead of rescanning entire array looking for minimum, maintain a heap so that getting the minimum is fast!&lt;/p&gt;
+&lt;p&gt;For reasons that will become clear soon, we’ll use a max-oriented heap.&lt;/p&gt;
+&lt;p&gt;Naive heapsorting N items:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Insert all items into a max heap, and discard input array. Create output array.&lt;/li&gt;
+&lt;li&gt;Repeat N times:
+&lt;ul&gt;
+&lt;li&gt;Delete largest item from the max heap.&lt;/li&gt;
+&lt;li&gt;Put largest item at the end of the unused part of the output array.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Heap sorting N items:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use a process known as &lt;a class=&#34;link&#34; href=&#34;https://docs.google.com/presentation/d/1SzcQC48OB9agStD0dFRgccU-tyjD6m3esrSC-GLxmNc/edit#slide=id.g463de7561_042&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;“bottom-up heapification”&lt;/a&gt; to convert the array into a heap.&lt;/li&gt;
+&lt;li&gt;Repeat N times:
+&lt;ul&gt;
+&lt;li&gt;Delete largest item from front of the heap.&lt;/li&gt;
+&lt;li&gt;Put largest item at the end of the unused part of the array.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;Best Case Runtime&lt;/th&gt;
+          &lt;th&gt;Worst Case Runtime&lt;/th&gt;
+          &lt;th&gt;Space&lt;/th&gt;
+          &lt;th&gt;Demo&lt;/th&gt;
+          &lt;th&gt;Notes&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;http://algs4.cs.princeton.edu/21elementary/Selection.java.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Selection Sort&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;$Θ(N^2)$&lt;/td&gt;
+          &lt;td&gt;$Θ(N^2)$&lt;/td&gt;
+          &lt;td&gt;$Θ(1)$&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.google.com/presentation/d/1aleYBt-L8bwyaxw9tXPN3bMI5XxWxmpgfvvSEo9KxD0/edit#slide=id.g25f59ced8fc_0_506&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Link&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;http://algs4.cs.princeton.edu/24pq/Heap.java.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Heapsort&lt;/a&gt; (in place)&lt;/td&gt;
+          &lt;td&gt;$Θ(N)$&lt;/td&gt;
+          &lt;td&gt;$Θ(N \log N)$&lt;/td&gt;
+          &lt;td&gt;$Θ(1)$&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.google.com/presentation/d/1aleYBt-L8bwyaxw9tXPN3bMI5XxWxmpgfvvSEo9KxD0/edit#slide=id.g25f59ced8fc_0_1645&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Link&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Bad cache (61C) performance.&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;17mergesort-insertion-sort-and-quicksort&#34;&gt;17.Mergesort, Insertion Sort, and Quicksort
+&lt;/h2&gt;&lt;img src=&#34;image-20250117182506934.png&#34; alt=&#34;image-20250117182506934&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;p&gt;Merging can give us an improvement over vanilla selection sort:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Selection sort the left half: Θ(N2).&lt;/li&gt;
+&lt;li&gt;Selection sort the right half: Θ(N2).&lt;/li&gt;
+&lt;li&gt;Merge the results: Θ(N).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Runtime is still Θ(N2), but faster since N+2*(N/2)2 &amp;lt; N2&lt;/p&gt;
+&lt;p&gt;Mergesort has worst case runtime = Θ(N log N).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Every level takes ~N AU.
+&lt;ul&gt;
+&lt;li&gt;Top level takes ~N AU.&lt;/li&gt;
+&lt;li&gt;Next level takes ~N/2 + ~N/2 = ~N.&lt;/li&gt;
+&lt;li&gt;One more level down: ~N/4 + ~N/4 + ~N/4 + ~N/4 = ~N.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Thus, total runtime is ~Nk, where k is the number of levels.
+&lt;ul&gt;
+&lt;li&gt;How many levels? Goes until we get to size 1.&lt;/li&gt;
+&lt;li&gt;k = log2(N).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Overall runtime is Θ(N log N).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Mergesort:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Split items into 2 roughly even pieces.&lt;/li&gt;
+&lt;li&gt;Mergesort each half (steps not shown, this is a recursive algorithm!)&lt;/li&gt;
+&lt;li&gt;Merge the two sorted halves to form the final result.&lt;/li&gt;
+&lt;li&gt;Also possible to do in-place merge sort, but algorithm is very complicated, and runtime performance suffers by a significant constant factor.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;Best Case Runtime&lt;/th&gt;
+          &lt;th&gt;Worst Case Runtime&lt;/th&gt;
+          &lt;th&gt;Space&lt;/th&gt;
+          &lt;th&gt;Demo&lt;/th&gt;
+          &lt;th&gt;Notes&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;http://algs4.cs.princeton.edu/21elementary/Selection.java.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Selection Sort&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Θ(N2)&lt;/td&gt;
+          &lt;td&gt;Θ(N2)&lt;/td&gt;
+          &lt;td&gt;Θ(1)&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.google.com/presentation/d/1MqmOxfh1c6gS4hk9hvuRR_hWXWTnCIXMqLGXwRX4Pvk/edit#slide=id.g26d398489b6_4_1032&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Link&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;http://algs4.cs.princeton.edu/24pq/Heap.java.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Heapsort&lt;/a&gt; (in place)&lt;/td&gt;
+          &lt;td&gt;Θ(N)*&lt;/td&gt;
+          &lt;td&gt;Θ(N log N)&lt;/td&gt;
+          &lt;td&gt;Θ(1)**&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.google.com/presentation/d/1MqmOxfh1c6gS4hk9hvuRR_hWXWTnCIXMqLGXwRX4Pvk/edit#slide=id.g26d398489b6_4_1033&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Link&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Bad cache (61C) performance.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;http://algs4.cs.princeton.edu/14analysis/Mergesort.java.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Mergesort&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Θ(N log N)&lt;/td&gt;
+          &lt;td&gt;Θ(N log N)&lt;/td&gt;
+          &lt;td&gt;Θ(N)&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.google.com/presentation/d/1MqmOxfh1c6gS4hk9hvuRR_hWXWTnCIXMqLGXwRX4Pvk/edit#slide=id.g26d398489b6_4_303&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Link&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Faster than heap sort.&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;171naive-insertion-sort--and-in-place-insertion-sort&#34;&gt;17.1.Naive Insertion Sort  and In-Place Insertion Sort
+&lt;/h3&gt;&lt;p&gt;Naive Insertion Sort&lt;/p&gt;
+&lt;p&gt;General strategy:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Starting with an empty output sequence.&lt;/li&gt;
+&lt;li&gt;Add each item from input, inserting into output at right point.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In-Place Insertion Sort&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;General strategy:
+&lt;ul&gt;
+&lt;li&gt;Repeat for i = 0 to N - 1:
+&lt;ul&gt;
+&lt;li&gt;Designate item i as the traveling item.&lt;/li&gt;
+&lt;li&gt;Swap item backwards until traveler is in the right place among all previously examined items.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;Best Case Runtime&lt;/th&gt;
+          &lt;th&gt;Worst Case Runtime&lt;/th&gt;
+          &lt;th&gt;Space&lt;/th&gt;
+          &lt;th&gt;Demo&lt;/th&gt;
+          &lt;th&gt;Notes&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;http://algs4.cs.princeton.edu/21elementary/Selection.java.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Selection Sort&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Θ(N2)&lt;/td&gt;
+          &lt;td&gt;Θ(N2)&lt;/td&gt;
+          &lt;td&gt;Θ(1)&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.google.com/presentation/d/1MqmOxfh1c6gS4hk9hvuRR_hWXWTnCIXMqLGXwRX4Pvk/edit#slide=id.g25e3164fbfa_0_1160&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Link&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;http://algs4.cs.princeton.edu/24pq/Heap.java.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Heapsort&lt;/a&gt; (in place)&lt;/td&gt;
+          &lt;td&gt;Θ(N)*&lt;/td&gt;
+          &lt;td&gt;Θ(N log N)&lt;/td&gt;
+          &lt;td&gt;Θ(1)&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.google.com/presentation/d/1MqmOxfh1c6gS4hk9hvuRR_hWXWTnCIXMqLGXwRX4Pvk/edit#slide=id.g25e3164fbfa_0_1161&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Link&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Bad cache (61C) performance.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;http://algs4.cs.princeton.edu/14analysis/Mergesort.java.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Mergesort&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Θ(N log N)&lt;/td&gt;
+          &lt;td&gt;Θ(N log N)&lt;/td&gt;
+          &lt;td&gt;Θ(N)&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.google.com/presentation/d/1MqmOxfh1c6gS4hk9hvuRR_hWXWTnCIXMqLGXwRX4Pvk/edit#slide=id.g25e3164fbfa_0_1162&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Link&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Fastest of these.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;http://algs4.cs.princeton.edu/21elementary/Insertion.java.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Insertion Sort&lt;/a&gt; (in place)&lt;/td&gt;
+          &lt;td&gt;Θ(N)&lt;/td&gt;
+          &lt;td&gt;Θ(N2)&lt;/td&gt;
+          &lt;td&gt;Θ(1)&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.google.com/presentation/d/1MqmOxfh1c6gS4hk9hvuRR_hWXWTnCIXMqLGXwRX4Pvk/edit#slide=id.g25e3164fbfa_0_243&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Link&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Best for small N or almost sorted.&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;18-partition-sort-aka-quicksort&#34;&gt;18. Partition Sort, a.k.a. Quicksort
+&lt;/h2&gt;&lt;p&gt;To partition an array a[] on element x=a[i] is to rearrange a[] so that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;x moves to position j (may be the same as i)&lt;/li&gt;
+&lt;li&gt;All entries to the left of x are &amp;lt;= x.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All entries to the right of x are &amp;gt;= x&lt;/p&gt;
+&lt;img src=&#34;image-20250117203716707.png&#34; alt=&#34;image-20250117203716707&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;p&gt;Observations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;5 is “in its place.” Exactly where it’d be if the array were sorted.&lt;/li&gt;
+&lt;li&gt;Can sort two halves separately, e.g. through recursive use of partitioning.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Quick sorting N items:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Partition on leftmost item.&lt;/li&gt;
+&lt;li&gt;Quicksort left half.&lt;/li&gt;
+&lt;li&gt;Quicksort right half.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;181runtime&#34;&gt;18.1.Runtime
+&lt;/h3&gt;&lt;p&gt;Theoretical analysis:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Partitioning costs Θ(K) time, where Θ(K) is the number of elements being partitioned (as we saw in our earlier “interview question”).&lt;/li&gt;
+&lt;li&gt;The interesting twist: Overall runtime will depend crucially on where pivot ends up.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;Best Case: Pivot Always Lands in the Middle&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&#34;image-20250117204229872.png&#34; alt=&#34;image-20250117204229872&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;p&gt;Overall runtime:&lt;/p&gt;
+&lt;p&gt;Θ(NH) where H = Θ(log N)&lt;/p&gt;
+&lt;p&gt;so: Θ(N log N)&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Worst Case: Pivot Always Lands at Beginning of Array&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&#34;image-20250117204334127.png&#34; alt=&#34;image-20250117204334127&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;p&gt;What is the runtime Θ(∙)?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$N^2$&lt;/li&gt;
+&lt;li&gt;but overall, the runtime is roughly $\Theta(\log N)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;182avoiding-quicksort-worst-case&#34;&gt;18.2.&lt;strong&gt;Avoiding Quicksort Worst Case&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;What can we do to avoid worst case behavior? Four philosophies:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Randomness&lt;/strong&gt;: Pick a random pivot or shuffle before sorting.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Smarter pivot selection&lt;/strong&gt;: Calculate or approximate the median.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Introspection&lt;/strong&gt;: Switch to a safer sort if recursion goes to deep.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Try to cheat&lt;/strong&gt;: If the array is already sorted, don’t sort (this doesn’t work).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Implement: Create L and G pointers at left and right ends.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;L pointer is a friend to small items, and hates large or equal items.&lt;/li&gt;
+&lt;li&gt;G pointer is a friend to large items, and hates small or equal items.&lt;/li&gt;
+&lt;li&gt;Walk pointers towards each other, stopping on a hated item.
+&lt;ul&gt;
+&lt;li&gt;When both pointers have stopped, swap and move pointers by one.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;When pointers cross, you are done. See &lt;a class=&#34;link&#34; href=&#34;https://docs.google.com/presentation/d/11vRyW0ZPrsxUhRHCBgkygy01PlL1amB66n9FZQN03wo/edit#slide=id.g25f68bd1986_0_4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;This site&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
         </item>
         <item>
         <title>CS61A笔记</title>
