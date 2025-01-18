@@ -447,6 +447,14 @@
         <li><a href="#182avoiding-quicksort-worst-case">18.2.<strong>Avoiding Quicksort Worst Case</strong></a></li>
       </ul>
     </li>
+    <li><a href="#19-software-engineering">19. Software Engineering</a>
+      <ul>
+        <li><a href="#191-strategic-vs-tactical-programming">19.1. Strategic vs Tactical Programming</a></li>
+        <li><a href="#192-design">19.2. Design</a></li>
+        <li><a href="#193-managing-complexity">19.3. Managing Complexity</a></li>
+        <li><a href="#194-documentation">19.4. Documentation</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
         </div>
@@ -503,7 +511,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 26 分钟
+                    阅读时长: 27 分钟
                 </time>
             </div>
         
@@ -4321,7 +4329,105 @@ $$<h2 id="4iteration">4.Iteration
 <li>When pointers cross, you are done. See <a class="link" href="https://docs.google.com/presentation/d/11vRyW0ZPrsxUhRHCBgkygy01PlL1amB66n9FZQN03wo/edit#slide=id.g25f68bd1986_0_4"  target="_blank" rel="noopener"
     >This site</a></li>
 </ul>
-
+<h2 id="19-software-engineering">19. Software Engineering
+</h2><p>There are two kinds of complexity:</p>
+<ol>
+<li>Unavoidable (Essential) Complexity
+<ol>
+<li>Inherent, inescapable complexity caused by the underlying functionality</li>
+</ol>
+</li>
+<li>Avoidable Complexity
+<ol>
+<li>Complexity that we can address with our choices</li>
+</ol>
+</li>
+</ol>
+<p>In response to avoidable complexity, we can:</p>
+<ol>
+<li>Make code simpler and more obvious</li>
+<li>Using sentinel nodes in Project 1</li>
+<li>Modules
+<ul>
+<li>Abstraction: the ability to use a piece without understanding how it works based on some specification</li>
+<li>Interfaces - HashMap, BSTMap both are Maps</li>
+</ul>
+</li>
+</ol>
+<h3 id="191-strategic-vs-tactical-programming">19.1. Strategic vs Tactical Programming
+</h3><p>A different form of programming that emphasizes long term strategy over quick fixes. The objective is to write code that works <em>elegantly</em> - at the cost of planning time.</p>
+<p>Code should be:</p>
+<ul>
+<li>Maintainable</li>
+<li>Simple</li>
+<li>Future-proof</li>
+</ul>
+<p>If the strategy is insufficient, go back to the drawing board before continuing work.</p>
+<h3 id="192-design">19.2. Design
+</h3><p>Design is an important first stage in development:</p>
+<ul>
+<li>Ensures consideration of all requirements and constraints</li>
+<li>Considers multiple alternatives and their advantages / disadvantages</li>
+<li>Identifies potential costs or pitfalls while change is cheap</li>
+<li>Allows multiple minds to weigh in and leverages diverse perspectives</li>
+</ul>
+<p>Design documents do not need to follow a specific form, but they should give the reader easily accessible information about your project.</p>
+<p>A design document should:</p>
+<ul>
+<li>Quickly bring the reader up to speed</li>
+<li>Include what alternatives were considered and why the trade-offs were made</li>
+<li>Be just as much about the “why” as it is about the “how”</li>
+<li>Update as the project progresses (be alive!)</li>
+</ul>
+<h3 id="193-managing-complexity">19.3. Managing Complexity
+</h3><p>What is “good code”? Three main goals:</p>
+<ul>
+<li>Readability: The code is easy to read and understand.</li>
+<li>Simplicity: The solution is straightforward, without unnecessary complexity</li>
+<li>Testability: The code is easy to test and debug.</li>
+</ul>
+<h3 id="194-documentation">19.4. Documentation
+</h3><ul>
+<li><strong>Documentation</strong> in technology refers to various written materials that accompany software or systems</li>
+<li>It covers a broad spectrum, including:
+<ul>
+<li>Code Comments</li>
+<li>API Documentation</li>
+<li>User Manuals</li>
+<li>Design Specifications</li>
+<li>Test Documents</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">* Moves the player to a specified location within the game world.
+</span></span></span><span class="line"><span class="cl"><span class="cm">* Validates the destination and checks for bounds.
+</span></span></span><span class="line"><span class="cl"><span class="cm">*
+</span></span></span><span class="line"><span class="cl"><span class="cm">* @param x The x-coordinate of the destination (horizontal position).
+</span></span></span><span class="line"><span class="cl"><span class="cm">* @param y The y-coordinate of the destination (vertical position).
+</span></span></span><span class="line"><span class="cl"><span class="cm">* @return &#39;true&#39; if the move is successful, &#39;false&#39; otherwise.
+</span></span></span><span class="line"><span class="cl"><span class="cm">* @throws OutOfBoundsException if coordinates are outside the world.
+</span></span></span><span class="line"><span class="cl"><span class="cm">* @usage To move the player to (5, 10), call movePlayer(5, 10).
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">movePlayer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 

@@ -49,9 +49,10 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 考几倍的期末&lt;/li&gt;
 &lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成CS61B全部内容的笔记&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 二刷CS61B software engineering内容后开始gitlet&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 二刷CS61B software engineering内容后开始gitlet&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS70每周三课&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18.06进行开课准备&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成Lab8&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>
@@ -3864,7 +3865,105 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;When pointers cross, you are done. See &lt;a class=&#34;link&#34; href=&#34;https://docs.google.com/presentation/d/11vRyW0ZPrsxUhRHCBgkygy01PlL1amB66n9FZQN03wo/edit#slide=id.g25f68bd1986_0_4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;This site&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
+&lt;h2 id=&#34;19-software-engineering&#34;&gt;19. Software Engineering
+&lt;/h2&gt;&lt;p&gt;There are two kinds of complexity:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Unavoidable (Essential) Complexity
+&lt;ol&gt;
+&lt;li&gt;Inherent, inescapable complexity caused by the underlying functionality&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Avoidable Complexity
+&lt;ol&gt;
+&lt;li&gt;Complexity that we can address with our choices&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In response to avoidable complexity, we can:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Make code simpler and more obvious&lt;/li&gt;
+&lt;li&gt;Using sentinel nodes in Project 1&lt;/li&gt;
+&lt;li&gt;Modules
+&lt;ul&gt;
+&lt;li&gt;Abstraction: the ability to use a piece without understanding how it works based on some specification&lt;/li&gt;
+&lt;li&gt;Interfaces - HashMap, BSTMap both are Maps&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;191-strategic-vs-tactical-programming&#34;&gt;19.1. Strategic vs Tactical Programming
+&lt;/h3&gt;&lt;p&gt;A different form of programming that emphasizes long term strategy over quick fixes. The objective is to write code that works &lt;em&gt;elegantly&lt;/em&gt; - at the cost of planning time.&lt;/p&gt;
+&lt;p&gt;Code should be:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Maintainable&lt;/li&gt;
+&lt;li&gt;Simple&lt;/li&gt;
+&lt;li&gt;Future-proof&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If the strategy is insufficient, go back to the drawing board before continuing work.&lt;/p&gt;
+&lt;h3 id=&#34;192-design&#34;&gt;19.2. Design
+&lt;/h3&gt;&lt;p&gt;Design is an important first stage in development:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ensures consideration of all requirements and constraints&lt;/li&gt;
+&lt;li&gt;Considers multiple alternatives and their advantages / disadvantages&lt;/li&gt;
+&lt;li&gt;Identifies potential costs or pitfalls while change is cheap&lt;/li&gt;
+&lt;li&gt;Allows multiple minds to weigh in and leverages diverse perspectives&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Design documents do not need to follow a specific form, but they should give the reader easily accessible information about your project.&lt;/p&gt;
+&lt;p&gt;A design document should:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Quickly bring the reader up to speed&lt;/li&gt;
+&lt;li&gt;Include what alternatives were considered and why the trade-offs were made&lt;/li&gt;
+&lt;li&gt;Be just as much about the “why” as it is about the “how”&lt;/li&gt;
+&lt;li&gt;Update as the project progresses (be alive!)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;193-managing-complexity&#34;&gt;19.3. Managing Complexity
+&lt;/h3&gt;&lt;p&gt;What is “good code”? Three main goals:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Readability: The code is easy to read and understand.&lt;/li&gt;
+&lt;li&gt;Simplicity: The solution is straightforward, without unnecessary complexity&lt;/li&gt;
+&lt;li&gt;Testability: The code is easy to test and debug.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;194-documentation&#34;&gt;19.4. Documentation
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt; in technology refers to various written materials that accompany software or systems&lt;/li&gt;
+&lt;li&gt;It covers a broad spectrum, including:
+&lt;ul&gt;
+&lt;li&gt;Code Comments&lt;/li&gt;
+&lt;li&gt;API Documentation&lt;/li&gt;
+&lt;li&gt;User Manuals&lt;/li&gt;
+&lt;li&gt;Design Specifications&lt;/li&gt;
+&lt;li&gt;Test Documents&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Java&#34; data-lang=&#34;Java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;* Moves the player to a specified location within the game world.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;* Validates the destination and checks for bounds.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;*
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;* @param x The x-coordinate of the destination (horizontal position).
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;* @param y The y-coordinate of the destination (vertical position).
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;* @return &amp;#39;true&amp;#39; if the move is successful, &amp;#39;false&amp;#39; otherwise.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;* @throws OutOfBoundsException if coordinates are outside the world.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;* @usage To move the player to (5, 10), call movePlayer(5, 10).
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;*/&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;boolean&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;movePlayer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{...}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
         </item>
         <item>
         <title>CS61A笔记</title>
