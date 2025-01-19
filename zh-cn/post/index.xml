@@ -7,12 +7,12 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Lin</copyright>
-        <lastBuildDate>Tue, 14 Jan 2025 11:20:35 +0800</lastBuildDate><atom:link href="https://Timlin15.github.io/zh-cn/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>2025年大致规划</title>
-        <link>https://Timlin15.github.io/zh-cn/p/2025%E5%B9%B4%E5%A4%A7%E8%87%B4%E8%A7%84%E5%88%92/</link>
-        <pubDate>Tue, 14 Jan 2025 11:20:35 +0800</pubDate>
+        <lastBuildDate>Mon, 20 Jan 2025 00:50:35 +0800</lastBuildDate><atom:link href="https://Timlin15.github.io/zh-cn/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>2025年大致规划和周记</title>
+        <link>https://Timlin15.github.io/zh-cn/p/2025%E5%B9%B4%E5%A4%A7%E8%87%B4%E8%A7%84%E5%88%92%E5%92%8C%E5%91%A8%E8%AE%B0/</link>
+        <pubDate>Mon, 20 Jan 2025 00:50:35 +0800</pubDate>
         
-        <guid>https://Timlin15.github.io/zh-cn/p/2025%E5%B9%B4%E5%A4%A7%E8%87%B4%E8%A7%84%E5%88%92/</guid>
+        <guid>https://Timlin15.github.io/zh-cn/p/2025%E5%B9%B4%E5%A4%A7%E8%87%B4%E8%A7%84%E5%88%92%E5%92%8C%E5%91%A8%E8%AE%B0/</guid>
         <description>&lt;h1 id=&#34;2025年大致规划&#34;&gt;2025年大致规划
 &lt;/h1&gt;&lt;h2 id=&#34;1-2月&#34;&gt;1-2月
 &lt;/h2&gt;&lt;ul&gt;
@@ -54,6 +54,246 @@
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18.06进行开课准备&lt;/li&gt;
 &lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成Lab8&lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS70完成 两课左右，算三分之二吧&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18.06在考虑要不留着开学上&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总结：这周还是在家导致有点浑浑噩噩，一天就是玩手机。大头基本上都是在学校完成的，在家就写了个lab8。下周看能不能改变一下这种状态，提升效率。如果不行暑假看能不能留校。&lt;/p&gt;
+&lt;p&gt;第三周(1.20-1.26)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成CS61B Project2&amp;amp;3 结课&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 开始CS:APP，15-213学习&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS70每周三课&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>CS70</title>
+        <link>https://Timlin15.github.io/zh-cn/p/cs70/</link>
+        <pubDate>Sun, 19 Jan 2025 16:40:25 +0800</pubDate>
+        
+        <guid>https://Timlin15.github.io/zh-cn/p/cs70/</guid>
+        <description>&lt;h1 id=&#34;takeaways-of-cs70&#34;&gt;Takeaways of CS70
+&lt;/h1&gt;&lt;h2 id=&#34;note-1&#34;&gt;Note 1
+&lt;/h2&gt;&lt;h3 id=&#34;1-propositional-logic&#34;&gt;1. Propositional Logic
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Conjunction&lt;/strong&gt;: $P \wedge Q$ (“P and Q”). True only when both P and Q are true.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Disjunction&lt;/strong&gt;: $P \vee Q$ (“P or Q”). True when at least one of P and Q is true.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Negation&lt;/strong&gt;: $\neg P$ (“not P”). True when P is false.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;$P$&lt;/th&gt;
+          &lt;th&gt;$Q$&lt;/th&gt;
+          &lt;th&gt;$P \wedge Q$&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Implication&lt;/strong&gt;: $P \Rightarrow Q$ (“P implies Q”). This is the same as “If P, then Q.”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;P&lt;/th&gt;
+          &lt;th&gt;Q&lt;/th&gt;
+          &lt;th&gt;$P \Rightarrow Q$&lt;/th&gt;
+          &lt;th&gt;$\neg P \lor Q$&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+$$
+P\Rightarrow Q \equiv \neg P\vee Q
+$$&lt;p&gt;
+$P \Rightarrow Q$ is the most common form mathematical theorems take. Here are some of the different ways of saying it:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;P, then Q;&lt;/li&gt;
+&lt;li&gt;Q if P;&lt;/li&gt;
+&lt;li&gt;P only if Q;&lt;/li&gt;
+&lt;li&gt;P is sufficient for Q;&lt;/li&gt;
+&lt;li&gt;Q is necessary for P;&lt;/li&gt;
+&lt;li&gt;Q unless not P.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If both $P \Rightarrow Q$ and $Q \Rightarrow P$ are true, then we say “P if and only if Q” (abbreviated “P iff Q”) or $P \Leftrightarrow Q$&lt;/p&gt;
+&lt;p&gt;Given an implication $P \Rightarrow Q$, we can also define its&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Contrapositive: $¬Q \Rightarrow ¬P $&lt;/li&gt;
+&lt;li&gt;Converse: $Q \Rightarrow P$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;$P$&lt;/th&gt;
+          &lt;th&gt;$Q$&lt;/th&gt;
+          &lt;th&gt;$\neg P$&lt;/th&gt;
+          &lt;th&gt;$\neg Q$&lt;/th&gt;
+          &lt;th&gt;$P \Rightarrow Q$&lt;/th&gt;
+          &lt;th&gt;$Q \Rightarrow P$&lt;/th&gt;
+          &lt;th&gt;$\neg Q \Rightarrow \neg P$&lt;/th&gt;
+          &lt;th&gt;$P \Leftrightarrow Q$&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$F$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+          &lt;td&gt;$T$&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+$$
+(P \Rightarrow Q) \equiv (¬Q \Rightarrow ¬P)
+$$&lt;h3 id=&#34;2-quantifiers-and-negation&#34;&gt;2. Quantifiers and Negation
+&lt;/h3&gt;&lt;p&gt;Quantifier:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$(∀x ∈ Z)(∃y ∈ Z)(x &amp;lt; y)$&lt;/li&gt;
+&lt;li&gt;$(∃y ∈ Z)(∀x ∈ Z)(x &amp;lt; y)$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Negation:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$¬(P∧Q) ≡ (¬P∨ ¬Q)$&lt;/li&gt;
+&lt;li&gt;$¬(P∨Q) ≡ (¬P∧ ¬Q)$&lt;/li&gt;
+&lt;li&gt;$¬(∃xP(x)) ≡ ∀x¬P(x)$&lt;/li&gt;
+&lt;li&gt;$¬(∀xP(x)) ≡ ∃x¬P(x)$&lt;/li&gt;
+&lt;li&gt;$¬(∀x∃yP(x, y)) ≡ ∃x¬(∃yP(x, y)) ≡ ∃x∀y¬P(x, y).$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;note-2&#34;&gt;Note 2
+&lt;/h2&gt;&lt;h3 id=&#34;1-direct-proof&#34;&gt;1. Direct Proof
+&lt;/h3&gt;$$
+\begin{array}{|l|}
+\hline
+\textbf{Direct Proof} \\ 
+\quad \textit{Goal}: \text{ To prove } P \Rightarrow Q. \\ 
+\quad\textit{Approach}: \text{ Assume } P \\ 
+\hspace{4cm}\vdots \\ 
+\hspace{3cm}\text{Therefore } Q \\ 
+\hline
+\end{array}
+$$&lt;h3 id=&#34;2-proof-by-contraposition&#34;&gt;2. Proof by Contraposition
+&lt;/h3&gt;$$
+\begin{array}{|l|}
+\hline
+\textbf{Proof by Contraposition} \\ 
+\quad\textit{Goal}: \text{ To prove } P \Rightarrow Q. \\ 
+\quad\textit{Approach}: \text{ Assume } \neg Q \\ 
+\hspace{4cm}\vdots \\ 
+\hspace{3cm}\text{Therefore } \neg P \\ 
+\quad\textit{Conclusion}: \neg Q \Rightarrow \neg P, \text{ which is equivalent to } P \Rightarrow Q. \\ 
+\hline
+\end{array}
+$$&lt;p&gt;Recall from our &lt;a class=&#34;link&#34; href=&#34;#1.-propositional-logic&#34; &gt;discussion&lt;/a&gt; on propositional logic that any implication $P \Rightarrow Q$ is equivalent to its contrapositive $¬Q \Rightarrow ¬P$. Yet, sometimes $¬Q \Rightarrow ¬P$ can be much simpler to prove than $P \Rightarrow Q$. Thus, a proof by contraposition proceeds by proving $¬Q \Rightarrow ¬P$ instead of $P \Rightarrow Q$.&lt;/p&gt;
+&lt;h3 id=&#34;3-proof-by-contradiction&#34;&gt;3. Proof by Contradiction
+&lt;/h3&gt;$$
+\begin{array}{|l|}
+\hline
+\textbf{Proof by Contradiction} \\ 
+\quad\textit{Goal}: \text{ To prove } P. \\ 
+\quad\textit{Approach}: \text{ Assume } \neg P \\ 
+\hspace{4cm}\vdots \\ 
+\hspace{3.85cm}R \\ 
+\hspace{4cm}\vdots \\ 
+\hspace{3.7cm}\neg R \\ 
+\quad\textit{Conclusion}: \neg P \Rightarrow (\neg R \land R), \text{ which is a contradiction. Thus, } P. \\ 
+\hline
+\end{array}
+$$&lt;h3 id=&#34;4-proof-by-cases&#34;&gt;4. Proof by Cases
+&lt;/h3&gt;&lt;p&gt;$\textit{Skip}$&lt;/p&gt;
+&lt;h2 id=&#34;note-3&#34;&gt;Note 3
+&lt;/h2&gt;&lt;h3 id=&#34;1-mathematical-induction&#34;&gt;1. Mathematical Induction
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Base Case&lt;/strong&gt;: Prove that P(0) is true.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Induction Hypothesis&lt;/strong&gt;: For arbitrary k ≥ 0, assume that P(k) is true.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Inductive Step&lt;/strong&gt;: With the assumption of the Induction Hypothesis in hand, show that P(k+1) is true&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;2-simple-induction-vs-strong-induction&#34;&gt;2. Simple Induction vs. Strong Induction
+&lt;/h3&gt;&lt;p&gt;There is another notion of induction, which we now discuss, called strong induction.&lt;/p&gt;
+&lt;p&gt;The latter is similar to simple induction, except we have a slightly different induction hypothesis: Instead of just assuming $P(k)$ is true (as was the case with simple induction), we assume the stronger statement that $P(0), P(1), . . . , \text{and} P(k)$ are all true (i.e., that $\wedge^k_{i=0} P(i)$ is true).&lt;/p&gt;
+&lt;p&gt;strong induction does have an appealing advantage — it can make proofs easier, since we get to assume a stronger hypothesis&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -3398,13 +3638,13 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;15tries&#34;&gt;15.Tries
-&lt;/h2&gt;&lt;img src=&#34;image-20250117170317617.png&#34; alt=&#34;image-20250117170317617&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;/h2&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20250117170317617.png&#34; alt=&#34;image-20250117170317617&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;p&gt;For String keys, we can use a “Trie”. Key ideas:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Every node stores only one letter.&lt;/li&gt;
 &lt;li&gt;Nodes can be shared by multiple keys.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;image-20250117172451357.png&#34; alt=&#34;image-20250117172451357&#34; style=&#34;zoom: 50%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20250117172451357.png&#34; alt=&#34;image-20250117172451357&#34; style=&#34;zoom: 50%;&#34; /&gt;
 &lt;p&gt;Above, we show the results of adding “sam”,&amp;ldquo;a&amp;rdquo;, &amp;ldquo;sap&amp;rdquo;, &amp;ldquo;same&amp;rdquo; and sad”.&lt;/p&gt;
 &lt;p&gt;Two ways to have a search “miss”:&lt;/p&gt;
 &lt;ul&gt;
@@ -3461,7 +3701,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Each DataIndexedCharMap is an array of 128 possible links, mostly null.&lt;/p&gt;
-&lt;img src=&#34;image-20250117173513915.png&#34; alt=&#34;image-20250117173513915&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20250117173513915.png&#34; alt=&#34;image-20250117173513915&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;p&gt;If we use a DataIndexedCharMap to track children, every node has R links.&lt;/p&gt;
 &lt;p&gt;Observation: The letter stored inside each node is actually redundant.&lt;/p&gt;
 &lt;ul&gt;
@@ -3550,13 +3790,13 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;BST&lt;/p&gt;
-&lt;img src=&#34;image-20250117174824070.png&#34; alt=&#34;image-20250117174824070&#34; style=&#34;zoom:25%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20250117174824070.png&#34; alt=&#34;image-20250117174824070&#34; style=&#34;zoom:25%;&#34; /&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Hash Table&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;image-20250117174848233.png&#34; alt=&#34;image-20250117174848233&#34; style=&#34;zoom:25%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20250117174848233.png&#34; alt=&#34;image-20250117174848233&#34; style=&#34;zoom:25%;&#34; /&gt;
 &lt;p&gt;When our keys are strings, Tries give us slightly better performance on contains and add.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Using BST or Hash Table will be slightly slower, but more memory efficient.&lt;/li&gt;
@@ -3593,7 +3833,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;/ul&gt;
 &lt;p&gt;Sort Properties:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;$Θ(N2)$ time if we use an array (or similar data structure).&lt;/li&gt;
+&lt;li&gt;$Θ(N^2)$ time if we use an array (or similar data structure).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;162inplace-heapsort&#34;&gt;16.2.Inplace Heapsort
 &lt;/h3&gt;&lt;p&gt;Idea: Instead of rescanning entire array looking for minimum, maintain a heap so that getting the minimum is fast!&lt;/p&gt;
@@ -3654,7 +3894,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id=&#34;17mergesort-insertion-sort-and-quicksort&#34;&gt;17.Mergesort, Insertion Sort, and Quicksort
-&lt;/h2&gt;&lt;img src=&#34;image-20250117182506934.png&#34; alt=&#34;image-20250117182506934&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;/h2&gt;&lt;img src=&#34;https://Timlin15.github.io/image-20250117182506934.png&#34; alt=&#34;image-20250117182506934&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;p&gt;Merging can give us an improvement over vanilla selection sort:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Selection sort the left half: Θ(N2).&lt;/li&gt;
@@ -3811,7 +4051,7 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;All entries to the left of x are &amp;lt;= x.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;All entries to the right of x are &amp;gt;= x&lt;/p&gt;
-&lt;img src=&#34;image-20250117203716707.png&#34; alt=&#34;image-20250117203716707&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20250117203716707.png&#34; alt=&#34;image-20250117203716707&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;p&gt;Observations:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;5 is “in its place.” Exactly where it’d be if the array were sorted.&lt;/li&gt;
@@ -3832,14 +4072,14 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;ol&gt;
 &lt;li&gt;Best Case: Pivot Always Lands in the Middle&lt;/li&gt;
 &lt;/ol&gt;
-&lt;img src=&#34;image-20250117204229872.png&#34; alt=&#34;image-20250117204229872&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20250117204229872.png&#34; alt=&#34;image-20250117204229872&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;p&gt;Overall runtime:&lt;/p&gt;
 &lt;p&gt;Θ(NH) where H = Θ(log N)&lt;/p&gt;
 &lt;p&gt;so: Θ(N log N)&lt;/p&gt;
 &lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;Worst Case: Pivot Always Lands at Beginning of Array&lt;/li&gt;
 &lt;/ol&gt;
-&lt;img src=&#34;image-20250117204334127.png&#34; alt=&#34;image-20250117204334127&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;img src=&#34;https://Timlin15.github.io/image-20250117204334127.png&#34; alt=&#34;image-20250117204334127&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;p&gt;What is the runtime Θ(∙)?&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;$N^2$&lt;/li&gt;
