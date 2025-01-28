@@ -3865,6 +3865,8 @@ $$&lt;h2 id=&#34;4iteration&#34;&gt;4.Iteration
 &lt;li&gt;Include what alternatives were considered and why the trade-offs were made&lt;/li&gt;
 &lt;li&gt;Be just as much about the “why” as it is about the “how”&lt;/li&gt;
 &lt;li&gt;Update as the project progresses (be alive!)&lt;/li&gt;
+&lt;li&gt;Look up &lt;a class=&#34;link&#34; href=&#34;https://sp21.datastructur.es/materials/proj/proj2/design.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;THIS SITE&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;193-managing-complexity&#34;&gt;19.3. Managing Complexity
 &lt;/h3&gt;&lt;p&gt;What is “good code”? Three main goals:&lt;/p&gt;
