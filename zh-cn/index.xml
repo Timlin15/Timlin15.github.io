@@ -16,8 +16,8 @@
         <description>&lt;h1 id=&#34;2025年大致规划&#34;&gt;2025年大致规划
 &lt;/h1&gt;&lt;h2 id=&#34;1-2月&#34;&gt;1-2月
 &lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 期末考试&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS61B&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 期末考试&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS61B&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CSAPP&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS70&lt;/li&gt;
 &lt;/ul&gt;
@@ -25,7 +25,7 @@
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS189&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS170&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 6.081&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18.06&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;5月&#34;&gt;5月
 &lt;/h2&gt;&lt;ul&gt;
@@ -62,9 +62,16 @@
 &lt;p&gt;总结：这周还是在家导致有点浑浑噩噩，一天就是玩手机。大头基本上都是在学校完成的，在家就写了个lab8。下周看能不能改变一下这种状态，提升效率。如果不行暑假看能不能留校。&lt;/p&gt;
 &lt;p&gt;第三周(1.20-1.26)&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成CS61B Project2&amp;amp;3 结课&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 开始CS:APP，15-213学习&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成CS61B Project2&amp;amp;3 结课&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 开始CS:APP，15-213学习&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS70每周三课&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;正式开学了，虽然校内课程还蛮多的，但是定下的2月完成csapp有点不现实，尽量利用课堂课余时间完成lab。&lt;/p&gt;
+&lt;p&gt;第八周(2.24-3.2)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 每周3-4节lecture，最少一个lab&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 视情况学习CS70和18.06&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>
