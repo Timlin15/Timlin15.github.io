@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Takeaways of a Discrete Mathematics and Probability Theory class">
 <title>CS70</title>
 
 <link rel='canonical' href='https://Timlin15.github.io/p/cs70/'>
 
 <link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="CS70">
-<meta property='og:description' content="">
+<meta property='og:description' content="Takeaways of a Discrete Mathematics and Probability Theory class">
 <meta property='og:url' content='https://Timlin15.github.io/p/cs70/'>
 <meta property='og:site_name' content='Link&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-01-14T11:16:50&#43;08:00'/><meta property='article:modified_time' content='2025-01-14T11:16:50&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='数学' /><meta property='article:tag' content='CS' /><meta property='article:published_time' content='2025-01-19T16:40:25&#43;08:00'/><meta property='article:modified_time' content='2025-01-19T16:40:25&#43;08:00'/>
 <meta name="twitter:title" content="CS70">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Takeaways of a Discrete Mathematics and Probability Theory class">
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
@@ -42,7 +42,7 @@
     })();
 </script>
 <div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
         </span>
@@ -72,7 +72,7 @@
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Link&#39;s Blog</a></h1>
-            <h2 class="site-description">A freshman at SUN YAT-SEN university</h2>
+            <h2 class="site-description">努力学习</h2>
         </div>
     </header><ol class="menu-social">
             
@@ -129,13 +129,13 @@
 
 
                 
-                <span>Home</span>
+                <span>主页</span>
             </a>
         </li>
         
         
         <li >
-            <a href='/about/' >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
                 
                 
                 
@@ -148,7 +148,7 @@
 
 
                 
-                <span>About</span>
+                <span>关于</span>
             </a>
         </li>
         
@@ -168,7 +168,7 @@
 
 
                 
-                <span>Archives</span>
+                <span>档案</span>
             </a>
         </li>
         
@@ -187,13 +187,13 @@
 
 
                 
-                <span>Search</span>
+                <span>搜索</span>
             </a>
         </li>
         
         
         <li >
-            <a href='/links/' >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
                 
                 
                 
@@ -206,7 +206,7 @@
 
 
                 
-                <span>Links</span>
+                <span>友链</span>
             </a>
         </li>
         
@@ -227,9 +227,9 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="https://Timlin15.github.io/" selected>English</option>
+                                    <option value="https://Timlin15.github.io/en/" >English</option>
                                 
-                                    <option value="https://Timlin15.github.io/zh-cn/" >简体中文</option>
+                                    <option value="https://Timlin15.github.io/" selected>简体中文</option>
                                 
                             </select>
                         </li>
@@ -254,7 +254,7 @@
 
 
 
-                        <span>Dark Mode</span>
+                        <span>暗色模式</span>
                     </li>
                 
             </ol>
@@ -262,7 +262,57 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#note-1">Note 1</a>
+      <ul>
+        <li><a href="#1-propositional-logic">1. Propositional Logic</a></li>
+        <li><a href="#2-quantifiers-and-negation">2. Quantifiers and Negation</a></li>
+      </ul>
+    </li>
+    <li><a href="#note-2">Note 2</a>
+      <ul>
+        <li><a href="#1-direct-proof">1. Direct Proof</a></li>
+        <li><a href="#2-proof-by-contraposition">2. Proof by Contraposition</a></li>
+        <li><a href="#3-proof-by-contradiction">3. Proof by Contradiction</a></li>
+        <li><a href="#4-proof-by-cases">4. Proof by Cases</a></li>
+      </ul>
+    </li>
+    <li><a href="#note-3">Note 3</a>
+      <ul>
+        <li><a href="#1-mathematical-induction">1. Mathematical Induction</a></li>
+        <li><a href="#2-simple-induction-vs-strong-induction">2. Simple Induction vs. Strong Induction</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="main-article">
@@ -270,12 +320,24 @@
 
     <div class="article-details">
     
+    <header class="article-category">
+        
+            <a href="/categories/%E7%AC%94%E8%AE%B0/" >
+                笔记
+            </a>
+        
+    </header>
+    
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
             <a href="/p/cs70/">CS70</a>
         </h2>
     
+        
+        <h3 class="article-subtitle">
+            Takeaways of a Discrete Mathematics and Probability Theory class
+        </h3>
         
     </div>
 
@@ -295,7 +357,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-01-14</time>
+                <time class="article-time--published">2025-01-19</time>
             </div>
         
 
@@ -310,7 +372,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    阅读时长: 2 分钟
                 </time>
             </div>
         
@@ -325,12 +387,240 @@
     <section class="article-content">
     
     
-    
+    <h1 id="takeaways-of-cs70">Takeaways of CS70
+</h1><h2 id="note-1">Note 1
+</h2><h3 id="1-propositional-logic">1. Propositional Logic
+</h3><ol>
+<li><strong>Conjunction</strong>: $P \wedge Q$ (“P and Q”). True only when both P and Q are true.</li>
+<li><strong>Disjunction</strong>: $P \vee Q$ (“P or Q”). True when at least one of P and Q is true.</li>
+<li><strong>Negation</strong>: $\neg P$ (“not P”). True when P is false.</li>
+</ol>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>$P$</th>
+          <th>$Q$</th>
+          <th>$P \wedge Q$</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>$T$</td>
+          <td>$T$</td>
+          <td>$T$</td>
+      </tr>
+      <tr>
+          <td>$T$</td>
+          <td>$F$</td>
+          <td>$F$</td>
+      </tr>
+      <tr>
+          <td>$F$</td>
+          <td>$T$</td>
+          <td>$F$</td>
+      </tr>
+      <tr>
+          <td>$F$</td>
+          <td>$F$</td>
+          <td>$F$</td>
+      </tr>
+  </tbody>
+</table></div>
+<ol start="4">
+<li><strong>Implication</strong>: $P \Rightarrow Q$ (“P implies Q”). This is the same as “If P, then Q.”</li>
+</ol>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>P</th>
+          <th>Q</th>
+          <th>$P \Rightarrow Q$</th>
+          <th>$\neg P \lor Q$</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>$T$</td>
+          <td>$T$</td>
+          <td>$T$</td>
+          <td>$T$</td>
+      </tr>
+      <tr>
+          <td>$T$</td>
+          <td>$F$</td>
+          <td>$F$</td>
+          <td>$F$</td>
+      </tr>
+      <tr>
+          <td>$F$</td>
+          <td>$T$</td>
+          <td>$T$</td>
+          <td>$T$</td>
+      </tr>
+      <tr>
+          <td>$F$</td>
+          <td>$F$</td>
+          <td>$T$</td>
+          <td>$T$</td>
+      </tr>
+  </tbody>
+</table></div>
+$$
+P\Rightarrow Q \equiv \neg P\vee Q
+$$<p>
+$P \Rightarrow Q$ is the most common form mathematical theorems take. Here are some of the different ways of saying it:</p>
+<ol>
+<li>P, then Q;</li>
+<li>Q if P;</li>
+<li>P only if Q;</li>
+<li>P is sufficient for Q;</li>
+<li>Q is necessary for P;</li>
+<li>Q unless not P.</li>
+</ol>
+<p>If both $P \Rightarrow Q$ and $Q \Rightarrow P$ are true, then we say “P if and only if Q” (abbreviated “P iff Q”) or $P \Leftrightarrow Q$</p>
+<p>Given an implication $P \Rightarrow Q$, we can also define its</p>
+<ul>
+<li>Contrapositive: $¬Q \Rightarrow ¬P $</li>
+<li>Converse: $Q \Rightarrow P$</li>
+</ul>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>$P$</th>
+          <th>$Q$</th>
+          <th>$\neg P$</th>
+          <th>$\neg Q$</th>
+          <th>$P \Rightarrow Q$</th>
+          <th>$Q \Rightarrow P$</th>
+          <th>$\neg Q \Rightarrow \neg P$</th>
+          <th>$P \Leftrightarrow Q$</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>$T$</td>
+          <td>$T$</td>
+          <td>$F$</td>
+          <td>$F$</td>
+          <td>$T$</td>
+          <td>$T$</td>
+          <td>$T$</td>
+          <td>$T$</td>
+      </tr>
+      <tr>
+          <td>$T$</td>
+          <td>$F$</td>
+          <td>$F$</td>
+          <td>$T$</td>
+          <td>$F$</td>
+          <td>$T$</td>
+          <td>$F$</td>
+          <td>$F$</td>
+      </tr>
+      <tr>
+          <td>$F$</td>
+          <td>$T$</td>
+          <td>$T$</td>
+          <td>$F$</td>
+          <td>$T$</td>
+          <td>$F$</td>
+          <td>$T$</td>
+          <td>$F$</td>
+      </tr>
+      <tr>
+          <td>$F$</td>
+          <td>$F$</td>
+          <td>$T$</td>
+          <td>$T$</td>
+          <td>$T$</td>
+          <td>$T$</td>
+          <td>$T$</td>
+          <td>$T$</td>
+      </tr>
+  </tbody>
+</table></div>
+$$
+(P \Rightarrow Q) \equiv (¬Q \Rightarrow ¬P)
+$$<h3 id="2-quantifiers-and-negation">2. Quantifiers and Negation
+</h3><p>Quantifier:</p>
+<ol>
+<li>$(∀x ∈ Z)(∃y ∈ Z)(x &lt; y)$</li>
+<li>$(∃y ∈ Z)(∀x ∈ Z)(x &lt; y)$</li>
+</ol>
+<p>Negation:</p>
+<ol>
+<li>$¬(P∧Q) ≡ (¬P∨ ¬Q)$</li>
+<li>$¬(P∨Q) ≡ (¬P∧ ¬Q)$</li>
+<li>$¬(∃xP(x)) ≡ ∀x¬P(x)$</li>
+<li>$¬(∀xP(x)) ≡ ∃x¬P(x)$</li>
+<li>$¬(∀x∃yP(x, y)) ≡ ∃x¬(∃yP(x, y)) ≡ ∃x∀y¬P(x, y).$</li>
+</ol>
+<h2 id="note-2">Note 2
+</h2><h3 id="1-direct-proof">1. Direct Proof
+</h3>$$
+\begin{array}{|l|}
+\hline
+\textbf{Direct Proof} \\ 
+\quad \textit{Goal}: \text{ To prove } P \Rightarrow Q. \\ 
+\quad\textit{Approach}: \text{ Assume } P \\ 
+\hspace{4cm}\vdots \\ 
+\hspace{3cm}\text{Therefore } Q \\ 
+\hline
+\end{array}
+$$<h3 id="2-proof-by-contraposition">2. Proof by Contraposition
+</h3>$$
+\begin{array}{|l|}
+\hline
+\textbf{Proof by Contraposition} \\ 
+\quad\textit{Goal}: \text{ To prove } P \Rightarrow Q. \\ 
+\quad\textit{Approach}: \text{ Assume } \neg Q \\ 
+\hspace{4cm}\vdots \\ 
+\hspace{3cm}\text{Therefore } \neg P \\ 
+\quad\textit{Conclusion}: \neg Q \Rightarrow \neg P, \text{ which is equivalent to } P \Rightarrow Q. \\ 
+\hline
+\end{array}
+$$<p>Recall from our <a class="link" href="#1.-propositional-logic" >discussion</a> on propositional logic that any implication $P \Rightarrow Q$ is equivalent to its contrapositive $¬Q \Rightarrow ¬P$. Yet, sometimes $¬Q \Rightarrow ¬P$ can be much simpler to prove than $P \Rightarrow Q$. Thus, a proof by contraposition proceeds by proving $¬Q \Rightarrow ¬P$ instead of $P \Rightarrow Q$.</p>
+<h3 id="3-proof-by-contradiction">3. Proof by Contradiction
+</h3>$$
+\begin{array}{|l|}
+\hline
+\textbf{Proof by Contradiction} \\ 
+\quad\textit{Goal}: \text{ To prove } P. \\ 
+\quad\textit{Approach}: \text{ Assume } \neg P \\ 
+\hspace{4cm}\vdots \\ 
+\hspace{3.85cm}R \\ 
+\hspace{4cm}\vdots \\ 
+\hspace{3.7cm}\neg R \\ 
+\quad\textit{Conclusion}: \neg P \Rightarrow (\neg R \land R), \text{ which is a contradiction. Thus, } P. \\ 
+\hline
+\end{array}
+$$<h3 id="4-proof-by-cases">4. Proof by Cases
+</h3><p>$\textit{Skip}$</p>
+<h2 id="note-3">Note 3
+</h2><h3 id="1-mathematical-induction">1. Mathematical Induction
+</h3><ol>
+<li><strong>Base Case</strong>: Prove that P(0) is true.</li>
+<li><strong>Induction Hypothesis</strong>: For arbitrary k ≥ 0, assume that P(k) is true.</li>
+<li><strong>Inductive Step</strong>: With the assumption of the Induction Hypothesis in hand, show that P(k+1) is true</li>
+</ol>
+<h3 id="2-simple-induction-vs-strong-induction">2. Simple Induction vs. Strong Induction
+</h3><p>There is another notion of induction, which we now discuss, called strong induction.</p>
+<p>The latter is similar to simple induction, except we have a slightly different induction hypothesis: Instead of just assuming $P(k)$ is true (as was the case with simple induction), we assume the stronger statement that $P(0), P(1), . . . , \text{and} P(k)$ are all true (i.e., that $\wedge^k_{i=0} P(i)$ is true).</p>
+<p>strong induction does have an appealing advantage — it can make proofs easier, since we get to assume a stronger hypothesis</p>
+
 </section>
 
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+        
+            <a href="/tags/cs/">CS</a>
+        
+    </section>
+
 
     </footer>
 
@@ -365,6 +655,54 @@
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/csapp-note/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CSAPP Note</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/cs61b%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CS61B笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/cs61a%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CS61A笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     
@@ -425,8 +763,8 @@
     </section>
     
     <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
 

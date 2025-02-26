@@ -5,7 +5,7 @@
         <link>https://Timlin15.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/</link>
         <description>Recent content in 计算机系统基础 on Link&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
+        <language>zh-cn</language>
         <copyright>Lin</copyright>
         <lastBuildDate>Tue, 25 Feb 2025 22:51:30 +0800</lastBuildDate><atom:link href="https://Timlin15.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>CSAPP Note</title>
@@ -13,22 +13,18 @@
         <pubDate>Tue, 25 Feb 2025 22:51:30 +0800</pubDate>
         
         <guid>https://Timlin15.github.io/p/csapp-note/</guid>
-        <description>&lt;center&gt;
-    &lt;img scr = &lt;img src=&#34;https://typo
-&lt;h1 id=&#34;note-of-computer-system-a-programmers-perspective&#34;&gt;Note of Computer System: a Programmer&amp;rsquo;s perspective.
-&lt;/h1&gt;&lt;blockquote&gt;
+        <description>&lt;p&gt;Note of Computer System: a Programmer&amp;rsquo;s perspective.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;[!NOTE]&lt;/p&gt;
 &lt;p&gt;这个笔记是由2015年CMU15-213课程内容slides和网上相关笔记总结而成，目的是在整合各路笔记中巩固自己的知识。主要是消化为主，所以个人产出较少，由于参考了多方资料会出现中英混杂情况。&lt;/p&gt;
-&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;主要资料：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;lecture: &lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1iW411d7hd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;2015年课程视频&lt;/a&gt;, [2017年课程视频](&lt;a class=&#34;link&#34; href=&#34;https://learncs.me/cmu/15213&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;15-213 Introduction to Computer Systems | Learn CS&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;slide&amp;amp;lab: [2015年官网](&lt;a class=&#34;link&#34; href=&#34;https://www.cs.cmu.edu/afs/cs/academic/class/15213-f15/www/schedule.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;15-213: Introduction to Computer Systems / Schedule Fall 2015&lt;/a&gt;)&lt;/li&gt;
+    &gt;2015年课程视频&lt;/a&gt;, &lt;a class=&#34;link&#34; href=&#34;https://learncs.me/cmu/15213&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;2017年课程视频&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;slide&amp;amp;lab: &lt;a class=&#34;link&#34; href=&#34;https://www.cs.cmu.edu/afs/cs/academic/class/15213-f15/www/schedule.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;2015年官网&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;note: &lt;a class=&#34;link&#34; href=&#34;https://wdxtub.com/work/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;课程笔记&lt;/a&gt;，&lt;a class=&#34;link&#34; href=&#34;https://arthals.ink/blog/data-lab&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;lab笔记&lt;/a&gt;&lt;/li&gt;
@@ -368,11 +364,11 @@
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;center&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
     &lt;img scr = &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250224161122909.png&#34; alt=&#34;image-20250224161122909&#34; style=&#34;zoom: 20%;&#34; /&gt;
     &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250224165149638.png&#34; alt=&#34;image-20250224165149638&#34; style=&#34;zoom: 50%;&#34; /&gt;
     &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250224171349437.png&#34; alt=&#34;image-20250224171349437&#34; style=&#34;zoom:30%;&#34; /&gt;
-&lt;/center&gt;
+&lt;/div&gt;
 &lt;p&gt;If sum $\geq$ $2^{w-1}$, the result becomes negative, and if sum $\leq , -2^{w-1}$, the result becomes positive, both at most once.&lt;/p&gt;
 &lt;h4 id=&#34;shift&#34;&gt;Shift
 &lt;/h4&gt;&lt;p&gt;Operation:&lt;/p&gt;
@@ -1768,10 +1764,10 @@ $$&lt;p&gt;
 &lt;li&gt;调用所需的参数&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;具体如下图所示：&lt;/p&gt;
- &lt;center&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
      &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250225210520628.png&#34; alt=&#34;image-20250225210520628&#34; style=&#34;zoom:33%;&#34;/&gt;
      &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14611733132821.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:50%;&#34; /&gt;
-&lt;/center&gt;
+&lt;/div&gt;
 &lt;p&gt;有了前面的的基础，要理解递归就简单很多了，直接上例子&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
