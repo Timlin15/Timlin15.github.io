@@ -7,7 +7,97 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Lin</copyright>
-        <lastBuildDate>Tue, 25 Feb 2025 22:51:30 +0800</lastBuildDate><atom:link href="https://Timlin15.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 02 Mar 2025 22:30:35 +0800</lastBuildDate><atom:link href="https://Timlin15.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>二月份总结</title>
+        <link>https://Timlin15.github.io/p/%E4%BA%8C%E6%9C%88%E4%BB%BD%E6%80%BB%E7%BB%93/</link>
+        <pubDate>Sun, 02 Mar 2025 22:30:35 +0800</pubDate>
+        
+        <guid>https://Timlin15.github.io/p/%E4%BA%8C%E6%9C%88%E4%BB%BD%E6%80%BB%E7%BB%93/</guid>
+        <description>&lt;h1 id=&#34;二月份总结&#34;&gt;二月份总结
+&lt;/h1&gt;&lt;p&gt;说是二月份总结，其实二月份真正值得总结的也就21号返校以来的这一周。之前那三周在家里躺的很舒服(笑)&lt;/p&gt;
+&lt;p&gt;嘛，总结一下这开学第一周，其实最大的感受便是很累但是比较充实。也是，一周能有高数下现代概率论与数理统计这三门数学课和大物下和电路理论基础这两门物理课，能不累就有鬼了。尤其是现在深恶痛绝的物理课，计算公式繁多，概念庞杂，越来越让我庆幸当时报专业在电信和计算机两个大类中选择了计算机，我真的不是学物理的料，倒是更喜欢计算机的各种分支。回到学校后一扫在家中的萎靡感，其实我一直挺喜欢学校的氛围的，感觉一进学校便能激发内生的动力，学习公开课也更有动力了。但是我并不是很喜欢那种唯绩点论的风尚，课余时间全部投入到刷题中去，这也太像高中了。&lt;/p&gt;
+&lt;p&gt;现在来看，可以开始思考一下将来何去何从了，尤其是绩点出分并多次被动听到别人绩点的现在。总结各路消息之后，感觉普遍来说就四条路：出国，找工，保研和考研。先说考研，在考研人数占应届生60%的情况下，我真的不是很想再重复一次高考的体验，但是如果保不上研，想修读国内研究生考研便是唯一出路，不过考研是大三大四才要考虑的事，现在可以不急。保研，呃，我对我能不能保证呆在保研线上都深表怀疑，更何况保上研，况且智科专业的研究生是控制类，我都不知道我喜不喜欢这个方向，跨校还没研究过，总之感觉这条赛道太拥挤了，希望很渺茫。也就是说，在出国和找工之间，或许刷公开课是最大公约数了，努力提升自己技术水平是最直接的事。&lt;/p&gt;
+&lt;p&gt;特别是现在见过各种神人群友之后，更感觉自己的水平还是太低，能力太弱。编程水平不足，知识面不够广，知识深度不够深，数学功底不够深厚。现在更应该尽快覆盖大部分计算机分支，有个粗略的认识后挖深挖细，更要注重数学素养。&lt;/p&gt;
+&lt;p&gt;写完后感觉这篇文章简直不忍卒读，权当自己的碎碎念吧。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>2025年大致规划和周记</title>
+        <link>https://Timlin15.github.io/p/2025%E5%B9%B4%E5%A4%A7%E8%87%B4%E8%A7%84%E5%88%92%E5%92%8C%E5%91%A8%E8%AE%B0/</link>
+        <pubDate>Sun, 02 Mar 2025 00:50:35 +0800</pubDate>
+        
+        <guid>https://Timlin15.github.io/p/2025%E5%B9%B4%E5%A4%A7%E8%87%B4%E8%A7%84%E5%88%92%E5%92%8C%E5%91%A8%E8%AE%B0/</guid>
+        <description>&lt;h1 id=&#34;2025年大致规划&#34;&gt;2025年大致规划
+&lt;/h1&gt;&lt;h2 id=&#34;1-2月&#34;&gt;1-2月
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 期末考试&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS61B&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CSAPP&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS70&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-4月&#34;&gt;3-4月
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS189&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS170&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18.06&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;5月&#34;&gt;5月
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完善上述课程&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 申请进组，查看还需什么准备&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;6-8月&#34;&gt;6-8月
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 期末考试&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 计算机视觉&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 计算机网络(?)CS168&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; OS(?)&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 编译原理(?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;第一周(1.6-1.12)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 考几倍的期末&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成CS61B全部内容的笔记（并没有完成，反而是去学CS70了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;第二周(1.13-1.19)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 考几倍的期末&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成CS61B全部内容的笔记&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 二刷CS61B software engineering内容后开始gitlet&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS70每周三课&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18.06进行开课准备&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成Lab8&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS70完成 两课左右，算三分之二吧&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18.06在考虑要不留着开学上&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总结：这周还是在家导致有点浑浑噩噩，一天就是玩手机。大头基本上都是在学校完成的，在家就写了个lab8。下周看能不能改变一下这种状态，提升效率。如果不行暑假看能不能留校。&lt;/p&gt;
+&lt;p&gt;第三周(1.20-1.26)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成CS61B Project2&amp;amp;3 结课&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 开始CS:APP，15-213学习&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS70每周三课&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;正式开学了，虽然校内课程还蛮多的，但是定下的2月完成csapp有点不现实，尽量利用课堂课余时间完成lab。&lt;/p&gt;
+&lt;p&gt;第八周(2.24-3.2)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 每周3-4节lecture，最少一个lab&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 视情况学习CS70和18.06&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;3-4个lecture基本上是超量完成，加上笔记，慢慢地开始汇编入门了，但是lab  2基本上只差了一个左右的阶段，也就是六分之一，基本上算是完成了。数学真的有点没有时间学，因为这周完全是忙的要死，除了课内基本上就是学csapp。&lt;/p&gt;
+&lt;p&gt;总结：对开学这一段时间还是相当满意的。学习时间基本上已经极尽了，手机使用时间也控制在一个相对满意的四小时水平（起码比暑寒假好多了），希望有朝一日可以控制到三个小时甚至两个小时。这周进度慢是因为刚进汇编，花了大量时间在理解汇编语言上，必须说汇编和其他高级语言真的判若霄壤，理解难度高了很多。这周也是从不懂汇编到刚刚入门，所以还算满意。不知道这种状态能维持到什么时候，还是希望能多维持一会吧。后面有点想学6.081OS了，学完15-213后想想学习顺序吧。&lt;/p&gt;
+&lt;p&gt;第九周(3.3-3.9)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 接着3-4lecture，争取完成1-2个lab(当然感觉不是很现实)&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18/06&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>CSAPP Note</title>
         <link>https://Timlin15.github.io/p/csapp-note/</link>
         <pubDate>Tue, 25 Feb 2025 22:51:30 +0800</pubDate>
@@ -2658,74 +2748,6 @@ $$&lt;p&gt;
 &lt;p&gt;这个很重要，对于顺序执行来说，不会有任何问题，但是对于条件分支来说，在跳转指令时可能会改变程序的走向，也就是说，之前载入的指令可能是无效的。这个时候就只能清空流水线，然后重新进行载入。为了减少清空流水线所带来的性能损失，处理器内部会采用称为『分支预测』的技术。&lt;/p&gt;
 &lt;p&gt;比方说在一个循环中，根据预测，可能除了最后一次跳出循环的时候会判断错误之外，其他都是没有问题的。这就可以接受，但是如果处理器不停判断错误的话（比方说代码逻辑写得很奇怪），性能就会得到极大的拖累。&lt;/p&gt;
 &lt;p&gt;分支问题有些时候会成为最主要的影响性能的因素，但有的时候其实很难避免。&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>2025年大致规划和周记</title>
-        <link>https://Timlin15.github.io/p/2025%E5%B9%B4%E5%A4%A7%E8%87%B4%E8%A7%84%E5%88%92%E5%92%8C%E5%91%A8%E8%AE%B0/</link>
-        <pubDate>Mon, 20 Jan 2025 00:50:35 +0800</pubDate>
-        
-        <guid>https://Timlin15.github.io/p/2025%E5%B9%B4%E5%A4%A7%E8%87%B4%E8%A7%84%E5%88%92%E5%92%8C%E5%91%A8%E8%AE%B0/</guid>
-        <description>&lt;h1 id=&#34;2025年大致规划&#34;&gt;2025年大致规划
-&lt;/h1&gt;&lt;h2 id=&#34;1-2月&#34;&gt;1-2月
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 期末考试&lt;/li&gt;
-&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS61B&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CSAPP&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS70&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;3-4月&#34;&gt;3-4月
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS189&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS170&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18.06&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;5月&#34;&gt;5月
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完善上述课程&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 申请进组，查看还需什么准备&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;6-8月&#34;&gt;6-8月
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 期末考试&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 计算机视觉&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 计算机网络(?)CS168&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; OS(?)&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 编译原理(?)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;第一周(1.6-1.12)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 考几倍的期末&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成CS61B全部内容的笔记（并没有完成，反而是去学CS70了&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;第二周(1.13-1.19)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 考几倍的期末&lt;/li&gt;
-&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成CS61B全部内容的笔记&lt;/li&gt;
-&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 二刷CS61B software engineering内容后开始gitlet&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS70每周三课&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18.06进行开课准备&lt;/li&gt;
-&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成Lab8&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS70完成 两课左右，算三分之二吧&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18.06在考虑要不留着开学上&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;总结：这周还是在家导致有点浑浑噩噩，一天就是玩手机。大头基本上都是在学校完成的，在家就写了个lab8。下周看能不能改变一下这种状态，提升效率。如果不行暑假看能不能留校。&lt;/p&gt;
-&lt;p&gt;第三周(1.20-1.26)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成CS61B Project2&amp;amp;3 结课&lt;/li&gt;
-&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 开始CS:APP，15-213学习&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS70每周三课&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;正式开学了，虽然校内课程还蛮多的，但是定下的2月完成csapp有点不现实，尽量利用课堂课余时间完成lab。&lt;/p&gt;
-&lt;p&gt;第八周(2.24-3.2)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 每周3-4节lecture，最少一个lab&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 视情况学习CS70和18.06&lt;/li&gt;
-&lt;/ul&gt;
 </description>
         </item>
         <item>
