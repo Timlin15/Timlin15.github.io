@@ -87,7 +87,14 @@
 &lt;hr&gt;
 &lt;p&gt;这周状态不如上周，但是还是勉勉强强完成了attack lab，可能是因为attack lab体量较bomb lab较小吧，但是18.06由于有同学来校打乱计划表并未完成。按照这个速度，应该能在3月份完成csapp的学习，之后考虑开始6.S081或者CS170的学习，目前还在犹豫。争取周中完成18.06的学习吧&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 接着3-4lecture，争取完成1-2个lab&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 接着3-4lecture，争取完成1-2个lab&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18.06&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;18.06直接线代课上看了，反正老师上的也是汉化课。其他照旧，感觉速度很难再提上去了，目前学到异常流控制，每周五课是能上完，但是还有三个lab，两周够呛，而且还有英语pre。总之试试吧，希望能在三月完结。四月开6.S081，学OS。&lt;/p&gt;
+&lt;p&gt;第十一周(3.17-3.23)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 接着5个lecture，争取完成1-2个lab&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18.06&lt;/li&gt;
 &lt;/ul&gt;
 </description>

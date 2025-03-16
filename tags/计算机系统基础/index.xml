@@ -13,20 +13,20 @@
         <pubDate>Tue, 25 Feb 2025 22:51:30 +0800</pubDate>
         
         <guid>https://Timlin15.github.io/p/csapp-note/</guid>
-        <description>&lt;p&gt;Note of Computer System: a Programmer&amp;rsquo;s perspective.&lt;/p&gt;
-&lt;blockquote&gt;
+        <description>&lt;h1 id=&#34;note-of-computer-system-a-programmers-perspective&#34;&gt;Note of Computer System: a Programmer&amp;rsquo;s perspective.
+&lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;[!NOTE]&lt;/p&gt;
-&lt;p&gt;这个笔记是由2015年CMU15-213课程内容slides和网上相关笔记总结而成，目的是在整合各路笔记中巩固自己的知识。主要是消化为主，所以个人产出较少，由于参考了多方资料会出现中英混杂情况。&lt;/p&gt;
+&lt;p&gt;这个笔记是由2015年CMU15-213课程内容slides和网上相关笔记总结而成，目的是在整合各路笔记中巩固自己的知识。主要是消化为主，所以个人产出较少，由于参考了多方资料会出现中英混杂情况。由于课程slide不好整合成md格式，而小土刀的笔记又正好是slide的汉化，所以会以其博客为基底补充。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;主要资料：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;lecture: &lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1iW411d7hd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;2015年课程视频&lt;/a&gt;, &lt;a class=&#34;link&#34; href=&#34;https://learncs.me/cmu/15213&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;2017年课程视频&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;slide&amp;amp;lab: &lt;a class=&#34;link&#34; href=&#34;https://www.cs.cmu.edu/afs/cs/academic/class/15213-f15/www/schedule.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;2015年官网&lt;/a&gt;&lt;/li&gt;
+    &gt;2015年课程视频&lt;/a&gt;, [2017年课程视频](&lt;a class=&#34;link&#34; href=&#34;https://learncs.me/cmu/15213&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;15-213 Introduction to Computer Systems | Learn CS&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;slide&amp;amp;lab: [2015年官网](&lt;a class=&#34;link&#34; href=&#34;https://www.cs.cmu.edu/afs/cs/academic/class/15213-f15/www/schedule.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;15-213: Introduction to Computer Systems / Schedule Fall 2015&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;note: &lt;a class=&#34;link&#34; href=&#34;https://wdxtub.com/work/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;课程笔记&lt;/a&gt;，&lt;a class=&#34;link&#34; href=&#34;https://arthals.ink/blog/data-lab&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;小土刀笔记&lt;/a&gt;，&lt;a class=&#34;link&#34; href=&#34;https://arthals.ink/blog/data-lab&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;lab笔记&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
@@ -155,7 +155,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/20250224160408.png&#34; style=&#34;zoom:33%;&#34; /&gt;
+  &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/20250224160408.png&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;representation-unsigned-and-signed&#34;&gt;&lt;strong&gt;Representation: unsigned and signed&lt;/strong&gt;
@@ -804,7 +804,7 @@ $$&lt;p&gt;
 &lt;ul&gt;
 &lt;li&gt;x86-64 架构提供了额外的 8 个 64 位通用寄存器（%r8 到 %r15），用于处理更多的参数传递、临时数据存储等任务。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250225185959355.png&#34; alt=&#34;image-20250225185959355&#34; style=&#34;zoom:33%;&#34; /&gt;
+  &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250225185959355.png&#34; alt=&#34;image-20250225185959355&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;而 %rsp(%esp) 和 %rbp(%ebp) 则是作为栈指针和基指针来使用的。下面我们通过 &lt;code&gt;movq&lt;/code&gt; 这个指令来了解操作数的三种基本类型：立即数(Imm,e.g.$0x4)、寄存器值(Reg)和内存值(Mem)。&lt;/p&gt;
@@ -840,11 +840,8 @@ $$&lt;p&gt;
 &lt;li&gt;&lt;code&gt;0x8(%rdx)&lt;/code&gt; = &lt;code&gt;0xf000&lt;/code&gt; + &lt;code&gt;0x8&lt;/code&gt; = &lt;code&gt;0xf008&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;(%rdx, %rcx)&lt;/code&gt; = &lt;code&gt;0xf000&lt;/code&gt; + &lt;code&gt;0x100&lt;/code&gt; = &lt;code&gt;0xf100&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;(%rdx, %rcx, 4)&lt;/code&gt; = &lt;code&gt;0xf000&lt;/code&gt; + &lt;code&gt;4*0x100&lt;/code&gt; = &lt;code&gt;0xf400&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;0x80(, %rdx, 2)&lt;/code&gt; = &lt;code&gt;2*0xf000&lt;/code&gt; + &lt;code&gt;0x80&lt;/code&gt; = &lt;code&gt;0x1e080&lt;/code&gt;
-&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;0x80(, %rdx, 2)&lt;/code&gt; = &lt;code&gt;2*0xf000&lt;/code&gt; + &lt;code&gt;0x80&lt;/code&gt; = &lt;code&gt;0x1e080&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;(, %edx, 2)&lt;/code&gt; = &lt;code&gt;(0, %rdx, 2)&lt;/code&gt; = &lt;code&gt;0 + 2*0xf000&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;了解了寻址之后，我们来看看运算指令，这里以 &lt;code&gt;leaq&lt;/code&gt; 指令为例子。具体格式为 &lt;code&gt;leaq Src, Dst&lt;/code&gt;，其中 &lt;code&gt;Src&lt;/code&gt; 是地址的表达式，然后把计算的值存入 &lt;code&gt;Dst&lt;/code&gt; 指定的寄存器，也就是说，因为&lt;code&gt;leaq&lt;/code&gt;只计算内存地址并不访问它，所以&lt;code&gt;leaq&lt;/code&gt;可以将普通数字当作内存计算，类似于 &lt;code&gt;p = &amp;amp;x[i];&lt;/code&gt;，也可以计算&lt;code&gt;x + k*y&lt;/code&gt;的代数形式。我们来看一个具体的例子，假设一个 C 函数是：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -973,7 +970,7 @@ $$&lt;p&gt;
 &lt;li&gt;目前测试的状态放在 CF, ZF, SF, OF 中&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;条件代码condition-codes&#34;&gt;条件代码(&lt;strong&gt;Condition codes&lt;/strong&gt;)
-&lt;/h4&gt;&lt;p&gt;最后的四个标识位（CF, ZF, SF, OF）就是用来辅助程序的流程控制的，他们基于最近的算术或逻辑操作结果she&amp;rsquo;zhi意思是：&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;最后的四个标识位（CF, ZF, SF, OF）就是用来辅助程序的流程控制的，他们基于最近的算术或逻辑操作结果意思是：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;CF: Carry Flag (针对无符号数)&lt;/li&gt;
 &lt;li&gt;ZF: Zero Flag&lt;/li&gt;
@@ -1768,7 +1765,148 @@ $$&lt;p&gt;
      &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250225210520628.png&#34; alt=&#34;image-20250225210520628&#34; style=&#34;zoom:33%;&#34;/&gt;
      &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14611733132821.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;/div&gt;
-&lt;p&gt;有了前面的的基础，要理解递归就简单很多了，直接上例子&lt;/p&gt;
+&lt;h4 id=&#34;caller-callee-register-used-for-tempoary-storage&#34;&gt;&lt;strong&gt;Caller-Callee: Register used for tempoary storage&lt;/strong&gt;
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yoo:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	• • •
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    movq $15213, %rdx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    call who
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    addq %rdx, %rax
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	• • •
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ret
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;who:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	• • •
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	subq $18213, %rdx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	• • •
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ret
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;yoo&lt;/code&gt; is the caller, &lt;code&gt;who&lt;/code&gt; is the callee&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Contents of register &lt;code&gt;%rdx&lt;/code&gt; overwritten by &lt;code&gt;who&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;“Caller Saved”
+&lt;ul&gt;
+&lt;li&gt;Caller saves temporary values in its frame before the call&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Caller-saved registers&lt;/strong&gt; are used to hold temporary quantities that need not be preserved across calls.&lt;/li&gt;
+&lt;li&gt;It is the caller&amp;rsquo;s responsibility to push these registers onto the stack or copy them somewhere else &lt;em&gt;if&lt;/em&gt; it wants to restore this value after a procedure call.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;“Callee Saved”
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Callee-saved registers&lt;/strong&gt; are used to hold long-lived values that should be preserved across calls.&lt;/li&gt;
+&lt;li&gt;Callee restores them before returning to caller&lt;/li&gt;
+&lt;li&gt;When the caller makes a procedure call, it can expect that those registers will hold the same value after the callee returns, making it the responsibility of the callee to save them and restore them before returning to the caller. Or to not touch them.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Wrapping up, If the caller wants to ensure that a value in a caller-saved register is preserved across a function call, it can either push it to the stack or save the value in the callee register.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To be specific.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250226163037717.png&#34; alt=&#34;image-20250226163037717&#34; style=&#34;zoom:33%;&#34; /&gt;
+    &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250226163621034.png&#34; alt=&#34;image-20250226163621034&#34; style=&#34;zoom:33%;&#34;/&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;%rax&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Return value&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Also caller-saved&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Can be modified by procedure&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;%rdi, &amp;hellip;, %r9&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Arguments&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Also caller-saved&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Can be modified by procedure&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;%r10, r11&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Caller-saved&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Can be modified by procedure&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;%rbx, %r12, %r13, %r14&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Callee-saved&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Callee must save &amp;amp; restore&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;%rbp&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Callee-saved&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Callee must save &amp;amp; restore&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;May be used as frame pointer&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Can mix &amp;amp; match&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;%rsp&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Special form of callee save&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Restored to original value upon exit from procedure&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;递归illustration-of-recursion&#34;&gt;递归(&lt;strong&gt;Illustration of Recursion&lt;/strong&gt;)
+&lt;/h4&gt;&lt;p&gt;有了前面的的基础，要理解递归就简单很多了，直接上例子&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1821,8 +1959,9 @@ $$&lt;p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;实际执行的过程中，会不停进行压栈，直到最后返回，所以递归本身就是一个隐式的栈实现，但是系统一般对于栈的深度有限制（每次一都需要保存当前栈帧的各种数据），所以一般来说会把递归转换成显式栈来进行处理以防溢出。&lt;/p&gt;
-&lt;h2 id=&#34;数据存储&#34;&gt;数据存储
-&lt;/h2&gt;&lt;p&gt;上一节我们了解了过程调用是如何用机器代码实现的，这一节我们来看看基本的数据是如何存储在计算机中。&lt;/p&gt;
+&lt;p&gt;寄存器保存策略也保证了不同过程不会影响相互的数据。递归调用函数本身和调用其他函数没有本质区别。&lt;/p&gt;
+&lt;h3 id=&#34;数据存储data&#34;&gt;数据存储(Data)
+&lt;/h3&gt;&lt;p&gt;上一节我们了解了过程调用是如何用机器代码实现的，这一节我们来看看基本的数据是如何存储在计算机中。&lt;/p&gt;
 &lt;p&gt;第一讲中我们已经学到，不同的数据类型所需要的字节数是不同的，我们先来回顾一下这个表格：&lt;/p&gt;
 &lt;table&gt;
   &lt;thead&gt;
@@ -1885,7 +2024,7 @@ $$&lt;p&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;我们举几个具体的例子就一目了然了：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14611748992035.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14611748992035.jpg&#34;
 	
 	
 	
@@ -1942,9 +2081,52 @@ $$&lt;p&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id=&#34;多维数组&#34;&gt;多维数组
-&lt;/h3&gt;&lt;p&gt;对于多维的数组，基本形式是 &lt;code&gt;T A[R][C]&lt;/code&gt;，R 是行，C 是列，如果类型 T 占 K 个字节的话，那么数组所需要的内存是 &lt;code&gt;R*C*K&lt;/code&gt; 字节。具体在内存里的排列方式如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14611757048510.jpg&#34;
+&lt;p&gt;Array Loop Example&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C&#34; data-lang=&#34;C&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;zincr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;zip_dig&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kt&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ZLEN&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  # %rdi = z
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  movl    $0, %eax          #   i = 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  jmp     .L3               #   goto middle
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.L4:                        # loop:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  addl    $1, (%rdi,%rax,4) #   z[i]++
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  addq    $1, %rax          #   i++
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.L3:                        # middle
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  cmpq    $4, %rax          #   i:4
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  jbe     .L4               #   if &amp;lt;=, goto loop
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  rep; ret
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;多维数组multidimensional-nested-arrays&#34;&gt;多维数组(&lt;strong&gt;Multidimensional (Nested) Arrays&lt;/strong&gt;)
+&lt;/h4&gt;&lt;p&gt;对于多维的数组，基本形式是 &lt;code&gt;T A[R][C]&lt;/code&gt;，R 是行，C 是列，如果类型 T 占 K 个字节的话，那么数组所需要的内存是 &lt;code&gt;R*C*K&lt;/code&gt; 字节。具体在内存里的排列方式如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14611757048510.jpg&#34;
 	
 	
 	
@@ -1969,8 +2151,7 @@ $$&lt;p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;复制&lt;/p&gt;
-&lt;p&gt;对应的汇编代码为，这里假设 C = 5&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;对应的汇编代码为，这里假设 C = 5&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1983,10 +2164,22 @@ $$&lt;p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;movl    A(, %rsi, 4), %eax      # M[A + 4*(5*index+dig)]
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;复制&lt;/p&gt;
-&lt;p&gt;还有另外一种组合数组的方式，不是连续分配，而是存储每个数组的起始地址。与之前连续分配唯一不同之处在于计算元素位置时候不同行对应不连续的起始地址（可能分散在内存的不同部分）。这两种方式在 C 语言中看起来差不多，但对应的汇编代码则完全不同。&lt;/p&gt;
-&lt;h3 id=&#34;结构体&#34;&gt;结构体
-&lt;/h3&gt;&lt;p&gt;结构体是 C 语言中非常常用的一种机制，具体在内存中是如何存放的呢？我们通过具体的例子来进行学习。比如我们有这样一个结构体：&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;还有另外一种组合数组的方式，不是连续分配，而是存储每个数组的起始地址。与之前连续分配唯一不同之处在于计算元素位置时候不同行对应不连续的起始地址（可能分散在内存的不同部分）。这两种方式在 C 语言中看起来差不多，但对应的汇编代码则完全不同。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Array Elements&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;A[i][j]&lt;/strong&gt; is element of type &lt;em&gt;T,&lt;/em&gt; which requires &lt;em&gt;K&lt;/em&gt; bytes, long C a row.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Address &lt;strong&gt;A +&lt;/strong&gt; &lt;em&gt;i&lt;/em&gt; * (&lt;em&gt;C&lt;/em&gt; * &lt;em&gt;K&lt;/em&gt;) + &lt;em&gt;j&lt;/em&gt; * &lt;em&gt;K =&lt;/em&gt; &lt;em&gt;A +&lt;/em&gt; (&lt;em&gt;i * C + j&lt;/em&gt;)** K*&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;结构体structures&#34;&gt;结构体(Structures)
+&lt;/h4&gt;&lt;p&gt;结构体是 C 语言中非常常用的一种机制，具体在内存中是如何存放的呢？我们通过具体的例子来进行学习。比如我们有这样一个结构体：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -2005,9 +2198,8 @@ $$&lt;p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;复制&lt;/p&gt;
-&lt;p&gt;那么在内存中的排列是&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14611816137150.jpg&#34;
+&lt;/div&gt;&lt;p&gt;那么在内存中的排列是&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14611816137150.jpg&#34;
 	
 	
 	
@@ -2036,9 +2228,8 @@ $$&lt;p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;复制&lt;/p&gt;
-&lt;p&gt;因为需要对齐的缘故，所以具体的排列是这样的：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14611821730508.jpg&#34;
+&lt;/div&gt;&lt;p&gt;因为需要对齐的缘故，所以具体的排列是这样的：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14611821730508.jpg&#34;
 	
 	
 	
@@ -2048,8 +2239,7 @@ $$&lt;p&gt;
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;具体对齐的原则是，如果数据类型需要 K 个字节，那么地址都必须是 K 的倍数，比方说这里 int 数组 i 需要是 4 的倍数，而 v 则需要是 8 的倍数。&lt;/p&gt;
-&lt;p&gt;感谢网友『光河』的补充：文中讲“具体对齐的原则是，如果数据类型需要 K 个字节，那么地址都必须是 K 的倍数”——这只是windows的原则，而Linux中的对齐策略是“2字节数据类型的地址必须为2的倍数，较大的数据类型（int,double,float）的地址必须是4的倍数”&lt;/p&gt;
+&lt;p&gt;具体对齐的原则是，对于结构体前部的数据，只需要与下一个类型对齐，及在下一个数据字节数的倍数处写入数据。而对于最后一个数据，只需要保证结构体全长是结构体中最大的数据类型的字节数的倍数即可。&lt;/p&gt;
 &lt;p&gt;为什么要这样呢，因为内存访问通常来说是 4 或者 8 个字节位单位的，不对齐的话访问起来效率不高。具体来看的话，是这样：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;1 字节：char, …
@@ -2095,8 +2285,7 @@ $$&lt;p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;复制&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14611824112595.jpg&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14611824112595.jpg&#34;
 	
 	
 	
@@ -2135,8 +2324,7 @@ $$&lt;p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;复制&lt;/p&gt;
-&lt;p&gt;对应的排列是：&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;对应的排列是：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14611827570059.jpg&#34;
 	
 	
@@ -2148,18 +2336,10 @@ $$&lt;p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;这样我们就通过不同的排列，节约了 4 个字节空间，如果这个结构体要被复制很多次，这也是很可观的内存优化。&lt;/p&gt;
-&lt;h2 id=&#34;缓冲区溢出&#34;&gt;缓冲区溢出
-&lt;/h2&gt;&lt;p&gt;这一节是机器代码的最后一部分，主要说说由缓冲区溢出引起的攻防大战。我们先来看看程序在内存中是如何组织的（x86-64 Linux）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14611833392466.jpg&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;img&#34;
-	
-	
-&gt;&lt;/p&gt;
+&lt;h3 id=&#34;advanced-topics&#34;&gt;&lt;strong&gt;Advanced Topics&lt;/strong&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;内存分布缓冲区溢出memory-layoutbuffer-overflow&#34;&gt;内存分布&amp;amp;缓冲区溢出(Memory Layout&amp;amp;Buffer Overflow)
+&lt;/h4&gt;&lt;p&gt;这一节是机器代码的最后一部分，主要说说由缓冲区溢出引起的攻防大战。我们先来看看程序在内存中是如何组织的（x86-64 Linux）&lt;/p&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250226171704107.png&#34; alt=&#34;image-20250226171704107&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;p&gt;最上面是运行时栈，有 8MB 的大小限制，一般用来保存局部变量。然后是堆，动态的内存分配会在这里处理，例如 &lt;code&gt;malloc()&lt;/code&gt;, &lt;code&gt;calloc()&lt;/code&gt;, &lt;code&gt;new()&lt;/code&gt; 等。然后是数据，指的是静态分配的数据，比如说全局变量，静态变量，常量字符串。最后是共享库等可执行的机器指令，这一部分是只读的。&lt;/p&gt;
 &lt;p&gt;可以见到，栈在最上面，也就是说，栈再往上就是另一个程序的内存范围了，这种时候我们就可以通过这种方式修改内存的其他部分了。&lt;/p&gt;
 &lt;p&gt;举个例子&lt;/p&gt;
@@ -2323,52 +2503,183 @@ $$&lt;p&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;我们看 &lt;code&gt;4006cf&lt;/code&gt; 这一行，可以发现实际上给 %rsp 分配了 0x18 的空间，所以可以容纳不止 4 个 char。&lt;/p&gt;
 &lt;p&gt;在调用 &lt;code&gt;gets&lt;/code&gt; 函数之前（第 &lt;code&gt;4006d6&lt;/code&gt; 行），内存中栈帧示意图为：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14611853013958.jpg&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;img&#34;
-	
-	
-&gt;&lt;/p&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14611853013958.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;p&gt;结合上面代码可以看到，&lt;code&gt;call_echo&lt;/code&gt; 栈帧中保存着调用之前执行指令的地址 &lt;code&gt;4006f6&lt;/code&gt;，用于返回之后继续执行。我们输入字符串 &lt;code&gt;01234567890123456789012&lt;/code&gt; 之后，栈帧中缓冲区被填充，如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14611855170102.jpg&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;img&#34;
-	
-	
-&gt;&lt;/p&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14611855170102.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;p&gt;虽然缓冲区溢出了，但是并没有损害当前的状态，程序还是可以继续运行（也就是没有出现段错误），但是如果再多一点的话，也就是输入 &lt;code&gt;0123456789012345678901234&lt;/code&gt;，内存中的情况是这样的：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14611856222781.jpg&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;img&#34;
-	
-	
-&gt;&lt;/p&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14611856222781.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:33%;&#34; /&gt;
 &lt;p&gt;就把返回地址给覆盖掉了，当 &lt;code&gt;echo&lt;/code&gt; 执行完成要回到 &lt;code&gt;call_echo&lt;/code&gt; 函数时，就跳转到 &lt;code&gt;0x400034&lt;/code&gt; 这个内容未知的地址中了。也就是说，通过缓冲区溢出，我们可以在程序返回时跳转到任何我们想要跳转到的地方！攻击者可以利用这种方式来执行恶意代码！&lt;/p&gt;
 &lt;p&gt;那么我们现在来看看，怎么处理缓冲区溢出攻击，有几种方式：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;好好写代码，尽量不让缓冲区异常&lt;/li&gt;
-&lt;li&gt;程序容易出问题，那么提供系统层级的保护&lt;/li&gt;
-&lt;li&gt;编译器也可以来个认证(stack canaries)&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;第一种，避免缓冲区溢出，我们用更安全的方法，如：&lt;code&gt;fgets&lt;/code&gt;, &lt;code&gt;strncpy&lt;/code&gt; 等等。&lt;/p&gt;
-&lt;p&gt;第二种，栈的位置不确定，让缓冲区溢出没办法影响到，并且每次位置都不一样，就不怕被暴力破解。并且也可以把一段内存标记为只读，那么就避免因为缓冲区溢出而导致的重写。&lt;/p&gt;
-&lt;p&gt;第三种，使用认证机制(Stack Canaries)。简单来说，就是在超出缓冲区的位置加一个特殊的值，如果发现这个值变化了，那么就知道出问题了。&lt;/p&gt;
-&lt;p&gt;但是，除了缓冲区溢出，还有另一种攻击的方式，称为返回导向编程[4]。可以利用修改已有的代码，来绕过系统和编译器的保护机制，攻击者控制堆栈调用以劫持程序控制流并执行针对性的机器语言指令序列（称为Gadgets）。每一段 gadget 通常结束于 return 指令，并位于共享库代码中的子程序。系列调用这些代码，攻击者可以在拥有更简单攻击防范的程序内执行任意操作。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C&#34; data-lang=&#34;C&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/* Echo Line */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;echo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;  &lt;span class=&#34;cm&#34;&gt;/* Way too small! */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;fgets&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;buf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;stdin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;puts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;buf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;fgets&lt;/strong&gt; instead of &lt;strong&gt;gets&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;strncpy&lt;/strong&gt; instead of &lt;strong&gt;strcpy&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Don’t use &lt;strong&gt;scanf&lt;/strong&gt; with &lt;strong&gt;%s&lt;/strong&gt; conversion specification&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Use &lt;strong&gt;fgets&lt;/strong&gt; to read the string&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Or use &lt;strong&gt;%ns&lt;/strong&gt; where &lt;strong&gt;n&lt;/strong&gt; is a suitable integer&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;程序容易出问题，那么提供系统层级的保护&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;In traditional x86, can mark region of memory as either “read-only” or “writeable”&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Can execute anything readable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;X86-64 added explicit “execute” permission&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Stack marked as non-executable&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编译器也可以来个认证(stack canaries)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;echo: # Setting up canary
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	. . .
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	movq	%fs:40, %rax  # Get canary
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	movq	%rax, 8(%rsp) # Place on stack
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	xorl	%eax, %eax    # Erase canary
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	. . .
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;echo: # Checking canary
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	. . .
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	movq	8(%rsp), %rax     # Retrieve from stack
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	xorq	%fs:40, %rax      # Compare to canary
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	je	.L6               # If same, OK
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	call	__stack_chk_fail  # FAIL
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;但是，除了缓冲区溢出，还有另一种攻击的方式，称为返回导向编程。可以利用修改已有的代码，来绕过系统和编译器的保护机制，攻击者控制堆栈调用以劫持程序控制流并执行针对性的机器语言指令序列（称为Gadgets）。每一段 gadget 通常结束于 return 指令，并位于共享库代码中的子程序。系列调用这些代码，攻击者可以在拥有更简单攻击防范的程序内执行任意操作。&lt;/p&gt;
 &lt;p&gt;具体利用缓冲区进行攻击的例子，会在&lt;a class=&#34;link&#34; href=&#34;https://wdxtub.com/csapp/thin-csapp-2/2016/04/16/2016/04/16/thick-csapp-lab-3/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;【读厚 CSAPP】III Attack Lab&lt;/a&gt; 中进行讲解，这里不再赘述。&lt;/p&gt;
-&lt;h2 id=&#34;程序优化&#34;&gt;程序优化
+&lt;h4 id=&#34;gdb-from-csapp-310&#34;&gt;GDB from CSAPP 3.10
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;run &lt;code&gt;OBJDUMP&lt;/code&gt; to get a disassembled version of the programme&lt;/li&gt;
+&lt;li&gt;set breakpoints near points of interest in the programme.&lt;/li&gt;
+&lt;li&gt;if breakpoint is hit, the programme will halt and return control control to th euser. From breakpoint, we can examine different registers and memory locations in various formats. We can also single-step the programme, running just a few instructions a time, or we can proceed to the next breakpoint.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250226202959221.png&#34; alt=&#34;image-20250226202959221&#34; style=&#34;zoom:80%;&#34; /&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;p $rax  # 打印寄存器 rax 的值
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;p $rsp  # 打印栈指针的值
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;p/x $rsp  # 打印栈指针的值，以十六进制显示
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;p/d $rsp  # 打印栈指针的值，以十进制显示
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x/2x $rsp  # 以十六进制格式查看栈指针 %rsp 指向的内存位置 M[%rsp] 开始的两个单位。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x/2d $rsp # 以十进制格式查看栈指针 %rsp 指向的内存位置 M[%rsp] 开始的两个单位。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x/2c $rsp # 以字符格式查看栈指针 %rsp 指向的内存位置 M[%rsp] 开始的两个单位。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x/s $rsp # 把栈指针指向的内存位置 M[%rsp] 当作 C 风格字符串来查看。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x/b $rsp # 检查栈指针指向的内存位置 M[%rsp] 开始的 1 字节。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x/h $rsp # 检查栈指针指向的内存位置 M[%rsp] 开始的 2 字节（半字）。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x/w $rsp # 检查栈指针指向的内存位置 M[%rsp] 开始的 4 字节（字）。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x/g $rsp # 检查栈指针指向的内存位置 M[%rsp] 开始的 8 字节（双字）。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;info registers  # 打印所有寄存器的值
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;info breakpoints  # 打印所有断点的信息
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;delete breakpoints 1  # 删除第一个断点，可以简写为 d 1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这些命令在 &lt;code&gt;/&lt;/code&gt; 后面的后缀（如 &lt;code&gt;2x&lt;/code&gt;、&lt;code&gt;2d&lt;/code&gt;、&lt;code&gt;s&lt;/code&gt;、&lt;code&gt;g&lt;/code&gt;、&lt;code&gt;20c&lt;/code&gt;）指定了查看内存的方式和数量。具体来说：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;第一个数字（如 &lt;code&gt;2&lt;/code&gt;、&lt;code&gt;20&lt;/code&gt;）指定要查看的单位数量。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;第二个字母（如 &lt;code&gt;x&lt;/code&gt;、&lt;code&gt;d&lt;/code&gt;、&lt;code&gt;s&lt;/code&gt;、&lt;code&gt;g&lt;/code&gt;、&lt;code&gt;c&lt;/code&gt;）指定单位类型和显示格式，其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;c&lt;/code&gt; / &lt;code&gt;d&lt;/code&gt; / &lt;code&gt;x&lt;/code&gt; 分别代表以字符 / 十进制 / 十六进制格式显示内存内容。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;s&lt;/code&gt; 代表以字符串格式显示内存内容。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;b&lt;/code&gt; / &lt;code&gt;h&lt;/code&gt; / &lt;code&gt;w&lt;/code&gt; / &lt;code&gt;g&lt;/code&gt; 分别代表以 1 / 2 / 4 / 8 字节为单位（&lt;code&gt;unit&lt;/code&gt;）显示内存内容。&lt;/p&gt;
+&lt;p&gt;当使用 &lt;code&gt;x/b&lt;/code&gt;、&lt;code&gt;x/h&lt;/code&gt;、&lt;code&gt;x/w&lt;/code&gt;、&lt;code&gt;x/g&lt;/code&gt; 时，&lt;code&gt;unit&lt;/code&gt; 会保留对应改变，直到你再次使用这些命令。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4程序优化code-optimization&#34;&gt;4.程序优化(Code Optimization)
 &lt;/h2&gt;&lt;p&gt;前面了解了许多机器代码以及程序执行机制的相关知识，这一节我们来学习如何利用这些性质来优化代码。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;用好编译器的不同参数设定&lt;/li&gt;
@@ -2406,8 +2717,7 @@ $$&lt;p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;复制&lt;/p&gt;
-&lt;p&gt;这里 &lt;code&gt;n*i&lt;/code&gt; 是重复被计算的，可以放到循环外面&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;这里 &lt;code&gt;n*i&lt;/code&gt; 是重复被计算的，可以放到循环外面&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -2424,8 +2734,7 @@ $$&lt;p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;复制&lt;/p&gt;
-&lt;h3 id=&#34;减少计算强度&#34;&gt;减少计算强度
+&lt;/div&gt;&lt;h3 id=&#34;减少计算强度&#34;&gt;减少计算强度
 &lt;/h3&gt;&lt;p&gt;用更简单的表达式来完成用时较久的操作，例如 &lt;code&gt;16*x&lt;/code&gt; 就可以用 &lt;code&gt;x &amp;lt;&amp;lt; 4&lt;/code&gt; 代替，一个比较明显的例子是，可以把乘积转化位一系列的加法，如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2443,8 +2752,7 @@ $$&lt;p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;复制&lt;/p&gt;
-&lt;p&gt;可以把 &lt;code&gt;n*i&lt;/code&gt; 用加法代替，比如：&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;可以把 &lt;code&gt;n*i&lt;/code&gt; 用加法代替，比如：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -2658,6 +2966,1255 @@ $$&lt;p&gt;
 &lt;p&gt;这个很重要，对于顺序执行来说，不会有任何问题，但是对于条件分支来说，在跳转指令时可能会改变程序的走向，也就是说，之前载入的指令可能是无效的。这个时候就只能清空流水线，然后重新进行载入。为了减少清空流水线所带来的性能损失，处理器内部会采用称为『分支预测』的技术。&lt;/p&gt;
 &lt;p&gt;比方说在一个循环中，根据预测，可能除了最后一次跳出循环的时候会判断错误之外，其他都是没有问题的。这就可以接受，但是如果处理器不停判断错误的话（比方说代码逻辑写得很奇怪），性能就会得到极大的拖累。&lt;/p&gt;
 &lt;p&gt;分支问题有些时候会成为最主要的影响性能的因素，但有的时候其实很难避免。&lt;/p&gt;
+&lt;h2 id=&#34;5the-memory-hierarchycache-memories&#34;&gt;5.The Memory Hierarchy&amp;amp;Cache Memories
+&lt;/h2&gt;&lt;p&gt;The Memory Hierarchy see &lt;a class=&#34;link&#34; href=&#34;https://wdxtub.com/csapp/thin-csapp-3/2016/04/16/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;【读薄 CSAPP】叁 内存与缓存 | 小土刀 3.0&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;cache-memory&#34;&gt;Cache Memory
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Cold (compulsory) miss&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cold misses occur because the cache is empty.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Conflict miss&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Most caches limit blocks at level k+1 to a small subset (sometimes a singleton) of the block positions at level k.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;E.g. Block i at level k+1 must be placed in block (i mod 4) at level k.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Conflict misses occur when the level k cache is large enough, but multiple data objects all map to the same level k block.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;E.g. Referencing blocks 0, 8, 0, 8, 0, 8, &amp;hellip; would miss every time.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Capacity miss&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Occurs when the set of active cache blocks (working set) is larger than the cache.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;高速缓存存储器(Cache Memory)是 CPU 缓存系统甚至是金字塔式存储体系中最有代表性的缓存机制，前面我们了解了许多概念，这一节我们具体来看看高速缓存存储器是如何工作的。&lt;/p&gt;
+&lt;p&gt;首先要知道的是，高速缓存存储器是由硬件自动管理的 SRAM 内存，CPU 会首先从这里找数据，其所处的位置如下（蓝色部分）：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14612615839808.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后我们需要关注高速缓冲存储器的三个关键组成部分（注意区分大小写）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;S 表示集合(set)数量&lt;/li&gt;
+&lt;li&gt;E 表示数据行(line)的数量&lt;/li&gt;
+&lt;li&gt;B 表示每个缓存块(block)保存的字节数目&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在图上表示出来就是&lt;/p&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14612628563878.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:50%;&#34; /&gt;
+$$
+C=S×E×BC=S×E×B
+$$&lt;p&gt;
+实际上可以理解为三种层级关系，对应不同的索引，这样分层的好处在于，通过层级关系简化搜索需要的时间，并且和字节的排布也是一一对应的（之后介绍缓存的时候就体现得更加明显）。&lt;/p&gt;
+&lt;p&gt;当处理器需要访问一个地址时，会先在高速缓冲存储器中进行查找，查找过程中我们首先在概念上把这个地址划分成三个部分：&lt;/p&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14612633441722.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;h4 id=&#34;读取&#34;&gt;读取
+&lt;/h4&gt;&lt;p&gt;具体在从缓存中读取一个地址时，首先我们通过 set index 确定要在哪个 set 中寻找，确定后利用 tag 和同一个 set 中的每个 line 进行比对，找到 tag 相同的那个 line，最后再根据 block offset 确定要从 line 的哪个位置读起（这里的而 line 和 block 是一个意思）。&lt;/p&gt;
+&lt;p&gt;当 E=1 时，也就是每个 set 只有 1 个 line 的时候，称之为直接映射缓存(Direct Mapped Cache)，如下图所示&lt;/p&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14612642281687.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;这种情况下，因为每个 set 对应 1 个 line，反过来看，1 个 line 就需要一个 set，所以 set index 的位数就会较多（和之后的多路映射对比）。具体的检索过程就是先通过 set index 确定哪个 set，然后看是否 valid，然后比较那个 set 里唯一 line 的 tag 和地址的 t bits 是否一致，就可以确定是否缓存命中。&lt;/p&gt;
+&lt;p&gt;命中之后根据 block offset 确定偏移量，因为需要读入一个 int，所以会读入 4 5 6 7 这四个字节（假设缓存是 8 个字节）。如果 tag 不匹配的话，这行会被扔掉并放新的数据进来。&lt;/p&gt;
+&lt;p&gt;然后我们来看一个具体的例子，假设我们的寻址空间是 M=16 字节，也就是 4 位的地址，对应 B=2, S=4, E=1，我们按照如下顺序进行数据读取：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;0 00 0&lt;/code&gt;, miss&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0 00 1&lt;/code&gt;, hit&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0 11 1&lt;/code&gt;, miss&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1 00 0&lt;/code&gt;, miss&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0 00 0&lt;/code&gt;, miss&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;缓存中的具体情况是，这里 x 表示没有任何内容&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       v  Tag   Block
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Set 0  1   0    M[0-1]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Set 1  x   x      x
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Set 2  x   x      x
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Set 3  1   0    M[6-7]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;缓存的大小如图所示，对应就是有 4 个 set，所以需要 2 位的 set index，所以进行读入的时候，会根据中间两位来确定在哪个 set 中查找，其中 8 和 0，因为中间两位相同，会产生冲突，导致连续 miss，这个问题可以用多路映射来解决。&lt;/p&gt;
+&lt;p&gt;当 E 大于 1 时，也就是每个 set 有 E 个 line 的时候，称之为 E 路联结缓存。这里每个 set 有两个 line，所以就没有那么多 set，也就是说 set index 可以少一位（集合数量少一倍）。&lt;/p&gt;
+&lt;p&gt;再简述一下整个过程，先从 set index 确定那个 set，然后看 valid 位，接着利用 t bits 分别和每个 line 的 tag 进行比较，如果匹配则命中，那么返回 4 5 位置的数据，如果不匹配，就需要替换，可以随机替换，也可以用 least recently used(LRU) 来进行替换。&lt;/p&gt;
+&lt;p&gt;我们再用刚才的例子来看看是否会增加命中率，这里假设我们的寻址空间是 M=16 字节，也就是 4 位的地址，对应 B=2, S=2, E=2，我们按照如下顺序进行数据读取：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;0 00 0&lt;/code&gt;, miss&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0 00 1&lt;/code&gt;, hit&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0 11 1&lt;/code&gt;, miss&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1 00 0&lt;/code&gt;, miss&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0 00 0&lt;/code&gt;, hit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;缓存中的具体情况是，这里 x 表示没有任何内容&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       v   Tag   Block
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Set 0  1   00    M[0-1]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Set 0  1   10    M[8-9]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Set 1  1   01    M[6-7]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Set 1  0   x     x
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;可以看到因为每个 set 有 2 个 line，所以只有 2 个 set，set index 也只需要 1 位了，这个情况下即使 8 和 0 的 set index 一致，因为一个 set 可以容纳两个数据，所以最后一次访问 0，就不会 miss 了。&lt;/p&gt;
+&lt;h4 id=&#34;写入&#34;&gt;写入
+&lt;/h4&gt;&lt;p&gt;在整个存储层级中，不同的层级可能会存放同一个数据的不同拷贝（如 L1, L2, L3, 主内存, 硬盘）。如果发生写入命中的时候（也就是要写入的地址在缓存中有），有两种策略：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Write-through: 命中后更新缓存，同时写入到内存中&lt;/li&gt;
+&lt;li&gt;Write-back: 直到这个缓存需要被置换出去，才写入到内存中（需要额外的 dirty bit 来表示缓存中的数据是否和内存中相同，因为可能在其他的时候内存中对应地址的数据已经更新，那么重复写入就会导致原有数据丢失）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在写入 miss 的时候，同样有两种方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Write-allocate: 载入到缓存中，并更新缓存（如果之后还需要对其操作，这个方式就比较好）&lt;/li&gt;
+&lt;li&gt;No-write-allocate: 直接写入到内存中，不载入到缓存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这四种策略通常的搭配是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Write-through + No-write-allocate&lt;/li&gt;
+&lt;li&gt;Write-back + Write-allocate&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其中第一种可以保证绝对的数据一致性，第二种效率会比较高（通常情况下）。&lt;/p&gt;
+&lt;h3 id=&#34;different-indexing&#34;&gt;Different Indexing
+&lt;/h3&gt;&lt;div&gt;
+    &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250308110308611.png&#34; alt=&#34;image-20250308110308611&#34; style=&#34;zoom:25%;&#34; /&gt;
+    &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250308110924669.png&#34; alt=&#34;image-20250308110924669&#34; style=&#34;zoom:21.5%;&#34; /&gt;
+&lt;/div&gt;
+&lt;p&gt;Due to spatial locality, most data in real-world programs is stored in contiguous memory regions (like arrays or buffers).&lt;/p&gt;
+&lt;p&gt;This means that when a program accesses memory sequentially, only the lower bits of the address (which indicate the offset within a block) change frequently, while the higher bits (which represent the larger memory block or region) remain constant until a larger step is taken.&lt;/p&gt;
+&lt;p&gt;So $TTSSBB$ is better than $SSTTBB$ because the former indexing changes its Set index more frequently, resulting to more seperate data and less frequent comflict miss.&lt;/p&gt;
+&lt;h3 id=&#34;cache-lab&#34;&gt;Cache lab
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;“I” denotes an instruction load, “L” a data load, “S” a data store, and “M” a data modify (i.e., a data load followed by a data store).
+&lt;ul&gt;
+&lt;li&gt;&amp;rsquo;load&amp;rsquo; stands for accessing the bits within a cache block—if they’re already in the cache, it just reads the relevant portion; if not, the entire block is loaded first before reading out the desired bits.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;6linking&#34;&gt;6.Linking
+&lt;/h2&gt;&lt;p&gt;见&lt;a class=&#34;link&#34; href=&#34;https://wdxtub.com/csapp/thin-csapp-4/2016/04/16/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;【读薄 CSAPP】肆 链接 | 小土刀 3.0&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;7exceptional-control-flow异常流控制&#34;&gt;7.&lt;strong&gt;Exceptional Control Flow&lt;/strong&gt;(异常流控制)
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Processors do only one thing:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;From startup to shutdown, a CPU simply reads and executes (interprets) a sequence of instructions, one at a time&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This sequence is the CPU’s &lt;em&gt;control flow&lt;/em&gt; (or &lt;em&gt;flow of control&lt;/em&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Up to now: two mechanisms for changing control flow:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Jumps and branches&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Call and return&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;React to changes in &lt;strong&gt;program&lt;/strong&gt; &lt;strong&gt;state&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;但是遇到异常的控制流时，就没办法应对了，所以需要异常流控制。&lt;/p&gt;
+&lt;p&gt;异常控制流存在于系统的每个层级，最底层的机制称为&lt;strong&gt;异常(Exception)&lt;/strong&gt;，用以改变控制流以响应系统事件，通常是由硬件的操作系统共同实现的。更高层次的异常控制流包括&lt;strong&gt;进程切换(Process Context Switch)&lt;/strong&gt;、&lt;strong&gt;信号(Signal)&lt;strong&gt;和&lt;/strong&gt;非本地跳转(Nonlocal Jumps)&lt;/strong&gt;，也可以看做是一个从硬件过渡到操作系统，再从操作系统过渡到语言库的过程。进程切换是由硬件计时器和操作系统共同实现的，而信号则只是操作系统层面的概念了，到了非本地跳转就已经是在 C 运行时库中实现的了。&lt;/p&gt;
+&lt;h3 id=&#34;exceptions-and-processes&#34;&gt;&lt;strong&gt;Exceptions and Processes&lt;/strong&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;异常-exception&#34;&gt;异常 Exception
+&lt;/h4&gt;&lt;p&gt;这里的异常指的是把控制交给系统内核来响应某些事件（例如处理器状态的变化），其中内核是操作系统常驻内存的一部分，而这类事件包括除以零、数学运算溢出、页错误、I/O 请求完成或用户按下了 ctrl+c 等等系统级别的事件。&lt;/p&gt;
+&lt;p&gt;具体的过程可以用下图表示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14613541138958.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;系统会通过异常表(Exception Table)来确定跳转的位置，每种事件都有对应的唯一的异常编号，发生对应异常时就会调用对应的异常处理代码&lt;/p&gt;
+&lt;h5 id=&#34;异步异常中断&#34;&gt;异步异常（中断）
+&lt;/h5&gt;&lt;p&gt;异步异常(Asynchronous Exception)称之为中断(Interrupt)，是由处理器外面发生的事情引起的。对于执行程序来说，这种“中断”的发生完全是异步的，因为不知道什么时候会发生。CPU对其的响应也完全是被动的，但是可以屏蔽掉。这种情况下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;需要设置处理器的中断指针(interrupt pin)&lt;/li&gt;
+&lt;li&gt;处理完成后会返回之前控制流中的『下一条』指令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;比较常见的中断有两种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;计时器中断：计时器中断是由计时器芯片每隔几毫秒触发的，内核用计时器终端来从用户程序手上拿回控制权。&lt;/li&gt;
+&lt;li&gt;I/O 中断：I/O 中断类型比较多样，比方说键盘输入了 ctrl-c，网络中一个包接收完毕和硬盘中传输的文件包送达，都会触发这样的中断。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;同步异常&#34;&gt;同步异常
+&lt;/h5&gt;&lt;p&gt;同步异常(Synchronous Exception)是因为执行某条指令所导致的事件，分为陷阱(Trap)、故障(Fault)和终止(Abort)三种情况。&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;类型&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;原因&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;行为&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;示例&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;陷阱&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;有意的异常&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;返回到下一条指令&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;系统调用，断点&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;故障&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;潜在可恢复的错误&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;返回到当前指令&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;页故障(page faults)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;终止&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;不可恢复的错误&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;终止当前程序&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;非法指令&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;这里需要注意三种不同类型的处理方式，比方说陷阱和中断一样，会返回执行『下一条』指令；而故障会重新执行之前触发事件的指令；终止则是直接退出当前的程序。&lt;/p&gt;
+&lt;h5 id=&#34;system-calls&#34;&gt;System Calls
+&lt;/h5&gt;&lt;p&gt;系统调用看起来像是函数调用，但其实是走异常控制流的，在 x86-64 系统中，每个系统调用都有一个唯一的 ID，如&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;编号&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;名称&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;描述&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;0&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;code&gt;read&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;读取文件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;code&gt;write&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;写入文件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;2&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;code&gt;open&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;打开文件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;3&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;code&gt;close&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;关闭文件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;4&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;code&gt;stat&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;获取文件信息&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;57&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;code&gt;fork&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;创建进程&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;59&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;code&gt;execve&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;执行一个程序&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;60&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;code&gt;_exit&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;关闭进程&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;62&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;code&gt;kill&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;向进程发送信号&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;举个例子，假设用户调用了 &lt;code&gt;open(filename, options)&lt;/code&gt;，系统实际上会执行 &lt;code&gt;__open&lt;/code&gt; 函数，也就是进行系统调用 &lt;code&gt;syscall&lt;/code&gt;，如果返回值是负数，则是出错，汇编代码如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;00000000000e5d70 &amp;lt;__open&amp;gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    e5d79: b8 02 00 00 00     mov $0x2, %eax    # open 是编号 2 的系统调用
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    e5d7e: 0f 05              syscall           # 调用的返回值会在 %rax 中
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    e5d80: 48 3d 01 f0 ff ff  cmp $0xfffffffffffff001, %rax
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    e5dfa: c3                 retq
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;对应的示意图是：&lt;/p&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14613688255926.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;%rax&lt;/code&gt; contains syscall number&lt;/li&gt;
+&lt;li&gt;Other arguments in &lt;code&gt;%rdi&lt;/code&gt;, &lt;code&gt;%rsi&lt;/code&gt;, &lt;code&gt;%rdx&lt;/code&gt;, &lt;code&gt;%r10&lt;/code&gt;, &lt;code&gt;%r8&lt;/code&gt;, &lt;code&gt;%r9&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Return value in &lt;code&gt;%rax&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Negative value is an error corresponding to negative &lt;code&gt;errno&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这里我们以 Page Fault 为例，来说明 Fault 的机制。Page Fault 发生的条件是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用户写入内存位置&lt;/li&gt;
+&lt;li&gt;但该位置目前还不在内存中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;比如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;500&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;那么系统会通过 Page Fault 把对应的部分载入到内存中，然后重新执行赋值语句：&lt;/p&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14613689402121.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;p&gt;但是如果代码改为这样：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;也就是引用非法地址的时候，整个流程就会变成：&lt;/p&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14613690660319.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;p&gt;具体来说会像用户进程发送 &lt;code&gt;SIGSEGV&lt;/code&gt; 信号，用户进程会以 segmentation fault 的标记退出。&lt;/p&gt;
+&lt;p&gt;从上面我们就可以看到异常的具体实现是依靠在用户代码和内核代码间切换而实现的，是非常底层的机制。&lt;/p&gt;
+&lt;h4 id=&#34;进程&#34;&gt;进程
+&lt;/h4&gt;&lt;p&gt;进程(Processes)是计算机科学中最为重要的思想之一，进程才是程序（指令和数据）的真正运行实例。之所以重要，是因为进程给每个应用提供了两个非常关键的抽象：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;逻辑控制流&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Each program seems to have exclusive use of the CPU&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Provided by kernel mechanism called &lt;em&gt;context switching&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;私有地址空间&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;逻辑控制流通过称为上下文切换(context switching)的内核机制让每个程序都感觉自己在独占处理器。私有地址空间则是通过称为虚拟内存(virtual memory)的机制让每个程序都感觉自己在独占内存。这样的抽象使得具体的进程不需要操心处理器和内存的相关适宜，也保证了在不同情况下运行同样的程序能得到相同的结果。&lt;/p&gt;
+&lt;p&gt;计算机会同时运行多个进程，有前台应用，也后台任务，我们在 Mac 的终端下输入 &lt;code&gt;top&lt;/code&gt;（或者更酷炫的 &lt;code&gt;htop&lt;/code&gt;），就可以看到如下的进程信息&lt;/p&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14613699267859.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;h5 id=&#34;进程切换-process-context-switch&#34;&gt;进程切换 Process Context Switch
+&lt;/h5&gt;&lt;p&gt;这么多进程，具体是如何工作的呢？我们来看看下面的示意图：&lt;/p&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14613707308133.jpg&#34; alt=&#34;img&#34; style=&#34;zoom: 67%;&#34; /&gt;
+&lt;p&gt;左边是单进程的模型，内存中保存着进程所需的各种信息，因为该进程独占 CPU，所以并不需要保存寄存器值。而在右边的单核多进程模型中，虚线部分可以认为是当前正在执行的进程，因为我们可能会切换到其他进程，所以内存中需要另一块区域来保存当前的寄存器值，以便下次执行的时候进行恢复（也就是所谓的上下文切换）。整个过程中，CPU 交替执行不同的进程，虚拟内存系统会负责管理地址空间，而没有执行的进程的寄存器值会被保存在内存中。切换到另一个进程的时候，会载入已保存的对应于将要执行的进程的寄存器值。&lt;/p&gt;
+&lt;p&gt;而现代处理器一般有多个核心，所以可以真正同时执行多个进程。这些进程会共享主存以及一部分缓存，具体的调度是由内核控制的，示意图如下：&lt;/p&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14613708880333.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;p&gt;切换进程时，内核(kernel)会负责具体的调度，如下图所示&lt;/p&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14613717282590.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;h5 id=&#34;进程控制-process-control&#34;&gt;进程控制 Process Control
+&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;系统调用的错误处理&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在遇到错误的时候，Linux 系统级函数通常会返回 -1 并且设置 &lt;code&gt;errno&lt;/code&gt; 这个全局变量来表示错误的原因。使用的时候记住两个规则：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;对于每个系统调用都应该检查返回值&lt;/li&gt;
+&lt;li&gt;当然有一些系统调用的返回值为 void，在这里就不适用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;例如，对于 &lt;code&gt;fork()&lt;/code&gt; 函数，我们应该这么写：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;if ((pid = fork()) &amp;lt; 0) {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    fprintf(stderr, &amp;#34;fork error: %s\n&amp;#34;, strerror(errno));
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    exit(0);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果觉得这样写太麻烦，可以利用一个辅助函数：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;void unix_error(char *msg) /* Unix-style error */
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    fprintf(stderr, &amp;#34;%s: %s\n&amp;#34;, msg, strerror(errno));
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    exit(0);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;// 上面的片段可以写为
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;if ((pid = fork()) &amp;lt; 0)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    unix_error(&amp;#34;fork error&amp;#34;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;我们甚至可以更进一步，把整个 &lt;code&gt;fork()&lt;/code&gt; 包装起来，就可以自带错误处理，比如&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pid_t Fork(void)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    pid_t pid;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    if ((pid = fork()) &amp;lt; 0)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        unix_error(&amp;#34;Fork error&amp;#34;);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    return pid;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;调用的时候直接使用 &lt;code&gt;pid = Fork();&lt;/code&gt; 即可（注意这里是大写的 F）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;获取进程信息&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我们可以用下面两个函数获取进程的相关信息：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pid_t getpid(void)&lt;/code&gt; - 返回当前进程的 PID&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pid_t getppid(void)&lt;/code&gt; - 返回当前进程的父进程的 PID&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们可以认为，进程有三个主要状态：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;运行 Running
+&lt;ul&gt;
+&lt;li&gt;正在被执行、正在等待执行或者最终将会被执行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;停止 Stopped
+&lt;ul&gt;
+&lt;li&gt;执行被挂起，在进一步通知前不会计划执行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;终止 Terminated
+&lt;ul&gt;
+&lt;li&gt;进程被永久停止&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;另外的两个状态称为新建(new)和就绪(ready)，这里不再赘述。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;终止进程&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在下面三种情况时，进程会被终止：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;接收到一个终止信号&lt;/li&gt;
+&lt;li&gt;返回到 &lt;code&gt;main&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;调用了 &lt;code&gt;exit&lt;/code&gt; 函数&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;exit&lt;/code&gt; 函数会被调用一次，但从不返回，具体的函数原型是&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;// 以 status 状态终止进程，0 表示正常结束，非零则是出现了错误
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;void exit(int status)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;创建进程&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;调用 &lt;code&gt;fork&lt;/code&gt; 来创造新进程。这个函数很有趣，执行一次，但是会返回两次，具体的函数原型为&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;// 对于子进程，返回 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;// 对于父进程，返回子进程的 PID
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;int fork(void)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;子进程几乎和父进程一模一样，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有相同且独立的虚拟地址空间，&lt;/li&gt;
+&lt;li&gt;有父进程已经打开的文件描述符(file descriptor)&lt;/li&gt;
+&lt;li&gt;有不同的进程 PID&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;看一个简单的例子&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;int main()
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    pid_t pid;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    int x = 1;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    pid = Fork();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    if (pid == 0) 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    {   // Child
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        printf(&amp;#34;I&amp;#39;m the child!  x = %d\n&amp;#34;, ++x);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        exit(0);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    // Parent
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    printf(&amp;#34;I&amp;#39;m the parent! x = %d\n&amp;#34;, --x);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    exit(0);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;输出是&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;linux&amp;gt; ./forkdemo
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;I&amp;#39;m the parent! x = 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;I&amp;#39;m the child!  x = 2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;有以下几点需要注意：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;调用一次，但是会有两个返回值&lt;/li&gt;
+&lt;li&gt;并行执行，不能预计父进程和子进程的执行顺序&lt;/li&gt;
+&lt;li&gt;拥有自己独立的地址空间（也就是变量都是独立的），除此之外其他都相同&lt;/li&gt;
+&lt;li&gt;在父进程和子进程中 &lt;code&gt;stdout&lt;/code&gt; 是一样的（都会发送到标准输出）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;进程图&#34;&gt;进程图
+&lt;/h5&gt;&lt;p&gt;进程图是一个很好的帮助我们理解进程执行的工具：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每个节点代表一条执行的语句&lt;/li&gt;
+&lt;li&gt;a -&amp;gt; b 表示 a 在 b 前面执行&lt;/li&gt;
+&lt;li&gt;边可以用当前变量的值来标记&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;printf&lt;/code&gt; 节点可以用输出来进行标记&lt;/li&gt;
+&lt;li&gt;每个图由一个入度为 0 的节点作为起始&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于进程图来说，只要满足拓扑排序，就是可能的输出。我们还是用刚才的例子来简单示意一下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;int main()
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    pid_t pid;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    int x = 1;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    pid = Fork();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    if (pid == 0) 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    {   // Child
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        printf(&amp;#34;child! x = %d\n&amp;#34;, --x);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        exit(0);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    // Parent
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    printf(&amp;#34;parent! x = %d\n&amp;#34;, x);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    exit(0);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;对应的进程图为&lt;/p&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14625029984869.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;h5 id=&#34;回收子进程&#34;&gt;回收子进程
+&lt;/h5&gt;&lt;p&gt;即使主进程已经终止，子进程也还在消耗系统资源，我们称之为『僵尸』。为了『打僵尸』，就可以采用『收割』(Reaping) 的方法。父进程利用 &lt;code&gt;wait&lt;/code&gt; 或 &lt;code&gt;waitpid&lt;/code&gt; 回收已终止的子进程，然后给系统提供相关信息，kernel 就会把 zombie child process 给删除。&lt;/p&gt;
+&lt;p&gt;如果父进程不回收子进程的话，通常来说会被 &lt;code&gt;init&lt;/code&gt; 进程(pid == 1)回收，所以一般不必显式回收。但是在长期运行的进程中，就需要显式回收（例如 shell 和 server）。&lt;/p&gt;
+&lt;p&gt;如果想在子进程载入其他的程序，就需要使用 &lt;code&gt;execve&lt;/code&gt; 函数，具体可以查看对应的 man page，这里不再深入。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Parent reaps a child by calling the&lt;/strong&gt; &lt;strong&gt;wait&lt;/strong&gt; &lt;strong&gt;function&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;int wait(int child_status)
+&lt;ul&gt;
+&lt;li&gt;Suspends current process until one of its children terminates&lt;/li&gt;
+&lt;li&gt;Return value is the &lt;strong&gt;pid&lt;/strong&gt; of the child process that terminated&lt;/li&gt;
+&lt;li&gt;If &lt;strong&gt;child_status&lt;/strong&gt; &lt;strong&gt;!= NULL&lt;/strong&gt;, then the integer it points to will be set to a value that indicates reason the child terminated and the exit status.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;waitpid: Waiting for a Specific Process&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pid_t waitpid(pid_t pid, int &amp;amp; status, int option)
+&lt;ul&gt;
+&lt;li&gt;Suspends current process until specific process terminates. Various options (see textbook)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;execve: Loading and Running Programs&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;int execve(char *filename, char *argv[], char *envp[])
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Loads&lt;/strong&gt; &lt;strong&gt;and&lt;/strong&gt; &lt;strong&gt;runs in the current process:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Executable file &lt;strong&gt;filename&lt;/strong&gt;. Can be object file or script file beginning with #!interpreter     (e.g., #!/bin/bash)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;…with argument list &lt;strong&gt;argv&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;By convention &lt;strong&gt;argv&lt;/strong&gt;**[0]==filename**&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;…and environment variable list &lt;strong&gt;envp&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name=value”&lt;/strong&gt; &lt;strong&gt;strings (e.g.,&lt;/strong&gt; &lt;strong&gt;USER=droh&lt;/strong&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Structure of the stack when a new program starts&lt;/strong&gt;&lt;/p&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250316101455527.png&#34; alt=&#34;image-20250316101455527&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;h3 id=&#34;信号-signal&#34;&gt;信号 Signal
+&lt;/h3&gt;&lt;p&gt;Linux 的进程树，可以通过 &lt;code&gt;pstree&lt;/code&gt; 命令查看，如下图所示：&lt;/p&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14613761276198.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;p&gt;对于前台进程来说，我们可以在其执行完成后进行回收，而对于后台进程来说，因为不能确定具体执行完成的时间，所以终止之后就成为了僵尸进程，无法被回收并因此造成内存泄露。&lt;/p&gt;
+&lt;p&gt;这怎么办呢？同样可以利用异常控制流，当后台进程完成时，内核会中断常规执行并通知我们，具体的通知机制就是『信号』(signal)。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Akin to exceptions and interrupts&lt;/li&gt;
+&lt;li&gt;Sent from the kernel (sometimes at the request of another process) to a process&lt;/li&gt;
+&lt;li&gt;Signal type is identified by small integer ID’s (1-30)&lt;/li&gt;
+&lt;li&gt;Only information in a signal is its ID and the fact that it arrived&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;信号是 Unix、类 Unix 以及其他 POSIX 兼容的操作系统中进程间通讯的一种有限制的方式。它是一种异步的通知机制，用来提醒进程一个事件已经发生。当一个信号发送给一个进程，操作系统中断了进程正常的控制流程，此时，任何非原子操作都将被中断。如果进程定义了信号的处理函数，那么它将被执行，否则就执行默认的处理函数。&lt;/p&gt;
+&lt;p&gt;这样看来，信号其实是类似于异常和中断的，是由内核（在其他进程的请求下）向当前进程发出的。信号的类型由 1-30 的整数定义，信号所能携带的信息极少，一是对应的编号，二就是信号到达这个事实。下面是几个比较常用的信号的编号及简介：&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;编号&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;名称&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;默认动作&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;对应事件&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;2&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;SIGINT&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;终止&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;用户输入 ctrl+c&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;9&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;SIGKILL&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;终止&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;终止程序（不能重写或忽略）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;11&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;SIGSEGV&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;终止且 Dump&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;段冲突 Segmentation violation&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;14&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;SIGALRM&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;终止&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;时间信号&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;17&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;SIGCHLD&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;忽略&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;子进程停止或终止&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;内核通过给目标进程发送信号，来更新目标进程的状态，具体的场景为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;内核检测到了如除以零(SIGFPE)或子进程终止(SIGCHLD)的系统事件&lt;/li&gt;
+&lt;li&gt;另一个进程调用了 &lt;code&gt;kill&lt;/code&gt; 指令来请求内核发送信号给指定的进程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;目标进程接收到信号后，内核会强制要求进程对于信号做出响应，可以有几种不同的操作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;忽略&lt;/strong&gt;这个型号&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;终止&lt;/strong&gt;进程&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;捕获&lt;/strong&gt;信号，执行信号处理器(signal handler)，类似于异步中断中的异常处理器(exception handler)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;具体的过程如下：&lt;/p&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14614121439266.jpg&#34; alt=&#34;img&#34; style=&#34;zoom: 50%;&#34; /&gt;
+&lt;p&gt;如果信号已被发送但是未被接收，那么处于等待状态(pending)，同类型的信号至多只会有一个待处理信号(pending signal)，一定要注意这个特性，因为内部实现机制不可能提供较复杂的数据结构，所以信号的接收并不是一个队列。比如说进程有一个 &lt;code&gt;SIGCHLD&lt;/code&gt; 信号处于等待状态，那么之后进来的 &lt;code&gt;SIGCHLD&lt;/code&gt; 信号都会被直接扔掉。&lt;/p&gt;
+&lt;p&gt;当然，进程也可以阻塞特定信号的接收，但信号的发送并不受控制，所以被阻塞的信号仍然可以被发送，不过直到进程取消阻塞该信号之后才会被接收。内核用等待(pending)位向量和阻塞(blocked)位向量来维护每个进程的信号相关状态。&lt;/p&gt;
+&lt;h4 id=&#34;进程组&#34;&gt;进程组
+&lt;/h4&gt;&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250316102843274.png&#34; alt=&#34;image-20250316102843274&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;p&gt;&lt;strong&gt;Every process belongs to exactly one process group&lt;/strong&gt;.每个进程都只属于一个进程组，从前面的进程树状图中我们也能大概了解一二，想要了解相关信息，一般使用如下函数：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;getpgrp()&lt;/code&gt; - 返回当前进程的进程组&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;setpgid()&lt;/code&gt; - 设置一个进程的进程组&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们可以据此指定一个进程组或者一个单独的进程，比方说可以通过 &lt;code&gt;kill&lt;/code&gt; 应用来发送信号，流入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 创建子进程
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;linux&amp;gt; ./forks 16
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Child1: pid=24818 pgrp=24817
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Child2: pid=24819 pgrp=24817
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 查看进程
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;linux&amp;gt; ps
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  PID TTY      TIME  CMD
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;24788 pts/2 00:00:00 tcsh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;24818 pts/2 00:00:02 forks
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;24819 pts/2 00:00:02 forks
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;24820 pts/2 00:00:00 ps
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 可以选择关闭某个进程
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;linux&amp;gt; /bin/kill -9 24818
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 也可以关闭某个进程组，会关闭该组中所有进程
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;linux&amp;gt; /bin/kill -9 -24817
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 查看进程
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;linux&amp;gt; ps
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  PID TTY      TIME  CMD
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;24788 pts/2 00:00:00 tcsh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;24820 pts/2 00:00:00 ps
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这里可以看到，第一个命令只会杀掉编号为 24818 的进程，但是第二个命令，因为有两个进程都属于进程组 24817，所以会杀掉进程组中的每个进程。&lt;/p&gt;
+&lt;p&gt;我们也可以通过键盘让内核向每个前台进程发送 SIGINT(SIGTSTP) 信号&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SIGINT - &lt;code&gt;ctrl+c&lt;/code&gt; 默认终止进程&lt;/li&gt;
+&lt;li&gt;SIGTSTP - &lt;code&gt;ctrl+z&lt;/code&gt; 默认挂起进程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面是一个简单的例子&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;linux&amp;gt; ./forks 17
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Child: pid=28108 pgrp=28107
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Parent: pid=28107 pgrp=28107
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 按下 ctrl+z
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Suspended # 进程被挂起
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;linux&amp;gt; ps w
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  PID TTY   STAT  TIME  COMMAND
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;27699 pts/8 Ss    00:00 -tcsh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;28107 pts/8 T     00:02 ./forks 17
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;28108 pts/8 T     00:02 ./forks 17
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;28109 pts/8 R+    00:00 ps w
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;linux&amp;gt; fg
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./forks 17
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 按下 ctrl+c，进程被终止
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;linux&amp;gt; ps w
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  PID TTY   STAT  TIME  COMMAND
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;27699 pts/8 Ss    00:00 -tcsh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;28109 pts/8 R+    00:00 ps w
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;STAT 部分的第一个字母的意思&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;S: 睡眠 sleeping&lt;/li&gt;
+&lt;li&gt;T: 停止 stopped&lt;/li&gt;
+&lt;li&gt;R: 运行 running&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;第二个字母的意思：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;s: 会话管理者 session leader&lt;/li&gt;
+&lt;li&gt;+: 前台进程组&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;更多信息可以查看 &lt;code&gt;man ps&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;如果想要发送信号，可以使用 &lt;code&gt;kill&lt;/code&gt; 函数，下面是一个简单的示例，父进程通过发送 &lt;code&gt;SIGINT&lt;/code&gt; 信号来终止正在无限循环的子进程。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;void forkandkill()
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    pid_t pid[N];
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    int i;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    int child_status;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    for (i = 0; i &amp;lt; N; i++)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        if ((pid[i] = fork()) == 0)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            while(1) ;  // 死循环
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    for (i = 0; i &amp;lt; N; i++)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        printf(&amp;#34;Killing process %d\n&amp;#34;, pid[i]);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        kill(pid[i], SIGINT);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    for (i = 0; i &amp;lt; N; i++)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        pid_t wpid = wait(&amp;amp;child_status);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        if (WIFEXITED(child_status))
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            printf(&amp;#34;Child %d terminated with exit status %d\n&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    wpid, WEXITSTATUS(child_status));
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        else
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            printf(&amp;#34;Child %d terminated abnormally\n&amp;#34;, wpid);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;接收信号&#34;&gt;接收信号
+&lt;/h4&gt;&lt;p&gt;所有的上下文切换都是通过调用某个异常处理器(exception handler)完成的，内核会计算对易于某个进程 p 的 pnb 值：&lt;code&gt;pnb = pending &amp;amp; ~blocked&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;如果 &lt;code&gt;pnb == 0&lt;/code&gt;，那么就把控制交给进程 p 的逻辑流中的下一条指令&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pnb != 0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;选择 &lt;code&gt;pnb&lt;/code&gt; 中最小的非零位 k，并强制进程 p 接收信号 k&lt;/li&gt;
+&lt;li&gt;接收到信号之后，进程 p 会执行对应的动作&lt;/li&gt;
+&lt;li&gt;对 &lt;code&gt;pnb&lt;/code&gt; 中所有的非零位进行这个操作&lt;/li&gt;
+&lt;li&gt;最后把控制交给进程 p 的逻辑流中的下一条指令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每个信号类型都有一个预定义的『默认动作』，可能是以下的情况：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;终止进程&lt;/li&gt;
+&lt;li&gt;终止进程并 dump core&lt;/li&gt;
+&lt;li&gt;停止进程，收到 &lt;code&gt;SIGCONT&lt;/code&gt; 信号之后重启&lt;/li&gt;
+&lt;li&gt;忽略信号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;signal&lt;/code&gt; 函数可以修改默认的动作，函数原型为 &lt;code&gt;handler_t *signal(int signum, handler_t *handler)&lt;/code&gt;。我们通过一个简单的例子来感受下，这里我们屏蔽了 &lt;code&gt;SIGINT&lt;/code&gt; 函数，即使按下 &lt;code&gt;ctrl+c&lt;/code&gt; 也不会终止&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sigint_handler&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;ne&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sig&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SIGINT&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;处理器&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;So you think you can stop the bomb with ctrl-c, do you?&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;sleep&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Well...&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;fflush&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stdout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;sleep&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;OK. :-)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;ne&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;设定&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SIGINT&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;处理器&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;signal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SIGINT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sigint_handler&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SIG_ERR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;unix_error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;signal error&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;等待接收信号&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;pause&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;信号处理器的工作流程可以认为是和当前用户进程『并发』的同一个『伪』进程，示意如下：&lt;/p&gt;
+&lt;p&gt;注：并行与并发的区别&lt;/p&gt;
+&lt;p&gt;计算机虽然只有一个 CPU，但操作系统能够将程序的执行单位细化，然后分开执行，从而实现伪并行执行。这种伪并行执行称为并发(concurrent)。使用多个 CPU 真的同时执行称为并行(parallel)&lt;/p&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14614181710603.jpg&#34; alt=&#34;img&#34; style=&#34;zoom: 50%;&#34; /&gt;
+&lt;p&gt;还有一个需要注意的是，信号处理器也可以被其他的信号处理器中断，控制流如下图所示：&lt;/p&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14614185201475.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;h4 id=&#34;阻塞信号&#34;&gt;阻塞信号
+&lt;/h4&gt;&lt;p&gt;我们知道，内核会阻塞与当前在处理的信号同类型的其他正待等待的信号，也就是说，一个 SIGINT 信号处理器是不能被另一个 SIGINT 信号中断的。&lt;/p&gt;
+&lt;p&gt;如果想要显式阻塞，就需要使用 &lt;code&gt;sigprocmask&lt;/code&gt; 函数了，以及其他一些辅助函数：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sigemptyset&lt;/code&gt; - 创建空集&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sigfillset&lt;/code&gt; - 把所有的信号都添加到集合中（因为信号数目不多）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sigaddset&lt;/code&gt; - 添加指定信号到集合中&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sigdelset&lt;/code&gt; - 删除集合中的指定信号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们可以用下面这段代码来临时阻塞特定的信号：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sigset_t mask, prev_mask;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Sigemptyset(&amp;amp;mask); // 创建空集
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Sigaddset(&amp;amp;mask, SIGINT); // 把 SIGINT 信号加入屏蔽列表中
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;// 阻塞对应信号，并保存之前的集合作为备份
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Sigprocmask(SIG_BLOCK, &amp;amp;mask, &amp;amp;prev_mask);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;... // 这部分代码不会被 SIGINT 中断
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;// 取消阻塞信号，恢复原来的状态
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Sigprocmask(SIG_SETMASK, &amp;amp;prev_mask, NULL);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;安全处理信号&#34;&gt;安全处理信号
+&lt;/h4&gt;&lt;p&gt;信号处理器的设计并不简单，因为它们和主程序并行且共享相同的全局数据结构，尤其要注意因为并行访问可能导致的数据损坏的问题，这里提供一些基本的指南（后面的课程会详细介绍）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;规则 1：信号处理器越简单越好
+&lt;ul&gt;
+&lt;li&gt;例如：设置一个全局的标记，并返回&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;规则 2：信号处理器中只调用异步且信号安全(async-signal-safe)的函数
+&lt;ul&gt;
+&lt;li&gt;诸如 &lt;code&gt;printf&lt;/code&gt;, &lt;code&gt;sprintf&lt;/code&gt;, &lt;code&gt;malloc&lt;/code&gt; 和 &lt;code&gt;exit&lt;/code&gt; 都是不安全的！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;规则 3：在进入和退出的时候保存和恢复&lt;code&gt;errno&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;这样信号处理器就不会覆盖原有的 &lt;code&gt;errno&lt;/code&gt; 值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;规则 4：临时阻塞所有的信号以保证对于共享数据结构的访问
+&lt;ul&gt;
+&lt;li&gt;防止可能出现的数据损坏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;规则 5：用&lt;code&gt;volatile&lt;/code&gt;关键字声明全局变量
+&lt;ul&gt;
+&lt;li&gt;这样编译器就不会把它们保存在寄存器中，保证一致性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;规则 6：用&lt;code&gt;volatile sig_atomic_t&lt;/code&gt;来声明全局标识符(flag)
+&lt;ul&gt;
+&lt;li&gt;这样可以防止出现访问异常&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这里提到的异步信号安全(async-signal-safety)指的是如下两类函数：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;所有的变量都保存在栈帧中的函数&lt;/li&gt;
+&lt;li&gt;不会被信号中断的函数&lt;/li&gt;
+&lt;li&gt;异步且信号安全意为不会因为接受信号而导致数据类型损坏，死锁，内部状态损坏和崩坏。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Posix 标准指定了 117 个异步信号安全(async-signal-safe)的函数（可以通过 &lt;code&gt;man 7 signal&lt;/code&gt; 查看）&lt;/p&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14614222627451.jpg&#34; alt=&#34;img&#34; style=&#34;zoom: 50%;&#34; /&gt;
+&lt;h4 id=&#34;非本地跳转-non-local-jump&#34;&gt;非本地跳转 Non local Jump
+&lt;/h4&gt;&lt;p&gt;所谓的本地跳转，指的是在一个程序中通过 goto 语句进行流程跳转，尽管不推荐使用goto语句，但在嵌入式系统中为了提高程序的效率，goto语句还是可以使用的。本地跳转的限制在于，我们不能从一个函数跳转到另一个函数中。如果想突破函数的限制，就要使用 &lt;code&gt;setjmp&lt;/code&gt; 或 &lt;code&gt;longjmp&lt;/code&gt; 来进行非本地跳转了。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;int setjmp(jmp_buf j)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Must be called before longjmp&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Identifies a return site for a subsequent longjmp&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Called &lt;strong&gt;once&lt;/strong&gt;, returns &lt;strong&gt;one or more&lt;/strong&gt; times&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;void longjmp(jmp_buf j, int i)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Meaning:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;return from the &lt;strong&gt;setjmp&lt;/strong&gt; remembered by jump buffer &lt;strong&gt;j&lt;/strong&gt; again &amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;… this time returning &lt;strong&gt;i&lt;/strong&gt; instead of 0&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Called after &lt;strong&gt;setjmp&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Called &lt;strong&gt;once&lt;/strong&gt;, but &lt;strong&gt;never&lt;/strong&gt; returns&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;setjmp&lt;/code&gt; 保存当前程序的堆栈上下文环境(stack context)，见[进程图](# 进程图)，注意，这个保存的堆栈上下文环境仅在调用 &lt;code&gt;setjmp&lt;/code&gt; 的函数内有效，如果调用 &lt;code&gt;setjmp&lt;/code&gt; 的函数返回了，这个保存的堆栈上下文环境就失效了。调用 &lt;code&gt;setjmp&lt;/code&gt; 的直接返回值为 0。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;longjmp&lt;/code&gt; 将会恢复由 &lt;code&gt;setjmp&lt;/code&gt; 保存的程序堆栈上下文，即程序从调用 &lt;code&gt;setjmp&lt;/code&gt; 处重新开始执行，不过此时的 &lt;code&gt;setjmp&lt;/code&gt; 的返回值将是由 &lt;code&gt;longjmp&lt;/code&gt; 指定的值。注意&lt;code&gt;longjmp&lt;/code&gt; 不能指定0为返回值，即使指定了 0，&lt;code&gt;longjmp&lt;/code&gt; 也会使 &lt;code&gt;setjmp&lt;/code&gt; 返回 1。&lt;/p&gt;
+&lt;p&gt;我们可以利用这种方式，来跳转到其他的栈帧中，比方说在嵌套函数中，我们可以利用这个快速返回栈底的函数，我们来看如下代码&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jmp_buf env;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;P1()
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    if (setjmp(env))
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        // 跳转到这里
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    } else 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        P2();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;P2()
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    P2();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    P3();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;P3()
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    longjmp(env, 1);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;对应的跳转过程为：&lt;/p&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14614229485048.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;p&gt;也就是说，我们直接从 P3 跳转回了 P1，但是也有限制，函数必须在栈中（也就是还没完成）才可以进行跳转，下面的例子中，因为 P2 已经返回，所以不能跳转了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jmp_buf env;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;P1()
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    P2(); P3();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;P2()
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    if (setjmp(env))
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        // 跳转到这里
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;P3()
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    longjmp(env, 1);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;因为 P2 在跳转的时候已经返回，对应的栈帧在内存中已经被清理，所以 P3 中的 &lt;code&gt;longjmp&lt;/code&gt; 并不能实现期望的操作。&lt;/p&gt;
 </description>
         </item>
         

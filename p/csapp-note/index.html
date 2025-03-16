@@ -325,18 +325,25 @@
             <li><a href="#调用方式calling-conventions">调用方式(<strong>Calling Conventions</strong>)</a></li>
             <li><a href="#passing-data"><strong>Passing data</strong></a></li>
             <li><a href="#managing-local-data"><strong>Managing Local data</strong></a></li>
+            <li><a href="#caller-callee-register-used-for-tempoary-storage"><strong>Caller-Callee: Register used for tempoary storage</strong></a></li>
+            <li><a href="#递归illustration-of-recursion">递归(<strong>Illustration of Recursion</strong>)</a></li>
+          </ul>
+        </li>
+        <li><a href="#数据存储data">数据存储(Data)</a>
+          <ul>
+            <li><a href="#多维数组multidimensional-nested-arrays">多维数组(<strong>Multidimensional (Nested) Arrays</strong>)</a></li>
+            <li><a href="#结构体structures">结构体(Structures)</a></li>
+          </ul>
+        </li>
+        <li><a href="#advanced-topics"><strong>Advanced Topics</strong></a>
+          <ul>
+            <li><a href="#内存分布缓冲区溢出memory-layoutbuffer-overflow">内存分布&amp;缓冲区溢出(Memory Layout&amp;Buffer Overflow)</a></li>
+            <li><a href="#gdb-from-csapp-310">GDB from CSAPP 3.10</a></li>
           </ul>
         </li>
       </ul>
     </li>
-    <li><a href="#数据存储">数据存储</a>
-      <ul>
-        <li><a href="#多维数组">多维数组</a></li>
-        <li><a href="#结构体">结构体</a></li>
-      </ul>
-    </li>
-    <li><a href="#缓冲区溢出">缓冲区溢出</a></li>
-    <li><a href="#程序优化">程序优化</a>
+    <li><a href="#4程序优化code-optimization">4.程序优化(Code Optimization)</a>
       <ul>
         <li><a href="#通用技巧">通用技巧</a></li>
         <li><a href="#代码移动">代码移动</a></li>
@@ -345,6 +352,38 @@
         <li><a href="#小心过程调用">小心过程调用</a></li>
         <li><a href="#注意内存问题">注意内存问题</a></li>
         <li><a href="#处理条件分支">处理条件分支</a></li>
+      </ul>
+    </li>
+    <li><a href="#5the-memory-hierarchycache-memories">5.The Memory Hierarchy&amp;Cache Memories</a>
+      <ul>
+        <li><a href="#cache-memory">Cache Memory</a>
+          <ul>
+            <li><a href="#读取">读取</a></li>
+            <li><a href="#写入">写入</a></li>
+          </ul>
+        </li>
+        <li><a href="#different-indexing">Different Indexing</a></li>
+        <li><a href="#cache-lab">Cache lab</a></li>
+      </ul>
+    </li>
+    <li><a href="#6linking">6.Linking</a></li>
+    <li><a href="#7exceptional-control-flow异常流控制">7.<strong>Exceptional Control Flow</strong>(异常流控制)</a>
+      <ul>
+        <li><a href="#exceptions-and-processes"><strong>Exceptions and Processes</strong></a>
+          <ul>
+            <li><a href="#异常-exception">异常 Exception</a></li>
+            <li><a href="#进程">进程</a></li>
+          </ul>
+        </li>
+        <li><a href="#信号-signal">信号 Signal</a>
+          <ul>
+            <li><a href="#进程组">进程组</a></li>
+            <li><a href="#接收信号">接收信号</a></li>
+            <li><a href="#阻塞信号">阻塞信号</a></li>
+            <li><a href="#安全处理信号">安全处理信号</a></li>
+            <li><a href="#非本地跳转-non-local-jump">非本地跳转 Non local Jump</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -415,7 +454,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 31 分钟
+                    阅读时长: 52 分钟
                 </time>
             </div>
         
@@ -430,20 +469,20 @@
     <section class="article-content">
     
     
-    <p>Note of Computer System: a Programmer&rsquo;s perspective.</p>
-<blockquote>
+    <h1 id="note-of-computer-system-a-programmers-perspective">Note of Computer System: a Programmer&rsquo;s perspective.
+</h1><blockquote>
 <p>[!NOTE]</p>
-<p>这个笔记是由2015年CMU15-213课程内容slides和网上相关笔记总结而成，目的是在整合各路笔记中巩固自己的知识。主要是消化为主，所以个人产出较少，由于参考了多方资料会出现中英混杂情况。</p>
+<p>这个笔记是由2015年CMU15-213课程内容slides和网上相关笔记总结而成，目的是在整合各路笔记中巩固自己的知识。主要是消化为主，所以个人产出较少，由于参考了多方资料会出现中英混杂情况。由于课程slide不好整合成md格式，而小土刀的笔记又正好是slide的汉化，所以会以其博客为基底补充。</p>
 <blockquote>
 <p>主要资料：</p>
 <ul>
 <li>lecture: <a class="link" href="https://www.bilibili.com/video/BV1iW411d7hd"  target="_blank" rel="noopener"
-    >2015年课程视频</a>, <a class="link" href="https://learncs.me/cmu/15213"  target="_blank" rel="noopener"
-    >2017年课程视频</a></li>
-<li>slide&amp;lab: <a class="link" href="https://www.cs.cmu.edu/afs/cs/academic/class/15213-f15/www/schedule.html"  target="_blank" rel="noopener"
-    >2015年官网</a></li>
+    >2015年课程视频</a>, [2017年课程视频](<a class="link" href="https://learncs.me/cmu/15213"  target="_blank" rel="noopener"
+    >15-213 Introduction to Computer Systems | Learn CS</a>)</li>
+<li>slide&amp;lab: [2015年官网](<a class="link" href="https://www.cs.cmu.edu/afs/cs/academic/class/15213-f15/www/schedule.html"  target="_blank" rel="noopener"
+    >15-213: Introduction to Computer Systems / Schedule Fall 2015</a>)</li>
 <li>note: <a class="link" href="https://wdxtub.com/work/"  target="_blank" rel="noopener"
-    >课程笔记</a>，<a class="link" href="https://arthals.ink/blog/data-lab"  target="_blank" rel="noopener"
+    >小土刀笔记</a>，<a class="link" href="https://arthals.ink/blog/data-lab"  target="_blank" rel="noopener"
     >lab笔记</a></li>
 </ul>
 </blockquote>
@@ -572,7 +611,7 @@
 </ul>
 </li>
 </ul>
-<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/20250224160408.png" style="zoom:33%;" />
+  <img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/20250224160408.png" style="zoom:33%;" />
 </li>
 </ul>
 <h3 id="representation-unsigned-and-signed"><strong>Representation: unsigned and signed</strong>
@@ -1221,7 +1260,7 @@ $$<p>
 <ul>
 <li>x86-64 架构提供了额外的 8 个 64 位通用寄存器（%r8 到 %r15），用于处理更多的参数传递、临时数据存储等任务。</li>
 </ul>
-<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250225185959355.png" alt="image-20250225185959355" style="zoom:33%;" />
+  <img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250225185959355.png" alt="image-20250225185959355" style="zoom:33%;" />
 </li>
 </ul>
 <p>而 %rsp(%esp) 和 %rbp(%ebp) 则是作为栈指针和基指针来使用的。下面我们通过 <code>movq</code> 这个指令来了解操作数的三种基本类型：立即数(Imm,e.g.$0x4)、寄存器值(Reg)和内存值(Mem)。</p>
@@ -1257,11 +1296,8 @@ $$<p>
 <li><code>0x8(%rdx)</code> = <code>0xf000</code> + <code>0x8</code> = <code>0xf008</code></li>
 <li><code>(%rdx, %rcx)</code> = <code>0xf000</code> + <code>0x100</code> = <code>0xf100</code></li>
 <li><code>(%rdx, %rcx, 4)</code> = <code>0xf000</code> + <code>4*0x100</code> = <code>0xf400</code></li>
-<li><code>0x80(, %rdx, 2)</code> = <code>2*0xf000</code> + <code>0x80</code> = <code>0x1e080</code>
-<ul>
+<li><code>0x80(, %rdx, 2)</code> = <code>2*0xf000</code> + <code>0x80</code> = <code>0x1e080</code></li>
 <li><code>(, %edx, 2)</code> = <code>(0, %rdx, 2)</code> = <code>0 + 2*0xf000</code></li>
-</ul>
-</li>
 </ul>
 <p>了解了寻址之后，我们来看看运算指令，这里以 <code>leaq</code> 指令为例子。具体格式为 <code>leaq Src, Dst</code>，其中 <code>Src</code> 是地址的表达式，然后把计算的值存入 <code>Dst</code> 指定的寄存器，也就是说，因为<code>leaq</code>只计算内存地址并不访问它，所以<code>leaq</code>可以将普通数字当作内存计算，类似于 <code>p = &amp;x[i];</code>，也可以计算<code>x + k*y</code>的代数形式。我们来看一个具体的例子，假设一个 C 函数是：</p>
 <div class="highlight"><div class="chroma">
@@ -1390,7 +1426,7 @@ $$<p>
 <li>目前测试的状态放在 CF, ZF, SF, OF 中</li>
 </ul>
 <h4 id="条件代码condition-codes">条件代码(<strong>Condition codes</strong>)
-</h4><p>最后的四个标识位（CF, ZF, SF, OF）就是用来辅助程序的流程控制的，他们基于最近的算术或逻辑操作结果she&rsquo;zhi意思是：</p>
+</h4><p>最后的四个标识位（CF, ZF, SF, OF）就是用来辅助程序的流程控制的，他们基于最近的算术或逻辑操作结果意思是：</p>
 <ul>
 <li>CF: Carry Flag (针对无符号数)</li>
 <li>ZF: Zero Flag</li>
@@ -2185,7 +2221,148 @@ $$<p>
      <img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250225210520628.png" alt="image-20250225210520628" style="zoom:33%;"/>
      <img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14611733132821.jpg" alt="img" style="zoom:50%;" />
 </div>
-<p>有了前面的的基础，要理解递归就简单很多了，直接上例子</p>
+<h4 id="caller-callee-register-used-for-tempoary-storage"><strong>Caller-Callee: Register used for tempoary storage</strong>
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">yoo:
+</span></span><span class="line"><span class="cl">	• • •
+</span></span><span class="line"><span class="cl">    movq $15213, %rdx
+</span></span><span class="line"><span class="cl">    call who
+</span></span><span class="line"><span class="cl">    addq %rdx, %rax
+</span></span><span class="line"><span class="cl">	• • •
+</span></span><span class="line"><span class="cl">    ret
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">who:
+</span></span><span class="line"><span class="cl">	• • •
+</span></span><span class="line"><span class="cl">	subq $18213, %rdx
+</span></span><span class="line"><span class="cl">	• • •
+</span></span><span class="line"><span class="cl">    ret
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>yoo</code> is the caller, <code>who</code> is the callee</p>
+<ul>
+<li>Contents of register <code>%rdx</code> overwritten by <code>who</code>
+<ul>
+<li>“Caller Saved”
+<ul>
+<li>Caller saves temporary values in its frame before the call</li>
+<li><strong>Caller-saved registers</strong> are used to hold temporary quantities that need not be preserved across calls.</li>
+<li>It is the caller&rsquo;s responsibility to push these registers onto the stack or copy them somewhere else <em>if</em> it wants to restore this value after a procedure call.</li>
+</ul>
+</li>
+<li>“Callee Saved”
+<ul>
+<li><strong>Callee-saved registers</strong> are used to hold long-lived values that should be preserved across calls.</li>
+<li>Callee restores them before returning to caller</li>
+<li>When the caller makes a procedure call, it can expect that those registers will hold the same value after the callee returns, making it the responsibility of the callee to save them and restore them before returning to the caller. Or to not touch them.</li>
+</ul>
+</li>
+<li>Wrapping up, If the caller wants to ensure that a value in a caller-saved register is preserved across a function call, it can either push it to the stack or save the value in the callee register.</li>
+</ul>
+</li>
+</ul>
+<p>To be specific.</p>
+<div style="text-align: center;">
+    <img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250226163037717.png" alt="image-20250226163037717" style="zoom:33%;" />
+    <img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250226163621034.png" alt="image-20250226163621034" style="zoom:33%;"/>
+</div>
+<ul>
+<li>
+<p><strong>%rax</strong></p>
+<ul>
+<li>
+<p>Return value</p>
+</li>
+<li>
+<p>Also caller-saved</p>
+</li>
+<li>
+<p>Can be modified by procedure</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>%rdi, &hellip;, %r9</strong></p>
+<ul>
+<li>
+<p>Arguments</p>
+</li>
+<li>
+<p>Also caller-saved</p>
+</li>
+<li>
+<p>Can be modified by procedure</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>%r10, r11</strong></p>
+<ul>
+<li>
+<p>Caller-saved</p>
+</li>
+<li>
+<p>Can be modified by procedure</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>%rbx, %r12, %r13, %r14</strong></p>
+<ul>
+<li>
+<p>Callee-saved</p>
+</li>
+<li>
+<p>Callee must save &amp; restore</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>%rbp</strong></p>
+<ul>
+<li>
+<p>Callee-saved</p>
+</li>
+<li>
+<p>Callee must save &amp; restore</p>
+</li>
+<li>
+<p>May be used as frame pointer</p>
+</li>
+<li>
+<p>Can mix &amp; match</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>%rsp</strong></p>
+<ul>
+<li>
+<p>Special form of callee save</p>
+</li>
+<li>
+<p>Restored to original value upon exit from procedure</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="递归illustration-of-recursion">递归(<strong>Illustration of Recursion</strong>)
+</h4><p>有了前面的的基础，要理解递归就简单很多了，直接上例子</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2238,8 +2415,9 @@ $$<p>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>实际执行的过程中，会不停进行压栈，直到最后返回，所以递归本身就是一个隐式的栈实现，但是系统一般对于栈的深度有限制（每次一都需要保存当前栈帧的各种数据），所以一般来说会把递归转换成显式栈来进行处理以防溢出。</p>
-<h2 id="数据存储">数据存储
-</h2><p>上一节我们了解了过程调用是如何用机器代码实现的，这一节我们来看看基本的数据是如何存储在计算机中。</p>
+<p>寄存器保存策略也保证了不同过程不会影响相互的数据。递归调用函数本身和调用其他函数没有本质区别。</p>
+<h3 id="数据存储data">数据存储(Data)
+</h3><p>上一节我们了解了过程调用是如何用机器代码实现的，这一节我们来看看基本的数据是如何存储在计算机中。</p>
 <p>第一讲中我们已经学到，不同的数据类型所需要的字节数是不同的，我们先来回顾一下这个表格：</p>
 <div class="table-wrapper"><table>
   <thead>
@@ -2302,7 +2480,7 @@ $$<p>
   </tbody>
 </table></div>
 <p>我们举几个具体的例子就一目了然了：</p>
-<p><img src="https://wdxtub.com/images/csapp/14611748992035.jpg"
+<p><img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14611748992035.jpg"
 	
 	
 	
@@ -2359,9 +2537,52 @@ $$<p>
       </tr>
   </tbody>
 </table></div>
-<h3 id="多维数组">多维数组
-</h3><p>对于多维的数组，基本形式是 <code>T A[R][C]</code>，R 是行，C 是列，如果类型 T 占 K 个字节的话，那么数组所需要的内存是 <code>R*C*K</code> 字节。具体在内存里的排列方式如下：</p>
-<p><img src="https://wdxtub.com/images/csapp/14611757048510.jpg"
+<p>Array Loop Example</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">zincr</span><span class="p">(</span><span class="n">zip_dig</span> <span class="n">z</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">size_t</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ZLEN</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">z</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  # %rdi = z
+</span></span><span class="line"><span class="cl">  movl    $0, %eax          #   i = 0
+</span></span><span class="line"><span class="cl">  jmp     .L3               #   goto middle
+</span></span><span class="line"><span class="cl">.L4:                        # loop:
+</span></span><span class="line"><span class="cl">  addl    $1, (%rdi,%rax,4) #   z[i]++
+</span></span><span class="line"><span class="cl">  addq    $1, %rax          #   i++
+</span></span><span class="line"><span class="cl">.L3:                        # middle
+</span></span><span class="line"><span class="cl">  cmpq    $4, %rax          #   i:4
+</span></span><span class="line"><span class="cl">  jbe     .L4               #   if &lt;=, goto loop
+</span></span><span class="line"><span class="cl">  rep; ret
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="多维数组multidimensional-nested-arrays">多维数组(<strong>Multidimensional (Nested) Arrays</strong>)
+</h4><p>对于多维的数组，基本形式是 <code>T A[R][C]</code>，R 是行，C 是列，如果类型 T 占 K 个字节的话，那么数组所需要的内存是 <code>R*C*K</code> 字节。具体在内存里的排列方式如下：</p>
+<p><img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14611757048510.jpg"
 	
 	
 	
@@ -2386,8 +2607,7 @@ $$<p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>复制</p>
-<p>对应的汇编代码为，这里假设 C = 5</p>
+</div><p>对应的汇编代码为，这里假设 C = 5</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2400,10 +2620,22 @@ $$<p>
 </span></span><span class="line"><span class="cl">movl    A(, %rsi, 4), %eax      # M[A + 4*(5*index+dig)]
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>复制</p>
-<p>还有另外一种组合数组的方式，不是连续分配，而是存储每个数组的起始地址。与之前连续分配唯一不同之处在于计算元素位置时候不同行对应不连续的起始地址（可能分散在内存的不同部分）。这两种方式在 C 语言中看起来差不多，但对应的汇编代码则完全不同。</p>
-<h3 id="结构体">结构体
-</h3><p>结构体是 C 语言中非常常用的一种机制，具体在内存中是如何存放的呢？我们通过具体的例子来进行学习。比如我们有这样一个结构体：</p>
+</div><p>还有另外一种组合数组的方式，不是连续分配，而是存储每个数组的起始地址。与之前连续分配唯一不同之处在于计算元素位置时候不同行对应不连续的起始地址（可能分散在内存的不同部分）。这两种方式在 C 语言中看起来差不多，但对应的汇编代码则完全不同。</p>
+<ul>
+<li>
+<p><strong>Array Elements</strong></p>
+<ul>
+<li>
+<p><strong>A[i][j]</strong> is element of type <em>T,</em> which requires <em>K</em> bytes, long C a row.</p>
+</li>
+<li>
+<p>Address <strong>A +</strong> <em>i</em> * (<em>C</em> * <em>K</em>) + <em>j</em> * <em>K =</em> <em>A +</em> (<em>i * C + j</em>)** K*</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="结构体structures">结构体(Structures)
+</h4><p>结构体是 C 语言中非常常用的一种机制，具体在内存中是如何存放的呢？我们通过具体的例子来进行学习。比如我们有这样一个结构体：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2422,9 +2654,8 @@ $$<p>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>复制</p>
-<p>那么在内存中的排列是</p>
-<p><img src="https://wdxtub.com/images/csapp/14611816137150.jpg"
+</div><p>那么在内存中的排列是</p>
+<p><img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14611816137150.jpg"
 	
 	
 	
@@ -2453,9 +2684,8 @@ $$<p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>复制</p>
-<p>因为需要对齐的缘故，所以具体的排列是这样的：</p>
-<p><img src="https://wdxtub.com/images/csapp/14611821730508.jpg"
+</div><p>因为需要对齐的缘故，所以具体的排列是这样的：</p>
+<p><img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14611821730508.jpg"
 	
 	
 	
@@ -2465,8 +2695,7 @@ $$<p>
 	
 	
 ></p>
-<p>具体对齐的原则是，如果数据类型需要 K 个字节，那么地址都必须是 K 的倍数，比方说这里 int 数组 i 需要是 4 的倍数，而 v 则需要是 8 的倍数。</p>
-<p>感谢网友『光河』的补充：文中讲“具体对齐的原则是，如果数据类型需要 K 个字节，那么地址都必须是 K 的倍数”——这只是windows的原则，而Linux中的对齐策略是“2字节数据类型的地址必须为2的倍数，较大的数据类型（int,double,float）的地址必须是4的倍数”</p>
+<p>具体对齐的原则是，对于结构体前部的数据，只需要与下一个类型对齐，及在下一个数据字节数的倍数处写入数据。而对于最后一个数据，只需要保证结构体全长是结构体中最大的数据类型的字节数的倍数即可。</p>
 <p>为什么要这样呢，因为内存访问通常来说是 4 或者 8 个字节位单位的，不对齐的话访问起来效率不高。具体来看的话，是这样：</p>
 <ul>
 <li>1 字节：char, …
@@ -2512,8 +2741,7 @@ $$<p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>复制</p>
-<p><img src="https://wdxtub.com/images/csapp/14611824112595.jpg"
+</div><p><img src="https://wdxtub.com/images/csapp/14611824112595.jpg"
 	
 	
 	
@@ -2552,8 +2780,7 @@ $$<p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>复制</p>
-<p>对应的排列是：</p>
+</div><p>对应的排列是：</p>
 <p><img src="https://wdxtub.com/images/csapp/14611827570059.jpg"
 	
 	
@@ -2565,18 +2792,10 @@ $$<p>
 	
 ></p>
 <p>这样我们就通过不同的排列，节约了 4 个字节空间，如果这个结构体要被复制很多次，这也是很可观的内存优化。</p>
-<h2 id="缓冲区溢出">缓冲区溢出
-</h2><p>这一节是机器代码的最后一部分，主要说说由缓冲区溢出引起的攻防大战。我们先来看看程序在内存中是如何组织的（x86-64 Linux）</p>
-<p><img src="https://wdxtub.com/images/csapp/14611833392466.jpg"
-	
-	
-	
-	loading="lazy"
-	
-		alt="img"
-	
-	
-></p>
+<h3 id="advanced-topics"><strong>Advanced Topics</strong>
+</h3><h4 id="内存分布缓冲区溢出memory-layoutbuffer-overflow">内存分布&amp;缓冲区溢出(Memory Layout&amp;Buffer Overflow)
+</h4><p>这一节是机器代码的最后一部分，主要说说由缓冲区溢出引起的攻防大战。我们先来看看程序在内存中是如何组织的（x86-64 Linux）</p>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250226171704107.png" alt="image-20250226171704107" style="zoom:33%;" />
 <p>最上面是运行时栈，有 8MB 的大小限制，一般用来保存局部变量。然后是堆，动态的内存分配会在这里处理，例如 <code>malloc()</code>, <code>calloc()</code>, <code>new()</code> 等。然后是数据，指的是静态分配的数据，比如说全局变量，静态变量，常量字符串。最后是共享库等可执行的机器指令，这一部分是只读的。</p>
 <p>可以见到，栈在最上面，也就是说，栈再往上就是另一个程序的内存范围了，这种时候我们就可以通过这种方式修改内存的其他部分了。</p>
 <p>举个例子</p>
@@ -2740,52 +2959,183 @@ $$<p>
 </div>
 </div><p>我们看 <code>4006cf</code> 这一行，可以发现实际上给 %rsp 分配了 0x18 的空间，所以可以容纳不止 4 个 char。</p>
 <p>在调用 <code>gets</code> 函数之前（第 <code>4006d6</code> 行），内存中栈帧示意图为：</p>
-<p><img src="https://wdxtub.com/images/csapp/14611853013958.jpg"
-	
-	
-	
-	loading="lazy"
-	
-		alt="img"
-	
-	
-></p>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14611853013958.jpg" alt="img" style="zoom:33%;" />
 <p>结合上面代码可以看到，<code>call_echo</code> 栈帧中保存着调用之前执行指令的地址 <code>4006f6</code>，用于返回之后继续执行。我们输入字符串 <code>01234567890123456789012</code> 之后，栈帧中缓冲区被填充，如下：</p>
-<p><img src="https://wdxtub.com/images/csapp/14611855170102.jpg"
-	
-	
-	
-	loading="lazy"
-	
-		alt="img"
-	
-	
-></p>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14611855170102.jpg" alt="img" style="zoom:33%;" />
 <p>虽然缓冲区溢出了，但是并没有损害当前的状态，程序还是可以继续运行（也就是没有出现段错误），但是如果再多一点的话，也就是输入 <code>0123456789012345678901234</code>，内存中的情况是这样的：</p>
-<p><img src="https://wdxtub.com/images/csapp/14611856222781.jpg"
-	
-	
-	
-	loading="lazy"
-	
-		alt="img"
-	
-	
-></p>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14611856222781.jpg" alt="img" style="zoom:33%;" />
 <p>就把返回地址给覆盖掉了，当 <code>echo</code> 执行完成要回到 <code>call_echo</code> 函数时，就跳转到 <code>0x400034</code> 这个内容未知的地址中了。也就是说，通过缓冲区溢出，我们可以在程序返回时跳转到任何我们想要跳转到的地方！攻击者可以利用这种方式来执行恶意代码！</p>
 <p>那么我们现在来看看，怎么处理缓冲区溢出攻击，有几种方式：</p>
 <ol>
 <li>好好写代码，尽量不让缓冲区异常</li>
-<li>程序容易出问题，那么提供系统层级的保护</li>
-<li>编译器也可以来个认证(stack canaries)</li>
 </ol>
-<p>第一种，避免缓冲区溢出，我们用更安全的方法，如：<code>fgets</code>, <code>strncpy</code> 等等。</p>
-<p>第二种，栈的位置不确定，让缓冲区溢出没办法影响到，并且每次位置都不一样，就不怕被暴力破解。并且也可以把一段内存标记为只读，那么就避免因为缓冲区溢出而导致的重写。</p>
-<p>第三种，使用认证机制(Stack Canaries)。简单来说，就是在超出缓冲区的位置加一个特殊的值，如果发现这个值变化了，那么就知道出问题了。</p>
-<p>但是，除了缓冲区溢出，还有另一种攻击的方式，称为返回导向编程[4]。可以利用修改已有的代码，来绕过系统和编译器的保护机制，攻击者控制堆栈调用以劫持程序控制流并执行针对性的机器语言指令序列（称为Gadgets）。每一段 gadget 通常结束于 return 指令，并位于共享库代码中的子程序。系列调用这些代码，攻击者可以在拥有更简单攻击防范的程序内执行任意操作。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cm">/* Echo Line */</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">echo</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>  <span class="cm">/* Way too small! */</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fgets</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">stdin</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">puts</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p><strong>fgets</strong> instead of <strong>gets</strong></p>
+</li>
+<li>
+<p><strong>strncpy</strong> instead of <strong>strcpy</strong></p>
+</li>
+<li>
+<p>Don’t use <strong>scanf</strong> with <strong>%s</strong> conversion specification</p>
+<ul>
+<li>
+<p>Use <strong>fgets</strong> to read the string</p>
+</li>
+<li>
+<p>Or use <strong>%ns</strong> where <strong>n</strong> is a suitable integer</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>
+<p>程序容易出问题，那么提供系统层级的保护</p>
+<ul>
+<li>
+<p>In traditional x86, can mark region of memory as either “read-only” or “writeable”</p>
+<ul>
+<li>Can execute anything readable</li>
+</ul>
+</li>
+<li>
+<p>X86-64 added explicit “execute” permission</p>
+</li>
+<li>
+<p>Stack marked as non-executable</p>
+</li>
+</ul>
+</li>
+<li>
+<p>编译器也可以来个认证(stack canaries)</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">echo: # Setting up canary
+</span></span><span class="line"><span class="cl">	. . .
+</span></span><span class="line"><span class="cl">	movq	%fs:40, %rax  # Get canary
+</span></span><span class="line"><span class="cl">	movq	%rax, 8(%rsp) # Place on stack
+</span></span><span class="line"><span class="cl">	xorl	%eax, %eax    # Erase canary
+</span></span><span class="line"><span class="cl">	. . .
+</span></span><span class="line"><span class="cl">echo: # Checking canary
+</span></span><span class="line"><span class="cl">	. . .
+</span></span><span class="line"><span class="cl">	movq	8(%rsp), %rax     # Retrieve from stack
+</span></span><span class="line"><span class="cl">	xorq	%fs:40, %rax      # Compare to canary
+</span></span><span class="line"><span class="cl">	je	.L6               # If same, OK
+</span></span><span class="line"><span class="cl">	call	__stack_chk_fail  # FAIL
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>但是，除了缓冲区溢出，还有另一种攻击的方式，称为返回导向编程。可以利用修改已有的代码，来绕过系统和编译器的保护机制，攻击者控制堆栈调用以劫持程序控制流并执行针对性的机器语言指令序列（称为Gadgets）。每一段 gadget 通常结束于 return 指令，并位于共享库代码中的子程序。系列调用这些代码，攻击者可以在拥有更简单攻击防范的程序内执行任意操作。</p>
 <p>具体利用缓冲区进行攻击的例子，会在<a class="link" href="https://wdxtub.com/csapp/thin-csapp-2/2016/04/16/2016/04/16/thick-csapp-lab-3/"  target="_blank" rel="noopener"
     >【读厚 CSAPP】III Attack Lab</a> 中进行讲解，这里不再赘述。</p>
-<h2 id="程序优化">程序优化
+<h4 id="gdb-from-csapp-310">GDB from CSAPP 3.10
+</h4><ol>
+<li>run <code>OBJDUMP</code> to get a disassembled version of the programme</li>
+<li>set breakpoints near points of interest in the programme.</li>
+<li>if breakpoint is hit, the programme will halt and return control control to th euser. From breakpoint, we can examine different registers and memory locations in various formats. We can also single-step the programme, running just a few instructions a time, or we can proceed to the next breakpoint.</li>
+</ol>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250226202959221.png" alt="image-20250226202959221" style="zoom:80%;" />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">p $rax  # 打印寄存器 rax 的值
+</span></span><span class="line"><span class="cl">p $rsp  # 打印栈指针的值
+</span></span><span class="line"><span class="cl">p/x $rsp  # 打印栈指针的值，以十六进制显示
+</span></span><span class="line"><span class="cl">p/d $rsp  # 打印栈指针的值，以十进制显示
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">x/2x $rsp  # 以十六进制格式查看栈指针 %rsp 指向的内存位置 M[%rsp] 开始的两个单位。
+</span></span><span class="line"><span class="cl">x/2d $rsp # 以十进制格式查看栈指针 %rsp 指向的内存位置 M[%rsp] 开始的两个单位。
+</span></span><span class="line"><span class="cl">x/2c $rsp # 以字符格式查看栈指针 %rsp 指向的内存位置 M[%rsp] 开始的两个单位。
+</span></span><span class="line"><span class="cl">x/s $rsp # 把栈指针指向的内存位置 M[%rsp] 当作 C 风格字符串来查看。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">x/b $rsp # 检查栈指针指向的内存位置 M[%rsp] 开始的 1 字节。
+</span></span><span class="line"><span class="cl">x/h $rsp # 检查栈指针指向的内存位置 M[%rsp] 开始的 2 字节（半字）。
+</span></span><span class="line"><span class="cl">x/w $rsp # 检查栈指针指向的内存位置 M[%rsp] 开始的 4 字节（字）。
+</span></span><span class="line"><span class="cl">x/g $rsp # 检查栈指针指向的内存位置 M[%rsp] 开始的 8 字节（双字）。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">info registers  # 打印所有寄存器的值
+</span></span><span class="line"><span class="cl">info breakpoints  # 打印所有断点的信息
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">delete breakpoints 1  # 删除第一个断点，可以简写为 d 1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这些命令在 <code>/</code> 后面的后缀（如 <code>2x</code>、<code>2d</code>、<code>s</code>、<code>g</code>、<code>20c</code>）指定了查看内存的方式和数量。具体来说：</p>
+<ul>
+<li>
+<p>第一个数字（如 <code>2</code>、<code>20</code>）指定要查看的单位数量。</p>
+</li>
+<li>
+<p>第二个字母（如 <code>x</code>、<code>d</code>、<code>s</code>、<code>g</code>、<code>c</code>）指定单位类型和显示格式，其中：</p>
+<ul>
+<li>
+<p><code>c</code> / <code>d</code> / <code>x</code> 分别代表以字符 / 十进制 / 十六进制格式显示内存内容。</p>
+</li>
+<li>
+<p><code>s</code> 代表以字符串格式显示内存内容。</p>
+</li>
+<li>
+<p><code>b</code> / <code>h</code> / <code>w</code> / <code>g</code> 分别代表以 1 / 2 / 4 / 8 字节为单位（<code>unit</code>）显示内存内容。</p>
+<p>当使用 <code>x/b</code>、<code>x/h</code>、<code>x/w</code>、<code>x/g</code> 时，<code>unit</code> 会保留对应改变，直到你再次使用这些命令。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="4程序优化code-optimization">4.程序优化(Code Optimization)
 </h2><p>前面了解了许多机器代码以及程序执行机制的相关知识，这一节我们来学习如何利用这些性质来优化代码。</p>
 <ul>
 <li>用好编译器的不同参数设定</li>
@@ -2823,8 +3173,7 @@ $$<p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>复制</p>
-<p>这里 <code>n*i</code> 是重复被计算的，可以放到循环外面</p>
+</div><p>这里 <code>n*i</code> 是重复被计算的，可以放到循环外面</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2841,8 +3190,7 @@ $$<p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>复制</p>
-<h3 id="减少计算强度">减少计算强度
+</div><h3 id="减少计算强度">减少计算强度
 </h3><p>用更简单的表达式来完成用时较久的操作，例如 <code>16*x</code> 就可以用 <code>x &lt;&lt; 4</code> 代替，一个比较明显的例子是，可以把乘积转化位一系列的加法，如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2860,8 +3208,7 @@ $$<p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>复制</p>
-<p>可以把 <code>n*i</code> 用加法代替，比如：</p>
+</div><p>可以把 <code>n*i</code> 用加法代替，比如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -3075,6 +3422,1255 @@ $$<p>
 <p>这个很重要，对于顺序执行来说，不会有任何问题，但是对于条件分支来说，在跳转指令时可能会改变程序的走向，也就是说，之前载入的指令可能是无效的。这个时候就只能清空流水线，然后重新进行载入。为了减少清空流水线所带来的性能损失，处理器内部会采用称为『分支预测』的技术。</p>
 <p>比方说在一个循环中，根据预测，可能除了最后一次跳出循环的时候会判断错误之外，其他都是没有问题的。这就可以接受，但是如果处理器不停判断错误的话（比方说代码逻辑写得很奇怪），性能就会得到极大的拖累。</p>
 <p>分支问题有些时候会成为最主要的影响性能的因素，但有的时候其实很难避免。</p>
+<h2 id="5the-memory-hierarchycache-memories">5.The Memory Hierarchy&amp;Cache Memories
+</h2><p>The Memory Hierarchy see <a class="link" href="https://wdxtub.com/csapp/thin-csapp-3/2016/04/16/"  target="_blank" rel="noopener"
+    >【读薄 CSAPP】叁 内存与缓存 | 小土刀 3.0</a></p>
+<h3 id="cache-memory">Cache Memory
+</h3><ul>
+<li>
+<p><strong>Cold (compulsory) miss</strong></p>
+<ul>
+<li>Cold misses occur because the cache is empty.</li>
+</ul>
+</li>
+<li>
+<p><strong>Conflict miss</strong></p>
+<ul>
+<li>
+<p>Most caches limit blocks at level k+1 to a small subset (sometimes a singleton) of the block positions at level k.</p>
+</li>
+<li>
+<p>E.g. Block i at level k+1 must be placed in block (i mod 4) at level k.</p>
+</li>
+<li>
+<p>Conflict misses occur when the level k cache is large enough, but multiple data objects all map to the same level k block.</p>
+</li>
+<li>
+<p>E.g. Referencing blocks 0, 8, 0, 8, 0, 8, &hellip; would miss every time.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Capacity miss</strong></p>
+<ul>
+<li>Occurs when the set of active cache blocks (working set) is larger than the cache.</li>
+</ul>
+</li>
+</ul>
+<p>高速缓存存储器(Cache Memory)是 CPU 缓存系统甚至是金字塔式存储体系中最有代表性的缓存机制，前面我们了解了许多概念，这一节我们具体来看看高速缓存存储器是如何工作的。</p>
+<p>首先要知道的是，高速缓存存储器是由硬件自动管理的 SRAM 内存，CPU 会首先从这里找数据，其所处的位置如下（蓝色部分）：</p>
+<p><img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14612615839808.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="img"
+	
+	
+></p>
+<p>然后我们需要关注高速缓冲存储器的三个关键组成部分（注意区分大小写）：</p>
+<ul>
+<li>S 表示集合(set)数量</li>
+<li>E 表示数据行(line)的数量</li>
+<li>B 表示每个缓存块(block)保存的字节数目</li>
+</ul>
+<p>在图上表示出来就是</p>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14612628563878.jpg" alt="img" style="zoom:50%;" />
+$$
+C=S×E×BC=S×E×B
+$$<p>
+实际上可以理解为三种层级关系，对应不同的索引，这样分层的好处在于，通过层级关系简化搜索需要的时间，并且和字节的排布也是一一对应的（之后介绍缓存的时候就体现得更加明显）。</p>
+<p>当处理器需要访问一个地址时，会先在高速缓冲存储器中进行查找，查找过程中我们首先在概念上把这个地址划分成三个部分：</p>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14612633441722.jpg" alt="img" style="zoom:67%;" />
+<h4 id="读取">读取
+</h4><p>具体在从缓存中读取一个地址时，首先我们通过 set index 确定要在哪个 set 中寻找，确定后利用 tag 和同一个 set 中的每个 line 进行比对，找到 tag 相同的那个 line，最后再根据 block offset 确定要从 line 的哪个位置读起（这里的而 line 和 block 是一个意思）。</p>
+<p>当 E=1 时，也就是每个 set 只有 1 个 line 的时候，称之为直接映射缓存(Direct Mapped Cache)，如下图所示</p>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/14612642281687.jpg" alt="img" style="zoom:50%;" />
+<p>这种情况下，因为每个 set 对应 1 个 line，反过来看，1 个 line 就需要一个 set，所以 set index 的位数就会较多（和之后的多路映射对比）。具体的检索过程就是先通过 set index 确定哪个 set，然后看是否 valid，然后比较那个 set 里唯一 line 的 tag 和地址的 t bits 是否一致，就可以确定是否缓存命中。</p>
+<p>命中之后根据 block offset 确定偏移量，因为需要读入一个 int，所以会读入 4 5 6 7 这四个字节（假设缓存是 8 个字节）。如果 tag 不匹配的话，这行会被扔掉并放新的数据进来。</p>
+<p>然后我们来看一个具体的例子，假设我们的寻址空间是 M=16 字节，也就是 4 位的地址，对应 B=2, S=4, E=1，我们按照如下顺序进行数据读取：</p>
+<ul>
+<li><code>0 00 0</code>, miss</li>
+<li><code>0 00 1</code>, hit</li>
+<li><code>0 11 1</code>, miss</li>
+<li><code>1 00 0</code>, miss</li>
+<li><code>0 00 0</code>, miss</li>
+</ul>
+<p>缓存中的具体情况是，这里 x 表示没有任何内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">       v  Tag   Block
+</span></span><span class="line"><span class="cl">Set 0  1   0    M[0-1]
+</span></span><span class="line"><span class="cl">Set 1  x   x      x
+</span></span><span class="line"><span class="cl">Set 2  x   x      x
+</span></span><span class="line"><span class="cl">Set 3  1   0    M[6-7]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>缓存的大小如图所示，对应就是有 4 个 set，所以需要 2 位的 set index，所以进行读入的时候，会根据中间两位来确定在哪个 set 中查找，其中 8 和 0，因为中间两位相同，会产生冲突，导致连续 miss，这个问题可以用多路映射来解决。</p>
+<p>当 E 大于 1 时，也就是每个 set 有 E 个 line 的时候，称之为 E 路联结缓存。这里每个 set 有两个 line，所以就没有那么多 set，也就是说 set index 可以少一位（集合数量少一倍）。</p>
+<p>再简述一下整个过程，先从 set index 确定那个 set，然后看 valid 位，接着利用 t bits 分别和每个 line 的 tag 进行比较，如果匹配则命中，那么返回 4 5 位置的数据，如果不匹配，就需要替换，可以随机替换，也可以用 least recently used(LRU) 来进行替换。</p>
+<p>我们再用刚才的例子来看看是否会增加命中率，这里假设我们的寻址空间是 M=16 字节，也就是 4 位的地址，对应 B=2, S=2, E=2，我们按照如下顺序进行数据读取：</p>
+<ul>
+<li><code>0 00 0</code>, miss</li>
+<li><code>0 00 1</code>, hit</li>
+<li><code>0 11 1</code>, miss</li>
+<li><code>1 00 0</code>, miss</li>
+<li><code>0 00 0</code>, hit</li>
+</ul>
+<p>缓存中的具体情况是，这里 x 表示没有任何内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">       v   Tag   Block
+</span></span><span class="line"><span class="cl">Set 0  1   00    M[0-1]
+</span></span><span class="line"><span class="cl">Set 0  1   10    M[8-9]
+</span></span><span class="line"><span class="cl">Set 1  1   01    M[6-7]
+</span></span><span class="line"><span class="cl">Set 1  0   x     x
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到因为每个 set 有 2 个 line，所以只有 2 个 set，set index 也只需要 1 位了，这个情况下即使 8 和 0 的 set index 一致，因为一个 set 可以容纳两个数据，所以最后一次访问 0，就不会 miss 了。</p>
+<h4 id="写入">写入
+</h4><p>在整个存储层级中，不同的层级可能会存放同一个数据的不同拷贝（如 L1, L2, L3, 主内存, 硬盘）。如果发生写入命中的时候（也就是要写入的地址在缓存中有），有两种策略：</p>
+<ul>
+<li>Write-through: 命中后更新缓存，同时写入到内存中</li>
+<li>Write-back: 直到这个缓存需要被置换出去，才写入到内存中（需要额外的 dirty bit 来表示缓存中的数据是否和内存中相同，因为可能在其他的时候内存中对应地址的数据已经更新，那么重复写入就会导致原有数据丢失）</li>
+</ul>
+<p>在写入 miss 的时候，同样有两种方式：</p>
+<ul>
+<li>Write-allocate: 载入到缓存中，并更新缓存（如果之后还需要对其操作，这个方式就比较好）</li>
+<li>No-write-allocate: 直接写入到内存中，不载入到缓存</li>
+</ul>
+<p>这四种策略通常的搭配是：</p>
+<ul>
+<li>Write-through + No-write-allocate</li>
+<li>Write-back + Write-allocate</li>
+</ul>
+<p>其中第一种可以保证绝对的数据一致性，第二种效率会比较高（通常情况下）。</p>
+<h3 id="different-indexing">Different Indexing
+</h3><div>
+    <img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250308110308611.png" alt="image-20250308110308611" style="zoom:25%;" />
+    <img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250308110924669.png" alt="image-20250308110924669" style="zoom:21.5%;" />
+</div>
+<p>Due to spatial locality, most data in real-world programs is stored in contiguous memory regions (like arrays or buffers).</p>
+<p>This means that when a program accesses memory sequentially, only the lower bits of the address (which indicate the offset within a block) change frequently, while the higher bits (which represent the larger memory block or region) remain constant until a larger step is taken.</p>
+<p>So $TTSSBB$ is better than $SSTTBB$ because the former indexing changes its Set index more frequently, resulting to more seperate data and less frequent comflict miss.</p>
+<h3 id="cache-lab">Cache lab
+</h3><ul>
+<li>“I” denotes an instruction load, “L” a data load, “S” a data store, and “M” a data modify (i.e., a data load followed by a data store).
+<ul>
+<li>&rsquo;load&rsquo; stands for accessing the bits within a cache block—if they’re already in the cache, it just reads the relevant portion; if not, the entire block is loaded first before reading out the desired bits.</li>
+</ul>
+</li>
+</ul>
+<h2 id="6linking">6.Linking
+</h2><p>见<a class="link" href="https://wdxtub.com/csapp/thin-csapp-4/2016/04/16/"  target="_blank" rel="noopener"
+    >【读薄 CSAPP】肆 链接 | 小土刀 3.0</a></p>
+<h2 id="7exceptional-control-flow异常流控制">7.<strong>Exceptional Control Flow</strong>(异常流控制)
+</h2><p><strong>Processors do only one thing:</strong></p>
+<ul>
+<li>
+<p>From startup to shutdown, a CPU simply reads and executes (interprets) a sequence of instructions, one at a time</p>
+</li>
+<li>
+<p>This sequence is the CPU’s <em>control flow</em> (or <em>flow of control</em>)</p>
+</li>
+</ul>
+<p><strong>Up to now: two mechanisms for changing control flow:</strong></p>
+<ul>
+<li>
+<p>Jumps and branches</p>
+</li>
+<li>
+<p>Call and return</p>
+</li>
+</ul>
+<p>React to changes in <strong>program</strong> <strong>state</strong></p>
+<p>但是遇到异常的控制流时，就没办法应对了，所以需要异常流控制。</p>
+<p>异常控制流存在于系统的每个层级，最底层的机制称为<strong>异常(Exception)</strong>，用以改变控制流以响应系统事件，通常是由硬件的操作系统共同实现的。更高层次的异常控制流包括<strong>进程切换(Process Context Switch)</strong>、<strong>信号(Signal)<strong>和</strong>非本地跳转(Nonlocal Jumps)</strong>，也可以看做是一个从硬件过渡到操作系统，再从操作系统过渡到语言库的过程。进程切换是由硬件计时器和操作系统共同实现的，而信号则只是操作系统层面的概念了，到了非本地跳转就已经是在 C 运行时库中实现的了。</p>
+<h3 id="exceptions-and-processes"><strong>Exceptions and Processes</strong>
+</h3><h4 id="异常-exception">异常 Exception
+</h4><p>这里的异常指的是把控制交给系统内核来响应某些事件（例如处理器状态的变化），其中内核是操作系统常驻内存的一部分，而这类事件包括除以零、数学运算溢出、页错误、I/O 请求完成或用户按下了 ctrl+c 等等系统级别的事件。</p>
+<p>具体的过程可以用下图表示：</p>
+<p><img src="https://wdxtub.com/images/csapp/14613541138958.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="img"
+	
+	
+></p>
+<p>系统会通过异常表(Exception Table)来确定跳转的位置，每种事件都有对应的唯一的异常编号，发生对应异常时就会调用对应的异常处理代码</p>
+<h5 id="异步异常中断">异步异常（中断）
+</h5><p>异步异常(Asynchronous Exception)称之为中断(Interrupt)，是由处理器外面发生的事情引起的。对于执行程序来说，这种“中断”的发生完全是异步的，因为不知道什么时候会发生。CPU对其的响应也完全是被动的，但是可以屏蔽掉。这种情况下：</p>
+<ul>
+<li>需要设置处理器的中断指针(interrupt pin)</li>
+<li>处理完成后会返回之前控制流中的『下一条』指令</li>
+</ul>
+<p>比较常见的中断有两种：</p>
+<ul>
+<li>计时器中断：计时器中断是由计时器芯片每隔几毫秒触发的，内核用计时器终端来从用户程序手上拿回控制权。</li>
+<li>I/O 中断：I/O 中断类型比较多样，比方说键盘输入了 ctrl-c，网络中一个包接收完毕和硬盘中传输的文件包送达，都会触发这样的中断。</li>
+</ul>
+<h5 id="同步异常">同步异常
+</h5><p>同步异常(Synchronous Exception)是因为执行某条指令所导致的事件，分为陷阱(Trap)、故障(Fault)和终止(Abort)三种情况。</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">类型</th>
+          <th style="text-align: center">原因</th>
+          <th style="text-align: center">行为</th>
+          <th style="text-align: center">示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">陷阱</td>
+          <td style="text-align: center">有意的异常</td>
+          <td style="text-align: center">返回到下一条指令</td>
+          <td style="text-align: center">系统调用，断点</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">故障</td>
+          <td style="text-align: center">潜在可恢复的错误</td>
+          <td style="text-align: center">返回到当前指令</td>
+          <td style="text-align: center">页故障(page faults)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">终止</td>
+          <td style="text-align: center">不可恢复的错误</td>
+          <td style="text-align: center">终止当前程序</td>
+          <td style="text-align: center">非法指令</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>这里需要注意三种不同类型的处理方式，比方说陷阱和中断一样，会返回执行『下一条』指令；而故障会重新执行之前触发事件的指令；终止则是直接退出当前的程序。</p>
+<h5 id="system-calls">System Calls
+</h5><p>系统调用看起来像是函数调用，但其实是走异常控制流的，在 x86-64 系统中，每个系统调用都有一个唯一的 ID，如</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">编号</th>
+          <th style="text-align: center">名称</th>
+          <th style="text-align: center">描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center"><code>read</code></td>
+          <td style="text-align: center">读取文件</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center"><code>write</code></td>
+          <td style="text-align: center">写入文件</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center"><code>open</code></td>
+          <td style="text-align: center">打开文件</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">3</td>
+          <td style="text-align: center"><code>close</code></td>
+          <td style="text-align: center">关闭文件</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4</td>
+          <td style="text-align: center"><code>stat</code></td>
+          <td style="text-align: center">获取文件信息</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">57</td>
+          <td style="text-align: center"><code>fork</code></td>
+          <td style="text-align: center">创建进程</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">59</td>
+          <td style="text-align: center"><code>execve</code></td>
+          <td style="text-align: center">执行一个程序</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">60</td>
+          <td style="text-align: center"><code>_exit</code></td>
+          <td style="text-align: center">关闭进程</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">62</td>
+          <td style="text-align: center"><code>kill</code></td>
+          <td style="text-align: center">向进程发送信号</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>举个例子，假设用户调用了 <code>open(filename, options)</code>，系统实际上会执行 <code>__open</code> 函数，也就是进行系统调用 <code>syscall</code>，如果返回值是负数，则是出错，汇编代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">00000000000e5d70 &lt;__open&gt;:
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl">    e5d79: b8 02 00 00 00     mov $0x2, %eax    # open 是编号 2 的系统调用
+</span></span><span class="line"><span class="cl">    e5d7e: 0f 05              syscall           # 调用的返回值会在 %rax 中
+</span></span><span class="line"><span class="cl">    e5d80: 48 3d 01 f0 ff ff  cmp $0xfffffffffffff001, %rax
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl">    e5dfa: c3                 retq
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>对应的示意图是：</p>
+<img src="https://wdxtub.com/images/csapp/14613688255926.jpg" alt="img" style="zoom:33%;" />
+<ul>
+<li><code>%rax</code> contains syscall number</li>
+<li>Other arguments in <code>%rdi</code>, <code>%rsi</code>, <code>%rdx</code>, <code>%r10</code>, <code>%r8</code>, <code>%r9</code></li>
+<li>Return value in <code>%rax</code></li>
+<li>Negative value is an error corresponding to negative <code>errno</code></li>
+</ul>
+<p>这里我们以 Page Fault 为例，来说明 Fault 的机制。Page Fault 发生的条件是：</p>
+<ul>
+<li>用户写入内存位置</li>
+<li>但该位置目前还不在内存中</li>
+</ul>
+<p>比如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">1000</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">a</span><span class="p">[</span><span class="mi">500</span><span class="p">]</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>那么系统会通过 Page Fault 把对应的部分载入到内存中，然后重新执行赋值语句：</p>
+<img src="https://wdxtub.com/images/csapp/14613689402121.jpg" alt="img" style="zoom:33%;" />
+<p>但是如果代码改为这样：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">1000</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">a</span><span class="p">[</span><span class="mi">5000</span><span class="p">]</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>也就是引用非法地址的时候，整个流程就会变成：</p>
+<img src="https://wdxtub.com/images/csapp/14613690660319.jpg" alt="img" style="zoom:33%;" />
+<p>具体来说会像用户进程发送 <code>SIGSEGV</code> 信号，用户进程会以 segmentation fault 的标记退出。</p>
+<p>从上面我们就可以看到异常的具体实现是依靠在用户代码和内核代码间切换而实现的，是非常底层的机制。</p>
+<h4 id="进程">进程
+</h4><p>进程(Processes)是计算机科学中最为重要的思想之一，进程才是程序（指令和数据）的真正运行实例。之所以重要，是因为进程给每个应用提供了两个非常关键的抽象：</p>
+<ul>
+<li>
+<p>逻辑控制流</p>
+<ul>
+<li>
+<p>Each program seems to have exclusive use of the CPU</p>
+</li>
+<li>
+<p>Provided by kernel mechanism called <em>context switching</em></p>
+</li>
+</ul>
+</li>
+<li>
+<p>私有地址空间</p>
+</li>
+</ul>
+<p>逻辑控制流通过称为上下文切换(context switching)的内核机制让每个程序都感觉自己在独占处理器。私有地址空间则是通过称为虚拟内存(virtual memory)的机制让每个程序都感觉自己在独占内存。这样的抽象使得具体的进程不需要操心处理器和内存的相关适宜，也保证了在不同情况下运行同样的程序能得到相同的结果。</p>
+<p>计算机会同时运行多个进程，有前台应用，也后台任务，我们在 Mac 的终端下输入 <code>top</code>（或者更酷炫的 <code>htop</code>），就可以看到如下的进程信息</p>
+<img src="https://wdxtub.com/images/csapp/14613699267859.jpg" alt="img" style="zoom:50%;" />
+<h5 id="进程切换-process-context-switch">进程切换 Process Context Switch
+</h5><p>这么多进程，具体是如何工作的呢？我们来看看下面的示意图：</p>
+<img src="https://wdxtub.com/images/csapp/14613707308133.jpg" alt="img" style="zoom: 67%;" />
+<p>左边是单进程的模型，内存中保存着进程所需的各种信息，因为该进程独占 CPU，所以并不需要保存寄存器值。而在右边的单核多进程模型中，虚线部分可以认为是当前正在执行的进程，因为我们可能会切换到其他进程，所以内存中需要另一块区域来保存当前的寄存器值，以便下次执行的时候进行恢复（也就是所谓的上下文切换）。整个过程中，CPU 交替执行不同的进程，虚拟内存系统会负责管理地址空间，而没有执行的进程的寄存器值会被保存在内存中。切换到另一个进程的时候，会载入已保存的对应于将要执行的进程的寄存器值。</p>
+<p>而现代处理器一般有多个核心，所以可以真正同时执行多个进程。这些进程会共享主存以及一部分缓存，具体的调度是由内核控制的，示意图如下：</p>
+<img src="https://wdxtub.com/images/csapp/14613708880333.jpg" alt="img" style="zoom:67%;" />
+<p>切换进程时，内核(kernel)会负责具体的调度，如下图所示</p>
+<img src="https://wdxtub.com/images/csapp/14613717282590.jpg" alt="img" style="zoom:50%;" />
+<h5 id="进程控制-process-control">进程控制 Process Control
+</h5><p><strong>系统调用的错误处理</strong></p>
+<p>在遇到错误的时候，Linux 系统级函数通常会返回 -1 并且设置 <code>errno</code> 这个全局变量来表示错误的原因。使用的时候记住两个规则：</p>
+<ol>
+<li>对于每个系统调用都应该检查返回值</li>
+<li>当然有一些系统调用的返回值为 void，在这里就不适用</li>
+</ol>
+<p>例如，对于 <code>fork()</code> 函数，我们应该这么写：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">if ((pid = fork()) &lt; 0) {
+</span></span><span class="line"><span class="cl">    fprintf(stderr, &#34;fork error: %s\n&#34;, strerror(errno));
+</span></span><span class="line"><span class="cl">    exit(0);
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果觉得这样写太麻烦，可以利用一个辅助函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void unix_error(char *msg) /* Unix-style error */
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    fprintf(stderr, &#34;%s: %s\n&#34;, msg, strerror(errno));
+</span></span><span class="line"><span class="cl">    exit(0);
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// 上面的片段可以写为
+</span></span><span class="line"><span class="cl">if ((pid = fork()) &lt; 0)
+</span></span><span class="line"><span class="cl">    unix_error(&#34;fork error&#34;);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们甚至可以更进一步，把整个 <code>fork()</code> 包装起来，就可以自带错误处理，比如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">pid_t Fork(void)
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    pid_t pid;
+</span></span><span class="line"><span class="cl">    if ((pid = fork()) &lt; 0)
+</span></span><span class="line"><span class="cl">        unix_error(&#34;Fork error&#34;);
+</span></span><span class="line"><span class="cl">    return pid;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>调用的时候直接使用 <code>pid = Fork();</code> 即可（注意这里是大写的 F）</p>
+<p><strong>获取进程信息</strong></p>
+<p>我们可以用下面两个函数获取进程的相关信息：</p>
+<ul>
+<li><code>pid_t getpid(void)</code> - 返回当前进程的 PID</li>
+<li><code>pid_t getppid(void)</code> - 返回当前进程的父进程的 PID</li>
+</ul>
+<p>我们可以认为，进程有三个主要状态：</p>
+<ul>
+<li>运行 Running
+<ul>
+<li>正在被执行、正在等待执行或者最终将会被执行</li>
+</ul>
+</li>
+<li>停止 Stopped
+<ul>
+<li>执行被挂起，在进一步通知前不会计划执行</li>
+</ul>
+</li>
+<li>终止 Terminated
+<ul>
+<li>进程被永久停止</li>
+</ul>
+</li>
+</ul>
+<p>另外的两个状态称为新建(new)和就绪(ready)，这里不再赘述。</p>
+<p><strong>终止进程</strong></p>
+<p>在下面三种情况时，进程会被终止：</p>
+<ol>
+<li>接收到一个终止信号</li>
+<li>返回到 <code>main</code></li>
+<li>调用了 <code>exit</code> 函数</li>
+</ol>
+<p><code>exit</code> 函数会被调用一次，但从不返回，具体的函数原型是</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">// 以 status 状态终止进程，0 表示正常结束，非零则是出现了错误
+</span></span><span class="line"><span class="cl">void exit(int status)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>创建进程</strong></p>
+<p>调用 <code>fork</code> 来创造新进程。这个函数很有趣，执行一次，但是会返回两次，具体的函数原型为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">// 对于子进程，返回 0
+</span></span><span class="line"><span class="cl">// 对于父进程，返回子进程的 PID
+</span></span><span class="line"><span class="cl">int fork(void)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>子进程几乎和父进程一模一样，</p>
+<ul>
+<li>有相同且独立的虚拟地址空间，</li>
+<li>有父进程已经打开的文件描述符(file descriptor)</li>
+<li>有不同的进程 PID</li>
+</ul>
+<p>看一个简单的例子</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">int main()
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    pid_t pid;
+</span></span><span class="line"><span class="cl">    int x = 1;
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    pid = Fork();
+</span></span><span class="line"><span class="cl">    if (pid == 0) 
+</span></span><span class="line"><span class="cl">    {   // Child
+</span></span><span class="line"><span class="cl">        printf(&#34;I&#39;m the child!  x = %d\n&#34;, ++x);
+</span></span><span class="line"><span class="cl">        exit(0);
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    // Parent
+</span></span><span class="line"><span class="cl">    printf(&#34;I&#39;m the parent! x = %d\n&#34;, --x);
+</span></span><span class="line"><span class="cl">    exit(0);
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>输出是</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">linux&gt; ./forkdemo
+</span></span><span class="line"><span class="cl">I&#39;m the parent! x = 0
+</span></span><span class="line"><span class="cl">I&#39;m the child!  x = 2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>有以下几点需要注意：</p>
+<ul>
+<li>调用一次，但是会有两个返回值</li>
+<li>并行执行，不能预计父进程和子进程的执行顺序</li>
+<li>拥有自己独立的地址空间（也就是变量都是独立的），除此之外其他都相同</li>
+<li>在父进程和子进程中 <code>stdout</code> 是一样的（都会发送到标准输出）</li>
+</ul>
+<h5 id="进程图">进程图
+</h5><p>进程图是一个很好的帮助我们理解进程执行的工具：</p>
+<ul>
+<li>每个节点代表一条执行的语句</li>
+<li>a -&gt; b 表示 a 在 b 前面执行</li>
+<li>边可以用当前变量的值来标记</li>
+<li><code>printf</code> 节点可以用输出来进行标记</li>
+<li>每个图由一个入度为 0 的节点作为起始</li>
+</ul>
+<p>对于进程图来说，只要满足拓扑排序，就是可能的输出。我们还是用刚才的例子来简单示意一下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">int main()
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    pid_t pid;
+</span></span><span class="line"><span class="cl">    int x = 1;
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    pid = Fork();
+</span></span><span class="line"><span class="cl">    if (pid == 0) 
+</span></span><span class="line"><span class="cl">    {   // Child
+</span></span><span class="line"><span class="cl">        printf(&#34;child! x = %d\n&#34;, --x);
+</span></span><span class="line"><span class="cl">        exit(0);
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    // Parent
+</span></span><span class="line"><span class="cl">    printf(&#34;parent! x = %d\n&#34;, x);
+</span></span><span class="line"><span class="cl">    exit(0);
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>对应的进程图为</p>
+<img src="https://wdxtub.com/images/csapp/14625029984869.jpg" alt="img" style="zoom:33%;" />
+<h5 id="回收子进程">回收子进程
+</h5><p>即使主进程已经终止，子进程也还在消耗系统资源，我们称之为『僵尸』。为了『打僵尸』，就可以采用『收割』(Reaping) 的方法。父进程利用 <code>wait</code> 或 <code>waitpid</code> 回收已终止的子进程，然后给系统提供相关信息，kernel 就会把 zombie child process 给删除。</p>
+<p>如果父进程不回收子进程的话，通常来说会被 <code>init</code> 进程(pid == 1)回收，所以一般不必显式回收。但是在长期运行的进程中，就需要显式回收（例如 shell 和 server）。</p>
+<p>如果想在子进程载入其他的程序，就需要使用 <code>execve</code> 函数，具体可以查看对应的 man page，这里不再深入。</p>
+<p><strong>Parent reaps a child by calling the</strong> <strong>wait</strong> <strong>function</strong></p>
+<ul>
+<li>int wait(int child_status)
+<ul>
+<li>Suspends current process until one of its children terminates</li>
+<li>Return value is the <strong>pid</strong> of the child process that terminated</li>
+<li>If <strong>child_status</strong> <strong>!= NULL</strong>, then the integer it points to will be set to a value that indicates reason the child terminated and the exit status.</li>
+</ul>
+</li>
+</ul>
+<p>waitpid: Waiting for a Specific Process</p>
+<ul>
+<li>pid_t waitpid(pid_t pid, int &amp; status, int option)
+<ul>
+<li>Suspends current process until specific process terminates. Various options (see textbook)</li>
+</ul>
+</li>
+</ul>
+<p>execve: Loading and Running Programs</p>
+<ul>
+<li>int execve(char *filename, char *argv[], char *envp[])
+<ul>
+<li><strong>Loads</strong> <strong>and</strong> <strong>runs in the current process:</strong>
+<ul>
+<li>Executable file <strong>filename</strong>. Can be object file or script file beginning with #!interpreter     (e.g., #!/bin/bash)</li>
+</ul>
+</li>
+<li>…with argument list <strong>argv</strong>
+<ul>
+<li>By convention <strong>argv</strong>**[0]==filename**</li>
+</ul>
+</li>
+<li>…and environment variable list <strong>envp</strong>
+<ul>
+<li><strong>name=value”</strong> <strong>strings (e.g.,</strong> <strong>USER=droh</strong>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Structure of the stack when a new program starts</strong></p>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250316101455527.png" alt="image-20250316101455527" style="zoom:33%;" />
+<h3 id="信号-signal">信号 Signal
+</h3><p>Linux 的进程树，可以通过 <code>pstree</code> 命令查看，如下图所示：</p>
+<img src="https://wdxtub.com/images/csapp/14613761276198.jpg" alt="img" style="zoom:33%;" />
+<p>对于前台进程来说，我们可以在其执行完成后进行回收，而对于后台进程来说，因为不能确定具体执行完成的时间，所以终止之后就成为了僵尸进程，无法被回收并因此造成内存泄露。</p>
+<p>这怎么办呢？同样可以利用异常控制流，当后台进程完成时，内核会中断常规执行并通知我们，具体的通知机制就是『信号』(signal)。</p>
+<ul>
+<li>Akin to exceptions and interrupts</li>
+<li>Sent from the kernel (sometimes at the request of another process) to a process</li>
+<li>Signal type is identified by small integer ID’s (1-30)</li>
+<li>Only information in a signal is its ID and the fact that it arrived</li>
+</ul>
+<p>信号是 Unix、类 Unix 以及其他 POSIX 兼容的操作系统中进程间通讯的一种有限制的方式。它是一种异步的通知机制，用来提醒进程一个事件已经发生。当一个信号发送给一个进程，操作系统中断了进程正常的控制流程，此时，任何非原子操作都将被中断。如果进程定义了信号的处理函数，那么它将被执行，否则就执行默认的处理函数。</p>
+<p>这样看来，信号其实是类似于异常和中断的，是由内核（在其他进程的请求下）向当前进程发出的。信号的类型由 1-30 的整数定义，信号所能携带的信息极少，一是对应的编号，二就是信号到达这个事实。下面是几个比较常用的信号的编号及简介：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">编号</th>
+          <th style="text-align: center">名称</th>
+          <th style="text-align: center">默认动作</th>
+          <th style="text-align: center">对应事件</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">SIGINT</td>
+          <td style="text-align: center">终止</td>
+          <td style="text-align: center">用户输入 ctrl+c</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">9</td>
+          <td style="text-align: center">SIGKILL</td>
+          <td style="text-align: center">终止</td>
+          <td style="text-align: center">终止程序（不能重写或忽略）</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">11</td>
+          <td style="text-align: center">SIGSEGV</td>
+          <td style="text-align: center">终止且 Dump</td>
+          <td style="text-align: center">段冲突 Segmentation violation</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">14</td>
+          <td style="text-align: center">SIGALRM</td>
+          <td style="text-align: center">终止</td>
+          <td style="text-align: center">时间信号</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">17</td>
+          <td style="text-align: center">SIGCHLD</td>
+          <td style="text-align: center">忽略</td>
+          <td style="text-align: center">子进程停止或终止</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>内核通过给目标进程发送信号，来更新目标进程的状态，具体的场景为：</p>
+<ul>
+<li>内核检测到了如除以零(SIGFPE)或子进程终止(SIGCHLD)的系统事件</li>
+<li>另一个进程调用了 <code>kill</code> 指令来请求内核发送信号给指定的进程</li>
+</ul>
+<p>目标进程接收到信号后，内核会强制要求进程对于信号做出响应，可以有几种不同的操作：</p>
+<ul>
+<li><strong>忽略</strong>这个型号</li>
+<li><strong>终止</strong>进程</li>
+<li><strong>捕获</strong>信号，执行信号处理器(signal handler)，类似于异步中断中的异常处理器(exception handler)</li>
+</ul>
+<p>具体的过程如下：</p>
+<img src="https://wdxtub.com/images/csapp/14614121439266.jpg" alt="img" style="zoom: 50%;" />
+<p>如果信号已被发送但是未被接收，那么处于等待状态(pending)，同类型的信号至多只会有一个待处理信号(pending signal)，一定要注意这个特性，因为内部实现机制不可能提供较复杂的数据结构，所以信号的接收并不是一个队列。比如说进程有一个 <code>SIGCHLD</code> 信号处于等待状态，那么之后进来的 <code>SIGCHLD</code> 信号都会被直接扔掉。</p>
+<p>当然，进程也可以阻塞特定信号的接收，但信号的发送并不受控制，所以被阻塞的信号仍然可以被发送，不过直到进程取消阻塞该信号之后才会被接收。内核用等待(pending)位向量和阻塞(blocked)位向量来维护每个进程的信号相关状态。</p>
+<h4 id="进程组">进程组
+</h4><img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250316102843274.png" alt="image-20250316102843274" style="zoom:33%;" />
+<p><strong>Every process belongs to exactly one process group</strong>.每个进程都只属于一个进程组，从前面的进程树状图中我们也能大概了解一二，想要了解相关信息，一般使用如下函数：</p>
+<ul>
+<li><code>getpgrp()</code> - 返回当前进程的进程组</li>
+<li><code>setpgid()</code> - 设置一个进程的进程组</li>
+</ul>
+<p>我们可以据此指定一个进程组或者一个单独的进程，比方说可以通过 <code>kill</code> 应用来发送信号，流入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 创建子进程
+</span></span><span class="line"><span class="cl">linux&gt; ./forks 16
+</span></span><span class="line"><span class="cl">Child1: pid=24818 pgrp=24817
+</span></span><span class="line"><span class="cl">Child2: pid=24819 pgrp=24817
+</span></span><span class="line"><span class="cl"># 查看进程
+</span></span><span class="line"><span class="cl">linux&gt; ps
+</span></span><span class="line"><span class="cl">  PID TTY      TIME  CMD
+</span></span><span class="line"><span class="cl">24788 pts/2 00:00:00 tcsh
+</span></span><span class="line"><span class="cl">24818 pts/2 00:00:02 forks
+</span></span><span class="line"><span class="cl">24819 pts/2 00:00:02 forks
+</span></span><span class="line"><span class="cl">24820 pts/2 00:00:00 ps
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 可以选择关闭某个进程
+</span></span><span class="line"><span class="cl">linux&gt; /bin/kill -9 24818
+</span></span><span class="line"><span class="cl"># 也可以关闭某个进程组，会关闭该组中所有进程
+</span></span><span class="line"><span class="cl">linux&gt; /bin/kill -9 -24817
+</span></span><span class="line"><span class="cl"># 查看进程
+</span></span><span class="line"><span class="cl">linux&gt; ps
+</span></span><span class="line"><span class="cl">  PID TTY      TIME  CMD
+</span></span><span class="line"><span class="cl">24788 pts/2 00:00:00 tcsh
+</span></span><span class="line"><span class="cl">24820 pts/2 00:00:00 ps
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里可以看到，第一个命令只会杀掉编号为 24818 的进程，但是第二个命令，因为有两个进程都属于进程组 24817，所以会杀掉进程组中的每个进程。</p>
+<p>我们也可以通过键盘让内核向每个前台进程发送 SIGINT(SIGTSTP) 信号</p>
+<ul>
+<li>SIGINT - <code>ctrl+c</code> 默认终止进程</li>
+<li>SIGTSTP - <code>ctrl+z</code> 默认挂起进程</li>
+</ul>
+<p>下面是一个简单的例子</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">linux&gt; ./forks 17
+</span></span><span class="line"><span class="cl">Child: pid=28108 pgrp=28107
+</span></span><span class="line"><span class="cl">Parent: pid=28107 pgrp=28107
+</span></span><span class="line"><span class="cl"># 按下 ctrl+z
+</span></span><span class="line"><span class="cl">Suspended # 进程被挂起
+</span></span><span class="line"><span class="cl">linux&gt; ps w
+</span></span><span class="line"><span class="cl">  PID TTY   STAT  TIME  COMMAND
+</span></span><span class="line"><span class="cl">27699 pts/8 Ss    00:00 -tcsh
+</span></span><span class="line"><span class="cl">28107 pts/8 T     00:02 ./forks 17
+</span></span><span class="line"><span class="cl">28108 pts/8 T     00:02 ./forks 17
+</span></span><span class="line"><span class="cl">28109 pts/8 R+    00:00 ps w
+</span></span><span class="line"><span class="cl">linux&gt; fg
+</span></span><span class="line"><span class="cl">./forks 17
+</span></span><span class="line"><span class="cl"># 按下 ctrl+c，进程被终止
+</span></span><span class="line"><span class="cl">linux&gt; ps w
+</span></span><span class="line"><span class="cl">  PID TTY   STAT  TIME  COMMAND
+</span></span><span class="line"><span class="cl">27699 pts/8 Ss    00:00 -tcsh
+</span></span><span class="line"><span class="cl">28109 pts/8 R+    00:00 ps w
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>STAT 部分的第一个字母的意思</p>
+<ul>
+<li>S: 睡眠 sleeping</li>
+<li>T: 停止 stopped</li>
+<li>R: 运行 running</li>
+</ul>
+<p>第二个字母的意思：</p>
+<ul>
+<li>s: 会话管理者 session leader</li>
+<li>+: 前台进程组</li>
+</ul>
+<p>更多信息可以查看 <code>man ps</code></p>
+<p>如果想要发送信号，可以使用 <code>kill</code> 函数，下面是一个简单的示例，父进程通过发送 <code>SIGINT</code> 信号来终止正在无限循环的子进程。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void forkandkill()
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    pid_t pid[N];
+</span></span><span class="line"><span class="cl">    int i;
+</span></span><span class="line"><span class="cl">    int child_status;
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    for (i = 0; i &lt; N; i++)
+</span></span><span class="line"><span class="cl">        if ((pid[i] = fork()) == 0)
+</span></span><span class="line"><span class="cl">            while(1) ;  // 死循环
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    for (i = 0; i &lt; N; i++)
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">        printf(&#34;Killing process %d\n&#34;, pid[i]);
+</span></span><span class="line"><span class="cl">        kill(pid[i], SIGINT);
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    for (i = 0; i &lt; N; i++)
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">        pid_t wpid = wait(&amp;child_status);
+</span></span><span class="line"><span class="cl">        if (WIFEXITED(child_status))
+</span></span><span class="line"><span class="cl">            printf(&#34;Child %d terminated with exit status %d\n&#34;,
+</span></span><span class="line"><span class="cl">                    wpid, WEXITSTATUS(child_status));
+</span></span><span class="line"><span class="cl">        else
+</span></span><span class="line"><span class="cl">            printf(&#34;Child %d terminated abnormally\n&#34;, wpid);
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="接收信号">接收信号
+</h4><p>所有的上下文切换都是通过调用某个异常处理器(exception handler)完成的，内核会计算对易于某个进程 p 的 pnb 值：<code>pnb = pending &amp; ~blocked</code></p>
+<ul>
+<li>
+<p>如果 <code>pnb == 0</code>，那么就把控制交给进程 p 的逻辑流中的下一条指令</p>
+</li>
+<li>
+<p>如果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">pnb != 0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>选择 <code>pnb</code> 中最小的非零位 k，并强制进程 p 接收信号 k</li>
+<li>接收到信号之后，进程 p 会执行对应的动作</li>
+<li>对 <code>pnb</code> 中所有的非零位进行这个操作</li>
+<li>最后把控制交给进程 p 的逻辑流中的下一条指令</li>
+</ul>
+</li>
+</ul>
+<p>每个信号类型都有一个预定义的『默认动作』，可能是以下的情况：</p>
+<ul>
+<li>终止进程</li>
+<li>终止进程并 dump core</li>
+<li>停止进程，收到 <code>SIGCONT</code> 信号之后重启</li>
+<li>忽略信号</li>
+</ul>
+<p><code>signal</code> 函数可以修改默认的动作，函数原型为 <code>handler_t *signal(int signum, handler_t *handler)</code>。我们通过一个简单的例子来感受下，这里我们屏蔽了 <code>SIGINT</code> 函数，即使按下 <code>ctrl+c</code> 也不会终止</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">void</span> <span class="n">sigint_handler</span><span class="p">(</span><span class="ne">int</span> <span class="n">sig</span><span class="p">)</span> <span class="o">//</span> <span class="n">SIGINT</span> <span class="err">处理器</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s2">&#34;So you think you can stop the bomb with ctrl-c, do you?</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s2">&#34;Well...&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s2">&#34;OK. :-)</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="ne">int</span> <span class="n">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">//</span> <span class="err">设定</span> <span class="n">SIGINT</span> <span class="err">处理器</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="k">signal</span><span class="p">(</span><span class="n">SIGINT</span><span class="p">,</span> <span class="n">sigint_handler</span><span class="p">)</span> <span class="o">==</span> <span class="n">SIG_ERR</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">unix_error</span><span class="p">(</span><span class="s2">&#34;signal error&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="o">//</span> <span class="err">等待接收信号</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pause</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>信号处理器的工作流程可以认为是和当前用户进程『并发』的同一个『伪』进程，示意如下：</p>
+<p>注：并行与并发的区别</p>
+<p>计算机虽然只有一个 CPU，但操作系统能够将程序的执行单位细化，然后分开执行，从而实现伪并行执行。这种伪并行执行称为并发(concurrent)。使用多个 CPU 真的同时执行称为并行(parallel)</p>
+<img src="https://wdxtub.com/images/csapp/14614181710603.jpg" alt="img" style="zoom: 50%;" />
+<p>还有一个需要注意的是，信号处理器也可以被其他的信号处理器中断，控制流如下图所示：</p>
+<img src="https://wdxtub.com/images/csapp/14614185201475.jpg" alt="img" style="zoom:50%;" />
+<h4 id="阻塞信号">阻塞信号
+</h4><p>我们知道，内核会阻塞与当前在处理的信号同类型的其他正待等待的信号，也就是说，一个 SIGINT 信号处理器是不能被另一个 SIGINT 信号中断的。</p>
+<p>如果想要显式阻塞，就需要使用 <code>sigprocmask</code> 函数了，以及其他一些辅助函数：</p>
+<ul>
+<li><code>sigemptyset</code> - 创建空集</li>
+<li><code>sigfillset</code> - 把所有的信号都添加到集合中（因为信号数目不多）</li>
+<li><code>sigaddset</code> - 添加指定信号到集合中</li>
+<li><code>sigdelset</code> - 删除集合中的指定信号</li>
+</ul>
+<p>我们可以用下面这段代码来临时阻塞特定的信号：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sigset_t mask, prev_mask;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Sigemptyset(&amp;mask); // 创建空集
+</span></span><span class="line"><span class="cl">Sigaddset(&amp;mask, SIGINT); // 把 SIGINT 信号加入屏蔽列表中
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// 阻塞对应信号，并保存之前的集合作为备份
+</span></span><span class="line"><span class="cl">Sigprocmask(SIG_BLOCK, &amp;mask, &amp;prev_mask);
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">... // 这部分代码不会被 SIGINT 中断
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">// 取消阻塞信号，恢复原来的状态
+</span></span><span class="line"><span class="cl">Sigprocmask(SIG_SETMASK, &amp;prev_mask, NULL);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="安全处理信号">安全处理信号
+</h4><p>信号处理器的设计并不简单，因为它们和主程序并行且共享相同的全局数据结构，尤其要注意因为并行访问可能导致的数据损坏的问题，这里提供一些基本的指南（后面的课程会详细介绍）</p>
+<ul>
+<li>规则 1：信号处理器越简单越好
+<ul>
+<li>例如：设置一个全局的标记，并返回</li>
+</ul>
+</li>
+<li>规则 2：信号处理器中只调用异步且信号安全(async-signal-safe)的函数
+<ul>
+<li>诸如 <code>printf</code>, <code>sprintf</code>, <code>malloc</code> 和 <code>exit</code> 都是不安全的！</li>
+</ul>
+</li>
+<li>规则 3：在进入和退出的时候保存和恢复<code>errno</code>
+<ul>
+<li>这样信号处理器就不会覆盖原有的 <code>errno</code> 值</li>
+</ul>
+</li>
+<li>规则 4：临时阻塞所有的信号以保证对于共享数据结构的访问
+<ul>
+<li>防止可能出现的数据损坏</li>
+</ul>
+</li>
+<li>规则 5：用<code>volatile</code>关键字声明全局变量
+<ul>
+<li>这样编译器就不会把它们保存在寄存器中，保证一致性</li>
+</ul>
+</li>
+<li>规则 6：用<code>volatile sig_atomic_t</code>来声明全局标识符(flag)
+<ul>
+<li>这样可以防止出现访问异常</li>
+</ul>
+</li>
+</ul>
+<p>这里提到的异步信号安全(async-signal-safety)指的是如下两类函数：</p>
+<ol>
+<li>所有的变量都保存在栈帧中的函数</li>
+<li>不会被信号中断的函数</li>
+<li>异步且信号安全意为不会因为接受信号而导致数据类型损坏，死锁，内部状态损坏和崩坏。</li>
+</ol>
+<p>Posix 标准指定了 117 个异步信号安全(async-signal-safe)的函数（可以通过 <code>man 7 signal</code> 查看）</p>
+<img src="https://wdxtub.com/images/csapp/14614222627451.jpg" alt="img" style="zoom: 50%;" />
+<h4 id="非本地跳转-non-local-jump">非本地跳转 Non local Jump
+</h4><p>所谓的本地跳转，指的是在一个程序中通过 goto 语句进行流程跳转，尽管不推荐使用goto语句，但在嵌入式系统中为了提高程序的效率，goto语句还是可以使用的。本地跳转的限制在于，我们不能从一个函数跳转到另一个函数中。如果想突破函数的限制，就要使用 <code>setjmp</code> 或 <code>longjmp</code> 来进行非本地跳转了。</p>
+<ul>
+<li>
+<p>int setjmp(jmp_buf j)</p>
+<ul>
+<li>
+<p>Must be called before longjmp</p>
+</li>
+<li>
+<p>Identifies a return site for a subsequent longjmp</p>
+</li>
+<li>
+<p>Called <strong>once</strong>, returns <strong>one or more</strong> times</p>
+</li>
+</ul>
+</li>
+<li>
+<p>void longjmp(jmp_buf j, int i)</p>
+<ul>
+<li>
+<p>Meaning:</p>
+<ul>
+<li>
+<p>return from the <strong>setjmp</strong> remembered by jump buffer <strong>j</strong> again &hellip;</p>
+</li>
+<li>
+<p>… this time returning <strong>i</strong> instead of 0</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Called after <strong>setjmp</strong></p>
+</li>
+<li>
+<p>Called <strong>once</strong>, but <strong>never</strong> returns</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><code>setjmp</code> 保存当前程序的堆栈上下文环境(stack context)，见[进程图](# 进程图)，注意，这个保存的堆栈上下文环境仅在调用 <code>setjmp</code> 的函数内有效，如果调用 <code>setjmp</code> 的函数返回了，这个保存的堆栈上下文环境就失效了。调用 <code>setjmp</code> 的直接返回值为 0。</p>
+<p><code>longjmp</code> 将会恢复由 <code>setjmp</code> 保存的程序堆栈上下文，即程序从调用 <code>setjmp</code> 处重新开始执行，不过此时的 <code>setjmp</code> 的返回值将是由 <code>longjmp</code> 指定的值。注意<code>longjmp</code> 不能指定0为返回值，即使指定了 0，<code>longjmp</code> 也会使 <code>setjmp</code> 返回 1。</p>
+<p>我们可以利用这种方式，来跳转到其他的栈帧中，比方说在嵌套函数中，我们可以利用这个快速返回栈底的函数，我们来看如下代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">jmp_buf env;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">P1()
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    if (setjmp(env))
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">        // 跳转到这里
+</span></span><span class="line"><span class="cl">    } else 
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">        P2();
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">P2()
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl">    P2();
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl">    P3();
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">P3()
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    longjmp(env, 1);
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>对应的跳转过程为：</p>
+<img src="https://wdxtub.com/images/csapp/14614229485048.jpg" alt="img" style="zoom:33%;" />
+<p>也就是说，我们直接从 P3 跳转回了 P1，但是也有限制，函数必须在栈中（也就是还没完成）才可以进行跳转，下面的例子中，因为 P2 已经返回，所以不能跳转了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">jmp_buf env;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">P1()
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    P2(); P3();
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">P2()
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    if (setjmp(env))
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">        // 跳转到这里
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">P3()
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    longjmp(env, 1);
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>因为 P2 在跳转的时候已经返回，对应的栈帧在内存中已经被清理，所以 P3 中的 <code>longjmp</code> 并不能实现期望的操作。</p>
 
 </section>
 
