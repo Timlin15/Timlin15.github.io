@@ -17,6 +17,7 @@
 &lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;[!NOTE]&lt;/p&gt;
 &lt;p&gt;这个笔记是由2015年CMU15-213课程内容slides和网上相关笔记总结而成，目的是在整合各路笔记中巩固自己的知识。主要是消化为主，所以个人产出较少，由于参考了多方资料会出现中英混杂情况。由于课程slide不好整合成md格式，而小土刀的笔记又正好是slide的汉化，所以会以其博客为基底补充。&lt;/p&gt;
+&lt;p&gt;CSapp是一门很广泛的计算机体系基础课，遍及数据底层表述，汇编代码，调用逻辑，内存结构，链接，异常流控制，并行，线程，虚拟内存和缓存的Index。本课程为程序员观察底层硬件实现提供了新的视角，很好的解释了C等语言中一些特性的原因。而诸如线程，进程等内容则为以后学习OS等课程打好了基础。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;主要资料：&lt;/p&gt;
 &lt;ul&gt;
@@ -4891,12 +4892,12 @@ $$&lt;p&gt;
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 期末考试&lt;/li&gt;
 &lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS61B&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CSAPP&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CSAPP&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS70&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;3-4月&#34;&gt;3-4月
 &lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CSAPP&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CSAPP&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 6.S081&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18.06&lt;/li&gt;
 &lt;/ul&gt;
