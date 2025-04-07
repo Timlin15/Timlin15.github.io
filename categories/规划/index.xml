@@ -7,10 +7,10 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Lin</copyright>
-        <lastBuildDate>Sun, 09 Mar 2025 11:50:35 +0800</lastBuildDate><atom:link href="https://Timlin15.github.io/categories/%E8%A7%84%E5%88%92/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 07 Apr 2025 11:50:35 +0800</lastBuildDate><atom:link href="https://Timlin15.github.io/categories/%E8%A7%84%E5%88%92/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>2025年大致规划和周记</title>
         <link>https://Timlin15.github.io/p/2025%E5%B9%B4%E5%A4%A7%E8%87%B4%E8%A7%84%E5%88%92%E5%92%8C%E5%91%A8%E8%AE%B0/</link>
-        <pubDate>Sun, 09 Mar 2025 11:50:35 +0800</pubDate>
+        <pubDate>Mon, 07 Apr 2025 11:50:35 +0800</pubDate>
         
         <guid>https://Timlin15.github.io/p/2025%E5%B9%B4%E5%A4%A7%E8%87%B4%E8%A7%84%E5%88%92%E5%92%8C%E5%91%A8%E8%AE%B0/</guid>
         <description>&lt;h1 id=&#34;2025年大致规划&#34;&gt;2025年大致规划
@@ -94,8 +94,15 @@
 &lt;p&gt;18.06直接线代课上看了，反正老师上的也是汉化课。其他照旧，感觉速度很难再提上去了，目前学到异常流控制，每周五课是能上完，但是还有三个lab，两周够呛，而且还有英语pre。总之试试吧，希望能在三月完结。四月开6.S081，学OS。&lt;/p&gt;
 &lt;p&gt;第十一周(3.17-3.23)&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 接着5个lecture，争取完成1-2个lab&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18.06&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 接着5个lecture，争取完成1-2个lab&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18.06&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;第14周(4.7-4.13)&lt;/p&gt;
+&lt;p&gt;之前这几周都是重复csapp，所以没有记录，现在csapp告一段落，最后几讲的线程和Linking听的半懂，之后可以再复习一遍。现在犹豫是要看CS170还是6.S081，170感觉好像数学课，听的有够困的，先听听吧，如果要四月内看完要每周九课，基本不可能。以及课内也在犹豫课内知识应该掌握到什么地步，是要完全掌握还是期末突袭，感觉需要做一次调研啊。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS170(大概率)5课&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成笔记及作业&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>

@@ -7,1069 +7,10 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Lin</copyright>
-        <lastBuildDate>Thu, 06 Mar 2025 09:34:30 +0800</lastBuildDate><atom:link href="https://Timlin15.github.io/tags/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>高等数学上册笔记</title>
-        <link>https://Timlin15.github.io/p/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8A%E5%86%8C%E7%AC%94%E8%AE%B0/</link>
-        <pubDate>Thu, 06 Mar 2025 09:34:30 +0800</pubDate>
-        
-        <guid>https://Timlin15.github.io/p/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8A%E5%86%8C%E7%AC%94%E8%AE%B0/</guid>
-        <description>&lt;h1 id=&#34;高等数学一&#34;&gt;高等数学（一）
-&lt;/h1&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -----------------
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt; 高等数学太好玩啦！ &amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -----------------
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        \   ^__^
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         \  (oo)\_______
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            (__)\       )\/\
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                ||----w |
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                ||     ||
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;1实数&#34;&gt;&lt;strong&gt;1.实数&lt;/strong&gt;
-&lt;/h2&gt;&lt;p&gt;1.有理数与无理数&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;自然数&lt;em&gt;N:1,2,3,…,&lt;/em&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;整数&lt;em&gt;Z:…,-3,-2,-1,0,1,2,3**,**…&lt;/em&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;有理数&lt;em&gt;Q&lt;/em&gt;:有穷小数或无穷循环小数,可用分数表示为&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-$$
-Q=\{\frac{m}{n}\big|m,n\in\mathbb{Z},n&gt;0,(m,n)=1\}
-$$&lt;hr&gt;
-&lt;p&gt;命题：$\sqrt3$不是有理数&lt;/p&gt;
-&lt;p&gt;所以$m$一定是3的倍数。令$m=3k$,则有&lt;/p&gt;
-$$3n^2=9k^2\Rightarrow n^2=3k^2,$$&lt;p&gt;可见$n$也是3的倍数。&lt;/p&gt;
-&lt;p&gt;总之，可得3是$m$和$n$的公约数，这与$(m,n)=1$相矛盾。
-所以$\sqrt{3}$不是有理数。&lt;/p&gt;
-&lt;hr&gt;
-&lt;ol start=&#34;4&#34;&gt;
-&lt;li&gt;&lt;strong&gt;无理数:无穷不循环小数,如&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;​	•&lt;strong&gt;一个无理数是一串有理数逼近的结果.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;​	如果$\alpha=m.a_1a_2&amp;hellip;a_n&amp;hellip;$是正的无理数，
-​	$\alpha_n=m.a_1a_2&amp;hellip;a_n$是有理数，则$\mid\alpha-\alpha_n\mid&amp;lt;10^-n.$&lt;/p&gt;
-&lt;ol start=&#34;5&#34;&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;实数&lt;/strong&gt;$R$: &lt;strong&gt;有理数&lt;/strong&gt;$Q$和&lt;strong&gt;无理数.&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;数域:对加减乘除运算封闭的数的集合.例如有理数集合$Q,实数集合R$.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;2.&lt;strong&gt;实数集合&lt;/strong&gt;R的基本性质&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;$R是一个数域(对加减乘除运算封闭);$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;$对乘法与加法满足交换律,结合律与分配律;$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;$实数域是一个有序数域:任意两个不同的数都有大小关系;$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;$实数域的完备性(连续性):一串实数如有极限,则极限仍是实数(实数布满整个数轴).$&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;​	&lt;strong&gt;注意:有理数Q&lt;/strong&gt;满足性质(1)-(3),但对极限运算不封闭. $\lim_{n\to\infty}\frac1n=0$&lt;/p&gt;
-&lt;ol start=&#34;5&#34;&gt;
-&lt;li&gt;&lt;strong&gt;命题:在实数域中,任意一个单调有界序列${a_n}$一定有极限存在.&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;单调递增:&lt;/strong&gt; $a_n≤a_n+1$;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;单调递减&lt;/strong&gt;:$a_n≥a_n+1$;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;有界&lt;/strong&gt;:存在$M,|a_n|≤M$ ,n=1,2,…,
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;如序列&lt;/strong&gt;$1+2^{-n},有|1+2^{-n}|&amp;lt;2$,是严格单调递减序列.**&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;2变量与函数&#34;&gt;2.&lt;strong&gt;变量与函数&lt;/strong&gt;
-&lt;/h2&gt;&lt;h3 id=&#34;22-初等函数&#34;&gt;2.2 初等函数
-&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;初等函数:将基本初等函数经过有限次四则运算与复合所得的函数&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;基本初等函数(6类)&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;常数函数:&lt;/strong&gt;$y=C ∈ R$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;幂函数：$y = x^{\alpha}$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;指数函数： $y = a^x$ (a&amp;gt;0, x!=1), $x \in R$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;对数函数：&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;三角函数：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;$\csc(x)$ $\sec(x)$ $\cot(x)$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20241127163735926.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;image-20241127163735926&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;反三角函数：&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20241127164010342.png&#34; alt=&#34;image-20241127164010342&#34; style=&#34;zoom:50%;&#34; /&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;23-映射&#34;&gt;2.3 映射
-&lt;/h3&gt;&lt;h4 id=&#34;231-满射&#34;&gt;2.3.1 满射：
-&lt;/h4&gt;&lt;p&gt;若映射 $f{:}E\to F$的像集合 $f(E)=F$ 则表明$F$中的 每一点都是一个像点这时我们称$f{:}E\to F$为满射 .&lt;/p&gt;
-&lt;h4 id=&#34;232单射-一一映射-&#34;&gt;2.3.2.单射 (一一映射 ):
-&lt;/h4&gt;&lt;p&gt;若映射 $f{:}E\to F$具有下列性质：&lt;/p&gt;
-$$
-\begin{equation}
-    \forall x_1,x_2\in E,x_1\neq x_2\to f(x_1)\neq f(x_2).
-\end{equation}
-$$&lt;h4 id=&#34;233逆映射&#34;&gt;2.3.3.逆映射
-&lt;/h4&gt;$$
-\begin{equation}
-    \begin{aligned}&amp;\text{逆映射}:\text{若映射}f{:}E\to F\text{即是满射又是一一}\\&amp;\text{映射,则对每一个}y\in F\text{都有一个惟一确定的}x,\\&amp;\text{使得}f(x){=}y,\text{这样就自然形成了一个自}F\text{到}E\text{的}\\&amp;\text{映射.称为}f\text{的逆映射},\text{记作}f^{-1}{:}F\to E.\end{aligned}
-\end{equation}
-$$&lt;h3 id=&#34;24序列极限&#34;&gt;2.4.序列极限
-&lt;/h3&gt;&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;极限形式&lt;/th&gt;
-          &lt;th&gt;度量标准&lt;/th&gt;
-          &lt;th&gt;过程描述&lt;/th&gt;
-          &lt;th&gt;目标不等式&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;$\lim_{n \to \infty} x_n = a$&lt;/td&gt;
-          &lt;td&gt;$\forall \varepsilon &amp;gt; 0$&lt;/td&gt;
-          &lt;td&gt;$\exists N &amp;gt; 0$，当 $n &amp;gt; N$ 时&lt;/td&gt;
-          &lt;td&gt;$&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;$\lim_{x \to \infty} f(x) = a$&lt;/td&gt;
-          &lt;td&gt;$\forall \varepsilon &amp;gt; 0$&lt;/td&gt;
-          &lt;td&gt;$\exists X &amp;gt; 0$，当 $&lt;/td&gt;
-          &lt;td&gt;x&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;$\lim_{x \to +\infty} f(x) = a$&lt;/td&gt;
-          &lt;td&gt;$\forall \varepsilon &amp;gt; 0$&lt;/td&gt;
-          &lt;td&gt;$\exists X &amp;gt; 0$，当 $x &amp;gt; X$ 时&lt;/td&gt;
-          &lt;td&gt;$&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;$\lim_{x \to -\infty} f(x) = a$&lt;/td&gt;
-          &lt;td&gt;$\forall \varepsilon &amp;gt; 0$&lt;/td&gt;
-          &lt;td&gt;$\exists X &amp;gt; 0$，当 $x &amp;lt; -X$ 时&lt;/td&gt;
-          &lt;td&gt;$&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;$\lim_{x \to x_0} f(x) = a$&lt;/td&gt;
-          &lt;td&gt;$\forall \varepsilon &amp;gt; 0$&lt;/td&gt;
-          &lt;td&gt;$\exists \delta &amp;gt; 0$，当 $0 &amp;lt;&lt;/td&gt;
-          &lt;td&gt;x - x_0&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;$\lim_{x \to x_0^+} f(x) = a$&lt;/td&gt;
-          &lt;td&gt;$\forall \varepsilon &amp;gt; 0$&lt;/td&gt;
-          &lt;td&gt;$\exists \delta &amp;gt; 0$，当 $0 &amp;lt; x - x_0 &amp;lt; \delta$ 时&lt;/td&gt;
-          &lt;td&gt;$&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;$\lim_{x \to x_0^-} f(x) = a$&lt;/td&gt;
-          &lt;td&gt;$\forall \varepsilon &amp;gt; 0$&lt;/td&gt;
-          &lt;td&gt;$\exists \delta &amp;gt; 0$，当 $0 &amp;lt; x_0 - x &amp;lt; \delta$ 时&lt;/td&gt;
-          &lt;td&gt;$&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-$$
-|a_n-l|&lt;\varepsilon,\quad 只要n&gt;N,
-$$&lt;p&gt;
-则我们称序列${a_n}$以$l$为极限，记作$\lim_{n\to \infty}a_n=l$&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;证明：$\lim_{n\to \infty}\frac 1{n^{\alpha}}=0(\alpha&amp;gt;0).$&lt;/p&gt;
-$$
-|\frac{1}{n^{\alpha}}-0|&lt;\varepsilon,\quad 只要n&gt;N,证毕
-$$&lt;p&gt;求：$a_n=\sqrt{2+a_{n-1}},a_1=2的数列极限$.&lt;/p&gt;
-&lt;p&gt;设$a_n数列极限为A,有\lim_{n\to\infty}a_n=\sqrt{2+\lim_{x\to \infty}a_{n-1}}\Rightarrow A=\sqrt{2+A}，解得A=2$&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;夹逼定理：设${a_n},{b_n},{c_n}$为三个序列，且存在一个正整数$N_0$,使得$c_n\leq a_n\leq b_n,\quad \forall n \geq N_0$，若${a_n}和{b_n}$存在且等于$l$,则${a_n}$极限也等于$l$.&lt;/p&gt;
-$$
-a_n &gt; b_n, \quad \text{只要} \ n &gt; N.
-$$&lt;p&gt;
-定理3： 设序列 ${a_n}$ 及 ${b_n}$ 分别有极限 $l_1$ 及 $l_2$，并且存在正整数 $N_0$，使得 $ a_n \geq b_n, \quad \text{只要} \ n &amp;gt; N_0, $      则 $ l_1 \geq l_2 $.&lt;/p&gt;
-$$ \lim_{n \to \infty} (a_n \pm b_n) = l_1 \pm l_2, \quad \lim_{n \to \infty} a_n b_n = l_1 l_2, $$$$ \lim_{n \to \infty} \frac{a_n}{b_n} = \frac{l_1}{l_2}. $$&lt;p&gt;海涅定理：$\lim_{n\to\infty}a_n=l \Leftrightarrow \forall {a_nk}\sub {a_n},\quad {\lim_{k \to \infty} } = l$, 即若两个子序列极限不同，则原序列无极限&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;一个重要极限&lt;/strong&gt;：$\lim_{n\to \infty}(1+\frac 1n )^n=e$ ,$\lim_{n\to\infty}(1-\frac1n)^n=\frac1e$,$\lim_{x\to 0}\frac{\sin x}{x}=1$
-一般地：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;$\lim_{x\to 0}\frac{\sin kx}{x}=k$&lt;/li&gt;
-&lt;li&gt;$\lim_{x\to 0}\frac{\sin(\varphi(x))}{\varphi(x)}=1,当\lim_{x\to 0}\varphi(x)=0时$&lt;/li&gt;
-&lt;li&gt;有界量乘无穷大或无穷小都是无穷大/小，无穷大量一定是无界量，无界量不一定是无穷大量。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id=&#34;241无穷大量&#34;&gt;2.4.1.无穷大量
-&lt;/h4&gt;$$
- \lim_{x \to x_0} f(x) = \infty 
-$$&lt;p&gt;
-此时不收敛，为发散。&lt;/p&gt;
-&lt;h3 id=&#34;25间断点&#34;&gt;2.5.间断点
-&lt;/h3&gt;&lt;p&gt;若$y=f(x)再 x=x_0 处出现如下三种情况之一，则称 x_0 为 y=f(x)$ 的间断点:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;$y=f(x)在点 x_0 处无定义$&lt;/li&gt;
-&lt;li&gt;$y=f(x)在点 x_0 处有定义，但 \lim_{x→x_0}f(x) 不存在$&lt;/li&gt;
-&lt;li&gt;$y=f(x)在点 x_0 处有定义，但 \lim_{x→x_0}f(x) 存在，但 \lim_{x→x_0}f(x)≠f(x)$&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id=&#34;251第一类间断点&#34;&gt;2.5.1.第一类间断点
-&lt;/h4&gt;&lt;p&gt;第一类间断点也叫有限型间断点，其特点是左右极限均存在.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;可去间断点&lt;/strong&gt;&lt;/p&gt;
-$$
-\lim_{x→x_{0^{−}}}f(x)=\lim_{x→x_{0^+}}f(x)≠f(x)
-$$&lt;p&gt;
-&lt;strong&gt;跳跃间断点&lt;/strong&gt;&lt;/p&gt;
-$$
-\lim_{x→x_{0^−}}f(x)≠\lim_{x→x_{0^+}}f(x)
-$$&lt;h4 id=&#34;252第二类间断点&#34;&gt;2.5.2.第二类间断点
-&lt;/h4&gt;&lt;p&gt;第二类间断点左右极限至少有一个不存在。注：除了第一类间断点其余均为第二类间断点。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;无穷间断点&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;在该点可以无定义，且左右极限至少有一个不存在，且改函数在该点极限为∞。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;震荡间断点&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;在该点可以无定义，当自变量趋于该点时，函数值再两个常数之间变动无限多次。此时左右极限均不存在。如$\lim_{x\to 0}\sin{\frac1x}$&lt;/p&gt;
-&lt;h3 id=&#34;26渐近线&#34;&gt;2.6.渐近线
-&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;铅直渐近线 若 $\lim_{x \to c} f(x)$ 与 $\lim_{x \to c} f(x)$ 至少有一个为无穷大，则称 $x = c$ 为曲线 $y = f(x)$ 的铅直渐近线。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;水平渐近线 若 $\lim_{x \to +\infty} f(x) = b$ 或 $\lim_{x \to -\infty} f(x) = b$，其中 $b$ 为常数，则称 $y = b$ 为曲线 $y = f(x)$ 的水平渐近线。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;斜渐近线 若 $\lim_{x \to +\infty} \frac{f(x)}{x} = k$ 存在且不为零，同时 $\lim_{x \to +\infty} [f(x) - kx] = b$ 也存在（或 $\lim_{x \to -\infty} \frac{f(x)}{x} = k$ 存在且不为零，同时 $\lim_{x \to -\infty} [f(x) - kx] = b$ 也存在），则称 $y = kx + b$ 为曲线 $y = f(x)$ 斜渐近线。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;渐近线的定义即是渐近线的求法。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;首先找垂直渐近线，这只需要找出函数所有的无穷间断点就可以了（按照求间断点的方法，先找所有“可疑点”，再一一判断）；&lt;/li&gt;
-&lt;li&gt;再分别对x趋近正无穷和趋近负无穷求斜渐近线（注意这里是把水平渐近线看做特殊的斜渐近线的）.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;3不定积分&#34;&gt;3.不定积分
-&lt;/h2&gt;&lt;h3 id=&#34;31求导法则&#34;&gt;3.1.求导法则
-&lt;/h3&gt;$$
-(\tan x)&#39; = \sec^2 x , (\cot x)&#39; = -\csc^2 x
-\\
-(\arcsin x)&#39; = \frac{1}{\sqrt{1-x^2}}\\ (\arccos x )&#39;=- \frac{1}{\sqrt{1-x^2}}
-\\(\arctan x)&#39; = \frac{1}{1+x^2} \\ (arccot x)&#39; = - \frac{1}{1+x^2}
-$$&lt;h4 id=&#34;311高阶导数和高阶积分&#34;&gt;3.1.1.高阶导数和高阶积分
-&lt;/h4&gt;$$
-\begin{aligned}
-&amp;(\sin x)^{n}=\sin(x+\frac{n\pi}2)\\
-&amp;(\cos x)^{n}=\cos(x+\frac{n\pi}2)\\
-&amp; (\frac1x)^{(k)}=(-1)^k\frac{k!}{x^{k+1}}\\
- &amp; (x^m)^{(n)}=m(m-1)(m-2)\cdots(m-n+1)x^{m-n}\quad(m\geq n) \\
- &amp; (a^x)^{(n)}=(\ln a)^na^x \\
- &amp; (\ln x)^{(n)}=\frac{(-1)^{n-1}(n-1)!}{x^n}\quad(\text{由}\left(\ln x\right)^{\prime}=\frac{1}{x}\text{,有}\left(\frac{1}{x}\right)^{(n)}=\frac{(-1)^nn!}{x^{n+1}}) \\
- &amp; (\sin x)^{(n)}=sin(x+\frac{n\pi}{2})\quad((\cos x)^{(n)}=cos(x+\frac{n\pi}{2})\mathrm{~)}\\
-&amp; 莱布尼茨公式：
-(fg)^{(n)} = \sum_{k=0}^{n} C^k_n f^{(k)} g^{(n-k)}
-\end{aligned}
-$$&lt;hr&gt;
-&lt;p&gt;例4 设函数 $y=x^2\sin x$,求 y 的五阶导数.
-解 注意到$(x^2)^{(k)}\equiv0(k&amp;gt;2)$,由莱布尼茨公式得到&lt;/p&gt;
-$$\begin{aligned}y^{(5)}&amp;=x^{2}\left(\sin x\right)^{(5)}+5\left(x^{2}\right)^{\prime}\left(\sin x\right)^{(4)}+10\left(x^{2}\right)^{\prime\prime}\left(\sin x\right)^{(3)}\\&amp;=x^{2}\sin\left(\frac{\pi}{2}+x\right)+10x\sin x+20\sin\left(x+\frac{3\pi}{2}\right)\\&amp;=(x^{2}-20)\mathrm{cos}x+10x\mathrm{sin}x.\end{aligned}$$&lt;h4 id=&#34;todo高阶导数和高阶积分&#34;&gt;TODO:高阶导数和高阶积分
-&lt;/h4&gt;&lt;h3 id=&#34;32等价无穷小&#34;&gt;3.2.等价无穷小
-&lt;/h3&gt;$$
-e^x \approx x\\
-\ln (x+1) \approx x\\
-(1 +x)^a-1 \approx ax\\
-1-\cos x \approx \frac{1}{2} x^2\\
-x \approx \tan x\\
-x \approx \sin x\\
-x \approx \arcsin x\\
-x \approx \arctan x\\
-$$&lt;p&gt;
-&lt;a class=&#34;link&#34; href=&#34;https://www.zhihu.com/question/308115342&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;&lt;strong&gt;等价无穷小的适用条件：整体乘除可换，加减有的凑巧可以，有的不行。&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-$$\lim\frac{\alpha-\beta}\gamma=\lim\frac{\alpha-\beta^\prime}\gamma=\lim\frac{\alpha^\prime-\beta}\gamma=\lim\frac{\alpha^\prime-\beta^\prime}\gamma $$&lt;/li&gt;
-&lt;li&gt;
-$$\lim\frac{\alpha+\beta}\gamma=\lim\frac{\alpha+\beta^\prime}\gamma=\lim\frac{\alpha^\prime+\beta}\gamma=\lim\frac{\alpha^\prime+\beta^\prime}\gamma $$&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;若$\alpha \neg \alpha ^{\prime }, \beta - \beta ^{\prime }$, $\phi \neg \phi ^{\prime }$, $\varphi \neg \varphi ^{\prime }$, 且$\lim\frac\alpha\beta=A\neq1$,$\lim\frac\phi\varphi=B\neq1$则&lt;/p&gt;
-$$\lim\frac{\alpha-\beta}{\phi-\varphi}=\lim\frac{\alpha^\prime-\beta^\prime}{\phi^\prime-\varphi^\prime}$$$$\begin{aligned}&amp;\lim\frac\alpha\beta=\lim\frac{\alpha^{\prime}}{\beta^{\prime}}\\&amp;\lim\frac\alpha\beta\gamma=\lim\frac{\alpha^{\prime}}{\beta^{\prime}}\gamma\\&amp;\lim\alpha\gamma=\lim\alpha^{\prime}\gamma\end{aligned}$$&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;特此强调，$\lim(\tau+\alpha\nu)$一般不等于$\lim(\tau+\alpha^\prime\nu)$ 如：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;$\lim_{x\to0}\frac{\sin2x-\sin x}{\sqrt{1+x}-1}=\lim_{x\to0}\frac{2x-x}{\frac x2}=2$(使用原则(1))&lt;/li&gt;
-&lt;li&gt;$\lim_{x\to0}\frac{x+\tan x}{e^x-1}=\lim_{x\to0}\frac{2x}x=2$(使用原则(2)&lt;/li&gt;
-&lt;li&gt;$\lim_{x\to0}\frac{e^x-1-\sin2x}{x-\sin3x}=\lim_{x\to0}\frac{x-2x}{x-3x}=\frac12$ (使用原则(3))&lt;/li&gt;
-&lt;li&gt;$\lim_{x\to0}\frac{(1-\cos x)\left[x-\ln\left(1+\tan x\right)\right]}{\sin^4x}=\lim_{x\to0}\frac{\frac{x^2}2[x-\ln\left(1+\tan x\right)]}{x^4}$
-$=\frac12\lim_{x\to0}\frac{x-\ln(1+\tan x)}{x^2}={\text{洛必达2次}}=\frac14$(使用原则(4))&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;错解：(使用原则(5)易知错误)
-$$\lim_{x\to0}\left(\frac1x-\frac{\ln\left(1+x\right)}{x^2}\right)=\lim_{x\to0}\left(\frac1x-\frac x{x^2}\right)=\lim_{x\to0}\left(\frac1x-\frac1x\right)=0$$&lt;/li&gt;
-&lt;li&gt;正解：
-$$\begin{aligned}&amp;\lim_{x\to0}\left(\frac1x-\frac{\ln\left(1+x\right)}{x^2}\right)=\lim_{x\to0}\frac{x-\ln\left(1+x\right)}{x^2}\frac{\text{表例公式}}{\lim_{x\to0}\frac{x-\left(x-\frac12x^2+o\left(x^2\right)\right)}{x^2}}\\&amp;=\lim_{x\to0}\frac{\frac12x^2+o\left(x^2\right)}{x^2}=\frac12\end{aligned}$$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;33-隐函数求导&#34;&gt;3.3 隐函数求导
-&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;如果方程F(x,y)=0能确定y是x的函数，那么称这种方式表示的函数是隐函数。而函数就是指：在某一变化过程中，两个变量x、y，对于某一范围内的x的每一个值，y都有确定的值和它对应，y就是x的函数。这种关系一般用y=f(x)即显函数来表示。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;求导法则&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;方法1：先把隐函数转化成显函数，再利用显函数求导的方法求导&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;方法2：隐函数左右两边先对x求导，但是一定要把y看成是x的函数&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;方法3: 利用一阶微分形式不变的性质分别对x和y求导，再通过移项求值&lt;/li&gt;
-&lt;/ul&gt;
-$$
-F(x,y) = xy -e^x+e^y=0(x\geq0) \quad \text{求}y&#39;|_{x=0}\\
-{方程两边关于x求导，将y视作x的函数}\\y+xy&#39;-e^x+e^y\cdot y&#39; = 0\\
-y&#39;=\frac{e^x-y}{e^y+x} \quad {由}F(0,0)=0\quad y&#39;=1
-$$&lt;hr&gt;
-&lt;h2 id=&#34;4定积分&#34;&gt;4.定积分
-&lt;/h2&gt;&lt;h3 id=&#34;41黎曼和&#34;&gt;4.1.黎曼和*
-&lt;/h3&gt;&lt;p&gt;$$
-\text{设函数 } f(x) \text{ 在区间 } [a, b] \text{ 上有定义，分割区间 } [a, b] \text{ 为 } n \text{ 个子区间：}
-a = x_0 &amp;lt; x_1 &amp;lt; x_2 &amp;lt; \cdots &amp;lt; x_n = b\&lt;/p&gt;
-&lt;p&gt;\text{记每个子区间的长度为 } \Delta x_i = x_i - x_{i-1}\ \text{，在每个子区间 } [x_{i-1}, x_i] \text{ 内选择一点 } \xi_i \in [x_{i-1}, x_i] \text{，则黎曼和定义为：}
-S = \sum_{i=1}^n f(\xi_i) \Delta x_i
-$$&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;写出函数$y=x^2$在区间$[0,1]$上的黎曼和，其中分割为$n$等分，中间点$\xi_i$为分割小区间的左端点，求出当$n\to \infty$时的黎曼和的极限。&lt;/p&gt;
-&lt;p&gt;解：$s_n=\sum^{n-1}_{i=0}\frac{i^2}{n^2}\cdot \frac1n=\frac1{6n^3}(n-1)n(2n-1)=\frac16(1-\frac1n)(2-\frac1n)\to\frac13(n\to\infty)$&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;42变上限积分&#34;&gt;4.2.变上限积分
-&lt;/h3&gt;&lt;p&gt;积分中值定理：如果函数f (x)在闭区间 [a, b]上连续，那么存在一个点c，使得$\int_a^bf(x)dx=f(c)(b-a).$&lt;/p&gt;
-&lt;p&gt;变上限积分：对于$F_0(x)=\int_a^xf(t)dt$有$F&amp;rsquo;_0(x)=f(x),\quad\forall x \in(a,b).$&lt;/p&gt;
-&lt;p&gt;一个连续函数的变上限积分就是该函数的一个原函数，即$\frac{d}{dx}[\int^{x}_af(t)dt]=f(x)$&lt;/p&gt;
-&lt;p&gt;一般的$\frac{d}{dx}[\int^{\varphi(x)}_af(t)dt]=f[\varphi(x)]\varphi&amp;rsquo;(x)$&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;可以使用换元变t&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
-$$
-\begin{aligned}
-\lim_{x\to0}\frac{\int_0^x(x-t)f(t)dt}{x^2}&amp;=
-\lim_{x\to0}\frac{x\int_0^xf(t)dt-\int_0^xtf(t)dt}{x^2}\\
-&amp;=\lim_{x\to 0}\frac{\int_0^xf(t)dt+xf(x)-xf(x)}{2x}\\
-&amp;=\lim_{x\to0}\frac{f(x)}2=\frac{f(0)}2
-\end{aligned}
-$$&lt;hr&gt;
-&lt;h2 id=&#34;5不定积分的换元法&#34;&gt;5.不定积分的换元法
-&lt;/h2&gt;&lt;h3 id=&#34;51第一换元法凑微分&#34;&gt;5.1.第一换元法（凑微分）
-&lt;/h3&gt;&lt;p&gt;若有$\frac{d}{dx}F(\varphi(x))=f(\varphi(x))\varphi&amp;rsquo;(x),$于是有$\int f(\varphi(x))\varphi&amp;rsquo;(x)dx=F(\varphi(x))+C$&lt;/p&gt;
-$$
-dx=\frac1kd(kx+b)(k\ne0);\\
-xdx=\frac12dx^2\\
-\frac1{\sqrt{x}}dx=2d\sqrt{x}\\
-\frac1xdx=d\ln|x|\\
-\sin xdx=-d\cos x\\
-\cos xdx=d\sin x\\
-\sec^2 xdx=d\tan x\\
-\csc^2xdx=-d\cot x\\
-\frac{1}{1+x^2}dx=d\arctan\\
-\frac1{\sqrt{1-x^2}}dx=d\arcsin x
-$$&lt;h3 id=&#34;52不定积分常用技巧&#34;&gt;5.2.不定积分常用技巧
-&lt;/h3&gt;&lt;p&gt;*(见习题3.1绝望35题)&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;凑微分&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;分子分母同乘同除&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;常用不定积分嗯套&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-$$
-\int \tan x dx=-\ln|\cos x| + C\\
-\int \cot x dx=\ln|\sin x| +C\\
-\int \frac{dx}{x^2+a^2}=\frac1a \arctan\frac xa +C \quad (a&gt;0)\\
-\int \frac {dx}{x^2-a^2}=\frac1{2a} \ln|\frac{x-a}{x+a}| +C\quad(a&gt;0)\\
-\int \frac{dx}{\sqrt{a^2-x^2}}=\frac1a\arcsin \frac xa +C \quad (a&gt;0)\\
-\int \frac{dx}{\sqrt{x^2\pm a^2}}=\ln|x+\sqrt{x^2\pm a^2}|+C\\
-\int \sqrt{a^2\pm x^2}dx=\frac x2 \sqrt{a^2\pm x^2}+\frac{a^2}2 \ln|x+\sqrt{a^2\pm x^2}|+C\\
-$$&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;拆分子，分别求积分&lt;/li&gt;
-&lt;li&gt;分母使用第二换元，dx替换为dt&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;升幂降幂公式&amp;amp;和差化积积化和差&amp;amp;诱导公式&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;三角换元，后用三角替换回来&lt;/li&gt;
-&lt;li&gt;配方，构建完全平方式&lt;/li&gt;
-&lt;li&gt;变化为分母为高阶项，分子为高阶减一项后裂项&lt;/li&gt;
-&lt;li&gt;用极坐标或者参数方程给多元函数降元&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;53有理式和三角函数的不定积分&#34;&gt;5.3.有理式和三角函数的不定积分
-&lt;/h3&gt;&lt;h4 id=&#34;531有理式的不定积分&#34;&gt;5.3.1.有理式的不定积分
-&lt;/h4&gt;$$
-\frac{A}{x-a},\quad \frac A{(x-a)^n}, \quad \frac{Bx+D}{x^2+px+q}, \quad \frac{Bx+D}{(x^2+px+q)^n}
-$$$$
-\begin{aligned}
-&amp; \int\frac{Adx}{x-a}=A\ln|x-a|+C,\\
-&amp; \int\frac{Adx}{(x-a)^n}=\frac A{1-n}(x-a)^{1-n}+C,\\
- \int\frac{(Bx+D)dx}{x^2+px+q}&amp;=\frac B2\int\frac{s[(x+\frac p2)]^2}{(x+\frac p 2)^2+(q-\frac{p^2}4)}
-+(D-\frac {Bp}2)\int\frac {dx}{(x+\frac p2)^2+(q-\frac{p^2}{4})}\\
-&amp; =\frac B2\ln|x^2+px+q|+\frac{D-\frac{Bp}2}{\sqrt{q-\frac{p^2}4}}\arctan\frac{x+\frac p2}{\sqrt{q-\frac{p^2}4}}+C
-\end{aligned}
-$$$$
-\begin{aligned}
-\int\frac{\left(Bx+D\right)\mathrm{d}x}{\left(x^{2}+px+q\right)^{n}} &amp; =\frac{B}{2}\int\frac{\mathrm{d}\left[\left(x+\frac{p}{2}\right)^{2}\right]}{\left[\left(x+\frac{p}{2}\right)^{2}+\left(q-\frac{p^{2}}{4}\right)\right]^{n}} \\
- &amp; +\left(D-\frac{Bp}{2}\right)\int\frac{\mathrm{d}x}{\left[\left(x+\frac{p}{2}\right)^2+\left(q-\frac{p^2}{4}\right)\right]^n} \\
- &amp; =\frac{B}{2\left(1-n\right)}\left[\left(x+\frac{p}{2}\right)^{2}+\left(q-\frac{p^{2}}{4}\right)\right]^{1-n} \\
- &amp;  +\left(D-\frac{Bp}{2}\right)\int\frac{\mathrm{d}x}{\left[\left(x+\frac{p}{2}\right)^2+\left(q-\frac{p^2}{4}\right)\right]^n}.
-\end{aligned}
-$$&lt;p&gt;
-例题见课本，不想抄了。&lt;/p&gt;
-&lt;h4 id=&#34;532三角函数的有理式的不定积分&#34;&gt;5.3.2.三角函数的有理式的不定积分
-&lt;/h4&gt;$$
-\sin x=\frac{2\tan\frac x2}{1+\tan^2\frac x2}\\
-\cos x=\frac{1-\tan^2\frac x2}{1+\tan^2\frac x2}\\
-\tan x =\frac{2\tan\frac x2}{1-\tan^2\frac x2}
-$$&lt;p&gt;
-注意：这有时候有效，有些时候则过于麻烦，可以直接换元.&lt;/p&gt;
-&lt;h3 id=&#34;54分部积分法todo做题技巧&#34;&gt;5.4.分部积分法TODO:做题技巧
-&lt;/h3&gt;$$
-\int_0^{\frac{\pi}2}\sin^{2k} x\,dx=\frac{(2k-1)!!}{(2k)!!}\cdot\frac{\pi}{2}.\\
-\int_0^{\frac{\pi}2}\sin^{2k+1} x\,dx=\frac{(2k)!!}{(2k+1)!!}.\\
-\int_0^{\frac{\pi}2}\sin^{n} x\,dx=\int_0^{\frac{\pi}2}\cos^{n} x\,dx
-$$&lt;p&gt;注意有时候可用递推公式，得出通解&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;6积分的应用&#34;&gt;6.积分的应用
-&lt;/h2&gt;&lt;h3 id=&#34;61求曲线的弧长&#34;&gt;6.1.求曲线的弧长
-&lt;/h3&gt;&lt;p&gt;关键为求弧微分，描述弧长与某个变量（例如参数变量）之间的对应关系。&lt;/p&gt;
-$$
-ds= \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \, dt
-$$&lt;p&gt;
-同理，有&lt;/p&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;&lt;/th&gt;
-          &lt;th&gt;曲线段方程&lt;/th&gt;
-          &lt;th&gt;弧长s计算公式&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;参数方程&lt;/td&gt;
-          &lt;td&gt;$\begin{cases}x=\varphi(t),\y=\psi(t),\end{cases},\alpha\leq t\leq\beta$&lt;/td&gt;
-          &lt;td&gt;$s=\int_{\alpha}^{\beta}\sqrt{\varphi&amp;rsquo;^2(t)+\psi&amp;rsquo;^2(t)}dt$&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;直角坐标系&lt;/td&gt;
-          &lt;td&gt;$y=f(x),a\leq x\leq b$&lt;/td&gt;
-          &lt;td&gt;$s=\int_a^b\sqrt{1+f&amp;rsquo;^2(x)}dx$&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;直角坐标系&lt;/td&gt;
-          &lt;td&gt;$x=g(y),c\leq y\leq d$&lt;/td&gt;
-          &lt;td&gt;$s=\int_c^d\sqrt{1+g&amp;rsquo;^2(y)}dy$&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;极坐标系&lt;/td&gt;
-          &lt;td&gt;$r=r(\theta),\alpha \leq\theta\leq\beta$&lt;/td&gt;
-          &lt;td&gt;$s=\int_{\alpha}^{\beta}\sqrt{r^2(\theta)+r&amp;rsquo;^2(\theta)},d\theta$&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3 id=&#34;62旋转体体积侧面积求解&#34;&gt;6.2.旋转体体积，侧面积求解
-&lt;/h3&gt;&lt;h5 id=&#34;621旋转法&#34;&gt;6.2.1:旋转法
-&lt;/h5&gt;&lt;p&gt;对于一个绕x轴旋转的旋转体，其体积为$V=,\sum_{i=1}^n\Delta V_i \approx,\pi\sum_{i=1}^n(f(\xi_i))^2\Delta x_i $&lt;/p&gt;
-&lt;h5 id=&#34;622柱壳法&#34;&gt;6.2.2.柱壳法
-&lt;/h5&gt;$$
-V=\int_a^b2\pi xydx=2\pi\int_a^bxf(x)dx
-$$&lt;h5 id=&#34;623旋转体的侧面积&#34;&gt;6.2.3.旋转体的侧面积
-&lt;/h5&gt;$$
-\Delta F_i \approx 2\pi f(x_{i-1})\Delta s_i\\
-F\approx \sum^n_{i=1}2\pi f(x_{i-1})\sqrt{1+(f&#39;(x_{i-1}))^2}\Delta x_i\\
-参数方程同理：F=2\pi\int_{\alpha}^{\beta}y(t)\sqrt{(x&#39;(t))^2+(y&#39;(t))^2}dt\\
-$$&lt;h5 id=&#34;624古鲁丁定理&#34;&gt;6.2.4.古鲁丁定理
-&lt;/h5&gt;&lt;p&gt;平面上一条质量分布均匀的曲线弧绕一条不通过他的直线轴旋转一周所形成的旋转面的面积恰好等于它的质心绕同一轴旋转所得圆周长乘以曲线弧长&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;求由圆周 $x^2+(y−h)^2=(h&amp;gt;r&amp;gt;0)$ 绕$x$ 轴旋转一周所形成圆环面的面积。&lt;/p&gt;
-$$
-F=2\pi l\cdot h=4\pi^2 rh.
-$$&lt;hr&gt;
-&lt;h5 id=&#34;625极坐标下图形的面积&#34;&gt;6.2.5.极坐标下图形的面积
-&lt;/h5&gt;$$
-dS=\frac 12r^2(\theta)d\theta\\
-S=\frac 12 \int_{\alpha}^{\beta}r^2(\theta)d\theta
-$$&lt;hr&gt;
-&lt;h2 id=&#34;7泰勒级数&#34;&gt;7.泰勒级数
-&lt;/h2&gt;&lt;h3 id=&#34;71积分中值定理罗尔中值定理微分中值定理柯西中值定理洛必达法则&#34;&gt;7.1.积分中值定理，罗尔中值定理，微分中值定理,柯西中值定理,洛必达法则
-&lt;/h3&gt;&lt;p&gt;积分中值定理：$如果函数f (x)在闭区间 [a, b]上连续，那么存在一个点c，使得\int_a^bf(x)dx=f(c)(b-a).$&lt;/p&gt;
-$$
-f&#39;(c)=0
-$$$$
-f&#39;(c)=\frac{f(b)-f(a)}{b-a}
-$$&lt;p&gt;
-&lt;strong&gt;微分中值定理又称拉格朗日中值定理&lt;/strong&gt;&lt;/p&gt;
-$$
-\frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f&#39;(c)}{g&#39;(c)}
-$$&lt;p&gt;
-洛必达法则：遇到$0^0,1^{\infty},\infty^0$未定型可通过取对方式&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;遇求实根存在等题可以使用&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&#34;72泰勒公式&#34;&gt;7.2.泰勒公式
-&lt;/h3&gt;$$
-f(x) = f(a) + f&#39;(a)(x-a) + \frac{f&#39;&#39;(a)}{2!}(x-a)^2 + \cdots + \frac{f^{(n)}(a)}{n!}(x-a)^n + R_n(x)
-$$$$
-R_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-a)^{n+1}, \quad \xi \in (a, x)\\
-R_n亦可表示为佩亚诺余项o((x-x_0)^n)
-$$$$
-麦克劳林公式(于x_0=0处泰勒公式)(x\to0)\\
-e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots +\frac{1}{n!}x^n+o(x^n)\\
-\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + (-1)^{n-1}\frac{x^{2n-1}}{(2n-1)!}+o(x^{2n}) \\
-\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + (-1)^{n}\frac{x^{2n}}{(2n)!}+o(x^{2n+1}) \\
-(1+x)^\alpha = 1 + \alpha x + \frac{\alpha(\alpha-1)}{2!}x^2 + \frac{\alpha(\alpha-1)(\alpha-2)}{3!}x^3 + \cdots 
-+\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}x^n+o(x^n)\\
-\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots+(-1)^{n-1}\frac{x^n}{n}+o(x^n)
-$$$$
-\begin{aligned}
- \\
- &amp; 下面是几个常见初等函数的带拉格朗日余项的泰勒公式: \\
- &amp; (1)\mathrm{e}^x=1+x+\frac{x^2}{2!}+\cdots+\frac{x^n}{n!}+\frac{\mathrm{e}^\xi}{(n+1)!}x^{n+1}(-\infty&lt;x&lt;+\infty); \\
- &amp; (2)\sin x=x-\frac{x^3}{3!}+\cdots+(-1)^{n-1}\frac{x^{2n-1}}{(2n-1)!} 
- +(-1)^n\frac{\cos\xi}{(2n+1)!}x^{2n+1}\left(-\infty&lt;x&lt;+\infty\right); \\
- &amp; (3)\cos x=1-\frac{x^{2}}{2!}+\cdots+(-1)^{n}\frac{x^{2n}}{(2n)!} 
- +(-1)^{n+1}\frac{\cos\xi}{(2n+2)!}x^{2n+2}(-\infty&lt;x&lt;+\infty);   \\
- &amp; (4)(1+x)^{a}=  1+\alpha x+\frac{\alpha(\alpha-1)}{2!}x^{2}+\cdots+\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}x^{n} 
-  \\&amp;+\frac{\alpha(\alpha-1)\cdots(\alpha-n)}{(n+1)!}(1+\xi)^{\alpha-n-1}x^{n+1}(-1&lt;x&lt;+\infty); \\
- &amp; (5)\ln(1+x)=x-\frac{x^{2}}{2}+\frac{x^{3}}{3}-\cdots+(-1)^{n-1}\frac{x^{n}}{n}+(-1)^n\frac{x^{n+1}}{(n+1)(1+\xi)^{n+1}}
- (-1&lt;x&lt;+\infty)
-\end{aligned}
-$$&lt;p&gt;
-泰勒展开的相关技巧&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;将要分解的公式拆分为上述泰勒公式后套公式，如将$\ln{\frac{1-x}{1+x}}$分解为$\ln(1-x)-\ln(1+x)$,或者将$\frac{x^2+2x-1}{x-1}$分解为$(x^2+2x-1)\cdot (1-x)^{-1}$&lt;/li&gt;
-&lt;li&gt;对要分解的式子求导，得到可以用上述泰勒公式替换的导函数，最后再求积&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-$$
-(\sin^2 x)&#39;=\sin{2x}\\
-\sin2x=2x-\frac{(2x)^3}{3!}+\cdots+(-1)^{n-1}\frac{(2x)^{2n-1}}{(2n-1)!}+o(x^{2n})\\
-\sin^2x=x^2-\frac{(2x)^4}{2\cdot 4!}+\cdots+(-1)^{n-1}\frac{(2x)^{2n}}{2\cdot2n!}+o(x^{2n+1})
-$$&lt;hr&gt;
-&lt;ul&gt;
-&lt;li&gt;将其他式子替换$x$，如在计算$\cos x^3$时用$x^3$替换$x$带入$\cos$方程，计算$\sqrt{1-2x+x^3}$时用$(-2x+x^3)$替换$x$带入$(1+x)^{\alpha}$&lt;/li&gt;
-&lt;li&gt;泰勒展开&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;73函数的凹凸性&#34;&gt;7.3.函数的凹凸性
-&lt;/h3&gt;&lt;h4 id=&#34;731函数凹凸性的定义-设函数fx在区间i上连续&#34;&gt;7.3.1&lt;strong&gt;函数凹凸性的定义&lt;/strong&gt; 设函数$f(x)$在区间$I$上连续。
-&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;凹函数&lt;/strong&gt;：若对于区间$I$内的任意两点$x_1$，$x_2$，以及任意实数$\lambda\in(0,1)$，都有$f(\lambda x_1+(1-\lambda)x_2)\geq\lambda f(x_1)+(1-\lambda)f(x_2)$，则称$f(x)$是区间$I$上的凹函数。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;凸函数&lt;/strong&gt;：若对于区间$I$内的任意两点$x_1$，$x_2$，以及任意实数$\lambda\in(0,1)$，都有$f(\lambda x_1+(1-\lambda)x_2)\leq\lambda f(x_1)+(1-\lambda)f(x_2)$，则称$f(x)$是区间$I$上的凸函数。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id=&#34;732函数凹凸性的判定方法&#34;&gt;7.3.2&lt;strong&gt;函数凹凸性的判定方法&lt;/strong&gt;
-&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;二阶导数法&lt;/strong&gt;：设函数$f(x)$在区间$I$内具有二阶导数。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;若$f&amp;rsquo;&amp;rsquo;(x)&amp;gt;0$，则$f(x)$在区间$I$上是下凸(凹)函数；&lt;/li&gt;
-&lt;li&gt;若$f&amp;rsquo;&amp;rsquo;(x)&amp;lt;0$，则$f(x)$在区间$I$上是上凸(凸)函数。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;733注意事项&#34;&gt;7.3.3.&lt;strong&gt;注意事项&lt;/strong&gt;
-&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;函数的凹凸性是函数在某一区间上的整体性质，而不是在某一点的性质。&lt;/li&gt;
-&lt;li&gt;函数的凹凸性与函数的单调性没有必然的联系。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;8向量代数与空间解析几何&#34;&gt;8.向量代数与空间解析几何
-&lt;/h2&gt;&lt;h3 id=&#34;81向量代数&#34;&gt;8.1.向量代数
-&lt;/h3&gt;&lt;p&gt;叉乘运算满足一下规律：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;$a \times b=-b\times a$（反交换律）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;$\lambda(a\times b)=(\lambda a)\times b =a \times(\lambda b)$（与数乘的结合律）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;$(a+b)\times c=a\times c+b\times c$（分配律）&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-$$
-a\times b=|a|\cdot|b|\sin&lt;a,b&gt;\\
-a与b共线\Longleftrightarrow a\times b=0\\
-a\cdot (b\times c)=b\cdot (c\times a) \,用于计算同一平行六面体的体积
-$$&lt;h3 id=&#34;82向量的空间坐标&#34;&gt;8.2.向量的空间坐标
-&lt;/h3&gt;$$
-i\times j =k,\quad j\times k=i,\quad k\times i=j\\
-单位向量a^0=\frac{1}{\sqrt{x^2+y^2+z^2}}(x,y,z)\\
-a_1\times a_2=\begin{vmatrix}
-i &amp;j&amp;k\\
-x_1&amp;y_1&amp;z_1\\
-x_2&amp;y_2&amp;z_2
-\end{vmatrix}
-=(y_1z_2-y_2z_1)i-(x_1z_2-x_2z_1)j+(x_1y_2-x_2y_1)k
-$$&lt;h3 id=&#34;83空间中平面与直线的方程&#34;&gt;8.3.空间中平面与直线的方程
-&lt;/h3&gt;&lt;h4 id=&#34;831平面的方程&#34;&gt;8.3.1.平面的方程
-&lt;/h4&gt;$$
-点P_0(x_0,y_0,z_0)到平面Ax+By+Cz+D=0的距离d=\frac{|Ax_1+By_1+Cz_1+D|}{\sqrt{A^2+B^2+C^2}}\\
-n=(A,B,C)\Rightarrow\begin{cases}1.平面过原点\leftrightarrow D=0\\
-2.\pi//x轴\leftrightarrow A=0，其余轴线同理\\
-3.A=B=0\leftrightarrow \pi // xy平面，其余同理\\
-4.A=B=D=0\leftrightarrow \pi//Oxy平面\end{cases}
-\\
-截距式方程： \frac x{-\frac DA}+\frac y{-\frac DB}+\frac z{-\frac DC} = 1(分母分别是xyz轴截距)
-$$&lt;h4 id=&#34;832直线的方程&#34;&gt;8.3.2.直线的方程
-&lt;/h4&gt;$$
-两面式=\begin{cases}
-A_1 x+B_1 y+C_1z+D_1=0\\
-A_2 x+B_2 y+C_2 z+D_2=0
-\end{cases}\\
-参数方程=\begin{cases}
-x-x_0=ta,\\
-y-y_0=tb,\quad(-\infty&lt;y&lt;+\infty)\\
-z-z_0=tc
-\end{cases}\\
-标准方程=\frac{x-x_0}{a}=\frac{y-y_0}{b}=\frac{z-z_0}{c}\quad(a,b,c不同时等于0)
-$$&lt;p&gt;将两面式化简为标准方程：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;由两平面法向量求出直线方向向量&lt;/li&gt;
-&lt;li&gt;将两平面消元只剩3个变量&lt;/li&gt;
-&lt;li&gt;尝试带入任意值，比如x=0求解得出直线D值&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;84二次曲面空间曲线的切线与弧长&#34;&gt;8.4.二次曲面&amp;amp;空间曲线的切线与弧长
-&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/58917013&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;九种典型方程&lt;/a&gt;及&lt;a class=&#34;link&#34; href=&#34;http://staff.ustc.edu.cn/~rui/ppt/calculus/geo_3.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;其运动轨迹&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;841求交线投影线httpswwwdoc88comp-29439565929930html&#34;&gt;8.4.1.&lt;a class=&#34;link&#34; href=&#34;https://www.doc88.com/p-29439565929930.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;求交线，投影线&lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;如直线求交点，用两平面相加减消元&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;投影也是消元&lt;/strong&gt;：如在Oxy平面投影，则可消z，若有方程没有z变量，则可直接带入。&lt;/p&gt;
-&lt;hr&gt;
-$$
-\begin{cases}
-x^2+y^2+z^2=1\quad(1)\\
-z^2=2y\quad\quad\quad\quad\quad(2)
-\end{cases}
-$$$$
-将在z^2=2y代入(1)式：x^2+y^2+2y=1
-$$&lt;hr&gt;
-&lt;h4 id=&#34;842空间曲线的切线和弧长&#34;&gt;8.4.2.空间曲线的切线和弧长
-&lt;/h4&gt;$$
-\begin{cases}
-x=x(t_0)+ux&#39;(t_0)\\
-y=y(t_0)+uy&#39;(t_0)\\
-z=z(t_0)+uz&#39;(t_0)
-\end{cases}
-$$$$
-s=\int_{a}^{b}|r&#39;(t)|dt=\int^{b}_a\sqrt{(x&#39;(t))^2+(y&#39;(t))^2+(z&#39;(t))^2}
-$$&lt;p&gt;
-过点$r(t_0)$且与该店处切向量$r&amp;rsquo;(t_0)$垂直的平面称为曲线在该点的法平面。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;9多元函数微分学&#34;&gt;9.多元函数微分学
-&lt;/h2&gt;&lt;h3 id=&#34;91多元函数&#34;&gt;9.1.多元函数
-&lt;/h3&gt;&lt;p&gt;定义域：是多元自变量共同决定的定义域&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;如E=$\frac{1}{1-x^2-y^2}$，则定义域就是$x^2+y^2\neq1$&lt;/p&gt;
-&lt;hr&gt;
-&lt;h4 id=&#34;911rn中的距离邻域及开集&#34;&gt;9.1.1.$R^n$中的距离邻域及开集
-&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;三角不等式：&lt;/li&gt;
-&lt;/ol&gt;
-$$
-d(P,Q)\leq d(P,R)+d(P,Q),\quad \forall R \in R^n
-$$&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;定义点$P_0$的r邻域：&lt;/li&gt;
-&lt;/ol&gt;
-$$
-U_r(P_0)=\{P\in R^n|d(P_0,P)&lt;r\}
-$$&lt;p&gt;​		n=1，为开区间；n=2，为开圆；n=3，为开球。&lt;/p&gt;
-&lt;p&gt;​		我们将$R^n$中的点分为三种：E的内点、外点与边界点。&lt;/p&gt;
-&lt;p&gt;​		内点:$U_r(P)\subset E$&lt;/p&gt;
-&lt;p&gt;​		外点:$U_r(P)\cap E=\emptyset$&lt;/p&gt;
-&lt;p&gt;​		既非E内点也非外点称作边界点，记作$\part E $&lt;/p&gt;
-&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;
-&lt;p&gt;开集&lt;/p&gt;
-&lt;p&gt;集合E是开集的充要条件是E中没有边界点&lt;/p&gt;
-&lt;p&gt;一个集合E包含着他的全部边界点，称作闭集$\overline{E}$&lt;/p&gt;
-&lt;p&gt;若E（可通过曲线折线直线）联通，则称E为$R^n$中的(开/闭)区域&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;92多元函数的极限&#34;&gt;9.2.多元函数的极限
-&lt;/h3&gt;&lt;h4 id=&#34;921极限的定义todo技巧&#34;&gt;9.2.1.极限的定义TODO：技巧
-&lt;/h4&gt;$$
-0 &lt; \sqrt{(x - x_0)^2 + (y - y_0)^2} &lt; \delta
-$$&lt;p&gt;
-时，就有 $ |f(x, y) - A| &amp;lt; \epsilon $，则称当点 $ (x, y) $ 趋向于点 $ (x_0, y_0) $（记作 $ (x, y) \to (x_0, y_0) $）时，$ f(x, y) $ 以 $ A $ 为极限，记作 $ \lim_{{(x, y) \to (x_0, y_0)}} f(x, y) = A $ 有时也写成 $ \lim_{{x \to x_0 \atop y \to y_0}} f(x, y) = A $。&lt;/p&gt;
-$$
-|x - x_0| &lt; \delta, \quad |y - y_0| &lt; \delta, \quad \text{且} \quad (x, y) \neq (x_0, y_0)
-$$$$
-|f(x, y) - A| &lt; \epsilon,
-$$&lt;p&gt;
-则称当 $ (x, y) \to (x_0, y_0) $ 时，$ f(x, y) $ 以 $ A $ 为极限。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;定义一和定义二是等价的&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;通过定义证极限存在：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;通过基本不等式放大:$\frac{\sqrt{a^2+b^2}}2 \geq \frac{a+b}2 \geq \sqrt{ab}\geq \frac{2}{\frac 1a +\frac 1b}$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;通过定义二&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;见&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;证伪：通过指出不同路径，使$P$沿两条路径趋向于点$P_0$时，$f(x,y)$趋向于不同的常数，我们可以断言当$P\to P_0$时，$f(x,y)$没有极限.&lt;/p&gt;
-&lt;hr&gt;
-$$
-f(x,y)=\frac {|x|}{\sqrt{x^2+y^2}}
-$$&lt;p&gt;
-是否有极限？&lt;/p&gt;
-$$
-f(x,y)=\frac{|x|}{\sqrt{x^2+k^2x^2}}=\frac{1}{\sqrt{1+k^2}}
-$$&lt;p&gt;
-则不同$k,(x,y)$趋向不同常数，没有极限。&lt;strong&gt;该方法可以适用于不同方式换元，一种换元存在另一种不一定存在，故该方法只能证伪不能证实&lt;/strong&gt;&lt;/p&gt;
-&lt;h4 id=&#34;922二元函数极限的运算法则与基本性质&#34;&gt;9.2.2.二元函数极限的运算法则与基本性质
-&lt;/h4&gt;&lt;p&gt;定理 1：$lim_{(x,y)\to (0,0)}f(x,y)=A,\quad lim_{(x,y)\to (0,0)}g(x,y)=B$则，&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;$\lim_{(x,y)\to (x_0,y_0)}(f(x,y)\pm g(x,y))=A\pm B$&lt;/li&gt;
-&lt;li&gt;$\lim_{(x,y)\to (x_0,y_0)}f(x,y)g(x,y)=AB$&lt;/li&gt;
-&lt;li&gt;$当B\neq0, \lim_{(x,y)\to(x_0,y_0)}\frac{f(x,y)}{g(x,y)}=\frac{A}{B}$&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;定理 2：较大函数的极限大于或等于较小函数的极限&lt;/p&gt;
-&lt;p&gt;定理 3：夹逼定理&lt;/p&gt;
-$$
-x_0 = \lim_{{(u, v) \to (u_0, v_0)}} g(u, v), \quad y_0 = \lim_{{(u, v) \to (u_0, v_0)}} h(u, v),
-$$$$
-\lim_{{(u, v) \to (u_0, v_0)}} f(g(u, v), h(u, v)) = \lim_{{(x, y) \to (x_0, y_0)}} f(x, y). 
-$$$$
-A = \lim_{u\to u_0}f(u),
-$$$$
-\lim_{(x,y)\to(x_0,y_0)}g(x,y)=u_0
-$$&lt;p&gt;
-则$\lim_{(x,y)\to(x_0,y_0)}f(g(x,y))=A.$&lt;/p&gt;
-&lt;h4 id=&#34;923累次极限与全面极限&#34;&gt;9.2.3.累次极限与全面极限
-&lt;/h4&gt;&lt;p&gt;累次极限：$\lim_{x\to x_0}\lim_{y\to y_0}f(x,y)=\lim_{x\to x_0}f(x,y_0)$&lt;/p&gt;
-&lt;p&gt;全面极限：$\lim_{(x,y)\to (x_0,y_0)}f(x,y)$&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;注意：累次极限的存在和相等并不保证全面极限 $ \lim_{{(x, y) \to (x_0, y_0)}} f(x, y) $ 存在或等于这些累次极限。&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;93多元函数的连续性&#34;&gt;9.3.多元函数的连续性
-&lt;/h3&gt;&lt;h4 id=&#34;931定义&#34;&gt;9.3.1.定义
-&lt;/h4&gt;&lt;p&gt;$\lim_{(x,y)\to (x_0,y_0)}f(x,y)=f(x_0,y_0)$，则称$f(x,y)$在点$(x_0,y_0)$处连续&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;例 2 设函数 $ f(x, y) = \begin{cases}  \frac{x^2 y^2}{x^4 + y^4}, &amp;amp; (x, y) \neq (0, 0), \ 0, &amp;amp; (x, y) = (0, 0). \end{cases} $ 问：$ f(x, y) $ 在何处连续？&lt;/p&gt;
-&lt;p&gt;解 设 $(x_0, y_0)$ 是任意给定的一点。当 $(x_0, y_0) \neq (0, 0)$ 时，$x_0^4 + y_0^4 \neq 0$，并很容易直接证明&lt;/p&gt;
-&lt;p&gt;$ \lim_{{(x, y) \to (x_0, y_0)}} (x^4 + y^4) = x_0^4 + y_0^4, $ $ \lim_{{(x, y) \to (x_0, y_0)}} x^2 y^2 = x_0^2 y_0^2. $&lt;/p&gt;
-&lt;p&gt;应用极限的四则运算法则，我们有&lt;/p&gt;
-&lt;p&gt;$ \lim_{{(x, y) \to (x_0, y_0)}} f(x, y) = \frac{x_0^2 y_0^2}{x_0^4 + y_0^4} = f(x_0, y_0). $&lt;/p&gt;
-&lt;p&gt;因此，$ f(x, y) $ 在点 $(x_0, y_0)$ 处连续。当 $(x_0, y_0) = (0, 0)$ 时，可以按照类似于上一节例 3 的方法证明 $ f(x, y) $ 的极限不存在。事实上，当点 $(x, y)$ 沿直线 $ y = kx $ ($ k $ 为常数) 趋向于点 $(0, 0)$ 时，&lt;/p&gt;
-&lt;p&gt;$ f(x, y) \to \frac{k^2}{1 + k^4}. $ 当 $ k $ 取不同值时，上述极限的值也不同。可见，$ f(x, y) $ 在点 $(0, 0)$ 处不连续。&lt;/p&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;定理 1：设两个二元函数 $ f(x, y) $ 及 $ g(x, y) $ 在一点 $ (x_0, y_0) $ 处连续，则函数 $ f(x, y) \pm g(x, y) $ 及 $ f(x, y) g(x, y) $ 在点 $ (x_0, y_0) $ 处也连续。此外，若 $ g(x_0, y_0) \neq 0 $，则函数 $ \frac{f(x, y)}{g(x, y)} $ 在点 $ (x_0, y_0) $ 处连续。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;定理 2：设函数 $ z = f(x, y) $ 在点 $ (x_0, y_0) $ 附近有定义且在点 $ (x_0, y_0) $ 处连续，又设函数 $ u = g(z) $ 在点 $ z_0 = f(x_0, y_0) $ 附近有定义且在点 $ z_0 $ 处连续，则复合函数 $ u = g(f(x, y)) $ 在点 $ (x_0, y_0) $ 处连续。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;定理 3：二元初等函数在其有定义的区域内是连续的。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;定理 4 (有界性定理) : 设函数 $ f $ 在有界闭区域 $ \overline{D} $ 上连续，则 $ f $ 在 $ \overline{D} $ 上有界，即存在常数 $ M &amp;gt; 0 $，使得&lt;/p&gt;
-&lt;p&gt;$ |f(P)| \leq M, \quad \forall P \in \overline{D}. $&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;定理 5 (最大值与最小值定理) : 若函数 $ f $ 在有界闭区域 $ \overline{D} $ 上连续，则 $ f $ 在 $ \overline{D} $ 上达到最大值与最小值，即存在点 $ P_1, P_2 \in \overline{D} $，使得 $ f(P) \leq f(P_1), \quad f(P_2) \leq f(P), \quad \forall P \in \overline{D}. $&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;定理 6 (介值定理) : 设函数 $ f $ 在闭区域 $ \overline{D} $ 上连续，并假定 $ M $ 与 $ m $ 分别是 $ f $ 在 $ \overline{D} $ 上的最大值与最小值，则对于任意的 $ \eta $ ($ m \leq \eta \leq M $)，一定有一点 $ P_0 \in \overline{D} $，使得 $ f(P_0) = \eta $.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;94偏导数与全微分&#34;&gt;9.4.偏导数与全微分
-&lt;/h3&gt;$$
-f_y(x_0,y_0),\quad \frac{\part f(x_0,y_0)}{\part y},\quad \frac{\part z}{\part y}\mid_{(x_0,y_0)}或z_x|_{(x_0,y_0)}
-$$&lt;h4 id=&#34;941高阶偏导数&#34;&gt;9.4.1.高阶偏导数
-&lt;/h4&gt;$$
-f_{xx}(x,y),\frac{\part^2f}{\part x^2},\frac{\part^2z}{\part x^2}或z_{xx};\quad f_{xy}(x,y),\frac{\part^2f}{\part x \part y},\frac{\part^2z}{\part x \part y}或z_{xy}(先x后y);\\
-f_{yx}(x,y),\frac{\part^2f}{\part y \part x},\frac{\part^2z}{\part y \part x}或z_{yx}(先y后x); \quad f_{yy}(x,y),\frac{\part^2f}{\part y^2},\frac{\part^2z}{\part y^2}或z_{yy};
-$$&lt;p&gt;
-这里$f_{xy}(x,y)及f_{yx}(x,y)$称作&lt;strong&gt;二阶混合偏导数&lt;/strong&gt;，若两混合偏导数在区域D内连续，则两者相等，混合偏导数与次序无关。求高阶偏导就是依次求导数&lt;/p&gt;
-&lt;p&gt;用$C^n(D)$表示区域D内全体函数$f(x,y)$组成的集合。拉普拉斯算子$\Delta=\frac{\part^2}{\part x^2}+\frac{\part^2}{\part y^2}+\frac{\part^2}{\part z^2}+\cdots$&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;注意复合函数和多元函数导数的区别！&lt;/strong&gt;&lt;/p&gt;
-&lt;h4 id=&#34;942全微分&#34;&gt;9.4.2.全微分
-&lt;/h4&gt;$$
-\Delta z=f(x+\Delta x,y+\Delta y)-f(x,y)\\
-可写作：\delta z=A\Delta y+B\Delta y+o(\rho),\quad \rho \to 0\\
-全微分,记作dz。\quad dz=A\Delta x+B\Delta y
-$$&lt;p&gt;
-&lt;strong&gt;可微一定连续，可微一定可(偏)导，但反过来不一定成立，连续和可导也没有必然关系，但是对于多元初等函数而言，在其有定的区域内只要偏导存在就一定可微&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;但是若导函数$f_x(x,y)与f_y(x,y)$在该点某个领域存在，并且两个偏导数在该点处连续，则函数在该点处可微。&lt;/p&gt;
-&lt;hr&gt;
-$$
-\begin{aligned}
-f_x(0,0)&amp;=\lim_{x\to0}\frac{f(x,0)-f(0,0)}{x-0}=0\\
-f_y(0,0)&amp;=\lim_{y\to0}\frac{f(0,y)-f(0,0)}{y-0}=0\\
-\Delta u&amp;=|\Delta x \sin\Delta y|\\
-判定可微&amp;:\frac{\Delta u-[f_x(0,0)\Delta x+f_y(0,0)\Delta y]}{\sqrt{\Delta x^2+\Delta y^2}}\\
-&amp;=\frac{|\Delta x\sin \Delta y|}{\sqrt{\Delta x^2+\Delta y^2}}(夹逼定理或者无穷小量乘有界量)\\
-&amp;\leq\frac{\Delta x\Delta y}{\sqrt{\Delta x^2+\Delta y^2}}\leq \rho \to 0\\
-&amp;按照定义，该函数在(0,0)可微
-\end{aligned}
-$$&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;连续可导不一定可微&lt;/strong&gt;：函数 $ f(x, y) = \sqrt{|xy|} $ 在 $(0,0)$ 连续，$ f_x(0,0) $，$ f_y(0,0) $ 存在，但 $ f(x, y) $ 在 $(0,0)$ 不可微。&lt;/p&gt;
-&lt;p&gt;证明: $ |f(x, y) - f(0, 0)| = \sqrt{|xy|} \leq \sqrt{\frac{x^2 + y^2}{2}}. $ 对 $\forall \varepsilon &amp;gt; 0$, 取 $\delta = \sqrt{2\varepsilon}$, 当 $\sqrt{x^2 + y^2} &amp;lt; \delta = \sqrt{2\varepsilon}$ 时, $ |f(x, y) - f(0, 0)| &amp;lt; \varepsilon. $ 故 $f(x, y)$ 在 $(0, 0)$ 连续.&lt;/p&gt;
-&lt;p&gt;$ f_x(0,0) = \lim_{x \to 0} \frac{f(0 + x, 0) - f(0, 0)}{x} = \lim_{x \to 0} \frac{0 - 0}{x} = 0. $&lt;/p&gt;
-&lt;p&gt;$ f_y(0,0) = \lim_{y \to 0} \frac{f(0, 0 + y) - f(0, 0)}{y} = \lim_{y \to 0} \frac{0 - 0}{y} = 0. $&lt;/p&gt;
-&lt;p&gt;$ \Delta z = f(0 + \Delta x, 0 + \Delta y) - f(0, 0) = \sqrt{|\Delta x \Delta y|}. $&lt;/p&gt;
-&lt;p&gt;$ \lim_{{\Delta x \to 0 \ \Delta y \to 0}} \frac{\Delta z - f_x(0, 0) \Delta x - f_y(0, 0) \Delta y}{\sqrt{\Delta x^2 + \Delta y^2}} = \lim_{{\Delta x \to 0 \ \Delta y \to 0}} \frac{\sqrt{|\Delta x \Delta y|}}{\sqrt{\Delta x^2 + \Delta y^2}}. $ （不存在）&lt;/p&gt;
-&lt;p&gt;当 $(\Delta x, \Delta y)$ 沿着 $\Delta y = k \Delta x$ 趋于 $(0, 0)$ 时， $ \lim_{{\Delta x \to 0 \ \Delta y = k \Delta x}} \frac{\sqrt{|\Delta x \Delta y|}}{\sqrt{\Delta x^2 + \Delta y^2}} = \lim_{{\Delta x \to 0 \ \Delta y = k \Delta x}} \frac{\sqrt{|k \Delta x^2|}}{\sqrt{\Delta x^2 + k^2 \Delta x^2}} = \frac{\sqrt{|k|}}{\sqrt{1 + k^2}}. $&lt;/p&gt;
-&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20241220154841389.png&#34; alt=&#34;image-20241220154841389&#34; style=&#34;zoom:33%;&#34; /&gt;
-$$
-当 (\Delta x, \Delta y) 沿着 \Delta y = k \Delta x 趋于 (0, 0) 时，\\ \lim_{{\Delta x \to 0  \Delta y = k \Delta x}} \frac{{|\Delta x \Delta y|}}{\sqrt{\Delta x^2 + \Delta y^2}} = \lim_{{\Delta x \to 0  \Delta y = k \Delta x}} \frac{{|k \Delta x^2|}}{\sqrt{\Delta x^2 + k^2 \Delta x^2}} = \frac{\sqrt{|k|}}{\sqrt{1 + k^2}} \neq0.故不连续
-$$&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20241220154904309.png&#34; alt=&#34;image-20241220154904309&#34; style=&#34;zoom:33%;&#34; /&gt;
-&lt;p&gt;&lt;strong&gt;连续不一定可导&lt;/strong&gt;：如一元函数&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;95复合函数微分法一阶全微分的形式不变性与高阶微分&#34;&gt;9.5.复合函数微分法，一阶全微分的形式不变性与高阶微分
-&lt;/h3&gt;&lt;h4 id=&#34;951复合函数微分法&#34;&gt;9.5.1.复合函数微分法
-&lt;/h4&gt;$$
-\frac{\partial z}{\partial x} = \frac{\partial f}{\partial u} \cdot \frac{\partial u}{\partial x} + \frac{\partial f}{\partial v} \cdot \frac{\partial v}{\partial x}, \\ \frac{\partial z}{\partial y} = \frac{\partial f}{\partial u} \cdot \frac{\partial u}{\partial y} + \frac{\partial f}{\partial v} \cdot \frac{\partial v}{\partial y}.
-$$&lt;p&gt;
-&lt;img src=&#34;C:\Users\Parzival\OneDrive\文档\WeChat Files\wxid_3bfz3fqln2se12\FileStorage\Temp\3f595653bef134cb2807a062d639e70.jpg&#34; alt=&#34;3f595653bef134cb2807a062d639e70&#34; style=&#34;zoom: 33%;&#34; /&gt;&lt;/p&gt;
-&lt;h4 id=&#34;952一阶全微分的形式不变性&#34;&gt;9.5.2.一阶全微分的形式不变性
-&lt;/h4&gt;$$
-dz = f_u \, du + f_v \, dv.
-$$&lt;p&gt;
-作为一截全微分的形式不变性的应用，我们给出下列公式：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;$ d(u \pm v) = du \pm dv $&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;$ d(cu) = c , du $ (c 为常数)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;$ d(uv) = v , du + u , dv $&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;$ d\left(\frac{u}{v}\right) = \frac{v , du - u , dv}{v^2} $ ($ v \neq 0 $)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;$ d(f(u)) = f&amp;rsquo;(u) , du $&lt;/p&gt;
-&lt;p&gt;其中 $ u, v $ 是 $(x, y)$ 的可微函数，$ f $ 是一元可微函数。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id=&#34;953高阶微分&#34;&gt;9.5.3.高阶微分
-&lt;/h4&gt;$$
-d^n(x,y)=(dx\frac{\part}{\part x}+d y\frac{\part}{\part y})^n f
-$$&lt;hr&gt;
-$$
-\begin{aligned}
-\frac{\part u}{\part x} &amp; = f&#39;_{1} \frac{\part \xi }{\part x}+f&#39;_2\frac{\part \eta}{\part x}\\
-&amp; =f&#39;_1\cdot e^x\cos y +f&#39;_2\cdot e^x \sin y\\
-\frac{\part^2 u}{\part x^2}&amp;=e^x\cos y\cdot(f&#39;&#39;_{11}\frac{\part \xi}{\part x}+f&#39;&#39;_{12}\frac{\part \eta}{\part x})+e^x\sin y\cdot(f&#39;&#39;_{21}\frac{\part \xi}{\part x}+f&#39;&#39;_{22}\frac{\part \eta}{\part x})+e^x(f&#39;_1 \cos y+f&#39;_2\sin x)\\
-&amp;=e^{2x}(f&#39;&#39;_{11}\cos^2 x+f&#39;&#39;_{12}\sin y \cos y+f&#39;&#39;_{21}\sin y\cos y+f&#39;&#39;_{22}\sin^2 y )+e^x(f&#39;_1 \cos y+f&#39;_2\sin x)\\
-\frac{\part^2 u }{\part y^2}&amp;=-e^x(f&#39;_1\cos y +f_2&#39; \sin y)+e^{2x}[f&#39;&#39;_{11}\sin^2y-\sin y \cos y(f&#39;&#39;_{12}+f&#39;&#39;_{21}+f&#39;&#39;_{22}\cos^2 y )].
-\end{aligned}
-$$&lt;hr&gt;
-&lt;h3 id=&#34;96方向导数与梯度&#34;&gt;9.6.方向导数与梯度
-&lt;/h3&gt;&lt;h4 id=&#34;961方向导数&#34;&gt;9.6.1.方向导数
-&lt;/h4&gt;$$
-\lim_{t \to 0} \frac{f(x_0 + t \cos\alpha, y_0 + t \cos\beta) - f(x_0, y_0)}{t}
-$$$$
-\left. \frac{\partial z}{\partial \vec{l}} \right|_{(x_0, y_0)}, \quad \left. \frac{\partial f}{\partial\vec{l}} \right|_{(x_0, y_0)}, \quad \left. \frac{\partial z}{\partial \vec{l}} \right|_{P_0}, \quad \text{或} \quad \left. \frac{\partial f}{\partial \vec{l}} \right|_{P_0}.
-$$$$
-\frac{\part f}{\part \vec{l}}\Bigg|_{P_0}=f_x(x_0,y_0)\cos \alpha +f_y(x_0,y_0)\cos\beta\\
-\alpha为\vec{l}与x轴夹角，\beta为\vec{l}与y轴夹角
-$$&lt;h4 id=&#34;962梯度&#34;&gt;9.6.2.梯度
-&lt;/h4&gt;$$
-\mathrm{grad} \, f|_{P_0}=(f_x(x_0,y_0),f_y(x_0,y_0)\,)
-$$&lt;h3 id=&#34;97多元函数的微分中值定理与泰勒公式&#34;&gt;9.7.多元函数的微分中值定理与泰勒公式
-&lt;/h3&gt;&lt;h4 id=&#34;971微分中值定理&#34;&gt;9.7.1.微分中值定理
-&lt;/h4&gt;$$
-f(x_0 + \Delta x, y_0 + \Delta y) = f(x_0, y_0) + \frac{\partial f}{\partial x}(x_0 + \theta \Delta x, y_0 + \theta \Delta y) \Delta x-\frac{\partial f}{\partial y}(x_0 + \theta \Delta x, y_0 + \theta \Delta y) \Delta y.
-$$&lt;p&gt;
-这就是二元函数的拉格朗日中值公式。&lt;/p&gt;
-&lt;h4 id=&#34;972泰勒公式&#34;&gt;9.7.2.泰勒公式
-&lt;/h4&gt;$$
-\begin{aligned}
-f(x_0 + \Delta x, y_0 + \Delta y) = &amp;f(x_0, y_0) + \frac{1}{1!} df(x_0, y_0) \\
-&amp;+\frac{1}{2!} d^2 f(x_0, y_0) + \cdots + \frac{1}{n!} d^n f(x_0, y_0) \\&amp;+ \frac{1}{(n+1)!} d^{n+1} f(x_0 + \theta \Delta x, y_0 + \theta \Delta y),
-\end{aligned}
-$$$$
-d^k f = \left( \Delta x \frac{\partial}{\partial x} + \Delta y \frac{\partial}{\partial y} \right)^k f, \quad k = 1, 2, \cdots, n+1.\\ R_n = \frac{1}{(n + 1)!} \mathrm{d}^{n+1} f(x_0 + \theta \Delta x, y_0 + \theta \Delta y)或者R_n=o(\rho^n)
-\quad(\rho \to 0)(\quad\rho=\sqrt{\sum_{i=1}^n(x_i-a_i)^2}\quad)
-$$&lt;p&gt;
-&lt;strong&gt;做题技巧：直接将多元视为一元&lt;/strong&gt;，否则采取嗯求$(x_0,y_0)$处$n$阶的全部高阶偏导&lt;/p&gt;
-&lt;h3 id=&#34;98隐函数存在定理&#34;&gt;9.8.隐函数存在定理
-&lt;/h3&gt;&lt;p&gt;设函数 $ F(x, y) $ 在点 $ P_0(x_0, y_0) $ 的某个邻域内有定义，并且满足下列条件：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;$ F(x_0, y_0) = 0 $;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;$ F_x(x, y) $ 及 $ F_y(x, y) $ 连续，并且 $ F_y(x_0, y_0) \neq 0 $,&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-$$
- f&#39;(x) = -\frac{F_x(x, y)}{F_y(x, y)} \quad (y = f(x)). 
-$$$$
-\begin{cases}
-F(x,u,v)=0,\\
-G(x,u,v)=0,
-\end{cases}
-$$&lt;p&gt;
-可确定隐函数$u=u(x)$和$v=v(x)$?&lt;/p&gt;
-$$
- \begin{cases} F(x, u(x), v(x)) = 0, \\ G(x, u(x), v(x)) = 0. \end{cases} 
-$$&lt;hr&gt;
-$$
- \begin{cases} x^2 + y^2 - uv = 0, \\ xy + u^2 - v^2 = 0 \end{cases} 
-$$&lt;p&gt;
-能否确定 $u$ 和 $v$ 为 $(x, y)$ 的函数？在能确定隐函数的条件下，求 $u_x, v_x, u_y$ 及 $v_y$。&lt;/p&gt;
-$$
- \frac{D(F, G)}{D(u, v)} = \begin{vmatrix} -v &amp; -u \\ 2u &amp; -2v \end{vmatrix} = 2(u^2 + v^2). 
-$$&lt;p&gt;
-当 $(x, y) \neq (0, 0)$ 时，满足所给方程组的 $u, v$ 不同时为零，也就有 $\frac{D(F, G)}{D(u, v)} \neq 0$，从而在点 $(x, y)$ 的某个邻域内能确定隐函数 $u = u(x, y)$ 及 $v = v(x, y)$。&lt;/p&gt;
-$$
- \begin{cases} 2x - u_x v - u v_x = 0, \\ y + 2u u_x - 2v v_x = 0. \end{cases} 
-$$$$
- u_x = \frac{4xv - yu}{2(u^2 + v^2)}, \quad v_x = \frac{4xu + vy}{2(u^2 + v^2)}, \quad u^2 + v^2 \neq 0. 
-$$&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;雅可比行列式大于零则证明方程于该点的逆映射存在&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&#34;99极值问题&#34;&gt;9.9.极值问题
-&lt;/h3&gt;$$
-f_x(x_0,y_0)=0,\quad f_y(x_0,y_0)=0.
-$$$$
-f_x(x_0,y_0)=0,\quad f_y(x_0,y_0)=0.
-$$$$
-A=\frac{\part^2f}{\part x^2}(x_0,y_0),\quad B=\frac{\part^2f}{\part x\part y}(x_0,y_0),\quad C=\frac{\part^2 f}{\part y^2}(x_0,y_0).
-$$&lt;p&gt;
-若$B^2&amp;lt;AC,则当A&amp;gt;0时，f(x_0,y_0)是极小值；而当A&amp;lt;0时,f(x_0,y_0)是极大值.$&lt;/p&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;条件&lt;/th&gt;
-          &lt;th&gt;是否为极值点&lt;/th&gt;
-          &lt;th&gt;极值点类型&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;$B^2 &amp;lt; AC  且  A &amp;gt; 0$&lt;/td&gt;
-          &lt;td&gt;是&lt;/td&gt;
-          &lt;td&gt;极小值点&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;$B^2 &amp;lt; AC  且  A &amp;lt; 0$&lt;/td&gt;
-          &lt;td&gt;是&lt;/td&gt;
-          &lt;td&gt;极大值点&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;$B^2 &amp;gt; AC$&lt;/td&gt;
-          &lt;td&gt;否&lt;/td&gt;
-          &lt;td&gt;不是极值点&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;$B^2 = AC$&lt;/td&gt;
-          &lt;td&gt;未定&lt;/td&gt;
-          &lt;td&gt;未定&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;条件极值&lt;/strong&gt;&lt;/p&gt;
-$$
-z=f(x,y)
-$$$$
-\varphi(x,y)=0
-$$$$
-\begin{cases}
-f_x+\lambda \varphi_x=0,\\
-f_y+\lambda \varphi_y=0,\\
-\varphi(\,x,\,y)=0.
-\end{cases}
-$$&lt;p&gt;
-三元函数类似。&lt;/p&gt;
-&lt;h3 id=&#34;910曲面论初步&#34;&gt;9.10.曲面论初步
-&lt;/h3&gt;$$
-\begin{cases}
-x=x(u,v),\\
-y=y(u,v),\\
-z=z(u,v).\\
-\end{cases}
-$$$$
-\vec{r}=\vec{r}(u,v)\equiv (x(u,v),\,y(u,v),\,z(u,v)\,).
-$$&lt;p&gt;
-只要$\vec{r}_u=(x_u(u,v),,y_u(u,v),,z_u(u,v),)及\vec{r}_v=(x_v(u,v),,y_v(u,v),,z_v(u,v),)存在且\vec{r}_u\times\vec{r}_v\neq 0$&lt;/p&gt;
-&lt;h4 id=&#34;9101曲面的切平面与法向量&#34;&gt;9.10.1.曲面的切平面与法向量
-&lt;/h4&gt;&lt;p&gt;$法方向:\vec{n}=(,F_x(x_0,y_0,z_0),,F_y(x_0,y_0,z_0),, F_z(x_0,y_0,z_0)).$&lt;/p&gt;
-$$
-F_x(x_0,y_0,z_0)(x-x_0)+F_y(x_0,y_0,z_0)(y-y_0)+F_z(x_0,y_0,z_0)(z-z_0)=0.
-$$$$
-l_1=\begin{cases}
-x=x(u,v_0),\\
-y=y(u,v_0),\\
-z=z(u,v_0)
-\end{cases}\\
-及\\
-l_2=\begin{cases}
-x=x(u_0,v),\\
-y=y(u_0,v),\\
-z=z(u_0,v).
-\end{cases}\\
-\vec{n}=\vec{r}_u\times\vec{r}_v=\begin{vmatrix} \vec{i} &amp; \vec{j} &amp; \vec{k}\\
-x_u &amp; y_u &amp; z_u\\
-x_v &amp; y_v &amp; z_v
-\end{vmatrix}_{(u_0,v_0)}.\\
-\vec{n}=\left( \frac{D(y,z)}{D(u,v)},\frac{D(z,x)}{D(u,v)},\frac{D(x,y)}{D(u,v)}\right ) \bigg|_{u_0,v_0}
-\\可简易表达为\\
-\begin{vmatrix}
-x-x_0 &amp; y-y_0 &amp; z-z_0\\
-x_u &amp; y_u &amp; z_u\\
-x_v &amp; y_v &amp; z_v
-\end{vmatrix}_{(u_0,v_0)}=0.
-$$&lt;p&gt;
-在没有显函数描述xyz关系的时候可以使用上述方法。&lt;/p&gt;
-</description>
-        </item>
-        <item>
+        <lastBuildDate>Mon, 07 Apr 2025 22:51:30 +0800</lastBuildDate><atom:link href="https://Timlin15.github.io/tags/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>CSAPP Note</title>
         <link>https://Timlin15.github.io/p/csapp-note/</link>
-        <pubDate>Tue, 25 Feb 2025 22:51:30 +0800</pubDate>
+        <pubDate>Mon, 07 Apr 2025 22:51:30 +0800</pubDate>
         
         <guid>https://Timlin15.github.io/p/csapp-note/</guid>
         <description>&lt;h1 id=&#34;note-of-computer-system-a-programmers-perspective&#34;&gt;Note of Computer System: a Programmer&amp;rsquo;s perspective.
@@ -4965,6 +3906,7 @@ $$&lt;p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;如果&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -5274,6 +4216,1723 @@ $$&lt;p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;因为 P2 在跳转的时候已经返回，对应的栈帧在内存中已经被清理，所以 P3 中的 &lt;code&gt;longjmp&lt;/code&gt; 并不能实现期望的操作。&lt;/p&gt;
+&lt;h2 id=&#34;8virtual-memory&#34;&gt;8.Virtual Memory
+&lt;/h2&gt;&lt;h3 id=&#34;从物理内存到虚拟内存&#34;&gt;从物理内存到虚拟内存
+&lt;/h3&gt;&lt;p&gt;物理地址一般应用在简单的嵌入式微控制器中（汽车、电梯、电子相框等），因为应用的范围有严格的限制，不需要在内存管理中引入过多的复杂度。&lt;/p&gt;
+&lt;p&gt;物理内存对于愈来愈快的cpu越来越容易空间不足。虚拟内存可以提供对每个进程独立的地址&lt;/p&gt;
+&lt;p&gt;但是对于计算机（以及其他智能设备）来说，虚拟地址则是必不可少的，通过 MMU(Memory management unit)把虚拟地址(Virtual Address, VA)转换为物理地址(Physical Address, PA)，再由此进行实际的数据传输。大致的过程如下图所示&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14615011037796.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;使用虚拟内存主要是基于下面三个考虑：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;可以更有效率的使用内存：使用 DRAM 当做部分的虚拟地址空间的缓存&lt;/li&gt;
+&lt;li&gt;简化内存管理：每个进程都有统一的线性地址空间&lt;/li&gt;
+&lt;li&gt;隔离地址控件：进程之间不会相互影响；用户程序不能访问内核信息和代码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;虚拟内存的三个角色&#34;&gt;虚拟内存的三个角色
+&lt;/h3&gt;&lt;h4 id=&#34;作为缓存工具&#34;&gt;作为缓存工具
+&lt;/h4&gt;&lt;p&gt;概念上来说，虚拟内存就是存储在磁盘上的 N 个连续字节的数组。这个数组的部分内容，会缓存在 DRAM 中，在 DRAM 中的每个缓存块(cache block)就称为页(page)，如下图所示：&lt;/p&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14615017442915.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;大致的思路和之前的 cache memory 是类似的，就是利用 DRAM 比较快的特性，把最常用的数据换缓存起来。如果要访问磁盘的话，大约会比访问 DRAM 慢一万倍，所以我们的目标就是尽可能从 DRAM 中拿数据。为此，我们需要：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;更大的页尺寸(page size)：通常是 4KB，有的时候可以达到 4MB&lt;/li&gt;
+&lt;li&gt;全相联(Fully associative)：每一个虚拟页(virual page)可以放在任意的物理页(physical page)中，没有限制。&lt;/li&gt;
+&lt;li&gt;映射函数非常复杂，所以没有办法用硬件实现，通常使用 Write-back 而非 Write-through 机制
+&lt;ul&gt;
+&lt;li&gt;Write-through: 命中后更新缓存，同时写入到内存中&lt;/li&gt;
+&lt;li&gt;Write-back: 直到这个缓存需要被置换出去，才写入到内存中（需要额外的 dirty bit 来表示缓存中的数据是否和内存中相同，因为可能在其他的时候内存中对应地址的数据已经更新，那么重复写入就会导致原有数据丢失）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;具体怎么做呢？通过页表(page table)。每个页表实际上是一个数组，数组中的每个元素称为页表项(PTE, page table entry)，每个页表项负责把虚拟页映射到物理页上。在 DRAM 中，每个进程都有自己的页表，具体如下&lt;/p&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14615030555447.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;因为有一个表可以查询，就会遇到两种情况，一种是命中(Page Hit)，另一种则是未命中(Page Fault)。&lt;/p&gt;
+&lt;p&gt;命中的时候，即访问到页表中蓝色条目的地址时，因为在 DRAM 中有对应的数据，可以直接访问。&lt;/p&gt;
+&lt;p&gt;不命中的时候，即访问到 page table 中灰色条目的时候，因为在 DRAM 中并没有对应的数据，所以需要执行一系列操作（从磁盘复制到 DRAM 中），具体为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;触发 Page fault，也就是一个异常&lt;/li&gt;
+&lt;li&gt;Page fault handler 会选择 DRAM 中需要被置换的 page，并把数据从磁盘复制到 DRAM 中&lt;/li&gt;
+&lt;li&gt;重新执行访问指令，这时候就会是 page hit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;复制过程中的等待时间称为 demand paging。&lt;/p&gt;
+&lt;p&gt;仔细留意上面的页表，会发现有一个条目是 null，也就是没有分配。具体的分配过程（比方说声明了一个大数组），就是让该条目指向虚拟内存（在磁盘上）的某个页，但并不复制到 DRAM，只有当出现 page fault 的时候才需要拷贝数据。&lt;/p&gt;
+&lt;p&gt;看起来『多此一举』，但是由于局部性原理，虚拟内存其实是非常高效的机制，这一部分最后提到了工作集(working set)[1]的概念，比较简单，这里不再赘述。&lt;/p&gt;
+&lt;h4 id=&#34;作为内存管理工具&#34;&gt;作为内存管理工具
+&lt;/h4&gt;&lt;p&gt;前面提到，每个进程都有自己的虚拟地址空间，这样一来，对于进程来说，它们看到的就是简单的线性空间（但实际上在物理内存中可能是间隔、支离破碎的），具体的映射过程可以用下图表示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14615040688550.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在内存分配中没有太多限制，每个虚拟页都可以被映射到任何的物理页上。这样也带来一个好处，如果两个进程间有共享的数据，那么直接指向同一个物理页即可（也就是上图 PP 6 的状况，只读数据）&lt;/p&gt;
+&lt;p&gt;虚拟内存带来的另一个好处就是可以简化链接和载入的结构（因为有了统一的抽象，不需要纠结细节）&lt;/p&gt;
+&lt;h4 id=&#34;作为内存保护工具&#34;&gt;作为内存保护工具
+&lt;/h4&gt;&lt;p&gt;页表中的每个条目的高位部分是表示权限的位，MMU 可以通过检查这些位来进行权限控制（读、写、执行），如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14615862225552.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;地址翻译&#34;&gt;地址翻译
+&lt;/h3&gt;&lt;p&gt;开始之前先来了解以下参数：&lt;/p&gt;
+&lt;p&gt;N=2n,M=2m,P=2pN=2n,M=2m,P=2p&lt;/p&gt;
+&lt;p&gt;其中 &lt;code&gt;N&lt;/code&gt; 表示虚拟地址空间中的地址数量，&lt;code&gt;M&lt;/code&gt; 表示物理地址空间中的地址数量，&lt;code&gt;P&lt;/code&gt; 是每一页包含的字节数(page size)。&lt;/p&gt;
+&lt;p&gt;虚拟地址(VA, Virtual Address)中的元素：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;TLBI&lt;/code&gt;: TLB 的索引值&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;TLBT&lt;/code&gt;: TLB 的标签(tag)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;VPO&lt;/code&gt;: 虚拟页偏移量&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;VPN&lt;/code&gt;: 虚拟页编号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;物理地址(PA, physical address)中的元素：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;PPO&lt;/code&gt;: 物理页偏移量（与 &lt;code&gt;VPO&lt;/code&gt; 的值相同）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PPN&lt;/code&gt;: 物理页编号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然后我们通过一个具体的例子来说明如何进行地址翻译&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14615900211847.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;具体的访问过程为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通过虚拟地址找到页表(page table)中对应的条目&lt;/li&gt;
+&lt;li&gt;检查有效位(valid bit)，是否需要触发页错误(page fault)&lt;/li&gt;
+&lt;li&gt;然后根据页表中的物理页编号(physical page number)找到内存中的对应地址&lt;/li&gt;
+&lt;li&gt;最后把虚拟页偏移(virtual page offset)和前面的实际地址拼起来，就是最终的物理地址了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这里又分两种情况：Page Hit 和 Page Fault，我们先来看看 Page Hit 的情况&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14619333202471.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;主要有 5 步，CPU 首先把虚拟地址发送给 MMU，MMU 检查缓存，并把从页表中得到对应的物理地址，接着 MMU 把物理地址发送给缓存/内存，最后从缓存/内存中得到数据。&lt;/p&gt;
+&lt;p&gt;而 Page Fault 的时候就复杂一些，第一次触发页错误会把页面载入内存/缓存，然后再以 Page Hit 的机制得到数据：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14619339362618.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这里有 7 步，前面和 Page Hit 是一致的，先把虚拟地址发给 MMU 进行检查，然后发现没有对应的页，于是触发异常，异常处理器会负责从磁盘中找到对应页面并与缓存/内存中的页进行置换，置换完成后再访问同一地址，就可以按照 Page Hit 的方式来访问了。&lt;/p&gt;
+&lt;p&gt;虽然缓存已经很快了，但是能不能更快呢，为什么不能直接在 MMU 进行一部分的工作呢？于是就有了另外一个设计：Translation Lookaside Buffer(TLB)。TLB 实际上可以认为是页表在处理芯片上的缓存，整体的机制和前面提到的缓存很像，我们通过下面的图进行讲解：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14619349692957.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这里 VPN + VPO 就是虚拟地址，同样分成三部分，分别用于匹配标签、确定集合，如果 TLB 中有对应的记录，那么直接返回对应页表项(PTE)即可，如果没有的话，就要从缓存/内存中获取，并更新 TLB 的对应集合。&lt;/p&gt;
+&lt;h4 id=&#34;多层页表-multi-level-page-table&#34;&gt;多层页表 Multi-Level Page Table
+&lt;/h4&gt;&lt;p&gt;虽然页表是一个表，但因为往往虚拟地址的位数比物理内存的位数要大得多，所以保存页表项(PTE) 所需要的空间也是一个问题。举个例子：&lt;/p&gt;
+&lt;p&gt;假设每个页的大小是 4KB（2 的 12 次方），每个地址有 48 位，一条 PTE 记录有 8 个字节，那么要全部保存下来，需要的大小是：&lt;/p&gt;
+&lt;p&gt;248×2−12×23=239bytes248×2−12×23=239bytes&lt;/p&gt;
+&lt;p&gt;整整 512 GB！所以我们采用多层页表，第一层的页表中的条目指向第二层的页表，一个一个索引下去，最终寻找具体的物理地址，整个翻译过程如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14619365087673.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;地址翻译实例&#34;&gt;地址翻译实例
+&lt;/h4&gt;&lt;p&gt;来看一个简单的例子，我们的内存系统设定如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;14 位的虚拟地址&lt;/li&gt;
+&lt;li&gt;12 位的物理地址&lt;/li&gt;
+&lt;li&gt;页大小为 64 字节&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;TLB 的配置为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;能够存储 16 条记录&lt;/li&gt;
+&lt;li&gt;每个集合有 4 条记录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;系统本身缓存（对应于物理地址）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;16 行，每个块 4 个字节&lt;/li&gt;
+&lt;li&gt;直接映射（即 16 个集合）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14619386956596.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;TLB 中的数据为&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14619392574046.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;页表中的数据为（一共有 256 条记录，这里列出前 16 个）&lt;/p&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14619394874702.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;缓存中的数据为&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14619399183944.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;一定要注意好不同部分的所代表的位置，这里我也会尽量写得清楚一些，来看第一个例子：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;虚拟地址为 &lt;code&gt;0x03D4&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;具体的转换过程如下图所示：&lt;/p&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14619404450222.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;具体来梳理一次：&lt;/p&gt;
+&lt;p&gt;先看 TLB 中有没有对应的条目，所以先看虚拟地址的第 6-13 位，在前面的 TLB 表中，根据 TLBI 为 3 这个信息，去看这个 set 中有没有 tag 为 3 的项目，发现有，并且对应的 PPN 是 0x0D，所以对应到物理地址，就是 PPN 加上虚拟地址的 0-5 位，而具体的物理地址又可以在缓存中找到（利用 cache memory 的机制），就可以获取到对应的数据了。&lt;/p&gt;
+&lt;p&gt;下面的例子同样可以按照这个方法来进行分析&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;虚拟地址为 &lt;code&gt;0x0020&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;img src=&#34;https://wdxtub.com/images/csapp/14619405964352.jpg&#34; alt=&#34;img&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;h3 id=&#34;动态内存分配&#34;&gt;动态内存分配
+&lt;/h3&gt;&lt;p&gt;前面了解了虚拟内存的相关知识，这一节我们来看看动态内存分配的基本概念，相信这之后就知道诸如 &lt;code&gt;malloc&lt;/code&gt; 和 &lt;code&gt;new&lt;/code&gt; 这类方法是怎么做的了。&lt;/p&gt;
+&lt;p&gt;程序员通过动态内存分配（例如 &lt;code&gt;malloc&lt;/code&gt;）来让程序在运行时得到虚拟内存。动态内存分配器会管理一个虚拟内存区域，称为堆(heap)。&lt;/p&gt;
+&lt;p&gt;分配器以块为单位来维护堆，可以进行分配或释放。有两种类型的分配器：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;显式分配器：应用分配并且回收空间（C 语言中的 &lt;code&gt;malloc&lt;/code&gt; 和 &lt;code&gt;free&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;隐式分配器：应用只负责分配，但是不负责回收（Java 中的垃圾收集）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;先来看看一个简单的使用 &lt;code&gt;malloc&lt;/code&gt; 和 &lt;code&gt;free&lt;/code&gt; 的例子&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;foo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;cm&#34;&gt;/* Allocate a block of n ints */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;malloc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;sizeof&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nf&#34;&gt;perror&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;malloc&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nf&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;cm&#34;&gt;/* Initialize allocated block */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;cm&#34;&gt;/* Return allocated block to the heap */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;free&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;为了讲述方便，我们做如下假设：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;内存地址按照字来编码&lt;/li&gt;
+&lt;li&gt;每个字的大小和整型一致&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14619422087381.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;程序可以用任意的顺序发送 &lt;code&gt;malloc&lt;/code&gt; 和 &lt;code&gt;free&lt;/code&gt; 请求，&lt;code&gt;free&lt;/code&gt; 请求必须作用与已被分配的 block。&lt;/p&gt;
+&lt;p&gt;分配器有如下的限制：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不能控制已分配块的数量和大小&lt;/li&gt;
+&lt;li&gt;必须立即响应 &lt;code&gt;malloc&lt;/code&gt; 请求（不能缓存或者给请求重新排序）&lt;/li&gt;
+&lt;li&gt;必须在未分配的内存中分配&lt;/li&gt;
+&lt;li&gt;不同的块需要对齐（32 位中 8 byte，64 位中 16 byte）&lt;/li&gt;
+&lt;li&gt;只能操作和修改未分配的内存&lt;/li&gt;
+&lt;li&gt;不能移动已分配的块&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;性能指标&#34;&gt;性能指标
+&lt;/h4&gt;&lt;p&gt;现在我们可以来看看如何去评测具体的分配算法了。假设给定一个 &lt;code&gt;malloc&lt;/code&gt; 和 &lt;code&gt;free&lt;/code&gt; 的请求的序列：&lt;/p&gt;
+&lt;p&gt;R0,R1,&amp;hellip;,Rk,&amp;hellip;,Rn−1R0,R1,&amp;hellip;,Rk,&amp;hellip;,Rn−1&lt;/p&gt;
+&lt;p&gt;目标是尽可能提高吞吐量以及内存利用率（注意，这两个目标常常是冲突的）&lt;/p&gt;
+&lt;p&gt;吞吐量是在单位时间内完成的请求数量。假设在 10 秒中之内进行了 5000 次 &lt;code&gt;malloc&lt;/code&gt; 和 5000 次 &lt;code&gt;free&lt;/code&gt; 调用，那么吞吐量是 1000 operations/second&lt;/p&gt;
+&lt;p&gt;另外一个目标是 Peak Memory Utilization，就是最大的内存利用率。&lt;/p&gt;
+&lt;p&gt;影响内存利用率的主要因素就是『内存碎片』，分为内部碎片和外部碎片两种。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;内部碎片&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;内部碎片指的是对于给定的块，如果需要存储的数据(payload)小于块大小，就会因为对齐和维护堆所需的数据结构的缘故而出现无法利用的空间，例如：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14619426495995.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;内部碎片只依赖于上一个请求的具体模式，所以比较容易测量。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;外部碎片&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;指的是内存中没有足够的连续空间，如下图所示，内存中有足够的空间，但是空间不连续，所以成为了碎片：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wdxtub.com/images/csapp/14619429933039.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;实现细节&#34;&gt;实现细节
+&lt;/h4&gt;&lt;p&gt;我们已经知道了原理，现在就来看看怎么样能够实现一个高效的内存分配算法吧！在具体实现之前，需要考虑以下问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;给定一个指针，我们如何知道需要释放多少内存？&lt;/li&gt;
+&lt;li&gt;如何记录未分配的块？&lt;/li&gt;
+&lt;li&gt;实际需要的空间比未分配的空间要小的时候，剩下的空间怎么办？&lt;/li&gt;
+&lt;li&gt;如果有多个区域满足条件，如何选择？&lt;/li&gt;
+&lt;li&gt;释放空间之后如何进行记录？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;具体这部分书中提到了四种方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;隐式空闲列表 Implicit List&lt;/li&gt;
+&lt;li&gt;显式空闲列表 Explicit List&lt;/li&gt;
+&lt;li&gt;分离的空闲列表 Segregated Free List&lt;/li&gt;
+&lt;li&gt;按照大小对块进行排序 Blocks Sorted by Size&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;因为涉及的细节比较多，建议是详读书本的对应章节（第二版和第三版均为第九章第九节），这里不再赘述（如果需要的话之后我在另起一篇做详细介绍）&lt;/p&gt;
+&lt;p&gt;这里提一点，就是如何确定哪部分空间合适，有三种方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;First Fit: 每次都从头进行搜索，找到第一个合适的块，线性查找&lt;/li&gt;
+&lt;li&gt;Next Fit: 每次从上次搜索结束的位置继续搜索，速度较快，但可能会有更多碎片&lt;/li&gt;
+&lt;li&gt;Best Fit: 每次遍历列表，找到最合适的块，碎片较少，但是速度最慢&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;更详细可以参考这两篇文章：&lt;a class=&#34;link&#34; href=&#34;http://wdxtub.com/vault/csapp-18.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Dynamic Memory Allocation - Basic Concept&lt;/a&gt; 和 &lt;a class=&#34;link&#34; href=&#34;http://wdxtub.com/vault/csapp-19.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Dynamic Memory Allocation - Advanced Concept&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;垃圾回收&#34;&gt;垃圾回收
+&lt;/h3&gt;&lt;p&gt;所谓垃圾回收，就是我们不再需要显式释放所申请内存空间了，例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;void foo() {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    int *p = malloc(128);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    return; /* p block is now garbage*/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这种机制在许多动态语言中都有实现：Python, Ruby, Java, Perl, ML, Lisp, Mathematica。C 和 C++ 中也有类似的变种，但是需要注意的是，是不可能回收所有的垃圾的。&lt;/p&gt;
+&lt;p&gt;我们如何知道什么东西才是『垃圾』呢？简单！只要没有任何指针指向的地方，不管有没有用，因为都不可能被使用，当然可以直接清理掉啦。不过这其实是需要一些前提条件的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;我们可以知道哪里是指针，哪里不是指针&lt;/li&gt;
+&lt;li&gt;每个指针都指向 block 的开头&lt;/li&gt;
+&lt;li&gt;指针不能被隐藏(by coercing them to an &lt;code&gt;int&lt;/code&gt;, and then back again)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;相关的算法如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mark-and-sweep collection (McCarthy, 1960)&lt;/li&gt;
+&lt;li&gt;Reference counting (Collins, 1960)&lt;/li&gt;
+&lt;li&gt;Copying collection (Minsky, 1963)&lt;/li&gt;
+&lt;li&gt;Generational Collectors(Lieberman and Hewitt, 1983)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;大部分比较常用的算法居然都有五十多年历史了，神奇。更多相关细节在维基百科[2]中都有详细介绍（中文版本质量较差，这里给出英文版）。&lt;/p&gt;
+&lt;h3 id=&#34;segregated-free-list&#34;&gt;Segregated Free List
+&lt;/h3&gt;&lt;p&gt;Due to lack of time, pleace check 9.9 in the book for more infomation.&lt;/p&gt;
+&lt;h3 id=&#34;内存陷阱&#34;&gt;内存陷阱
+&lt;/h3&gt;&lt;p&gt;关于内存的使用需要注意避免以下问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;解引用错误指针&lt;/li&gt;
+&lt;li&gt;读取未初始化的内存&lt;/li&gt;
+&lt;li&gt;覆盖内存&lt;/li&gt;
+&lt;li&gt;引用不存在的变量&lt;/li&gt;
+&lt;li&gt;多次释放同一个块&lt;/li&gt;
+&lt;li&gt;引用已释放的块&lt;/li&gt;
+&lt;li&gt;释放块失败&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;dereferencing-bad-pointers&#34;&gt;Dereferencing Bad Pointers
+&lt;/h4&gt;&lt;p&gt;这是非常常见的例子，没有引用对应的地址，少了 &lt;code&gt;&amp;amp;&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;int val;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;scanf(&amp;#34;%d&amp;#34;, val);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;reading-uninitialized-memory&#34;&gt;Reading Uninitialized Memory
+&lt;/h4&gt;&lt;p&gt;不能假设堆中的数据会自动初始化为 0，下面的代码就会出现奇怪的问题&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/* return y = Ax */
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;int *matvec(int **A, int *x) {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    int *y = malloc(N * sizeof(int));
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    int i, j;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    for (i = 0; i &amp;lt; N; i++)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        for (j = 0; j &amp;lt; N; j++)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            y[i] += A[i][j] * x[j];
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    return y;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;overwriting-memory&#34;&gt;Overwriting Memory
+&lt;/h4&gt;&lt;p&gt;这里有挺多问题，第一种是分配了错误的大小，下面的例子中，一开始不能用 &lt;code&gt;sizeof(int)&lt;/code&gt;，因为指针的长度不一定和 int 一样。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;int **p;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;p = malloc(N * sizeof(int));
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;for (i = 0; i &amp;lt; N; i++) 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    p[i] = malloc(M * sizeof(int));
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;第二个问题是超出了分配的空间，下面代码的 for 循环中，因为使用了 &lt;code&gt;&amp;lt;=&lt;/code&gt;，会写入到其他位置&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;int **p;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;p = malloc(N * sizeof (int *));
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;for (i = 0; i &amp;lt;= N; i++)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    p[i] = malloc(M * sizeof(int));
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;第三种是因为没有检查字符串的长度，超出部分就写到其他地方去了（经典的缓冲区溢出攻击也是利用相同的机制）&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;char s[8];
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;int i;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gets(s); /* reads &amp;#34;123456789&amp;#34; from stdin */
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;第四种是没有正确理解指针的大小以及对应的操作，应该使用 &lt;code&gt;sizeof(int *)&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;int *search(int *p, int val) {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    while (*p &amp;amp;&amp;amp; *p != null)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        p += sizeof(int);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    return p;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;第五种是引用了指针，而不是其指向的对象，下面的例子中，&lt;code&gt;*size--&lt;/code&gt; 一句因为 &lt;code&gt;--&lt;/code&gt; 的优先级比较高，所以实际上是对指针进行了操作，正确的应该是 &lt;code&gt;(*size)--&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;int *BinheapDelete(int **binheap, int *size) {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    int *packet;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    packet = binheap[0];
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    binheap[0] = binheap[*size - 1];
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    *size--;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    Heapify(binheap, *size, 0);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    return (packet);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;referencing-nonexistent-variables&#34;&gt;Referencing Nonexistent Variables
+&lt;/h4&gt;&lt;p&gt;下面的情况中，没有注意到局部变量会在函数返回的时候失效（所以对应的指针也会无效），这是传引用和返回引用需要注意的，传值的话则不用担心&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;int *foo() {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    int val;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    return &amp;amp;val;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;freeing-blocks-multiple-times&#34;&gt;Freeing Blocks Multiple Times
+&lt;/h4&gt;&lt;p&gt;这个不用多说，不能重复搞两次&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x = malloc(N * sizeof(int));
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;//  &amp;lt;manipulate x&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;free(x);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;y = malloc(M * sizeof(int));
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;//  &amp;lt;manipulate y&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;free(x);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;referencing-freed-blocks&#34;&gt;Referencing Freed Blocks
+&lt;/h4&gt;&lt;p&gt;同样是很明显的错误，不要犯&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;x = malloc(N * sizeof(int));
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;//  &amp;lt;manipulate x&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;free(x);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;//  ....
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;y = malloc(M * sizeof(int));
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;for (i = 0; i &amp;lt; M; i++)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    y[i] = x[i]++;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;memory-leaks&#34;&gt;Memory Leaks
+&lt;/h4&gt;&lt;p&gt;用完没有释放，就是内存泄露啦&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;foo() {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    int *x = malloc(N * sizeof(int));
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    // ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    return ;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;或者只释放了数据结构的一部分：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;struct list {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    int val;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    struct list *next;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;foo() {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    struct list *head = malloc(sizeof(struct list));
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    head-&amp;gt;val = 0;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    head-&amp;gt;next = NULL;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    //...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    free(head);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    return;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        <item>
+        <title>高等数学上册笔记</title>
+        <link>https://Timlin15.github.io/p/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8A%E5%86%8C%E7%AC%94%E8%AE%B0/</link>
+        <pubDate>Thu, 06 Mar 2025 09:34:30 +0800</pubDate>
+        
+        <guid>https://Timlin15.github.io/p/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8A%E5%86%8C%E7%AC%94%E8%AE%B0/</guid>
+        <description>&lt;h1 id=&#34;高等数学一&#34;&gt;高等数学（一）
+&lt;/h1&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -----------------
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt; 高等数学太好玩啦！ &amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -----------------
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        \   ^__^
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         \  (oo)\_______
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            (__)\       )\/\
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                ||----w |
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                ||     ||
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;1实数&#34;&gt;&lt;strong&gt;1.实数&lt;/strong&gt;
+&lt;/h2&gt;&lt;p&gt;1.有理数与无理数&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;自然数&lt;em&gt;N:1,2,3,…,&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;整数&lt;em&gt;Z:…,-3,-2,-1,0,1,2,3**,**…&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;有理数&lt;em&gt;Q&lt;/em&gt;:有穷小数或无穷循环小数,可用分数表示为&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+$$
+Q=\{\frac{m}{n}\big|m,n\in\mathbb{Z},n&gt;0,(m,n)=1\}
+$$&lt;hr&gt;
+&lt;p&gt;命题：$\sqrt3$不是有理数&lt;/p&gt;
+&lt;p&gt;所以$m$一定是3的倍数。令$m=3k$,则有&lt;/p&gt;
+$$3n^2=9k^2\Rightarrow n^2=3k^2,$$&lt;p&gt;可见$n$也是3的倍数。&lt;/p&gt;
+&lt;p&gt;总之，可得3是$m$和$n$的公约数，这与$(m,n)=1$相矛盾。
+所以$\sqrt{3}$不是有理数。&lt;/p&gt;
+&lt;hr&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;strong&gt;无理数:无穷不循环小数,如&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;​	•&lt;strong&gt;一个无理数是一串有理数逼近的结果.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​	如果$\alpha=m.a_1a_2&amp;hellip;a_n&amp;hellip;$是正的无理数，
+​	$\alpha_n=m.a_1a_2&amp;hellip;a_n$是有理数，则$\mid\alpha-\alpha_n\mid&amp;lt;10^-n.$&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;实数&lt;/strong&gt;$R$: &lt;strong&gt;有理数&lt;/strong&gt;$Q$和&lt;strong&gt;无理数.&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数域:对加减乘除运算封闭的数的集合.例如有理数集合$Q,实数集合R$.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;2.&lt;strong&gt;实数集合&lt;/strong&gt;R的基本性质&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;$R是一个数域(对加减乘除运算封闭);$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$对乘法与加法满足交换律,结合律与分配律;$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$实数域是一个有序数域:任意两个不同的数都有大小关系;$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$实数域的完备性(连续性):一串实数如有极限,则极限仍是实数(实数布满整个数轴).$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;​	&lt;strong&gt;注意:有理数Q&lt;/strong&gt;满足性质(1)-(3),但对极限运算不封闭. $\lim_{n\to\infty}\frac1n=0$&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;&lt;strong&gt;命题:在实数域中,任意一个单调有界序列${a_n}$一定有极限存在.&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;单调递增:&lt;/strong&gt; $a_n≤a_n+1$;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;单调递减&lt;/strong&gt;:$a_n≥a_n+1$;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;有界&lt;/strong&gt;:存在$M,|a_n|≤M$ ,n=1,2,…,
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;如序列&lt;/strong&gt;$1+2^{-n},有|1+2^{-n}|&amp;lt;2$,是严格单调递减序列.**&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2变量与函数&#34;&gt;2.&lt;strong&gt;变量与函数&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;22-初等函数&#34;&gt;2.2 初等函数
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;初等函数:将基本初等函数经过有限次四则运算与复合所得的函数&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;基本初等函数(6类)&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;常数函数:&lt;/strong&gt;$y=C ∈ R$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;幂函数：$y = x^{\alpha}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;指数函数： $y = a^x$ (a&amp;gt;0, x!=1), $x \in R$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对数函数：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;三角函数：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\csc(x)$ $\sec(x)$ $\cot(x)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20241127163735926.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20241127163735926&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;反三角函数：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20241127164010342.png&#34; alt=&#34;image-20241127164010342&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;23-映射&#34;&gt;2.3 映射
+&lt;/h3&gt;&lt;h4 id=&#34;231-满射&#34;&gt;2.3.1 满射：
+&lt;/h4&gt;&lt;p&gt;若映射 $f{:}E\to F$的像集合 $f(E)=F$ 则表明$F$中的 每一点都是一个像点这时我们称$f{:}E\to F$为满射 .&lt;/p&gt;
+&lt;h4 id=&#34;232单射-一一映射-&#34;&gt;2.3.2.单射 (一一映射 ):
+&lt;/h4&gt;&lt;p&gt;若映射 $f{:}E\to F$具有下列性质：&lt;/p&gt;
+$$
+\begin{equation}
+    \forall x_1,x_2\in E,x_1\neq x_2\to f(x_1)\neq f(x_2).
+\end{equation}
+$$&lt;h4 id=&#34;233逆映射&#34;&gt;2.3.3.逆映射
+&lt;/h4&gt;$$
+\begin{equation}
+    \begin{aligned}&amp;\text{逆映射}:\text{若映射}f{:}E\to F\text{即是满射又是一一}\\&amp;\text{映射,则对每一个}y\in F\text{都有一个惟一确定的}x,\\&amp;\text{使得}f(x){=}y,\text{这样就自然形成了一个自}F\text{到}E\text{的}\\&amp;\text{映射.称为}f\text{的逆映射},\text{记作}f^{-1}{:}F\to E.\end{aligned}
+\end{equation}
+$$&lt;h3 id=&#34;24序列极限&#34;&gt;2.4.序列极限
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;极限形式&lt;/th&gt;
+          &lt;th&gt;度量标准&lt;/th&gt;
+          &lt;th&gt;过程描述&lt;/th&gt;
+          &lt;th&gt;目标不等式&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$\lim_{n \to \infty} x_n = a$&lt;/td&gt;
+          &lt;td&gt;$\forall \varepsilon &amp;gt; 0$&lt;/td&gt;
+          &lt;td&gt;$\exists N &amp;gt; 0$，当 $n &amp;gt; N$ 时&lt;/td&gt;
+          &lt;td&gt;$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$\lim_{x \to \infty} f(x) = a$&lt;/td&gt;
+          &lt;td&gt;$\forall \varepsilon &amp;gt; 0$&lt;/td&gt;
+          &lt;td&gt;$\exists X &amp;gt; 0$，当 $&lt;/td&gt;
+          &lt;td&gt;x&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$\lim_{x \to +\infty} f(x) = a$&lt;/td&gt;
+          &lt;td&gt;$\forall \varepsilon &amp;gt; 0$&lt;/td&gt;
+          &lt;td&gt;$\exists X &amp;gt; 0$，当 $x &amp;gt; X$ 时&lt;/td&gt;
+          &lt;td&gt;$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$\lim_{x \to -\infty} f(x) = a$&lt;/td&gt;
+          &lt;td&gt;$\forall \varepsilon &amp;gt; 0$&lt;/td&gt;
+          &lt;td&gt;$\exists X &amp;gt; 0$，当 $x &amp;lt; -X$ 时&lt;/td&gt;
+          &lt;td&gt;$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$\lim_{x \to x_0} f(x) = a$&lt;/td&gt;
+          &lt;td&gt;$\forall \varepsilon &amp;gt; 0$&lt;/td&gt;
+          &lt;td&gt;$\exists \delta &amp;gt; 0$，当 $0 &amp;lt;&lt;/td&gt;
+          &lt;td&gt;x - x_0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$\lim_{x \to x_0^+} f(x) = a$&lt;/td&gt;
+          &lt;td&gt;$\forall \varepsilon &amp;gt; 0$&lt;/td&gt;
+          &lt;td&gt;$\exists \delta &amp;gt; 0$，当 $0 &amp;lt; x - x_0 &amp;lt; \delta$ 时&lt;/td&gt;
+          &lt;td&gt;$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$\lim_{x \to x_0^-} f(x) = a$&lt;/td&gt;
+          &lt;td&gt;$\forall \varepsilon &amp;gt; 0$&lt;/td&gt;
+          &lt;td&gt;$\exists \delta &amp;gt; 0$，当 $0 &amp;lt; x_0 - x &amp;lt; \delta$ 时&lt;/td&gt;
+          &lt;td&gt;$&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+$$
+|a_n-l|&lt;\varepsilon,\quad 只要n&gt;N,
+$$&lt;p&gt;
+则我们称序列${a_n}$以$l$为极限，记作$\lim_{n\to \infty}a_n=l$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;证明：$\lim_{n\to \infty}\frac 1{n^{\alpha}}=0(\alpha&amp;gt;0).$&lt;/p&gt;
+$$
+|\frac{1}{n^{\alpha}}-0|&lt;\varepsilon,\quad 只要n&gt;N,证毕
+$$&lt;p&gt;求：$a_n=\sqrt{2+a_{n-1}},a_1=2的数列极限$.&lt;/p&gt;
+&lt;p&gt;设$a_n数列极限为A,有\lim_{n\to\infty}a_n=\sqrt{2+\lim_{x\to \infty}a_{n-1}}\Rightarrow A=\sqrt{2+A}，解得A=2$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;夹逼定理：设${a_n},{b_n},{c_n}$为三个序列，且存在一个正整数$N_0$,使得$c_n\leq a_n\leq b_n,\quad \forall n \geq N_0$，若${a_n}和{b_n}$存在且等于$l$,则${a_n}$极限也等于$l$.&lt;/p&gt;
+$$
+a_n &gt; b_n, \quad \text{只要} \ n &gt; N.
+$$&lt;p&gt;
+定理3： 设序列 ${a_n}$ 及 ${b_n}$ 分别有极限 $l_1$ 及 $l_2$，并且存在正整数 $N_0$，使得 $ a_n \geq b_n, \quad \text{只要} \ n &amp;gt; N_0, $      则 $ l_1 \geq l_2 $.&lt;/p&gt;
+$$ \lim_{n \to \infty} (a_n \pm b_n) = l_1 \pm l_2, \quad \lim_{n \to \infty} a_n b_n = l_1 l_2, $$$$ \lim_{n \to \infty} \frac{a_n}{b_n} = \frac{l_1}{l_2}. $$&lt;p&gt;海涅定理：$\lim_{n\to\infty}a_n=l \Leftrightarrow \forall {a_nk}\sub {a_n},\quad {\lim_{k \to \infty} } = l$, 即若两个子序列极限不同，则原序列无极限&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;一个重要极限&lt;/strong&gt;：$\lim_{n\to \infty}(1+\frac 1n )^n=e$ ,$\lim_{n\to\infty}(1-\frac1n)^n=\frac1e$,$\lim_{x\to 0}\frac{\sin x}{x}=1$
+一般地：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$\lim_{x\to 0}\frac{\sin kx}{x}=k$&lt;/li&gt;
+&lt;li&gt;$\lim_{x\to 0}\frac{\sin(\varphi(x))}{\varphi(x)}=1,当\lim_{x\to 0}\varphi(x)=0时$&lt;/li&gt;
+&lt;li&gt;有界量乘无穷大或无穷小都是无穷大/小，无穷大量一定是无界量，无界量不一定是无穷大量。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;241无穷大量&#34;&gt;2.4.1.无穷大量
+&lt;/h4&gt;$$
+ \lim_{x \to x_0} f(x) = \infty 
+$$&lt;p&gt;
+此时不收敛，为发散。&lt;/p&gt;
+&lt;h3 id=&#34;25间断点&#34;&gt;2.5.间断点
+&lt;/h3&gt;&lt;p&gt;若$y=f(x)再 x=x_0 处出现如下三种情况之一，则称 x_0 为 y=f(x)$ 的间断点:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$y=f(x)在点 x_0 处无定义$&lt;/li&gt;
+&lt;li&gt;$y=f(x)在点 x_0 处有定义，但 \lim_{x→x_0}f(x) 不存在$&lt;/li&gt;
+&lt;li&gt;$y=f(x)在点 x_0 处有定义，但 \lim_{x→x_0}f(x) 存在，但 \lim_{x→x_0}f(x)≠f(x)$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;251第一类间断点&#34;&gt;2.5.1.第一类间断点
+&lt;/h4&gt;&lt;p&gt;第一类间断点也叫有限型间断点，其特点是左右极限均存在.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;可去间断点&lt;/strong&gt;&lt;/p&gt;
+$$
+\lim_{x→x_{0^{−}}}f(x)=\lim_{x→x_{0^+}}f(x)≠f(x)
+$$&lt;p&gt;
+&lt;strong&gt;跳跃间断点&lt;/strong&gt;&lt;/p&gt;
+$$
+\lim_{x→x_{0^−}}f(x)≠\lim_{x→x_{0^+}}f(x)
+$$&lt;h4 id=&#34;252第二类间断点&#34;&gt;2.5.2.第二类间断点
+&lt;/h4&gt;&lt;p&gt;第二类间断点左右极限至少有一个不存在。注：除了第一类间断点其余均为第二类间断点。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;无穷间断点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在该点可以无定义，且左右极限至少有一个不存在，且改函数在该点极限为∞。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;震荡间断点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在该点可以无定义，当自变量趋于该点时，函数值再两个常数之间变动无限多次。此时左右极限均不存在。如$\lim_{x\to 0}\sin{\frac1x}$&lt;/p&gt;
+&lt;h3 id=&#34;26渐近线&#34;&gt;2.6.渐近线
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;铅直渐近线 若 $\lim_{x \to c} f(x)$ 与 $\lim_{x \to c} f(x)$ 至少有一个为无穷大，则称 $x = c$ 为曲线 $y = f(x)$ 的铅直渐近线。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;水平渐近线 若 $\lim_{x \to +\infty} f(x) = b$ 或 $\lim_{x \to -\infty} f(x) = b$，其中 $b$ 为常数，则称 $y = b$ 为曲线 $y = f(x)$ 的水平渐近线。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;斜渐近线 若 $\lim_{x \to +\infty} \frac{f(x)}{x} = k$ 存在且不为零，同时 $\lim_{x \to +\infty} [f(x) - kx] = b$ 也存在（或 $\lim_{x \to -\infty} \frac{f(x)}{x} = k$ 存在且不为零，同时 $\lim_{x \to -\infty} [f(x) - kx] = b$ 也存在），则称 $y = kx + b$ 为曲线 $y = f(x)$ 斜渐近线。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;渐近线的定义即是渐近线的求法。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;首先找垂直渐近线，这只需要找出函数所有的无穷间断点就可以了（按照求间断点的方法，先找所有“可疑点”，再一一判断）；&lt;/li&gt;
+&lt;li&gt;再分别对x趋近正无穷和趋近负无穷求斜渐近线（注意这里是把水平渐近线看做特殊的斜渐近线的）.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;3不定积分&#34;&gt;3.不定积分
+&lt;/h2&gt;&lt;h3 id=&#34;31求导法则&#34;&gt;3.1.求导法则
+&lt;/h3&gt;$$
+(\tan x)&#39; = \sec^2 x , (\cot x)&#39; = -\csc^2 x
+\\
+(\arcsin x)&#39; = \frac{1}{\sqrt{1-x^2}}\\ (\arccos x )&#39;=- \frac{1}{\sqrt{1-x^2}}
+\\(\arctan x)&#39; = \frac{1}{1+x^2} \\ (arccot x)&#39; = - \frac{1}{1+x^2}
+$$&lt;h4 id=&#34;311高阶导数和高阶积分&#34;&gt;3.1.1.高阶导数和高阶积分
+&lt;/h4&gt;$$
+\begin{aligned}
+&amp;(\sin x)^{n}=\sin(x+\frac{n\pi}2)\\
+&amp;(\cos x)^{n}=\cos(x+\frac{n\pi}2)\\
+&amp; (\frac1x)^{(k)}=(-1)^k\frac{k!}{x^{k+1}}\\
+ &amp; (x^m)^{(n)}=m(m-1)(m-2)\cdots(m-n+1)x^{m-n}\quad(m\geq n) \\
+ &amp; (a^x)^{(n)}=(\ln a)^na^x \\
+ &amp; (\ln x)^{(n)}=\frac{(-1)^{n-1}(n-1)!}{x^n}\quad(\text{由}\left(\ln x\right)^{\prime}=\frac{1}{x}\text{,有}\left(\frac{1}{x}\right)^{(n)}=\frac{(-1)^nn!}{x^{n+1}}) \\
+ &amp; (\sin x)^{(n)}=sin(x+\frac{n\pi}{2})\quad((\cos x)^{(n)}=cos(x+\frac{n\pi}{2})\mathrm{~)}\\
+&amp; 莱布尼茨公式：
+(fg)^{(n)} = \sum_{k=0}^{n} C^k_n f^{(k)} g^{(n-k)}
+\end{aligned}
+$$&lt;hr&gt;
+&lt;p&gt;例4 设函数 $y=x^2\sin x$,求 y 的五阶导数.
+解 注意到$(x^2)^{(k)}\equiv0(k&amp;gt;2)$,由莱布尼茨公式得到&lt;/p&gt;
+$$\begin{aligned}y^{(5)}&amp;=x^{2}\left(\sin x\right)^{(5)}+5\left(x^{2}\right)^{\prime}\left(\sin x\right)^{(4)}+10\left(x^{2}\right)^{\prime\prime}\left(\sin x\right)^{(3)}\\&amp;=x^{2}\sin\left(\frac{\pi}{2}+x\right)+10x\sin x+20\sin\left(x+\frac{3\pi}{2}\right)\\&amp;=(x^{2}-20)\mathrm{cos}x+10x\mathrm{sin}x.\end{aligned}$$&lt;h4 id=&#34;todo高阶导数和高阶积分&#34;&gt;TODO:高阶导数和高阶积分
+&lt;/h4&gt;&lt;h3 id=&#34;32等价无穷小&#34;&gt;3.2.等价无穷小
+&lt;/h3&gt;$$
+e^x \approx x\\
+\ln (x+1) \approx x\\
+(1 +x)^a-1 \approx ax\\
+1-\cos x \approx \frac{1}{2} x^2\\
+x \approx \tan x\\
+x \approx \sin x\\
+x \approx \arcsin x\\
+x \approx \arctan x\\
+$$&lt;p&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://www.zhihu.com/question/308115342&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;strong&gt;等价无穷小的适用条件：整体乘除可换，加减有的凑巧可以，有的不行。&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+$$\lim\frac{\alpha-\beta}\gamma=\lim\frac{\alpha-\beta^\prime}\gamma=\lim\frac{\alpha^\prime-\beta}\gamma=\lim\frac{\alpha^\prime-\beta^\prime}\gamma $$&lt;/li&gt;
+&lt;li&gt;
+$$\lim\frac{\alpha+\beta}\gamma=\lim\frac{\alpha+\beta^\prime}\gamma=\lim\frac{\alpha^\prime+\beta}\gamma=\lim\frac{\alpha^\prime+\beta^\prime}\gamma $$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;若$\alpha \neg \alpha ^{\prime }, \beta - \beta ^{\prime }$, $\phi \neg \phi ^{\prime }$, $\varphi \neg \varphi ^{\prime }$, 且$\lim\frac\alpha\beta=A\neq1$,$\lim\frac\phi\varphi=B\neq1$则&lt;/p&gt;
+$$\lim\frac{\alpha-\beta}{\phi-\varphi}=\lim\frac{\alpha^\prime-\beta^\prime}{\phi^\prime-\varphi^\prime}$$$$\begin{aligned}&amp;\lim\frac\alpha\beta=\lim\frac{\alpha^{\prime}}{\beta^{\prime}}\\&amp;\lim\frac\alpha\beta\gamma=\lim\frac{\alpha^{\prime}}{\beta^{\prime}}\gamma\\&amp;\lim\alpha\gamma=\lim\alpha^{\prime}\gamma\end{aligned}$$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;特此强调，$\lim(\tau+\alpha\nu)$一般不等于$\lim(\tau+\alpha^\prime\nu)$ 如：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$\lim_{x\to0}\frac{\sin2x-\sin x}{\sqrt{1+x}-1}=\lim_{x\to0}\frac{2x-x}{\frac x2}=2$(使用原则(1))&lt;/li&gt;
+&lt;li&gt;$\lim_{x\to0}\frac{x+\tan x}{e^x-1}=\lim_{x\to0}\frac{2x}x=2$(使用原则(2)&lt;/li&gt;
+&lt;li&gt;$\lim_{x\to0}\frac{e^x-1-\sin2x}{x-\sin3x}=\lim_{x\to0}\frac{x-2x}{x-3x}=\frac12$ (使用原则(3))&lt;/li&gt;
+&lt;li&gt;$\lim_{x\to0}\frac{(1-\cos x)\left[x-\ln\left(1+\tan x\right)\right]}{\sin^4x}=\lim_{x\to0}\frac{\frac{x^2}2[x-\ln\left(1+\tan x\right)]}{x^4}$
+$=\frac12\lim_{x\to0}\frac{x-\ln(1+\tan x)}{x^2}={\text{洛必达2次}}=\frac14$(使用原则(4))&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;错解：(使用原则(5)易知错误)
+$$\lim_{x\to0}\left(\frac1x-\frac{\ln\left(1+x\right)}{x^2}\right)=\lim_{x\to0}\left(\frac1x-\frac x{x^2}\right)=\lim_{x\to0}\left(\frac1x-\frac1x\right)=0$$&lt;/li&gt;
+&lt;li&gt;正解：
+$$\begin{aligned}&amp;\lim_{x\to0}\left(\frac1x-\frac{\ln\left(1+x\right)}{x^2}\right)=\lim_{x\to0}\frac{x-\ln\left(1+x\right)}{x^2}\frac{\text{表例公式}}{\lim_{x\to0}\frac{x-\left(x-\frac12x^2+o\left(x^2\right)\right)}{x^2}}\\&amp;=\lim_{x\to0}\frac{\frac12x^2+o\left(x^2\right)}{x^2}=\frac12\end{aligned}$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;33-隐函数求导&#34;&gt;3.3 隐函数求导
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;如果方程F(x,y)=0能确定y是x的函数，那么称这种方式表示的函数是隐函数。而函数就是指：在某一变化过程中，两个变量x、y，对于某一范围内的x的每一个值，y都有确定的值和它对应，y就是x的函数。这种关系一般用y=f(x)即显函数来表示。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;求导法则&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;方法1：先把隐函数转化成显函数，再利用显函数求导的方法求导&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;方法2：隐函数左右两边先对x求导，但是一定要把y看成是x的函数&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;方法3: 利用一阶微分形式不变的性质分别对x和y求导，再通过移项求值&lt;/li&gt;
+&lt;/ul&gt;
+$$
+F(x,y) = xy -e^x+e^y=0(x\geq0) \quad \text{求}y&#39;|_{x=0}\\
+{方程两边关于x求导，将y视作x的函数}\\y+xy&#39;-e^x+e^y\cdot y&#39; = 0\\
+y&#39;=\frac{e^x-y}{e^y+x} \quad {由}F(0,0)=0\quad y&#39;=1
+$$&lt;hr&gt;
+&lt;h2 id=&#34;4定积分&#34;&gt;4.定积分
+&lt;/h2&gt;&lt;h3 id=&#34;41黎曼和&#34;&gt;4.1.黎曼和*
+&lt;/h3&gt;&lt;p&gt;$$
+\text{设函数 } f(x) \text{ 在区间 } [a, b] \text{ 上有定义，分割区间 } [a, b] \text{ 为 } n \text{ 个子区间：}
+a = x_0 &amp;lt; x_1 &amp;lt; x_2 &amp;lt; \cdots &amp;lt; x_n = b\&lt;/p&gt;
+&lt;p&gt;\text{记每个子区间的长度为 } \Delta x_i = x_i - x_{i-1}\ \text{，在每个子区间 } [x_{i-1}, x_i] \text{ 内选择一点 } \xi_i \in [x_{i-1}, x_i] \text{，则黎曼和定义为：}
+S = \sum_{i=1}^n f(\xi_i) \Delta x_i
+$$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;写出函数$y=x^2$在区间$[0,1]$上的黎曼和，其中分割为$n$等分，中间点$\xi_i$为分割小区间的左端点，求出当$n\to \infty$时的黎曼和的极限。&lt;/p&gt;
+&lt;p&gt;解：$s_n=\sum^{n-1}_{i=0}\frac{i^2}{n^2}\cdot \frac1n=\frac1{6n^3}(n-1)n(2n-1)=\frac16(1-\frac1n)(2-\frac1n)\to\frac13(n\to\infty)$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;42变上限积分&#34;&gt;4.2.变上限积分
+&lt;/h3&gt;&lt;p&gt;积分中值定理：如果函数f (x)在闭区间 [a, b]上连续，那么存在一个点c，使得$\int_a^bf(x)dx=f(c)(b-a).$&lt;/p&gt;
+&lt;p&gt;变上限积分：对于$F_0(x)=\int_a^xf(t)dt$有$F&amp;rsquo;_0(x)=f(x),\quad\forall x \in(a,b).$&lt;/p&gt;
+&lt;p&gt;一个连续函数的变上限积分就是该函数的一个原函数，即$\frac{d}{dx}[\int^{x}_af(t)dt]=f(x)$&lt;/p&gt;
+&lt;p&gt;一般的$\frac{d}{dx}[\int^{\varphi(x)}_af(t)dt]=f[\varphi(x)]\varphi&amp;rsquo;(x)$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;可以使用换元变t&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+$$
+\begin{aligned}
+\lim_{x\to0}\frac{\int_0^x(x-t)f(t)dt}{x^2}&amp;=
+\lim_{x\to0}\frac{x\int_0^xf(t)dt-\int_0^xtf(t)dt}{x^2}\\
+&amp;=\lim_{x\to 0}\frac{\int_0^xf(t)dt+xf(x)-xf(x)}{2x}\\
+&amp;=\lim_{x\to0}\frac{f(x)}2=\frac{f(0)}2
+\end{aligned}
+$$&lt;hr&gt;
+&lt;h2 id=&#34;5不定积分的换元法&#34;&gt;5.不定积分的换元法
+&lt;/h2&gt;&lt;h3 id=&#34;51第一换元法凑微分&#34;&gt;5.1.第一换元法（凑微分）
+&lt;/h3&gt;&lt;p&gt;若有$\frac{d}{dx}F(\varphi(x))=f(\varphi(x))\varphi&amp;rsquo;(x),$于是有$\int f(\varphi(x))\varphi&amp;rsquo;(x)dx=F(\varphi(x))+C$&lt;/p&gt;
+$$
+dx=\frac1kd(kx+b)(k\ne0);\\
+xdx=\frac12dx^2\\
+\frac1{\sqrt{x}}dx=2d\sqrt{x}\\
+\frac1xdx=d\ln|x|\\
+\sin xdx=-d\cos x\\
+\cos xdx=d\sin x\\
+\sec^2 xdx=d\tan x\\
+\csc^2xdx=-d\cot x\\
+\frac{1}{1+x^2}dx=d\arctan\\
+\frac1{\sqrt{1-x^2}}dx=d\arcsin x
+$$&lt;h3 id=&#34;52不定积分常用技巧&#34;&gt;5.2.不定积分常用技巧
+&lt;/h3&gt;&lt;p&gt;*(见习题3.1绝望35题)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;凑微分&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;分子分母同乘同除&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;常用不定积分嗯套&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+$$
+\int \tan x dx=-\ln|\cos x| + C\\
+\int \cot x dx=\ln|\sin x| +C\\
+\int \frac{dx}{x^2+a^2}=\frac1a \arctan\frac xa +C \quad (a&gt;0)\\
+\int \frac {dx}{x^2-a^2}=\frac1{2a} \ln|\frac{x-a}{x+a}| +C\quad(a&gt;0)\\
+\int \frac{dx}{\sqrt{a^2-x^2}}=\frac1a\arcsin \frac xa +C \quad (a&gt;0)\\
+\int \frac{dx}{\sqrt{x^2\pm a^2}}=\ln|x+\sqrt{x^2\pm a^2}|+C\\
+\int \sqrt{a^2\pm x^2}dx=\frac x2 \sqrt{a^2\pm x^2}+\frac{a^2}2 \ln|x+\sqrt{a^2\pm x^2}|+C\\
+$$&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;拆分子，分别求积分&lt;/li&gt;
+&lt;li&gt;分母使用第二换元，dx替换为dt&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;升幂降幂公式&amp;amp;和差化积积化和差&amp;amp;诱导公式&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;三角换元，后用三角替换回来&lt;/li&gt;
+&lt;li&gt;配方，构建完全平方式&lt;/li&gt;
+&lt;li&gt;变化为分母为高阶项，分子为高阶减一项后裂项&lt;/li&gt;
+&lt;li&gt;用极坐标或者参数方程给多元函数降元&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;53有理式和三角函数的不定积分&#34;&gt;5.3.有理式和三角函数的不定积分
+&lt;/h3&gt;&lt;h4 id=&#34;531有理式的不定积分&#34;&gt;5.3.1.有理式的不定积分
+&lt;/h4&gt;$$
+\frac{A}{x-a},\quad \frac A{(x-a)^n}, \quad \frac{Bx+D}{x^2+px+q}, \quad \frac{Bx+D}{(x^2+px+q)^n}
+$$$$
+\begin{aligned}
+&amp; \int\frac{Adx}{x-a}=A\ln|x-a|+C,\\
+&amp; \int\frac{Adx}{(x-a)^n}=\frac A{1-n}(x-a)^{1-n}+C,\\
+ \int\frac{(Bx+D)dx}{x^2+px+q}&amp;=\frac B2\int\frac{s[(x+\frac p2)]^2}{(x+\frac p 2)^2+(q-\frac{p^2}4)}
++(D-\frac {Bp}2)\int\frac {dx}{(x+\frac p2)^2+(q-\frac{p^2}{4})}\\
+&amp; =\frac B2\ln|x^2+px+q|+\frac{D-\frac{Bp}2}{\sqrt{q-\frac{p^2}4}}\arctan\frac{x+\frac p2}{\sqrt{q-\frac{p^2}4}}+C
+\end{aligned}
+$$$$
+\begin{aligned}
+\int\frac{\left(Bx+D\right)\mathrm{d}x}{\left(x^{2}+px+q\right)^{n}} &amp; =\frac{B}{2}\int\frac{\mathrm{d}\left[\left(x+\frac{p}{2}\right)^{2}\right]}{\left[\left(x+\frac{p}{2}\right)^{2}+\left(q-\frac{p^{2}}{4}\right)\right]^{n}} \\
+ &amp; +\left(D-\frac{Bp}{2}\right)\int\frac{\mathrm{d}x}{\left[\left(x+\frac{p}{2}\right)^2+\left(q-\frac{p^2}{4}\right)\right]^n} \\
+ &amp; =\frac{B}{2\left(1-n\right)}\left[\left(x+\frac{p}{2}\right)^{2}+\left(q-\frac{p^{2}}{4}\right)\right]^{1-n} \\
+ &amp;  +\left(D-\frac{Bp}{2}\right)\int\frac{\mathrm{d}x}{\left[\left(x+\frac{p}{2}\right)^2+\left(q-\frac{p^2}{4}\right)\right]^n}.
+\end{aligned}
+$$&lt;p&gt;
+例题见课本，不想抄了。&lt;/p&gt;
+&lt;h4 id=&#34;532三角函数的有理式的不定积分&#34;&gt;5.3.2.三角函数的有理式的不定积分
+&lt;/h4&gt;$$
+\sin x=\frac{2\tan\frac x2}{1+\tan^2\frac x2}\\
+\cos x=\frac{1-\tan^2\frac x2}{1+\tan^2\frac x2}\\
+\tan x =\frac{2\tan\frac x2}{1-\tan^2\frac x2}
+$$&lt;p&gt;
+注意：这有时候有效，有些时候则过于麻烦，可以直接换元.&lt;/p&gt;
+&lt;h3 id=&#34;54分部积分法todo做题技巧&#34;&gt;5.4.分部积分法TODO:做题技巧
+&lt;/h3&gt;$$
+\int_0^{\frac{\pi}2}\sin^{2k} x\,dx=\frac{(2k-1)!!}{(2k)!!}\cdot\frac{\pi}{2}.\\
+\int_0^{\frac{\pi}2}\sin^{2k+1} x\,dx=\frac{(2k)!!}{(2k+1)!!}.\\
+\int_0^{\frac{\pi}2}\sin^{n} x\,dx=\int_0^{\frac{\pi}2}\cos^{n} x\,dx
+$$&lt;p&gt;注意有时候可用递推公式，得出通解&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;6积分的应用&#34;&gt;6.积分的应用
+&lt;/h2&gt;&lt;h3 id=&#34;61求曲线的弧长&#34;&gt;6.1.求曲线的弧长
+&lt;/h3&gt;&lt;p&gt;关键为求弧微分，描述弧长与某个变量（例如参数变量）之间的对应关系。&lt;/p&gt;
+$$
+ds= \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \, dt
+$$&lt;p&gt;
+同理，有&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;曲线段方程&lt;/th&gt;
+          &lt;th&gt;弧长s计算公式&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;参数方程&lt;/td&gt;
+          &lt;td&gt;$\begin{cases}x=\varphi(t),\y=\psi(t),\end{cases},\alpha\leq t\leq\beta$&lt;/td&gt;
+          &lt;td&gt;$s=\int_{\alpha}^{\beta}\sqrt{\varphi&amp;rsquo;^2(t)+\psi&amp;rsquo;^2(t)}dt$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;直角坐标系&lt;/td&gt;
+          &lt;td&gt;$y=f(x),a\leq x\leq b$&lt;/td&gt;
+          &lt;td&gt;$s=\int_a^b\sqrt{1+f&amp;rsquo;^2(x)}dx$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;直角坐标系&lt;/td&gt;
+          &lt;td&gt;$x=g(y),c\leq y\leq d$&lt;/td&gt;
+          &lt;td&gt;$s=\int_c^d\sqrt{1+g&amp;rsquo;^2(y)}dy$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;极坐标系&lt;/td&gt;
+          &lt;td&gt;$r=r(\theta),\alpha \leq\theta\leq\beta$&lt;/td&gt;
+          &lt;td&gt;$s=\int_{\alpha}^{\beta}\sqrt{r^2(\theta)+r&amp;rsquo;^2(\theta)},d\theta$&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;62旋转体体积侧面积求解&#34;&gt;6.2.旋转体体积，侧面积求解
+&lt;/h3&gt;&lt;h5 id=&#34;621旋转法&#34;&gt;6.2.1:旋转法
+&lt;/h5&gt;&lt;p&gt;对于一个绕x轴旋转的旋转体，其体积为$V=,\sum_{i=1}^n\Delta V_i \approx,\pi\sum_{i=1}^n(f(\xi_i))^2\Delta x_i $&lt;/p&gt;
+&lt;h5 id=&#34;622柱壳法&#34;&gt;6.2.2.柱壳法
+&lt;/h5&gt;$$
+V=\int_a^b2\pi xydx=2\pi\int_a^bxf(x)dx
+$$&lt;h5 id=&#34;623旋转体的侧面积&#34;&gt;6.2.3.旋转体的侧面积
+&lt;/h5&gt;$$
+\Delta F_i \approx 2\pi f(x_{i-1})\Delta s_i\\
+F\approx \sum^n_{i=1}2\pi f(x_{i-1})\sqrt{1+(f&#39;(x_{i-1}))^2}\Delta x_i\\
+参数方程同理：F=2\pi\int_{\alpha}^{\beta}y(t)\sqrt{(x&#39;(t))^2+(y&#39;(t))^2}dt\\
+$$&lt;h5 id=&#34;624古鲁丁定理&#34;&gt;6.2.4.古鲁丁定理
+&lt;/h5&gt;&lt;p&gt;平面上一条质量分布均匀的曲线弧绕一条不通过他的直线轴旋转一周所形成的旋转面的面积恰好等于它的质心绕同一轴旋转所得圆周长乘以曲线弧长&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;求由圆周 $x^2+(y−h)^2=(h&amp;gt;r&amp;gt;0)$ 绕$x$ 轴旋转一周所形成圆环面的面积。&lt;/p&gt;
+$$
+F=2\pi l\cdot h=4\pi^2 rh.
+$$&lt;hr&gt;
+&lt;h5 id=&#34;625极坐标下图形的面积&#34;&gt;6.2.5.极坐标下图形的面积
+&lt;/h5&gt;$$
+dS=\frac 12r^2(\theta)d\theta\\
+S=\frac 12 \int_{\alpha}^{\beta}r^2(\theta)d\theta
+$$&lt;hr&gt;
+&lt;h2 id=&#34;7泰勒级数&#34;&gt;7.泰勒级数
+&lt;/h2&gt;&lt;h3 id=&#34;71积分中值定理罗尔中值定理微分中值定理柯西中值定理洛必达法则&#34;&gt;7.1.积分中值定理，罗尔中值定理，微分中值定理,柯西中值定理,洛必达法则
+&lt;/h3&gt;&lt;p&gt;积分中值定理：$如果函数f (x)在闭区间 [a, b]上连续，那么存在一个点c，使得\int_a^bf(x)dx=f(c)(b-a).$&lt;/p&gt;
+$$
+f&#39;(c)=0
+$$$$
+f&#39;(c)=\frac{f(b)-f(a)}{b-a}
+$$&lt;p&gt;
+&lt;strong&gt;微分中值定理又称拉格朗日中值定理&lt;/strong&gt;&lt;/p&gt;
+$$
+\frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f&#39;(c)}{g&#39;(c)}
+$$&lt;p&gt;
+洛必达法则：遇到$0^0,1^{\infty},\infty^0$未定型可通过取对方式&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;遇求实根存在等题可以使用&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;72泰勒公式&#34;&gt;7.2.泰勒公式
+&lt;/h3&gt;$$
+f(x) = f(a) + f&#39;(a)(x-a) + \frac{f&#39;&#39;(a)}{2!}(x-a)^2 + \cdots + \frac{f^{(n)}(a)}{n!}(x-a)^n + R_n(x)
+$$$$
+R_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-a)^{n+1}, \quad \xi \in (a, x)\\
+R_n亦可表示为佩亚诺余项o((x-x_0)^n)
+$$$$
+麦克劳林公式(于x_0=0处泰勒公式)(x\to0)\\
+e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots +\frac{1}{n!}x^n+o(x^n)\\
+\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + (-1)^{n-1}\frac{x^{2n-1}}{(2n-1)!}+o(x^{2n}) \\
+\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + (-1)^{n}\frac{x^{2n}}{(2n)!}+o(x^{2n+1}) \\
+(1+x)^\alpha = 1 + \alpha x + \frac{\alpha(\alpha-1)}{2!}x^2 + \frac{\alpha(\alpha-1)(\alpha-2)}{3!}x^3 + \cdots 
++\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}x^n+o(x^n)\\
+\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots+(-1)^{n-1}\frac{x^n}{n}+o(x^n)
+$$$$
+\begin{aligned}
+ \\
+ &amp; 下面是几个常见初等函数的带拉格朗日余项的泰勒公式: \\
+ &amp; (1)\mathrm{e}^x=1+x+\frac{x^2}{2!}+\cdots+\frac{x^n}{n!}+\frac{\mathrm{e}^\xi}{(n+1)!}x^{n+1}(-\infty&lt;x&lt;+\infty); \\
+ &amp; (2)\sin x=x-\frac{x^3}{3!}+\cdots+(-1)^{n-1}\frac{x^{2n-1}}{(2n-1)!} 
+ +(-1)^n\frac{\cos\xi}{(2n+1)!}x^{2n+1}\left(-\infty&lt;x&lt;+\infty\right); \\
+ &amp; (3)\cos x=1-\frac{x^{2}}{2!}+\cdots+(-1)^{n}\frac{x^{2n}}{(2n)!} 
+ +(-1)^{n+1}\frac{\cos\xi}{(2n+2)!}x^{2n+2}(-\infty&lt;x&lt;+\infty);   \\
+ &amp; (4)(1+x)^{a}=  1+\alpha x+\frac{\alpha(\alpha-1)}{2!}x^{2}+\cdots+\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}x^{n} 
+  \\&amp;+\frac{\alpha(\alpha-1)\cdots(\alpha-n)}{(n+1)!}(1+\xi)^{\alpha-n-1}x^{n+1}(-1&lt;x&lt;+\infty); \\
+ &amp; (5)\ln(1+x)=x-\frac{x^{2}}{2}+\frac{x^{3}}{3}-\cdots+(-1)^{n-1}\frac{x^{n}}{n}+(-1)^n\frac{x^{n+1}}{(n+1)(1+\xi)^{n+1}}
+ (-1&lt;x&lt;+\infty)
+\end{aligned}
+$$&lt;p&gt;
+泰勒展开的相关技巧&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将要分解的公式拆分为上述泰勒公式后套公式，如将$\ln{\frac{1-x}{1+x}}$分解为$\ln(1-x)-\ln(1+x)$,或者将$\frac{x^2+2x-1}{x-1}$分解为$(x^2+2x-1)\cdot (1-x)^{-1}$&lt;/li&gt;
+&lt;li&gt;对要分解的式子求导，得到可以用上述泰勒公式替换的导函数，最后再求积&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+$$
+(\sin^2 x)&#39;=\sin{2x}\\
+\sin2x=2x-\frac{(2x)^3}{3!}+\cdots+(-1)^{n-1}\frac{(2x)^{2n-1}}{(2n-1)!}+o(x^{2n})\\
+\sin^2x=x^2-\frac{(2x)^4}{2\cdot 4!}+\cdots+(-1)^{n-1}\frac{(2x)^{2n}}{2\cdot2n!}+o(x^{2n+1})
+$$&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;将其他式子替换$x$，如在计算$\cos x^3$时用$x^3$替换$x$带入$\cos$方程，计算$\sqrt{1-2x+x^3}$时用$(-2x+x^3)$替换$x$带入$(1+x)^{\alpha}$&lt;/li&gt;
+&lt;li&gt;泰勒展开&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;73函数的凹凸性&#34;&gt;7.3.函数的凹凸性
+&lt;/h3&gt;&lt;h4 id=&#34;731函数凹凸性的定义-设函数fx在区间i上连续&#34;&gt;7.3.1&lt;strong&gt;函数凹凸性的定义&lt;/strong&gt; 设函数$f(x)$在区间$I$上连续。
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;凹函数&lt;/strong&gt;：若对于区间$I$内的任意两点$x_1$，$x_2$，以及任意实数$\lambda\in(0,1)$，都有$f(\lambda x_1+(1-\lambda)x_2)\geq\lambda f(x_1)+(1-\lambda)f(x_2)$，则称$f(x)$是区间$I$上的凹函数。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;凸函数&lt;/strong&gt;：若对于区间$I$内的任意两点$x_1$，$x_2$，以及任意实数$\lambda\in(0,1)$，都有$f(\lambda x_1+(1-\lambda)x_2)\leq\lambda f(x_1)+(1-\lambda)f(x_2)$，则称$f(x)$是区间$I$上的凸函数。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;732函数凹凸性的判定方法&#34;&gt;7.3.2&lt;strong&gt;函数凹凸性的判定方法&lt;/strong&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;二阶导数法&lt;/strong&gt;：设函数$f(x)$在区间$I$内具有二阶导数。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若$f&amp;rsquo;&amp;rsquo;(x)&amp;gt;0$，则$f(x)$在区间$I$上是下凸(凹)函数；&lt;/li&gt;
+&lt;li&gt;若$f&amp;rsquo;&amp;rsquo;(x)&amp;lt;0$，则$f(x)$在区间$I$上是上凸(凸)函数。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;733注意事项&#34;&gt;7.3.3.&lt;strong&gt;注意事项&lt;/strong&gt;
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;函数的凹凸性是函数在某一区间上的整体性质，而不是在某一点的性质。&lt;/li&gt;
+&lt;li&gt;函数的凹凸性与函数的单调性没有必然的联系。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;8向量代数与空间解析几何&#34;&gt;8.向量代数与空间解析几何
+&lt;/h2&gt;&lt;h3 id=&#34;81向量代数&#34;&gt;8.1.向量代数
+&lt;/h3&gt;&lt;p&gt;叉乘运算满足一下规律：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;$a \times b=-b\times a$（反交换律）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$\lambda(a\times b)=(\lambda a)\times b =a \times(\lambda b)$（与数乘的结合律）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$(a+b)\times c=a\times c+b\times c$（分配律）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+$$
+a\times b=|a|\cdot|b|\sin&lt;a,b&gt;\\
+a与b共线\Longleftrightarrow a\times b=0\\
+a\cdot (b\times c)=b\cdot (c\times a) \,用于计算同一平行六面体的体积
+$$&lt;h3 id=&#34;82向量的空间坐标&#34;&gt;8.2.向量的空间坐标
+&lt;/h3&gt;$$
+i\times j =k,\quad j\times k=i,\quad k\times i=j\\
+单位向量a^0=\frac{1}{\sqrt{x^2+y^2+z^2}}(x,y,z)\\
+a_1\times a_2=\begin{vmatrix}
+i &amp;j&amp;k\\
+x_1&amp;y_1&amp;z_1\\
+x_2&amp;y_2&amp;z_2
+\end{vmatrix}
+=(y_1z_2-y_2z_1)i-(x_1z_2-x_2z_1)j+(x_1y_2-x_2y_1)k
+$$&lt;h3 id=&#34;83空间中平面与直线的方程&#34;&gt;8.3.空间中平面与直线的方程
+&lt;/h3&gt;&lt;h4 id=&#34;831平面的方程&#34;&gt;8.3.1.平面的方程
+&lt;/h4&gt;$$
+点P_0(x_0,y_0,z_0)到平面Ax+By+Cz+D=0的距离d=\frac{|Ax_1+By_1+Cz_1+D|}{\sqrt{A^2+B^2+C^2}}\\
+n=(A,B,C)\Rightarrow\begin{cases}1.平面过原点\leftrightarrow D=0\\
+2.\pi//x轴\leftrightarrow A=0，其余轴线同理\\
+3.A=B=0\leftrightarrow \pi // xy平面，其余同理\\
+4.A=B=D=0\leftrightarrow \pi//Oxy平面\end{cases}
+\\
+截距式方程： \frac x{-\frac DA}+\frac y{-\frac DB}+\frac z{-\frac DC} = 1(分母分别是xyz轴截距)
+$$&lt;h4 id=&#34;832直线的方程&#34;&gt;8.3.2.直线的方程
+&lt;/h4&gt;$$
+两面式=\begin{cases}
+A_1 x+B_1 y+C_1z+D_1=0\\
+A_2 x+B_2 y+C_2 z+D_2=0
+\end{cases}\\
+参数方程=\begin{cases}
+x-x_0=ta,\\
+y-y_0=tb,\quad(-\infty&lt;y&lt;+\infty)\\
+z-z_0=tc
+\end{cases}\\
+标准方程=\frac{x-x_0}{a}=\frac{y-y_0}{b}=\frac{z-z_0}{c}\quad(a,b,c不同时等于0)
+$$&lt;p&gt;将两面式化简为标准方程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;由两平面法向量求出直线方向向量&lt;/li&gt;
+&lt;li&gt;将两平面消元只剩3个变量&lt;/li&gt;
+&lt;li&gt;尝试带入任意值，比如x=0求解得出直线D值&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;84二次曲面空间曲线的切线与弧长&#34;&gt;8.4.二次曲面&amp;amp;空间曲线的切线与弧长
+&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/58917013&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;九种典型方程&lt;/a&gt;及&lt;a class=&#34;link&#34; href=&#34;http://staff.ustc.edu.cn/~rui/ppt/calculus/geo_3.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;其运动轨迹&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;841求交线投影线httpswwwdoc88comp-29439565929930html&#34;&gt;8.4.1.&lt;a class=&#34;link&#34; href=&#34;https://www.doc88.com/p-29439565929930.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;求交线，投影线&lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;如直线求交点，用两平面相加减消元&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;投影也是消元&lt;/strong&gt;：如在Oxy平面投影，则可消z，若有方程没有z变量，则可直接带入。&lt;/p&gt;
+&lt;hr&gt;
+$$
+\begin{cases}
+x^2+y^2+z^2=1\quad(1)\\
+z^2=2y\quad\quad\quad\quad\quad(2)
+\end{cases}
+$$$$
+将在z^2=2y代入(1)式：x^2+y^2+2y=1
+$$&lt;hr&gt;
+&lt;h4 id=&#34;842空间曲线的切线和弧长&#34;&gt;8.4.2.空间曲线的切线和弧长
+&lt;/h4&gt;$$
+\begin{cases}
+x=x(t_0)+ux&#39;(t_0)\\
+y=y(t_0)+uy&#39;(t_0)\\
+z=z(t_0)+uz&#39;(t_0)
+\end{cases}
+$$$$
+s=\int_{a}^{b}|r&#39;(t)|dt=\int^{b}_a\sqrt{(x&#39;(t))^2+(y&#39;(t))^2+(z&#39;(t))^2}
+$$&lt;p&gt;
+过点$r(t_0)$且与该店处切向量$r&amp;rsquo;(t_0)$垂直的平面称为曲线在该点的法平面。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;9多元函数微分学&#34;&gt;9.多元函数微分学
+&lt;/h2&gt;&lt;h3 id=&#34;91多元函数&#34;&gt;9.1.多元函数
+&lt;/h3&gt;&lt;p&gt;定义域：是多元自变量共同决定的定义域&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;如E=$\frac{1}{1-x^2-y^2}$，则定义域就是$x^2+y^2\neq1$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;911rn中的距离邻域及开集&#34;&gt;9.1.1.$R^n$中的距离邻域及开集
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;三角不等式：&lt;/li&gt;
+&lt;/ol&gt;
+$$
+d(P,Q)\leq d(P,R)+d(P,Q),\quad \forall R \in R^n
+$$&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;定义点$P_0$的r邻域：&lt;/li&gt;
+&lt;/ol&gt;
+$$
+U_r(P_0)=\{P\in R^n|d(P_0,P)&lt;r\}
+$$&lt;p&gt;​		n=1，为开区间；n=2，为开圆；n=3，为开球。&lt;/p&gt;
+&lt;p&gt;​		我们将$R^n$中的点分为三种：E的内点、外点与边界点。&lt;/p&gt;
+&lt;p&gt;​		内点:$U_r(P)\subset E$&lt;/p&gt;
+&lt;p&gt;​		外点:$U_r(P)\cap E=\emptyset$&lt;/p&gt;
+&lt;p&gt;​		既非E内点也非外点称作边界点，记作$\part E $&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;开集&lt;/p&gt;
+&lt;p&gt;集合E是开集的充要条件是E中没有边界点&lt;/p&gt;
+&lt;p&gt;一个集合E包含着他的全部边界点，称作闭集$\overline{E}$&lt;/p&gt;
+&lt;p&gt;若E（可通过曲线折线直线）联通，则称E为$R^n$中的(开/闭)区域&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;92多元函数的极限&#34;&gt;9.2.多元函数的极限
+&lt;/h3&gt;&lt;h4 id=&#34;921极限的定义todo技巧&#34;&gt;9.2.1.极限的定义TODO：技巧
+&lt;/h4&gt;$$
+0 &lt; \sqrt{(x - x_0)^2 + (y - y_0)^2} &lt; \delta
+$$&lt;p&gt;
+时，就有 $ |f(x, y) - A| &amp;lt; \epsilon $，则称当点 $ (x, y) $ 趋向于点 $ (x_0, y_0) $（记作 $ (x, y) \to (x_0, y_0) $）时，$ f(x, y) $ 以 $ A $ 为极限，记作 $ \lim_{{(x, y) \to (x_0, y_0)}} f(x, y) = A $ 有时也写成 $ \lim_{{x \to x_0 \atop y \to y_0}} f(x, y) = A $。&lt;/p&gt;
+$$
+|x - x_0| &lt; \delta, \quad |y - y_0| &lt; \delta, \quad \text{且} \quad (x, y) \neq (x_0, y_0)
+$$$$
+|f(x, y) - A| &lt; \epsilon,
+$$&lt;p&gt;
+则称当 $ (x, y) \to (x_0, y_0) $ 时，$ f(x, y) $ 以 $ A $ 为极限。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;定义一和定义二是等价的&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;通过定义证极限存在：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;通过基本不等式放大:$\frac{\sqrt{a^2+b^2}}2 \geq \frac{a+b}2 \geq \sqrt{ab}\geq \frac{2}{\frac 1a +\frac 1b}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过定义二&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;见&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;证伪：通过指出不同路径，使$P$沿两条路径趋向于点$P_0$时，$f(x,y)$趋向于不同的常数，我们可以断言当$P\to P_0$时，$f(x,y)$没有极限.&lt;/p&gt;
+&lt;hr&gt;
+$$
+f(x,y)=\frac {|x|}{\sqrt{x^2+y^2}}
+$$&lt;p&gt;
+是否有极限？&lt;/p&gt;
+$$
+f(x,y)=\frac{|x|}{\sqrt{x^2+k^2x^2}}=\frac{1}{\sqrt{1+k^2}}
+$$&lt;p&gt;
+则不同$k,(x,y)$趋向不同常数，没有极限。&lt;strong&gt;该方法可以适用于不同方式换元，一种换元存在另一种不一定存在，故该方法只能证伪不能证实&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;922二元函数极限的运算法则与基本性质&#34;&gt;9.2.2.二元函数极限的运算法则与基本性质
+&lt;/h4&gt;&lt;p&gt;定理 1：$lim_{(x,y)\to (0,0)}f(x,y)=A,\quad lim_{(x,y)\to (0,0)}g(x,y)=B$则，&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$\lim_{(x,y)\to (x_0,y_0)}(f(x,y)\pm g(x,y))=A\pm B$&lt;/li&gt;
+&lt;li&gt;$\lim_{(x,y)\to (x_0,y_0)}f(x,y)g(x,y)=AB$&lt;/li&gt;
+&lt;li&gt;$当B\neq0, \lim_{(x,y)\to(x_0,y_0)}\frac{f(x,y)}{g(x,y)}=\frac{A}{B}$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;定理 2：较大函数的极限大于或等于较小函数的极限&lt;/p&gt;
+&lt;p&gt;定理 3：夹逼定理&lt;/p&gt;
+$$
+x_0 = \lim_{{(u, v) \to (u_0, v_0)}} g(u, v), \quad y_0 = \lim_{{(u, v) \to (u_0, v_0)}} h(u, v),
+$$$$
+\lim_{{(u, v) \to (u_0, v_0)}} f(g(u, v), h(u, v)) = \lim_{{(x, y) \to (x_0, y_0)}} f(x, y). 
+$$$$
+A = \lim_{u\to u_0}f(u),
+$$$$
+\lim_{(x,y)\to(x_0,y_0)}g(x,y)=u_0
+$$&lt;p&gt;
+则$\lim_{(x,y)\to(x_0,y_0)}f(g(x,y))=A.$&lt;/p&gt;
+&lt;h4 id=&#34;923累次极限与全面极限&#34;&gt;9.2.3.累次极限与全面极限
+&lt;/h4&gt;&lt;p&gt;累次极限：$\lim_{x\to x_0}\lim_{y\to y_0}f(x,y)=\lim_{x\to x_0}f(x,y_0)$&lt;/p&gt;
+&lt;p&gt;全面极限：$\lim_{(x,y)\to (x_0,y_0)}f(x,y)$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意：累次极限的存在和相等并不保证全面极限 $ \lim_{{(x, y) \to (x_0, y_0)}} f(x, y) $ 存在或等于这些累次极限。&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;93多元函数的连续性&#34;&gt;9.3.多元函数的连续性
+&lt;/h3&gt;&lt;h4 id=&#34;931定义&#34;&gt;9.3.1.定义
+&lt;/h4&gt;&lt;p&gt;$\lim_{(x,y)\to (x_0,y_0)}f(x,y)=f(x_0,y_0)$，则称$f(x,y)$在点$(x_0,y_0)$处连续&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;例 2 设函数 $ f(x, y) = \begin{cases}  \frac{x^2 y^2}{x^4 + y^4}, &amp;amp; (x, y) \neq (0, 0), \ 0, &amp;amp; (x, y) = (0, 0). \end{cases} $ 问：$ f(x, y) $ 在何处连续？&lt;/p&gt;
+&lt;p&gt;解 设 $(x_0, y_0)$ 是任意给定的一点。当 $(x_0, y_0) \neq (0, 0)$ 时，$x_0^4 + y_0^4 \neq 0$，并很容易直接证明&lt;/p&gt;
+&lt;p&gt;$ \lim_{{(x, y) \to (x_0, y_0)}} (x^4 + y^4) = x_0^4 + y_0^4, $ $ \lim_{{(x, y) \to (x_0, y_0)}} x^2 y^2 = x_0^2 y_0^2. $&lt;/p&gt;
+&lt;p&gt;应用极限的四则运算法则，我们有&lt;/p&gt;
+&lt;p&gt;$ \lim_{{(x, y) \to (x_0, y_0)}} f(x, y) = \frac{x_0^2 y_0^2}{x_0^4 + y_0^4} = f(x_0, y_0). $&lt;/p&gt;
+&lt;p&gt;因此，$ f(x, y) $ 在点 $(x_0, y_0)$ 处连续。当 $(x_0, y_0) = (0, 0)$ 时，可以按照类似于上一节例 3 的方法证明 $ f(x, y) $ 的极限不存在。事实上，当点 $(x, y)$ 沿直线 $ y = kx $ ($ k $ 为常数) 趋向于点 $(0, 0)$ 时，&lt;/p&gt;
+&lt;p&gt;$ f(x, y) \to \frac{k^2}{1 + k^4}. $ 当 $ k $ 取不同值时，上述极限的值也不同。可见，$ f(x, y) $ 在点 $(0, 0)$ 处不连续。&lt;/p&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;定理 1：设两个二元函数 $ f(x, y) $ 及 $ g(x, y) $ 在一点 $ (x_0, y_0) $ 处连续，则函数 $ f(x, y) \pm g(x, y) $ 及 $ f(x, y) g(x, y) $ 在点 $ (x_0, y_0) $ 处也连续。此外，若 $ g(x_0, y_0) \neq 0 $，则函数 $ \frac{f(x, y)}{g(x, y)} $ 在点 $ (x_0, y_0) $ 处连续。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;定理 2：设函数 $ z = f(x, y) $ 在点 $ (x_0, y_0) $ 附近有定义且在点 $ (x_0, y_0) $ 处连续，又设函数 $ u = g(z) $ 在点 $ z_0 = f(x_0, y_0) $ 附近有定义且在点 $ z_0 $ 处连续，则复合函数 $ u = g(f(x, y)) $ 在点 $ (x_0, y_0) $ 处连续。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;定理 3：二元初等函数在其有定义的区域内是连续的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;定理 4 (有界性定理) : 设函数 $ f $ 在有界闭区域 $ \overline{D} $ 上连续，则 $ f $ 在 $ \overline{D} $ 上有界，即存在常数 $ M &amp;gt; 0 $，使得&lt;/p&gt;
+&lt;p&gt;$ |f(P)| \leq M, \quad \forall P \in \overline{D}. $&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;定理 5 (最大值与最小值定理) : 若函数 $ f $ 在有界闭区域 $ \overline{D} $ 上连续，则 $ f $ 在 $ \overline{D} $ 上达到最大值与最小值，即存在点 $ P_1, P_2 \in \overline{D} $，使得 $ f(P) \leq f(P_1), \quad f(P_2) \leq f(P), \quad \forall P \in \overline{D}. $&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;定理 6 (介值定理) : 设函数 $ f $ 在闭区域 $ \overline{D} $ 上连续，并假定 $ M $ 与 $ m $ 分别是 $ f $ 在 $ \overline{D} $ 上的最大值与最小值，则对于任意的 $ \eta $ ($ m \leq \eta \leq M $)，一定有一点 $ P_0 \in \overline{D} $，使得 $ f(P_0) = \eta $.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;94偏导数与全微分&#34;&gt;9.4.偏导数与全微分
+&lt;/h3&gt;$$
+f_y(x_0,y_0),\quad \frac{\part f(x_0,y_0)}{\part y},\quad \frac{\part z}{\part y}\mid_{(x_0,y_0)}或z_x|_{(x_0,y_0)}
+$$&lt;h4 id=&#34;941高阶偏导数&#34;&gt;9.4.1.高阶偏导数
+&lt;/h4&gt;$$
+f_{xx}(x,y),\frac{\part^2f}{\part x^2},\frac{\part^2z}{\part x^2}或z_{xx};\quad f_{xy}(x,y),\frac{\part^2f}{\part x \part y},\frac{\part^2z}{\part x \part y}或z_{xy}(先x后y);\\
+f_{yx}(x,y),\frac{\part^2f}{\part y \part x},\frac{\part^2z}{\part y \part x}或z_{yx}(先y后x); \quad f_{yy}(x,y),\frac{\part^2f}{\part y^2},\frac{\part^2z}{\part y^2}或z_{yy};
+$$&lt;p&gt;
+这里$f_{xy}(x,y)及f_{yx}(x,y)$称作&lt;strong&gt;二阶混合偏导数&lt;/strong&gt;，若两混合偏导数在区域D内连续，则两者相等，混合偏导数与次序无关。求高阶偏导就是依次求导数&lt;/p&gt;
+&lt;p&gt;用$C^n(D)$表示区域D内全体函数$f(x,y)$组成的集合。拉普拉斯算子$\Delta=\frac{\part^2}{\part x^2}+\frac{\part^2}{\part y^2}+\frac{\part^2}{\part z^2}+\cdots$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意复合函数和多元函数导数的区别！&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;942全微分&#34;&gt;9.4.2.全微分
+&lt;/h4&gt;$$
+\Delta z=f(x+\Delta x,y+\Delta y)-f(x,y)\\
+可写作：\delta z=A\Delta y+B\Delta y+o(\rho),\quad \rho \to 0\\
+全微分,记作dz。\quad dz=A\Delta x+B\Delta y
+$$&lt;p&gt;
+&lt;strong&gt;可微一定连续，可微一定可(偏)导，但反过来不一定成立，连续和可导也没有必然关系，但是对于多元初等函数而言，在其有定的区域内只要偏导存在就一定可微&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;但是若导函数$f_x(x,y)与f_y(x,y)$在该点某个领域存在，并且两个偏导数在该点处连续，则函数在该点处可微。&lt;/p&gt;
+&lt;hr&gt;
+$$
+\begin{aligned}
+f_x(0,0)&amp;=\lim_{x\to0}\frac{f(x,0)-f(0,0)}{x-0}=0\\
+f_y(0,0)&amp;=\lim_{y\to0}\frac{f(0,y)-f(0,0)}{y-0}=0\\
+\Delta u&amp;=|\Delta x \sin\Delta y|\\
+判定可微&amp;:\frac{\Delta u-[f_x(0,0)\Delta x+f_y(0,0)\Delta y]}{\sqrt{\Delta x^2+\Delta y^2}}\\
+&amp;=\frac{|\Delta x\sin \Delta y|}{\sqrt{\Delta x^2+\Delta y^2}}(夹逼定理或者无穷小量乘有界量)\\
+&amp;\leq\frac{\Delta x\Delta y}{\sqrt{\Delta x^2+\Delta y^2}}\leq \rho \to 0\\
+&amp;按照定义，该函数在(0,0)可微
+\end{aligned}
+$$&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;连续可导不一定可微&lt;/strong&gt;：函数 $ f(x, y) = \sqrt{|xy|} $ 在 $(0,0)$ 连续，$ f_x(0,0) $，$ f_y(0,0) $ 存在，但 $ f(x, y) $ 在 $(0,0)$ 不可微。&lt;/p&gt;
+&lt;p&gt;证明: $ |f(x, y) - f(0, 0)| = \sqrt{|xy|} \leq \sqrt{\frac{x^2 + y^2}{2}}. $ 对 $\forall \varepsilon &amp;gt; 0$, 取 $\delta = \sqrt{2\varepsilon}$, 当 $\sqrt{x^2 + y^2} &amp;lt; \delta = \sqrt{2\varepsilon}$ 时, $ |f(x, y) - f(0, 0)| &amp;lt; \varepsilon. $ 故 $f(x, y)$ 在 $(0, 0)$ 连续.&lt;/p&gt;
+&lt;p&gt;$ f_x(0,0) = \lim_{x \to 0} \frac{f(0 + x, 0) - f(0, 0)}{x} = \lim_{x \to 0} \frac{0 - 0}{x} = 0. $&lt;/p&gt;
+&lt;p&gt;$ f_y(0,0) = \lim_{y \to 0} \frac{f(0, 0 + y) - f(0, 0)}{y} = \lim_{y \to 0} \frac{0 - 0}{y} = 0. $&lt;/p&gt;
+&lt;p&gt;$ \Delta z = f(0 + \Delta x, 0 + \Delta y) - f(0, 0) = \sqrt{|\Delta x \Delta y|}. $&lt;/p&gt;
+&lt;p&gt;$ \lim_{{\Delta x \to 0 \ \Delta y \to 0}} \frac{\Delta z - f_x(0, 0) \Delta x - f_y(0, 0) \Delta y}{\sqrt{\Delta x^2 + \Delta y^2}} = \lim_{{\Delta x \to 0 \ \Delta y \to 0}} \frac{\sqrt{|\Delta x \Delta y|}}{\sqrt{\Delta x^2 + \Delta y^2}}. $ （不存在）&lt;/p&gt;
+&lt;p&gt;当 $(\Delta x, \Delta y)$ 沿着 $\Delta y = k \Delta x$ 趋于 $(0, 0)$ 时， $ \lim_{{\Delta x \to 0 \ \Delta y = k \Delta x}} \frac{\sqrt{|\Delta x \Delta y|}}{\sqrt{\Delta x^2 + \Delta y^2}} = \lim_{{\Delta x \to 0 \ \Delta y = k \Delta x}} \frac{\sqrt{|k \Delta x^2|}}{\sqrt{\Delta x^2 + k^2 \Delta x^2}} = \frac{\sqrt{|k|}}{\sqrt{1 + k^2}}. $&lt;/p&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20241220154841389.png&#34; alt=&#34;image-20241220154841389&#34; style=&#34;zoom:33%;&#34; /&gt;
+$$
+当 (\Delta x, \Delta y) 沿着 \Delta y = k \Delta x 趋于 (0, 0) 时，\\ \lim_{{\Delta x \to 0  \Delta y = k \Delta x}} \frac{{|\Delta x \Delta y|}}{\sqrt{\Delta x^2 + \Delta y^2}} = \lim_{{\Delta x \to 0  \Delta y = k \Delta x}} \frac{{|k \Delta x^2|}}{\sqrt{\Delta x^2 + k^2 \Delta x^2}} = \frac{\sqrt{|k|}}{\sqrt{1 + k^2}} \neq0.故不连续
+$$&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20241220154904309.png&#34; alt=&#34;image-20241220154904309&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;p&gt;&lt;strong&gt;连续不一定可导&lt;/strong&gt;：如一元函数&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;95复合函数微分法一阶全微分的形式不变性与高阶微分&#34;&gt;9.5.复合函数微分法，一阶全微分的形式不变性与高阶微分
+&lt;/h3&gt;&lt;h4 id=&#34;951复合函数微分法&#34;&gt;9.5.1.复合函数微分法
+&lt;/h4&gt;$$
+\frac{\partial z}{\partial x} = \frac{\partial f}{\partial u} \cdot \frac{\partial u}{\partial x} + \frac{\partial f}{\partial v} \cdot \frac{\partial v}{\partial x}, \\ \frac{\partial z}{\partial y} = \frac{\partial f}{\partial u} \cdot \frac{\partial u}{\partial y} + \frac{\partial f}{\partial v} \cdot \frac{\partial v}{\partial y}.
+$$&lt;p&gt;
+&lt;img src=&#34;C:\Users\Parzival\OneDrive\文档\WeChat Files\wxid_3bfz3fqln2se12\FileStorage\Temp\3f595653bef134cb2807a062d639e70.jpg&#34; alt=&#34;3f595653bef134cb2807a062d639e70&#34; style=&#34;zoom: 33%;&#34; /&gt;&lt;/p&gt;
+&lt;h4 id=&#34;952一阶全微分的形式不变性&#34;&gt;9.5.2.一阶全微分的形式不变性
+&lt;/h4&gt;$$
+dz = f_u \, du + f_v \, dv.
+$$&lt;p&gt;
+作为一截全微分的形式不变性的应用，我们给出下列公式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;$ d(u \pm v) = du \pm dv $&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$ d(cu) = c , du $ (c 为常数)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$ d(uv) = v , du + u , dv $&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$ d\left(\frac{u}{v}\right) = \frac{v , du - u , dv}{v^2} $ ($ v \neq 0 $)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$ d(f(u)) = f&amp;rsquo;(u) , du $&lt;/p&gt;
+&lt;p&gt;其中 $ u, v $ 是 $(x, y)$ 的可微函数，$ f $ 是一元可微函数。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;953高阶微分&#34;&gt;9.5.3.高阶微分
+&lt;/h4&gt;$$
+d^n(x,y)=(dx\frac{\part}{\part x}+d y\frac{\part}{\part y})^n f
+$$&lt;hr&gt;
+$$
+\begin{aligned}
+\frac{\part u}{\part x} &amp; = f&#39;_{1} \frac{\part \xi }{\part x}+f&#39;_2\frac{\part \eta}{\part x}\\
+&amp; =f&#39;_1\cdot e^x\cos y +f&#39;_2\cdot e^x \sin y\\
+\frac{\part^2 u}{\part x^2}&amp;=e^x\cos y\cdot(f&#39;&#39;_{11}\frac{\part \xi}{\part x}+f&#39;&#39;_{12}\frac{\part \eta}{\part x})+e^x\sin y\cdot(f&#39;&#39;_{21}\frac{\part \xi}{\part x}+f&#39;&#39;_{22}\frac{\part \eta}{\part x})+e^x(f&#39;_1 \cos y+f&#39;_2\sin x)\\
+&amp;=e^{2x}(f&#39;&#39;_{11}\cos^2 x+f&#39;&#39;_{12}\sin y \cos y+f&#39;&#39;_{21}\sin y\cos y+f&#39;&#39;_{22}\sin^2 y )+e^x(f&#39;_1 \cos y+f&#39;_2\sin x)\\
+\frac{\part^2 u }{\part y^2}&amp;=-e^x(f&#39;_1\cos y +f_2&#39; \sin y)+e^{2x}[f&#39;&#39;_{11}\sin^2y-\sin y \cos y(f&#39;&#39;_{12}+f&#39;&#39;_{21}+f&#39;&#39;_{22}\cos^2 y )].
+\end{aligned}
+$$&lt;hr&gt;
+&lt;h3 id=&#34;96方向导数与梯度&#34;&gt;9.6.方向导数与梯度
+&lt;/h3&gt;&lt;h4 id=&#34;961方向导数&#34;&gt;9.6.1.方向导数
+&lt;/h4&gt;$$
+\lim_{t \to 0} \frac{f(x_0 + t \cos\alpha, y_0 + t \cos\beta) - f(x_0, y_0)}{t}
+$$$$
+\left. \frac{\partial z}{\partial \vec{l}} \right|_{(x_0, y_0)}, \quad \left. \frac{\partial f}{\partial\vec{l}} \right|_{(x_0, y_0)}, \quad \left. \frac{\partial z}{\partial \vec{l}} \right|_{P_0}, \quad \text{或} \quad \left. \frac{\partial f}{\partial \vec{l}} \right|_{P_0}.
+$$$$
+\frac{\part f}{\part \vec{l}}\Bigg|_{P_0}=f_x(x_0,y_0)\cos \alpha +f_y(x_0,y_0)\cos\beta\\
+\alpha为\vec{l}与x轴夹角，\beta为\vec{l}与y轴夹角
+$$&lt;h4 id=&#34;962梯度&#34;&gt;9.6.2.梯度
+&lt;/h4&gt;$$
+\mathrm{grad} \, f|_{P_0}=(f_x(x_0,y_0),f_y(x_0,y_0)\,)
+$$&lt;h3 id=&#34;97多元函数的微分中值定理与泰勒公式&#34;&gt;9.7.多元函数的微分中值定理与泰勒公式
+&lt;/h3&gt;&lt;h4 id=&#34;971微分中值定理&#34;&gt;9.7.1.微分中值定理
+&lt;/h4&gt;$$
+f(x_0 + \Delta x, y_0 + \Delta y) = f(x_0, y_0) + \frac{\partial f}{\partial x}(x_0 + \theta \Delta x, y_0 + \theta \Delta y) \Delta x-\frac{\partial f}{\partial y}(x_0 + \theta \Delta x, y_0 + \theta \Delta y) \Delta y.
+$$&lt;p&gt;
+这就是二元函数的拉格朗日中值公式。&lt;/p&gt;
+&lt;h4 id=&#34;972泰勒公式&#34;&gt;9.7.2.泰勒公式
+&lt;/h4&gt;$$
+\begin{aligned}
+f(x_0 + \Delta x, y_0 + \Delta y) = &amp;f(x_0, y_0) + \frac{1}{1!} df(x_0, y_0) \\
+&amp;+\frac{1}{2!} d^2 f(x_0, y_0) + \cdots + \frac{1}{n!} d^n f(x_0, y_0) \\&amp;+ \frac{1}{(n+1)!} d^{n+1} f(x_0 + \theta \Delta x, y_0 + \theta \Delta y),
+\end{aligned}
+$$$$
+d^k f = \left( \Delta x \frac{\partial}{\partial x} + \Delta y \frac{\partial}{\partial y} \right)^k f, \quad k = 1, 2, \cdots, n+1.\\ R_n = \frac{1}{(n + 1)!} \mathrm{d}^{n+1} f(x_0 + \theta \Delta x, y_0 + \theta \Delta y)或者R_n=o(\rho^n)
+\quad(\rho \to 0)(\quad\rho=\sqrt{\sum_{i=1}^n(x_i-a_i)^2}\quad)
+$$&lt;p&gt;
+&lt;strong&gt;做题技巧：直接将多元视为一元&lt;/strong&gt;，否则采取嗯求$(x_0,y_0)$处$n$阶的全部高阶偏导&lt;/p&gt;
+&lt;h3 id=&#34;98隐函数存在定理&#34;&gt;9.8.隐函数存在定理
+&lt;/h3&gt;&lt;p&gt;设函数 $ F(x, y) $ 在点 $ P_0(x_0, y_0) $ 的某个邻域内有定义，并且满足下列条件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;$ F(x_0, y_0) = 0 $;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$ F_x(x, y) $ 及 $ F_y(x, y) $ 连续，并且 $ F_y(x_0, y_0) \neq 0 $,&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+$$
+ f&#39;(x) = -\frac{F_x(x, y)}{F_y(x, y)} \quad (y = f(x)). 
+$$$$
+\begin{cases}
+F(x,u,v)=0,\\
+G(x,u,v)=0,
+\end{cases}
+$$&lt;p&gt;
+可确定隐函数$u=u(x)$和$v=v(x)$?&lt;/p&gt;
+$$
+ \begin{cases} F(x, u(x), v(x)) = 0, \\ G(x, u(x), v(x)) = 0. \end{cases} 
+$$&lt;hr&gt;
+$$
+ \begin{cases} x^2 + y^2 - uv = 0, \\ xy + u^2 - v^2 = 0 \end{cases} 
+$$&lt;p&gt;
+能否确定 $u$ 和 $v$ 为 $(x, y)$ 的函数？在能确定隐函数的条件下，求 $u_x, v_x, u_y$ 及 $v_y$。&lt;/p&gt;
+$$
+ \frac{D(F, G)}{D(u, v)} = \begin{vmatrix} -v &amp; -u \\ 2u &amp; -2v \end{vmatrix} = 2(u^2 + v^2). 
+$$&lt;p&gt;
+当 $(x, y) \neq (0, 0)$ 时，满足所给方程组的 $u, v$ 不同时为零，也就有 $\frac{D(F, G)}{D(u, v)} \neq 0$，从而在点 $(x, y)$ 的某个邻域内能确定隐函数 $u = u(x, y)$ 及 $v = v(x, y)$。&lt;/p&gt;
+$$
+ \begin{cases} 2x - u_x v - u v_x = 0, \\ y + 2u u_x - 2v v_x = 0. \end{cases} 
+$$$$
+ u_x = \frac{4xv - yu}{2(u^2 + v^2)}, \quad v_x = \frac{4xu + vy}{2(u^2 + v^2)}, \quad u^2 + v^2 \neq 0. 
+$$&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;雅可比行列式大于零则证明方程于该点的逆映射存在&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;99极值问题&#34;&gt;9.9.极值问题
+&lt;/h3&gt;$$
+f_x(x_0,y_0)=0,\quad f_y(x_0,y_0)=0.
+$$$$
+f_x(x_0,y_0)=0,\quad f_y(x_0,y_0)=0.
+$$$$
+A=\frac{\part^2f}{\part x^2}(x_0,y_0),\quad B=\frac{\part^2f}{\part x\part y}(x_0,y_0),\quad C=\frac{\part^2 f}{\part y^2}(x_0,y_0).
+$$&lt;p&gt;
+若$B^2&amp;lt;AC,则当A&amp;gt;0时，f(x_0,y_0)是极小值；而当A&amp;lt;0时,f(x_0,y_0)是极大值.$&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;条件&lt;/th&gt;
+          &lt;th&gt;是否为极值点&lt;/th&gt;
+          &lt;th&gt;极值点类型&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$B^2 &amp;lt; AC  且  A &amp;gt; 0$&lt;/td&gt;
+          &lt;td&gt;是&lt;/td&gt;
+          &lt;td&gt;极小值点&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$B^2 &amp;lt; AC  且  A &amp;lt; 0$&lt;/td&gt;
+          &lt;td&gt;是&lt;/td&gt;
+          &lt;td&gt;极大值点&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$B^2 &amp;gt; AC$&lt;/td&gt;
+          &lt;td&gt;否&lt;/td&gt;
+          &lt;td&gt;不是极值点&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$B^2 = AC$&lt;/td&gt;
+          &lt;td&gt;未定&lt;/td&gt;
+          &lt;td&gt;未定&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;条件极值&lt;/strong&gt;&lt;/p&gt;
+$$
+z=f(x,y)
+$$$$
+\varphi(x,y)=0
+$$$$
+\begin{cases}
+f_x+\lambda \varphi_x=0,\\
+f_y+\lambda \varphi_y=0,\\
+\varphi(\,x,\,y)=0.
+\end{cases}
+$$&lt;p&gt;
+三元函数类似。&lt;/p&gt;
+&lt;h3 id=&#34;910曲面论初步&#34;&gt;9.10.曲面论初步
+&lt;/h3&gt;$$
+\begin{cases}
+x=x(u,v),\\
+y=y(u,v),\\
+z=z(u,v).\\
+\end{cases}
+$$$$
+\vec{r}=\vec{r}(u,v)\equiv (x(u,v),\,y(u,v),\,z(u,v)\,).
+$$&lt;p&gt;
+只要$\vec{r}_u=(x_u(u,v),,y_u(u,v),,z_u(u,v),)及\vec{r}_v=(x_v(u,v),,y_v(u,v),,z_v(u,v),)存在且\vec{r}_u\times\vec{r}_v\neq 0$&lt;/p&gt;
+&lt;h4 id=&#34;9101曲面的切平面与法向量&#34;&gt;9.10.1.曲面的切平面与法向量
+&lt;/h4&gt;&lt;p&gt;$法方向:\vec{n}=(,F_x(x_0,y_0,z_0),,F_y(x_0,y_0,z_0),, F_z(x_0,y_0,z_0)).$&lt;/p&gt;
+$$
+F_x(x_0,y_0,z_0)(x-x_0)+F_y(x_0,y_0,z_0)(y-y_0)+F_z(x_0,y_0,z_0)(z-z_0)=0.
+$$$$
+l_1=\begin{cases}
+x=x(u,v_0),\\
+y=y(u,v_0),\\
+z=z(u,v_0)
+\end{cases}\\
+及\\
+l_2=\begin{cases}
+x=x(u_0,v),\\
+y=y(u_0,v),\\
+z=z(u_0,v).
+\end{cases}\\
+\vec{n}=\vec{r}_u\times\vec{r}_v=\begin{vmatrix} \vec{i} &amp; \vec{j} &amp; \vec{k}\\
+x_u &amp; y_u &amp; z_u\\
+x_v &amp; y_v &amp; z_v
+\end{vmatrix}_{(u_0,v_0)}.\\
+\vec{n}=\left( \frac{D(y,z)}{D(u,v)},\frac{D(z,x)}{D(u,v)},\frac{D(x,y)}{D(u,v)}\right ) \bigg|_{u_0,v_0}
+\\可简易表达为\\
+\begin{vmatrix}
+x-x_0 &amp; y-y_0 &amp; z-z_0\\
+x_u &amp; y_u &amp; z_u\\
+x_v &amp; y_v &amp; z_v
+\end{vmatrix}_{(u_0,v_0)}=0.
+$$&lt;p&gt;
+在没有显函数描述xyz关系的时候可以使用上述方法。&lt;/p&gt;
 </description>
         </item>
         <item>
