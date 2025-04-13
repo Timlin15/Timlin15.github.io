@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="高效算法与棘手问题">
+<title>CS170</title>
+
+<link rel='canonical' href='https://Timlin15.github.io/p/cs170/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="CS170">
+<meta property='og:description' content="高效算法与棘手问题">
+<meta property='og:url' content='https://Timlin15.github.io/p/cs170/'>
+<meta property='og:site_name' content='知言的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='数学' /><meta property='article:tag' content='CS' /><meta property='article:tag' content='算法' /><meta property='article:published_time' content='2025-04-14T00:14:25&#43;08:00'/><meta property='article:modified_time' content='2025-04-14T00:14:25&#43;08:00'/>
+<meta name="twitter:title" content="CS170">
+<meta name="twitter:description" content="高效算法与棘手问题">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu14212241814925016602.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">⌨️</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">知言的博客</a></h1>
+            <h2 class="site-description">努力学习</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='mailto:Timlinjq@gmail.com'
+                        target="_blank"
+                        title="Email"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/Timlin15'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>档案</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://Timlin15.github.io/en/" >English</option>
+                                
+                                    <option value="https://Timlin15.github.io/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#分治法">分治法</a>
+      <ul>
+        <li><a href="#加法与乘法">加法与乘法</a></li>
+        <li><a href="#主定理">主定理</a></li>
+        <li><a href="#确定性算法">确定性算法</a></li>
+        <li><a href="#快速傅里叶变换">快速傅里叶变换</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#图论">图论</a>
+      <ul>
+        <li><a href="#dfs">DFS</a>
+          <ul>
+            <li><a href="#有向无环图">有向无环图</a></li>
+            <li><a href="#strongly-connected-component">Strongly Connected Component</a></li>
+            <li><a href="#转化算法kosaraju">转化算法(Kosaraju)</a></li>
+          </ul>
+        </li>
+        <li><a href="#path-in-graph">Path in Graph</a>
+          <ul>
+            <li><a href="#bst">BST</a></li>
+            <li><a href="#dijkstra-algorithm">Dijkstra algorithm</a></li>
+            <li><a href="#由负权重边时">由负权重边时</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#贪心算法">贪心算法</a>
+      <ul>
+        <li><a href="#minimum-spanning-tree">Minimum Spanning Tree</a>
+          <ul>
+            <li><a href="#kruskals-algorithm">Kruskal&rsquo;s algorithm</a></li>
+            <li><a href="#disjoint-sets的数据结构">Disjoint Sets的数据结构</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E7%AC%94%E8%AE%B0/" style="background-color: #2a9d8f; color: #fff;">
+                笔记
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/cs170/">CS170</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            高效算法与棘手问题
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-04-14</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 6 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="cs170">CS170
+</h1><h2 id="分治法">分治法
+</h2><p>分治法分为三步：</p>
+<ol>
+<li>将大问题分解为小的同类问题</li>
+<li>递归解决小问题</li>
+<li>将小问题结合</li>
+</ol>
+<h3 id="加法与乘法">加法与乘法
+</h3>$$
+1234\cdots N +
+1234\cdots N
+$$<p>
+相加的时间复杂度最小是$O(N)$，但是一般不会计算加法的时间复杂度，只有在一些数字位数极大的领域才会考虑数字位数的影响，如密码学等，否则将加法视为常数时间。</p>
+$$
+1234\cdots N \times
+1234\cdots N
+$$<p>
+使用小学教的竖式法，对于每一个位数都要乘以乘数的所有N位数，所以时间复杂度是$O(N^2)$。那有没有更快的方法呢。</p>
+$$
+1234\cdots|\cdots N \times 1234\cdots|\cdots N
+$$$$
+\begin{aligned}
+AB\times CD=&(A\times 10^{\frac N2} + B)\times (C\times 10^{\frac N2}+D)\\
+=&AC\times 10^N+(AD+BC)\times 10^{\frac N2} + CD
+\end{aligned}
+$$$$
+T(n)=\begin{cases}
+C &n=1\\
+4\cdot T(\frac n2)+ C\cdot n &n>1
+\end{cases}
+$$<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250408172534466.png" alt="image-20250408172534466" style="zoom: 33%;" />
+$$
+\begin{aligned}
+T(n)&=4\times T(\frac n2) + CN
+\\&=4\times [4\times T(\frac{n}{4})+C\frac n2]+ Cn
+\\&\,\,\,\vdots
+\\&=4^{\log_{2}n}\times T(1)+Cn + 2Cn + 4Cn +\cdots 2^{\log_2n}\cdot Cn\\
+&=n^2+ Cn\frac{1-2^{\log_2n+1}}{1-2}\\
+&=n^2+Cn(2n-1)\\
+&=O(n^2)
+\end{aligned}
+$$
+从上往下拆分，每下降一级$T(n)$会变成四份$T(\frac n2)$，并且加上一份与$n$线性相关的$Cn$项来计算求和等工作，每次拆分都会产生一份常数项，到最小的时候$T(n)$为常数项，利用数列求和公式算出其时间复杂度是$O(n^2)$。那这有什么用，如果分治法和最普通的方法时间复杂度相同的话。这时便是Karatsuba算法发挥作用到时候了：
+$$
+AD+BC = (A+B)(C+D)-AB-CD
+$$
+因为我们要计算$AB$和$CD$的大小，可以利用这个关系将计算四项乘法的目标改为计算三项$(A+B)(C+D)$和$AB,CD$。于是可以将递推公式优化为：
+$$
+T(n)=3T(\frac n2)+Cn\quad n>1
+$$
+则树的高度仍为$\log_2n$，但是项数变为$3^{\log_2{n}}$
+$$
+\begin{aligned}
+T(n)&=3\times T(\frac n2) + CN
+\\&=3\times [3\times T(\frac{n}{4})+C\frac n2]+ Cn
+\\&\,\,\,\vdots
+\\&=3^{\log_{2}n}\times T(1)+Cn + \frac 32Cn + (\frac 32)^2Cn +\cdots (\frac 32)^{\log_2{3}}\cdot Cn\\
+&=e^{\frac{\ln n}{\ln2}\ln3}+ Cn\frac{1-(\frac 32)^{\log_2n+1}}{1-\frac 32}\\
+&=n^{\log_2{3}}+Cn(3\cdot(\frac32)^{\log_2{n}}-2)\\
+&=n^{\log_2{3}}+Cn(3\frac{n^{\log_2{3}}}{n}-2)\\
+&=n^{\log_2{3}}+3Cn^{\log_2{3}}-2Cn\\
+&=O(n^{\log_2{3}})\approx O(1.59)
+\end{aligned}
+$$
+<h3 id="主定理">主定理
+</h3>$$
+T(n)=\begin{cases}
+O(n^d) &d>\log_b{a}\\
+O(n^d\log{n}) &d=\log_b{a}\\
+O(n^{\log_b{a}}) &d<\log_ba
+\end{cases}
+$$$$
+\begin{aligned}
+T(n)&=a\cdot T(\frac nb)+Cn^d\\
+&=a[a\cdot T(\frac{n}{b^2})+C(\frac nb)^d]+Cn^d\\
+&\,\,\,\vdots\\
+&=a^{\log_bn}\cdot T(1)+Cn^d+Cn^{d}(\frac a{b^d})+\cdots+Cn^d(\frac a{b^d})^{\log_bn-1}\\
+&=n^{\log_ba}+Cn^d+Cn^{d}(\frac a{b^d})+\cdots+Cn^d(\frac a{b^d})^{\log_bn-1}\\
+\end{aligned}
+$$<p>
+这导致了三种不同情况：</p>
+<ol>
+<li>等比公式公比等于1，即$\frac{a}{b^d}=1,d=\log_ba$</li>
+</ol>
+$$
+\begin{aligned}
+原式&=n^{\log_ba}+Cn^d\log_bn\\
+&\because d=\log_ba\\
+&\therefore n^{\log_ba}=n^d\\
+&=(C+1)n^d\log_bn\\
+&=O(n^d\log_bn)
+\end{aligned}
+$$<ol start="2">
+<li>
+$$
+    \begin{aligned}
+    原式&=n^{\log_ba}+Cn^d\frac{1-(\frac a{b^d})^{\log_bn}}{1-\frac{a}{b^d}}\\
+    \end{aligned}
+    $$<ul>
+<li>
+$$
+        \begin{aligned}
+        原式&=O(n^d)
+        \end{aligned}
+        $$</li>
+<li>
+$$
+        \begin{aligned}
+        原式&=n^{\log_ba}+C\frac{n^d-n^{\log_ba}}{1-\frac{a}{b^d}}\\
+        &=n^{\log_ba}+C'n^{\log_ba}-C'n^d\\
+        &=O(n^{\log_ba})
+        \end{aligned}
+        $$</li>
+</ul>
+</li>
+</ol>
+<p>真是一场酣畅淋漓的数列大题(逃)</p>
+<p>有了这个公式，可以将绝大部分的分治法性能分析用套公式代替。</p>
+<h3 id="确定性算法">确定性算法
+</h3><p>确定性算法（Deterministic Algorithm）指的是在相同输入下，总能按照预先设定好的算法步骤产生相同输出的算法，也就是说，它在执行过程中没有任何随机性或不确定性。有别于随机算法（如 Las Vegas 或 Monte Carlo 算法），Monte Carlo算法有可能有高性能但是有部分概率会失败，Las Vegas算法能保证算法正确但是时间可能有不同。</p>
+<p><strong>Quick Select</strong>就是一种确定性算法，目的是挑选第k大的数字。有着线性的时间复杂度。</p>
+$$
+\begin{cases}
+\text{if}\,\,k \le |L|\text{: return Select(L,k)}\\
+\text{if}\,\,k = |L|+1\text{: return pivot}\\
+\text{else}\text{: return Select(R,k-|L|-1)}\\
+\end{cases}
+$$$$
+T(n)\leq T(\frac{7n}{10})+T(\frac{n}{5})+Cn
+$$$$
+T(\frac n5)+T(\frac{7n}{10})+Cn\leq Kn
+\\\leq K\frac 5n+K\frac{7n}{10}+Cn\leq Kn\\
+K\geq10C
+$$<h3 id="快速傅里叶变换">快速傅里叶变换
+</h3><p>研究完整数乘法后，我们来研究多项式乘法，有多项式$A(x)=a_0+a_1x+\cdots+a_dx^{d-1}$和$B(x)=b_0+b_1+\cdots+b_dx^{d-1}$</p>
+$$
+c_k=a_0b_k+a_1b_{k-1}+\cdots+a_kb_0=\sum_{i=0}^{k}a_ib_{k-1}
+$$<p>
+朴素多项式计算整个$C(n)$需要$\Theta(n^2)$的时间</p>
+<p><strong>多项式的另一种表述</strong></p>
+<p>一个d次的多项式可以表述为d+1个点，我们可以用两种表述确定一个多项式：</p>
+<ol>
+<li>多项式的系数$a_0,a_1,a_2\cdots,a_d$</li>
+<li>$A(x_0),A(x_1)\cdots,A(x_d)$的值</li>
+</ol>
+<h1 id="endbmatrix">$$
+\begin{bmatrix}
+1 &amp; x_0 &amp; x_0^2 &amp; \cdots &amp; x_0^{N-1} \
+1 &amp; x_1 &amp; x_1^2 &amp; \cdots &amp; x_1^{N-1} \
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \
+1 &amp; x_{N-1} &amp; x_{N-1}^2 &amp; \cdots &amp; x_{N-1}^{N-1}
+\end{bmatrix}
+\begin{bmatrix}
+c_0 \
+c_1 \
+\vdots \
+c_{N-1}
+\end{bmatrix}
+</h1><p>\begin{bmatrix}
+y_0 \
+y_1 \
+\vdots \
+y_{N-1}
+\end{bmatrix}
+$$</p>
+<p>快速傅里叶变换通过重叠的点来减少计算。</p>
+<p>评估了一下，本处用到的数学工具不是不熟就是没学到，决定弃置于此，前面的知识以后再来探索吧。包含lec4后半部分和lec5前部分</p>
+<h2 id="图论">图论
+</h2><p>数学上来说，如何表述一个图？</p>
+<p>图G是一个顶点V和边E组成的对$(V,E)$，如果这个图不包含自环(self-loop)，则称这个图为简单图(simple graph)</p>
+<ol>
+<li>
+<p>有向图(Directed Graph)</p>
+<p>$E\subseteq V\times V$，来表示一个有向边</p>
+</li>
+<li>
+<p>无向图</p>
+<p>$E$是无向的点的集合</p>
+</li>
+</ol>
+<p>计算机如何表述一个图？</p>
+<p>比如，对于一个有向无环图(DAG)要如何表示这个图</p>
+<p><img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410102043701.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20250410102043701"
+	
+	
+></p>
+<ol>
+<li>
+$$
+    a_{ij}=\begin{cases}
+    1 \quad \text{如果存在边从}v_i\text{到}v_j\\
+    0 \quad \text{其他情况}
+    \end{cases}
+    $$<p>
+这样子一个图便可以通过一个一个矩阵来表示</p>
+ <img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410101839025.png" alt="image-20250410101839025" style="zoom: 33%;" />
+$$
+    a_{ij}=\begin{cases}
+    w_{ij} &(i,j)\in E\\
+    \infty & (i,j) \notin E
+    \end{cases}
+    $$</li>
+<li>
+<p>通过链表</p>
+ <img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410101906170.png" alt="image-20250410101906170" style="zoom: 50%;" />
+</li>
+</ol>
+<p>性能分析</p>
+<p>对于一个图，我们习惯用<strong>n表示顶点的个数，m表示边的个数</strong>，用$d_u$表示顶点$u$的链表长</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>矩阵法</th>
+          <th>链表法</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>内存消耗</td>
+          <td>$n^2$ bits</td>
+          <td>$n+m$ 字长</td>
+      </tr>
+      <tr>
+          <td>判断$(u,v)\in E$ 的时间复杂度</td>
+          <td>1</td>
+          <td>$d_u+1$</td>
+      </tr>
+      <tr>
+          <td>遍历u的所有邻点的时间复杂度</td>
+          <td>$n$</td>
+          <td>$d_u+1$</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>如果一个图是稠密图，则一般来说矩阵法更内存友好，如果是一个稀疏图，如社交网络，则用链表法表示更内存友好</p>
+<h3 id="dfs">DFS
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">DFS</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">E</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">global</span> <span class="n">V</span><span class="p">,</span> <span class="n">E</span>
+</span></span><span class="line"><span class="cl">    <span class="k">global</span> <span class="n">clock</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">global</span> <span class="n">visited</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>  <span class="c1"># initialize to all False</span>
+</span></span><span class="line"><span class="cl">    <span class="k">global</span> <span class="n">preorder</span><span class="p">,</span> <span class="n">postorder</span> <span class="o">=</span> <span class="nb">int</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">V</span><span class="p">:</span>  <span class="c1"># for each vertex</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="n">visited</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>  <span class="c1"># if it&#39;s not visited yet</span>
+</span></span><span class="line"><span class="cl">            <span class="n">explore</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>  <span class="c1"># we explore the vertex, along with other neighbors</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">explore</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">visited</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">    <span class="n">preorder</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">clock</span><span class="o">++</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># set preorder, then increment clock</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>  <span class="c1"># for each neighboring edge of v</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="n">visited</span><span class="p">[</span><span class="n">w</span><span class="p">]:</span>  <span class="c1"># if it&#39;s not visited yet</span>
+</span></span><span class="line"><span class="cl">            <span class="n">explore</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>  <span class="c1"># recurse and explore the vertex</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">postorder</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">clock</span><span class="o">++</span>  <span class="c1"># set postorder, then increment clock</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>深度优先搜索其实是一个有漫长历史的游戏，希腊神话中，特修斯依靠阿里阿德涅给予的一团线走出复杂迷宫。这是一个有趣的类比，我们也可以使用粉笔和线来解决：</p>
+<ul>
+<li>
+<p><strong>粉笔</strong>：在经过的路口（或者标志点）做记号，避免反复转圈或回到同一个地方时分不清是否来过。</p>
+</li>
+<li>
+<p><strong>团线</strong>：随着你的前进，线会不断从线团上“放出来”，这样一旦你要回头，你可以沿着线原路返回到上一个没探索过的岔路口。</p>
+</li>
+</ul>
+<p>在计算机中，我们可以用一个顶点的布尔值来表示是否被访问过，用栈来表示团线，模拟先进后出的性质。</p>
+<p>在课上，我们用一个preorder和postorder序列来模拟栈，进入该点的时候将preorder设置为时钟值，遍历完该点所有的邻点后退出该点时设置postorder为时钟值，用preorder模拟先进，postorder模拟后出</p>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410142353126.png" alt="image-20250410142353126" style="zoom:50%;" />
+<p>这个算法主要有两大操作：</p>
+<ol>
+<li>固定时间的操作：更新preorder和postorder列表，将Boolean值修改为1</li>
+<li>遍历每一个顶点的边</li>
+</ol>
+<p>所以这个算法的时间复杂度是$O(|V|+|E|)$</p>
+<p><em>Tree Edge</em>是DFS森林的一部分</p>
+<p><em>Forward Edge</em>是从一个父节点指向非子节点的下游的树节点</p>
+<p><em>Back Edge</em>指向一个祖先(Ancestor)节点</p>
+<p><em>Cross Edge</em>是指向一个同级的节点</p>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410143449088.png" alt="image-20250410143449088" style="zoom: 67%;" />
+$$
+pre(u)<pre(v)<post(v)<post(u)
+$$<p>
+由此，我们可以得出$u,v$的关系：</p>
+<img src="C:\Users\Matrix\AppData\Roaming\Typora\typora-user-images\image-20250410143807795.png" alt="image-20250410143807795" style="zoom:67%;" />
+<h4 id="有向无环图">有向无环图
+</h4><p>有向无环图(Directed acyclic graphs, dag for short)是指没有成环的简单图，可以将图简化为$v_0\rightarrow v_1\rightarrow \cdots\rightarrow v_n$</p>
+<p>一个有向图有环的充分必要条件是DFS找到了一条Back Edge。Dag 可用于表示层级结构，依赖关系等。Dag有诸多性质：</p>
+<ol>
+<li>每一条边都指向有更低postorder的顶点</li>
+<li>每一个Dag至少有一个<em>source</em>和一个<em>sink</em></li>
+</ol>
+<p>所以每个Dag中postorder最低的顶点是sink，将边方向反转，则可以求出source顶点</p>
+<h4 id="strongly-connected-component">Strongly Connected Component
+</h4><p>我们认为如果两个顶点$u,v$存在边从$u$到$v$和$v$到$u$，我们称$u,v$是连接的(connected)，可以组成一个<em>Strongly Connected Component</em>(SCC)</p>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410150124347.png" alt="image-20250410150124347" style="zoom:50%;" />
+<p>由此，我们可以将所有有向图转化为一个有向无环图。</p>
+<h4 id="转化算法kosaraju">转化算法(Kosaraju)
+</h4><p>该算法需要解决两个主要问题：</p>
+<ol>
+<li>如何确定一个节点在sink scc中</li>
+<li>找到sink scc后如何继续</li>
+</ol>
+<p>幸运的是，我们可以在线性时间内利用DFS将有向图转化为有向无环图，利用几个性质：</p>
+<ol>
+<li>有着最高postorder的节点一定在源SCC中</li>
+<li>如果$C和C&rsquo;$是两个SCC，且存在一个边从$C$通向$C&rsquo;$，那么$C$中的最高postorder一定高于$C&rsquo;$中的最高的postorder</li>
+</ol>
+<p>所以我们先对原图进行一次dfs，求postorder，然后遵循postorder从大到小遍历反向图。这样我们先会从原图的source scc出发，但是因为是反向图，所以source scc只有指向其自身的边，由此从最大postorder能遍历到的顶点即属于一个scc，依次从小到大，可以求出所有scc。因为该算法实际上是dfs重复多次，因此有线性$O(V+E)$的时间复杂度</p>
+<h3 id="path-in-graph">Path in Graph
+</h3><h4 id="bst">BST
+</h4><p>见CS61B笔记，内容基本重合，此处不再赘述</p>
+<h4 id="dijkstra-algorithm">Dijkstra algorithm
+</h4><p>算法逻辑CS61b也有讲述，此处强调Dijkstra算法分为两步，第一步是加入邻边，第二步是松弛priority queue中距离最小的顶点。一旦松弛了一个点后该点的距离一定是最小的，因为这个点已经是PQ中最小的点了，不会有别的更远的顶点加上边小于松弛的距离了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Q = MakeQ(V, dist)
+</span></span><span class="line"><span class="cl">while Q not empty:
+</span></span><span class="line"><span class="cl">    u = DeleteMin(Q)  // get closest node
+</span></span><span class="line"><span class="cl">    for all edges(u, v):
+</span></span><span class="line"><span class="cl">        if Dist[v] &gt; Dist[u] + length(u, v):
+</span></span><span class="line"><span class="cl">            // find short path to v via u
+</span></span><span class="line"><span class="cl">            Dist[v] = Dist[u] + length(u, v)
+</span></span><span class="line"><span class="cl">            Prev[v] = u    // record new path to u
+</span></span><span class="line"><span class="cl">            DecreaseDist(Q, Dist[v]) // record new dist for v
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>| Implementation | deletemin                                   | insert/decreasekey                        | $ |V| \times \text{deletemin} + (|V| + |E|) \times \text{insert} $ |
+| &mdash;&mdash;&mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; |
+| Array          | $ O(|V|) $                                  | $ O(1) $                                  | $ O(|V|^2) $                                                 |
+| Binary heap    | $ O(\log |V|) $                             | $ O(\log |V|) $                           | $ O((|V| + |E|) \log |V|) $                                  |
+| $ d $-ary heap | $ O\left(\frac{d \log |V|}{\log d}\right) $ | $ O\left(\frac{\log |V|}{\log d}\right) $ | $ O\left((|V| \cdot d + |E|) \frac{\log |V|}{\log d}\right) $ |
+| Fibonacci heap | $ O(\log |V|) $                             | $ O(1) $ (amortized)                      | $ O(|V| \log |V| + |E|) $                                    |</p>
+$$
+\text{cost}=\text{MakeQ}=\text{n}\cdot \text{Insert(Q,v)+n}\cdot\text{cost(DeleteMin)+O(m)+m}\cdot\text{cost(DecreaseDist)}
+$$<p>
+所以时间最短为$ O((|V| + |E|) \log |V|) $</p>
+<h4 id="由负权重边时">由负权重边时
+</h4><p>这时，如果图不是无环图，则可能出现从一个顶点出发走过一个环回到原点的距离为负数的情况，这种时候没有最小距离，因为可以重复这个环无数遍得到一个负无穷大小。</p>
+<p>而对于一个无环图，可以使用拓扑的方式，CS61B有讲。</p>
+<h2 id="贪心算法">贪心算法
+</h2><p>从高层次概括贪心算法就是找到该点的局部最优而不考虑全局，并且不使用暴力搜索的方式找到最优。贪心算法在一定情况下能找到最优解。本章将聚焦几个具体实现</p>
+<h3 id="minimum-spanning-tree">Minimum Spanning Tree
+</h3><p>输入一个加权图，通过那几条便即可找到成本最低的连接全部顶点的方式，可以用于降低网络延迟的网络链接等地方。</p>
+<p>解决这个问题的贪心算法是Kruskal’s minimum spanning tree algorithm，该算法重复以下步骤：</p>
+<ul>
+<li>寻找图中最轻的边，并且这个边不会成环</li>
+</ul>
+<blockquote>
+<p>树是无向图中的连接且无环的图形。正是因为这种简洁性使树十分强大。以下是树的一些性质：</p>
+<ol>
+<li>一个有n个节点的树有n-1个边</li>
+<li>任何链接的无向图G=(V,E)并且具有$|E|=|V|-1$的是一个树</li>
+<li>一个无向图是一个树的充要条件是在任意两点间存在一条独特的路径</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>割(Cut)：假设边X是<code>mst</code> G=(V,E)的一部分，选择节点S的任意子集，使边X不跨过S和V-S，并且令e是跨过这部分的最小边，那么$X\cup {e}$是MST的一部分</p>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250412194653345.png" alt="image-20250412194653345" style="zoom: 67%;" />
+<hr>
+<p>证明：</p>
+<p>边$X$是在MST上的一边，如果边$e$也是MST上的一边的话则直接成立，无需证明；</p>
+$$
+> \text{weight(T')=weight(T)+}w(e)-w(e')
+> $$<p>
+因为有$w(e)\leq w(e&rsquo;),\text{weight}(T&rsquo;)\leq \text{weight}(T)$，因为$T$是一个MST，所以两棵树一定都是MST。可见MST不一定是唯一的。</p>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250412200044172.png" alt="image-20250412200044172" style="zoom:67%;" />
+</blockquote>
+<h4 id="kruskals-algorithm">Kruskal&rsquo;s algorithm
+</h4><p>如上文所述，Kruskal算法的核心即是：</p>
+<ul>
+<li>寻找图中最轻的边，并且这个边不会成环</li>
+</ul>
+<p>我们将图建模为并查集(Disjoint Sets)的集合，最开始所有node都是独立的组成</p>
+<ul>
+<li><code>makeset(x)</code>:创建一个只包含<code>x</code>的<a class="link" href="https://zh.wikipedia.org/wiki/%e5%8d%95%e4%be%8b%e6%a8%a1%e5%bc%8f"  target="_blank" rel="noopener"
+    >单例</a>集合</li>
+<li><code>find(x)</code>:<code>x</code>属于哪个集合</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">procedure kruskal(G, w)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Input:     A connected undirected graph G = (V, E) with edge weights w_e
+</span></span><span class="line"><span class="cl">Output:    A minimum spanning tree defined by the edges X
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">for all u \in V :
+</span></span><span class="line"><span class="cl">    makeset(u)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">X = {} 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Sort the edges $ E $ by weight
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">for all edges {u, v} \in E , in increasing order of weight:
+</span></span><span class="line"><span class="cl">    if find(u) ≠ find(v):
+</span></span><span class="line"><span class="cl">        add edge {u, v} to X 
+</span></span><span class="line"><span class="cl">        union(u, v)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>union(x,y)</code>: 融合包含<code>x</code>和<code>y</code>的两个集合</li>
+</ul>
+<h4 id="disjoint-sets的数据结构">Disjoint Sets的数据结构
+</h4><h5 id="union-by-rank">Union by rank
+</h5><p>储存集合的一种方法使用有向树，树的节点是集合的元素，不存在固定顺序排列。根元素是该集合的一个便捷代表或名称(name)。它与其他元素的不同之处在于，它的父指针指向自身。</p>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250412204532820.png" alt="image-20250412204532820" style="zoom:50%;" />
+<p>除了父指针$\pi$，每个节点还具有一个性质<em>rank</em>，暂时代表在该点的子树(subtree)的高度</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">procedure makeset(x)
+</span></span><span class="line"><span class="cl">	 π(x) = x
+</span></span><span class="line"><span class="cl">	 rank(x) = 0
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">function find(x)
+</span></span><span class="line"><span class="cl">	 while x≠π(x) : x=π(x)
+</span></span><span class="line"><span class="cl">	 return x
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>makeset</code>是常数复杂度，<code>find</code>与树的高度成正比，树实际上还需要一个函数来构建<code>uniun</code>，我们必须要保证这个函数让树保持“浅”。当两个根融合$r_x,r_y$时，为了让树的高度尽可能矮，我们可以让更矮的树的根指向更高的树，通过这种方法，融合的树只有可能在两棵树等高的时候增加。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> procedure union(x,y)
+</span></span><span class="line"><span class="cl"> r_x = find(x)
+</span></span><span class="line"><span class="cl"> r_y = find(y)
+</span></span><span class="line"><span class="cl"> if r_x =r_y: return
+</span></span><span class="line"><span class="cl"> if rank(r_x) &gt; rank(r_y):
+</span></span><span class="line"><span class="cl"> 	π(r_y) = r_x
+</span></span><span class="line"><span class="cl"> else:
+</span></span><span class="line"><span class="cl"> 	π(r_x) = r_y
+</span></span><span class="line"><span class="cl"> 	if rank(r_x) = rank(r_y) : rank(r_y) = rank(r_y)+1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>有如下性质：</p>
+<ol>
+<li>
+<p>对于任意$x$，有$rank(x)&lt;rank(\pi(x))$</p>
+</li>
+<li>
+<p>任何秩为$k$的根节点在其树中都至少有$2^k$个节点</p>
+<hr>
+<p>证明：</p>
+<p>对于<code>makeset</code>产生的节点，秩为0，节点为1，满足$|N|\geq 2^k$，对于基础情况成立</p>
+<p>两个树融合时，设这两棵树都满足上述条件吗，有两种情况：</p>
+<ul>
+<li>两棵高度不同的树融合时：秩不变，节点增加，原来满足，融合后$|N_{融合后}|&gt;|N_{融合前}|\geq 2^k$，符合条件</li>
+<li>两棵秩相同的树融合：$|N_1|\geq 2^k,|N_2|\geq 2^k$，两式相加有$|N_1+N_2|\geq2\times 2^k=2^{k+1}$</li>
+</ul>
+<p>可见对于base case条件成立，推广至任何秩都成立</p>
+</li>
+<li>
+<p>如果总共有$n$个元素，最多有$\frac{n}{2^k}$个秩为$k$的节点</p>
+</li>
+</ol>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250413160742925.png" alt="image-20250413160742925" style="zoom: 50%;" />
+<h5 id="路径压缩">路径压缩
+</h5><p>有了上述数据结构，Kruskal算法的时间复杂度是对于每个边，找到这个边的两端端点在不在同一个树中，然后进行<code>union</code>，每次耗费最多$O(\log{V})$，对每条边都要进行一次，所以时间复杂度是$O(E\cdot \log{V})$。这样的表现似乎已经足够好了，但是在</p>
+<ol>
+<li>边已经预先排好，无需进行排序</li>
+<li>权值较小的情况，可以使用计数排序这种特殊线性排序算法</li>
+</ol>
+<p>这两种情况下数据结构会成为性能瓶颈，所以我们要寻找一种方法让时间复杂度优于$\log{V}$。此时，可以使用路径压缩，即每次调用<code>find</code>函数的时候，将查找路径上的所有点的父节点改为这棵树的根</p>
+<blockquote>
+<p>均摊成本(<em>amortized cost</em>)</p>
+<p>在实际应用中，许多数据结构和算法在最坏情况下某个操作可能会花费较高的时间，但这种情况在连续的多个操作中并不频繁发生。均摊分析正是关注整个操作序列的总开销，然后将总开销均分到每一次操作上，得出“平均”成本。</p>
+<p>并查集在不采用路径压缩等优化时，单次 Find 操作可能为 O(log n)（基于按秩合并）。但当引入路径压缩和其他优化后，均摊成本甚至能摊还到非常低的值，虽然单次操作的实际最坏成本可能较高，但经过均摊分析后，每次操作的平均成本变得十分低。</p>
+</blockquote>
+<p>值得注意的是，路径压缩并不会改变一个节点和根的秩，</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+        
+            <a href="/tags/cs/">CS</a>
+        
+            <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/cs70/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CS70</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/csapp-note/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CSAPP Note</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8A%E5%86%8C%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">高等数学上册笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/cs61b%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CS61B笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/cs61a%E7%AC%94%E8%AE%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CS61A笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src="https://utteranc.es/client.js" 
+        repo=""
+        issue-term="pathname"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    let utterancesLoaded = false;
+
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+
+        
+        utterancesLoaded = true;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (!utterancesLoaded) return;
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 Lin
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

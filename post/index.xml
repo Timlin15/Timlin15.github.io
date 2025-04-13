@@ -7,7 +7,564 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Lin</copyright>
-        <lastBuildDate>Mon, 07 Apr 2025 22:51:30 +0800</lastBuildDate><atom:link href="https://Timlin15.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 14 Apr 2025 00:14:25 +0800</lastBuildDate><atom:link href="https://Timlin15.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>CS170</title>
+        <link>https://Timlin15.github.io/p/cs170/</link>
+        <pubDate>Mon, 14 Apr 2025 00:14:25 +0800</pubDate>
+        
+        <guid>https://Timlin15.github.io/p/cs170/</guid>
+        <description>&lt;h1 id=&#34;cs170&#34;&gt;CS170
+&lt;/h1&gt;&lt;h2 id=&#34;分治法&#34;&gt;分治法
+&lt;/h2&gt;&lt;p&gt;分治法分为三步：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;将大问题分解为小的同类问题&lt;/li&gt;
+&lt;li&gt;递归解决小问题&lt;/li&gt;
+&lt;li&gt;将小问题结合&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;加法与乘法&#34;&gt;加法与乘法
+&lt;/h3&gt;$$
+1234\cdots N +
+1234\cdots N
+$$&lt;p&gt;
+相加的时间复杂度最小是$O(N)$，但是一般不会计算加法的时间复杂度，只有在一些数字位数极大的领域才会考虑数字位数的影响，如密码学等，否则将加法视为常数时间。&lt;/p&gt;
+$$
+1234\cdots N \times
+1234\cdots N
+$$&lt;p&gt;
+使用小学教的竖式法，对于每一个位数都要乘以乘数的所有N位数，所以时间复杂度是$O(N^2)$。那有没有更快的方法呢。&lt;/p&gt;
+$$
+1234\cdots|\cdots N \times 1234\cdots|\cdots N
+$$$$
+\begin{aligned}
+AB\times CD=&amp;(A\times 10^{\frac N2} + B)\times (C\times 10^{\frac N2}+D)\\
+=&amp;AC\times 10^N+(AD+BC)\times 10^{\frac N2} + CD
+\end{aligned}
+$$$$
+T(n)=\begin{cases}
+C &amp;n=1\\
+4\cdot T(\frac n2)+ C\cdot n &amp;n&gt;1
+\end{cases}
+$$&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250408172534466.png&#34; alt=&#34;image-20250408172534466&#34; style=&#34;zoom: 33%;&#34; /&gt;
+$$
+\begin{aligned}
+T(n)&amp;=4\times T(\frac n2) + CN
+\\&amp;=4\times [4\times T(\frac{n}{4})+C\frac n2]+ Cn
+\\&amp;\,\,\,\vdots
+\\&amp;=4^{\log_{2}n}\times T(1)+Cn + 2Cn + 4Cn +\cdots 2^{\log_2n}\cdot Cn\\
+&amp;=n^2+ Cn\frac{1-2^{\log_2n+1}}{1-2}\\
+&amp;=n^2+Cn(2n-1)\\
+&amp;=O(n^2)
+\end{aligned}
+$$
+从上往下拆分，每下降一级$T(n)$会变成四份$T(\frac n2)$，并且加上一份与$n$线性相关的$Cn$项来计算求和等工作，每次拆分都会产生一份常数项，到最小的时候$T(n)$为常数项，利用数列求和公式算出其时间复杂度是$O(n^2)$。那这有什么用，如果分治法和最普通的方法时间复杂度相同的话。这时便是Karatsuba算法发挥作用到时候了：
+$$
+AD+BC = (A+B)(C+D)-AB-CD
+$$
+因为我们要计算$AB$和$CD$的大小，可以利用这个关系将计算四项乘法的目标改为计算三项$(A+B)(C+D)$和$AB,CD$。于是可以将递推公式优化为：
+$$
+T(n)=3T(\frac n2)+Cn\quad n&gt;1
+$$
+则树的高度仍为$\log_2n$，但是项数变为$3^{\log_2{n}}$
+$$
+\begin{aligned}
+T(n)&amp;=3\times T(\frac n2) + CN
+\\&amp;=3\times [3\times T(\frac{n}{4})+C\frac n2]+ Cn
+\\&amp;\,\,\,\vdots
+\\&amp;=3^{\log_{2}n}\times T(1)+Cn + \frac 32Cn + (\frac 32)^2Cn +\cdots (\frac 32)^{\log_2{3}}\cdot Cn\\
+&amp;=e^{\frac{\ln n}{\ln2}\ln3}+ Cn\frac{1-(\frac 32)^{\log_2n+1}}{1-\frac 32}\\
+&amp;=n^{\log_2{3}}+Cn(3\cdot(\frac32)^{\log_2{n}}-2)\\
+&amp;=n^{\log_2{3}}+Cn(3\frac{n^{\log_2{3}}}{n}-2)\\
+&amp;=n^{\log_2{3}}+3Cn^{\log_2{3}}-2Cn\\
+&amp;=O(n^{\log_2{3}})\approx O(1.59)
+\end{aligned}
+$$
+&lt;h3 id=&#34;主定理&#34;&gt;主定理
+&lt;/h3&gt;$$
+T(n)=\begin{cases}
+O(n^d) &amp;d&gt;\log_b{a}\\
+O(n^d\log{n}) &amp;d=\log_b{a}\\
+O(n^{\log_b{a}}) &amp;d&lt;\log_ba
+\end{cases}
+$$$$
+\begin{aligned}
+T(n)&amp;=a\cdot T(\frac nb)+Cn^d\\
+&amp;=a[a\cdot T(\frac{n}{b^2})+C(\frac nb)^d]+Cn^d\\
+&amp;\,\,\,\vdots\\
+&amp;=a^{\log_bn}\cdot T(1)+Cn^d+Cn^{d}(\frac a{b^d})+\cdots+Cn^d(\frac a{b^d})^{\log_bn-1}\\
+&amp;=n^{\log_ba}+Cn^d+Cn^{d}(\frac a{b^d})+\cdots+Cn^d(\frac a{b^d})^{\log_bn-1}\\
+\end{aligned}
+$$&lt;p&gt;
+这导致了三种不同情况：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;等比公式公比等于1，即$\frac{a}{b^d}=1,d=\log_ba$&lt;/li&gt;
+&lt;/ol&gt;
+$$
+\begin{aligned}
+原式&amp;=n^{\log_ba}+Cn^d\log_bn\\
+&amp;\because d=\log_ba\\
+&amp;\therefore n^{\log_ba}=n^d\\
+&amp;=(C+1)n^d\log_bn\\
+&amp;=O(n^d\log_bn)
+\end{aligned}
+$$&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+$$
+    \begin{aligned}
+    原式&amp;=n^{\log_ba}+Cn^d\frac{1-(\frac a{b^d})^{\log_bn}}{1-\frac{a}{b^d}}\\
+    \end{aligned}
+    $$&lt;ul&gt;
+&lt;li&gt;
+$$
+        \begin{aligned}
+        原式&amp;=O(n^d)
+        \end{aligned}
+        $$&lt;/li&gt;
+&lt;li&gt;
+$$
+        \begin{aligned}
+        原式&amp;=n^{\log_ba}+C\frac{n^d-n^{\log_ba}}{1-\frac{a}{b^d}}\\
+        &amp;=n^{\log_ba}+C&#39;n^{\log_ba}-C&#39;n^d\\
+        &amp;=O(n^{\log_ba})
+        \end{aligned}
+        $$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;真是一场酣畅淋漓的数列大题(逃)&lt;/p&gt;
+&lt;p&gt;有了这个公式，可以将绝大部分的分治法性能分析用套公式代替。&lt;/p&gt;
+&lt;h3 id=&#34;确定性算法&#34;&gt;确定性算法
+&lt;/h3&gt;&lt;p&gt;确定性算法（Deterministic Algorithm）指的是在相同输入下，总能按照预先设定好的算法步骤产生相同输出的算法，也就是说，它在执行过程中没有任何随机性或不确定性。有别于随机算法（如 Las Vegas 或 Monte Carlo 算法），Monte Carlo算法有可能有高性能但是有部分概率会失败，Las Vegas算法能保证算法正确但是时间可能有不同。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Quick Select&lt;/strong&gt;就是一种确定性算法，目的是挑选第k大的数字。有着线性的时间复杂度。&lt;/p&gt;
+$$
+\begin{cases}
+\text{if}\,\,k \le |L|\text{: return Select(L,k)}\\
+\text{if}\,\,k = |L|+1\text{: return pivot}\\
+\text{else}\text{: return Select(R,k-|L|-1)}\\
+\end{cases}
+$$$$
+T(n)\leq T(\frac{7n}{10})+T(\frac{n}{5})+Cn
+$$$$
+T(\frac n5)+T(\frac{7n}{10})+Cn\leq Kn
+\\\leq K\frac 5n+K\frac{7n}{10}+Cn\leq Kn\\
+K\geq10C
+$$&lt;h3 id=&#34;快速傅里叶变换&#34;&gt;快速傅里叶变换
+&lt;/h3&gt;&lt;p&gt;研究完整数乘法后，我们来研究多项式乘法，有多项式$A(x)=a_0+a_1x+\cdots+a_dx^{d-1}$和$B(x)=b_0+b_1+\cdots+b_dx^{d-1}$&lt;/p&gt;
+$$
+c_k=a_0b_k+a_1b_{k-1}+\cdots+a_kb_0=\sum_{i=0}^{k}a_ib_{k-1}
+$$&lt;p&gt;
+朴素多项式计算整个$C(n)$需要$\Theta(n^2)$的时间&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;多项式的另一种表述&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;一个d次的多项式可以表述为d+1个点，我们可以用两种表述确定一个多项式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;多项式的系数$a_0,a_1,a_2\cdots,a_d$&lt;/li&gt;
+&lt;li&gt;$A(x_0),A(x_1)\cdots,A(x_d)$的值&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;endbmatrix&#34;&gt;$$
+\begin{bmatrix}
+1 &amp;amp; x_0 &amp;amp; x_0^2 &amp;amp; \cdots &amp;amp; x_0^{N-1} \
+1 &amp;amp; x_1 &amp;amp; x_1^2 &amp;amp; \cdots &amp;amp; x_1^{N-1} \
+\vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \
+1 &amp;amp; x_{N-1} &amp;amp; x_{N-1}^2 &amp;amp; \cdots &amp;amp; x_{N-1}^{N-1}
+\end{bmatrix}
+\begin{bmatrix}
+c_0 \
+c_1 \
+\vdots \
+c_{N-1}
+\end{bmatrix}
+&lt;/h1&gt;&lt;p&gt;\begin{bmatrix}
+y_0 \
+y_1 \
+\vdots \
+y_{N-1}
+\end{bmatrix}
+$$&lt;/p&gt;
+&lt;p&gt;快速傅里叶变换通过重叠的点来减少计算。&lt;/p&gt;
+&lt;p&gt;评估了一下，本处用到的数学工具不是不熟就是没学到，决定弃置于此，前面的知识以后再来探索吧。包含lec4后半部分和lec5前部分&lt;/p&gt;
+&lt;h2 id=&#34;图论&#34;&gt;图论
+&lt;/h2&gt;&lt;p&gt;数学上来说，如何表述一个图？&lt;/p&gt;
+&lt;p&gt;图G是一个顶点V和边E组成的对$(V,E)$，如果这个图不包含自环(self-loop)，则称这个图为简单图(simple graph)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;有向图(Directed Graph)&lt;/p&gt;
+&lt;p&gt;$E\subseteq V\times V$，来表示一个有向边&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;无向图&lt;/p&gt;
+&lt;p&gt;$E$是无向的点的集合&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;计算机如何表述一个图？&lt;/p&gt;
+&lt;p&gt;比如，对于一个有向无环图(DAG)要如何表示这个图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410102043701.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250410102043701&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+$$
+    a_{ij}=\begin{cases}
+    1 \quad \text{如果存在边从}v_i\text{到}v_j\\
+    0 \quad \text{其他情况}
+    \end{cases}
+    $$&lt;p&gt;
+这样子一个图便可以通过一个一个矩阵来表示&lt;/p&gt;
+ &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410101839025.png&#34; alt=&#34;image-20250410101839025&#34; style=&#34;zoom: 33%;&#34; /&gt;
+$$
+    a_{ij}=\begin{cases}
+    w_{ij} &amp;(i,j)\in E\\
+    \infty &amp; (i,j) \notin E
+    \end{cases}
+    $$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过链表&lt;/p&gt;
+ &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410101906170.png&#34; alt=&#34;image-20250410101906170&#34; style=&#34;zoom: 50%;&#34; /&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;性能分析&lt;/p&gt;
+&lt;p&gt;对于一个图，我们习惯用&lt;strong&gt;n表示顶点的个数，m表示边的个数&lt;/strong&gt;，用$d_u$表示顶点$u$的链表长&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;矩阵法&lt;/th&gt;
+          &lt;th&gt;链表法&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;内存消耗&lt;/td&gt;
+          &lt;td&gt;$n^2$ bits&lt;/td&gt;
+          &lt;td&gt;$n+m$ 字长&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;判断$(u,v)\in E$ 的时间复杂度&lt;/td&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;$d_u+1$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;遍历u的所有邻点的时间复杂度&lt;/td&gt;
+          &lt;td&gt;$n$&lt;/td&gt;
+          &lt;td&gt;$d_u+1$&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;如果一个图是稠密图，则一般来说矩阵法更内存友好，如果是一个稀疏图，如社交网络，则用链表法表示更内存友好&lt;/p&gt;
+&lt;h3 id=&#34;dfs&#34;&gt;DFS
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;DFS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;V&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;E&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;global&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;V&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;E&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;global&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clock&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;global&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;visited&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;bool&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# initialize to all False&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;global&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;preorder&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;postorder&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;V&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# for each vertex&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;visited&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]:&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# if it&amp;#39;s not visited yet&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;explore&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# we explore the vertex, along with other neighbors&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;explore&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;visited&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;preorder&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clock&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# set preorder, then increment clock&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;w&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;neighbors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# for each neighboring edge of v&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;visited&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]:&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# if it&amp;#39;s not visited yet&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;explore&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# recurse and explore the vertex&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;postorder&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clock&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# set postorder, then increment clock&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;深度优先搜索其实是一个有漫长历史的游戏，希腊神话中，特修斯依靠阿里阿德涅给予的一团线走出复杂迷宫。这是一个有趣的类比，我们也可以使用粉笔和线来解决：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;粉笔&lt;/strong&gt;：在经过的路口（或者标志点）做记号，避免反复转圈或回到同一个地方时分不清是否来过。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;团线&lt;/strong&gt;：随着你的前进，线会不断从线团上“放出来”，这样一旦你要回头，你可以沿着线原路返回到上一个没探索过的岔路口。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在计算机中，我们可以用一个顶点的布尔值来表示是否被访问过，用栈来表示团线，模拟先进后出的性质。&lt;/p&gt;
+&lt;p&gt;在课上，我们用一个preorder和postorder序列来模拟栈，进入该点的时候将preorder设置为时钟值，遍历完该点所有的邻点后退出该点时设置postorder为时钟值，用preorder模拟先进，postorder模拟后出&lt;/p&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410142353126.png&#34; alt=&#34;image-20250410142353126&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;这个算法主要有两大操作：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;固定时间的操作：更新preorder和postorder列表，将Boolean值修改为1&lt;/li&gt;
+&lt;li&gt;遍历每一个顶点的边&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所以这个算法的时间复杂度是$O(|V|+|E|)$&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Tree Edge&lt;/em&gt;是DFS森林的一部分&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Forward Edge&lt;/em&gt;是从一个父节点指向非子节点的下游的树节点&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Back Edge&lt;/em&gt;指向一个祖先(Ancestor)节点&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Cross Edge&lt;/em&gt;是指向一个同级的节点&lt;/p&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410143449088.png&#34; alt=&#34;image-20250410143449088&#34; style=&#34;zoom: 67%;&#34; /&gt;
+$$
+pre(u)&lt;pre(v)&lt;post(v)&lt;post(u)
+$$&lt;p&gt;
+由此，我们可以得出$u,v$的关系：&lt;/p&gt;
+&lt;img src=&#34;C:\Users\Matrix\AppData\Roaming\Typora\typora-user-images\image-20250410143807795.png&#34; alt=&#34;image-20250410143807795&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;h4 id=&#34;有向无环图&#34;&gt;有向无环图
+&lt;/h4&gt;&lt;p&gt;有向无环图(Directed acyclic graphs, dag for short)是指没有成环的简单图，可以将图简化为$v_0\rightarrow v_1\rightarrow \cdots\rightarrow v_n$&lt;/p&gt;
+&lt;p&gt;一个有向图有环的充分必要条件是DFS找到了一条Back Edge。Dag 可用于表示层级结构，依赖关系等。Dag有诸多性质：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;每一条边都指向有更低postorder的顶点&lt;/li&gt;
+&lt;li&gt;每一个Dag至少有一个&lt;em&gt;source&lt;/em&gt;和一个&lt;em&gt;sink&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所以每个Dag中postorder最低的顶点是sink，将边方向反转，则可以求出source顶点&lt;/p&gt;
+&lt;h4 id=&#34;strongly-connected-component&#34;&gt;Strongly Connected Component
+&lt;/h4&gt;&lt;p&gt;我们认为如果两个顶点$u,v$存在边从$u$到$v$和$v$到$u$，我们称$u,v$是连接的(connected)，可以组成一个&lt;em&gt;Strongly Connected Component&lt;/em&gt;(SCC)&lt;/p&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410150124347.png&#34; alt=&#34;image-20250410150124347&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;由此，我们可以将所有有向图转化为一个有向无环图。&lt;/p&gt;
+&lt;h4 id=&#34;转化算法kosaraju&#34;&gt;转化算法(Kosaraju)
+&lt;/h4&gt;&lt;p&gt;该算法需要解决两个主要问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如何确定一个节点在sink scc中&lt;/li&gt;
+&lt;li&gt;找到sink scc后如何继续&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;幸运的是，我们可以在线性时间内利用DFS将有向图转化为有向无环图，利用几个性质：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;有着最高postorder的节点一定在源SCC中&lt;/li&gt;
+&lt;li&gt;如果$C和C&amp;rsquo;$是两个SCC，且存在一个边从$C$通向$C&amp;rsquo;$，那么$C$中的最高postorder一定高于$C&amp;rsquo;$中的最高的postorder&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所以我们先对原图进行一次dfs，求postorder，然后遵循postorder从大到小遍历反向图。这样我们先会从原图的source scc出发，但是因为是反向图，所以source scc只有指向其自身的边，由此从最大postorder能遍历到的顶点即属于一个scc，依次从小到大，可以求出所有scc。因为该算法实际上是dfs重复多次，因此有线性$O(V+E)$的时间复杂度&lt;/p&gt;
+&lt;h3 id=&#34;path-in-graph&#34;&gt;Path in Graph
+&lt;/h3&gt;&lt;h4 id=&#34;bst&#34;&gt;BST
+&lt;/h4&gt;&lt;p&gt;见CS61B笔记，内容基本重合，此处不再赘述&lt;/p&gt;
+&lt;h4 id=&#34;dijkstra-algorithm&#34;&gt;Dijkstra algorithm
+&lt;/h4&gt;&lt;p&gt;算法逻辑CS61b也有讲述，此处强调Dijkstra算法分为两步，第一步是加入邻边，第二步是松弛priority queue中距离最小的顶点。一旦松弛了一个点后该点的距离一定是最小的，因为这个点已经是PQ中最小的点了，不会有别的更远的顶点加上边小于松弛的距离了。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Q = MakeQ(V, dist)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;while Q not empty:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    u = DeleteMin(Q)  // get closest node
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    for all edges(u, v):
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        if Dist[v] &amp;gt; Dist[u] + length(u, v):
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            // find short path to v via u
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            Dist[v] = Dist[u] + length(u, v)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            Prev[v] = u    // record new path to u
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            DecreaseDist(Q, Dist[v]) // record new dist for v
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;| Implementation | deletemin                                   | insert/decreasekey                        | $ |V| \times \text{deletemin} + (|V| + |E|) \times \text{insert} $ |
+| &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash; | &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;- | &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash; | &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash; |
+| Array          | $ O(|V|) $                                  | $ O(1) $                                  | $ O(|V|^2) $                                                 |
+| Binary heap    | $ O(\log |V|) $                             | $ O(\log |V|) $                           | $ O((|V| + |E|) \log |V|) $                                  |
+| $ d $-ary heap | $ O\left(\frac{d \log |V|}{\log d}\right) $ | $ O\left(\frac{\log |V|}{\log d}\right) $ | $ O\left((|V| \cdot d + |E|) \frac{\log |V|}{\log d}\right) $ |
+| Fibonacci heap | $ O(\log |V|) $                             | $ O(1) $ (amortized)                      | $ O(|V| \log |V| + |E|) $                                    |&lt;/p&gt;
+$$
+\text{cost}=\text{MakeQ}=\text{n}\cdot \text{Insert(Q,v)+n}\cdot\text{cost(DeleteMin)+O(m)+m}\cdot\text{cost(DecreaseDist)}
+$$&lt;p&gt;
+所以时间最短为$ O((|V| + |E|) \log |V|) $&lt;/p&gt;
+&lt;h4 id=&#34;由负权重边时&#34;&gt;由负权重边时
+&lt;/h4&gt;&lt;p&gt;这时，如果图不是无环图，则可能出现从一个顶点出发走过一个环回到原点的距离为负数的情况，这种时候没有最小距离，因为可以重复这个环无数遍得到一个负无穷大小。&lt;/p&gt;
+&lt;p&gt;而对于一个无环图，可以使用拓扑的方式，CS61B有讲。&lt;/p&gt;
+&lt;h2 id=&#34;贪心算法&#34;&gt;贪心算法
+&lt;/h2&gt;&lt;p&gt;从高层次概括贪心算法就是找到该点的局部最优而不考虑全局，并且不使用暴力搜索的方式找到最优。贪心算法在一定情况下能找到最优解。本章将聚焦几个具体实现&lt;/p&gt;
+&lt;h3 id=&#34;minimum-spanning-tree&#34;&gt;Minimum Spanning Tree
+&lt;/h3&gt;&lt;p&gt;输入一个加权图，通过那几条便即可找到成本最低的连接全部顶点的方式，可以用于降低网络延迟的网络链接等地方。&lt;/p&gt;
+&lt;p&gt;解决这个问题的贪心算法是Kruskal’s minimum spanning tree algorithm，该算法重复以下步骤：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;寻找图中最轻的边，并且这个边不会成环&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;树是无向图中的连接且无环的图形。正是因为这种简洁性使树十分强大。以下是树的一些性质：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;一个有n个节点的树有n-1个边&lt;/li&gt;
+&lt;li&gt;任何链接的无向图G=(V,E)并且具有$|E|=|V|-1$的是一个树&lt;/li&gt;
+&lt;li&gt;一个无向图是一个树的充要条件是在任意两点间存在一条独特的路径&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;割(Cut)：假设边X是&lt;code&gt;mst&lt;/code&gt; G=(V,E)的一部分，选择节点S的任意子集，使边X不跨过S和V-S，并且令e是跨过这部分的最小边，那么$X\cup {e}$是MST的一部分&lt;/p&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250412194653345.png&#34; alt=&#34;image-20250412194653345&#34; style=&#34;zoom: 67%;&#34; /&gt;
+&lt;hr&gt;
+&lt;p&gt;证明：&lt;/p&gt;
+&lt;p&gt;边$X$是在MST上的一边，如果边$e$也是MST上的一边的话则直接成立，无需证明；&lt;/p&gt;
+$$
+&gt; \text{weight(T&#39;)=weight(T)+}w(e)-w(e&#39;)
+&gt; $$&lt;p&gt;
+因为有$w(e)\leq w(e&amp;rsquo;),\text{weight}(T&amp;rsquo;)\leq \text{weight}(T)$，因为$T$是一个MST，所以两棵树一定都是MST。可见MST不一定是唯一的。&lt;/p&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250412200044172.png&#34; alt=&#34;image-20250412200044172&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;kruskals-algorithm&#34;&gt;Kruskal&amp;rsquo;s algorithm
+&lt;/h4&gt;&lt;p&gt;如上文所述，Kruskal算法的核心即是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;寻找图中最轻的边，并且这个边不会成环&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们将图建模为并查集(Disjoint Sets)的集合，最开始所有node都是独立的组成&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;makeset(x)&lt;/code&gt;:创建一个只包含&lt;code&gt;x&lt;/code&gt;的&lt;a class=&#34;link&#34; href=&#34;https://zh.wikipedia.org/wiki/%e5%8d%95%e4%be%8b%e6%a8%a1%e5%bc%8f&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;单例&lt;/a&gt;集合&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;find(x)&lt;/code&gt;:&lt;code&gt;x&lt;/code&gt;属于哪个集合&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;procedure kruskal(G, w)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Input:     A connected undirected graph G = (V, E) with edge weights w_e
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Output:    A minimum spanning tree defined by the edges X
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;for all u \in V :
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    makeset(u)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;X = {} 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Sort the edges $ E $ by weight
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;for all edges {u, v} \in E , in increasing order of weight:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    if find(u) ≠ find(v):
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        add edge {u, v} to X 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        union(u, v)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;union(x,y)&lt;/code&gt;: 融合包含&lt;code&gt;x&lt;/code&gt;和&lt;code&gt;y&lt;/code&gt;的两个集合&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;disjoint-sets的数据结构&#34;&gt;Disjoint Sets的数据结构
+&lt;/h4&gt;&lt;h5 id=&#34;union-by-rank&#34;&gt;Union by rank
+&lt;/h5&gt;&lt;p&gt;储存集合的一种方法使用有向树，树的节点是集合的元素，不存在固定顺序排列。根元素是该集合的一个便捷代表或名称(name)。它与其他元素的不同之处在于，它的父指针指向自身。&lt;/p&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250412204532820.png&#34; alt=&#34;image-20250412204532820&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;除了父指针$\pi$，每个节点还具有一个性质&lt;em&gt;rank&lt;/em&gt;，暂时代表在该点的子树(subtree)的高度&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;procedure makeset(x)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	 π(x) = x
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	 rank(x) = 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;function find(x)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	 while x≠π(x) : x=π(x)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	 return x
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;makeset&lt;/code&gt;是常数复杂度，&lt;code&gt;find&lt;/code&gt;与树的高度成正比，树实际上还需要一个函数来构建&lt;code&gt;uniun&lt;/code&gt;，我们必须要保证这个函数让树保持“浅”。当两个根融合$r_x,r_y$时，为了让树的高度尽可能矮，我们可以让更矮的树的根指向更高的树，通过这种方法，融合的树只有可能在两棵树等高的时候增加。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; procedure union(x,y)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; r_x = find(x)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; r_y = find(y)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; if r_x =r_y: return
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; if rank(r_x) &amp;gt; rank(r_y):
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; 	π(r_y) = r_x
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; else:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; 	π(r_x) = r_y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; 	if rank(r_x) = rank(r_y) : rank(r_y) = rank(r_y)+1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;有如下性质：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;对于任意$x$，有$rank(x)&amp;lt;rank(\pi(x))$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;任何秩为$k$的根节点在其树中都至少有$2^k$个节点&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;证明：&lt;/p&gt;
+&lt;p&gt;对于&lt;code&gt;makeset&lt;/code&gt;产生的节点，秩为0，节点为1，满足$|N|\geq 2^k$，对于基础情况成立&lt;/p&gt;
+&lt;p&gt;两个树融合时，设这两棵树都满足上述条件吗，有两种情况：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;两棵高度不同的树融合时：秩不变，节点增加，原来满足，融合后$|N_{融合后}|&amp;gt;|N_{融合前}|\geq 2^k$，符合条件&lt;/li&gt;
+&lt;li&gt;两棵秩相同的树融合：$|N_1|\geq 2^k,|N_2|\geq 2^k$，两式相加有$|N_1+N_2|\geq2\times 2^k=2^{k+1}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可见对于base case条件成立，推广至任何秩都成立&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果总共有$n$个元素，最多有$\frac{n}{2^k}$个秩为$k$的节点&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250413160742925.png&#34; alt=&#34;image-20250413160742925&#34; style=&#34;zoom: 50%;&#34; /&gt;
+&lt;h5 id=&#34;路径压缩&#34;&gt;路径压缩
+&lt;/h5&gt;&lt;p&gt;有了上述数据结构，Kruskal算法的时间复杂度是对于每个边，找到这个边的两端端点在不在同一个树中，然后进行&lt;code&gt;union&lt;/code&gt;，每次耗费最多$O(\log{V})$，对每条边都要进行一次，所以时间复杂度是$O(E\cdot \log{V})$。这样的表现似乎已经足够好了，但是在&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;边已经预先排好，无需进行排序&lt;/li&gt;
+&lt;li&gt;权值较小的情况，可以使用计数排序这种特殊线性排序算法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这两种情况下数据结构会成为性能瓶颈，所以我们要寻找一种方法让时间复杂度优于$\log{V}$。此时，可以使用路径压缩，即每次调用&lt;code&gt;find&lt;/code&gt;函数的时候，将查找路径上的所有点的父节点改为这棵树的根&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;均摊成本(&lt;em&gt;amortized cost&lt;/em&gt;)&lt;/p&gt;
+&lt;p&gt;在实际应用中，许多数据结构和算法在最坏情况下某个操作可能会花费较高的时间，但这种情况在连续的多个操作中并不频繁发生。均摊分析正是关注整个操作序列的总开销，然后将总开销均分到每一次操作上，得出“平均”成本。&lt;/p&gt;
+&lt;p&gt;并查集在不采用路径压缩等优化时，单次 Find 操作可能为 O(log n)（基于按秩合并）。但当引入路径压缩和其他优化后，均摊成本甚至能摊还到非常低的值，虽然单次操作的实际最坏成本可能较高，但经过均摊分析后，每次操作的平均成本变得十分低。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;值得注意的是，路径压缩并不会改变一个节点和根的秩，&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>CSAPP Note</title>
         <link>https://Timlin15.github.io/p/csapp-note/</link>
         <pubDate>Mon, 07 Apr 2025 22:51:30 +0800</pubDate>
@@ -4898,7 +5455,7 @@ $$&lt;p&gt;
 &lt;h2 id=&#34;3-4月&#34;&gt;3-4月
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CSAPP&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 6.S081&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS170&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18.06&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;5月&#34;&gt;5月
@@ -4910,8 +5467,8 @@ $$&lt;p&gt;
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 期末考试&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CMU 15-445数据库系统&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS170&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS229 机器学习入门&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 6.S081/南大PA&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS189 机器学习入门&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;第一周(1.6-1.12)&lt;/p&gt;
 &lt;ul&gt;
@@ -4971,8 +5528,16 @@ $$&lt;p&gt;
 &lt;p&gt;第14周(4.7-4.13)&lt;/p&gt;
 &lt;p&gt;之前这几周都是重复csapp，所以没有记录，现在csapp告一段落，最后几讲的线程和Linking听的半懂，之后可以再复习一遍。现在犹豫是要看CS170还是6.S081，170感觉好像数学课，听的有够困的，先听听吧，如果要四月内看完要每周九课，基本不可能。以及课内也在犹豫课内知识应该掌握到什么地步，是要完全掌握还是期末突袭，感觉需要做一次调研啊。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS170(大概率)5课&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成笔记及作业&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS170(大概率)5课&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成笔记及作业&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总结：因为前面的课程内容与CS61B有很大重复，所以看得飞快，一星期看了10课，但是进了贪心之后就感觉开始陌生了，特别是今天看查并集的复杂度分析论文看了一天，结果还是拼尽全力无法战胜，希望本月最后一周能看懂这个分析吧。下周还是接着这个进度，争取三周速通170，作业的话选做吧，挑一些有价值的看看。然后五月开144计网&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;第15周(4.14-4.20)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS170 10课&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 慢慢读&lt;a class=&#34;link&#34; href=&#34;https://dl.acm.org/doi/pdf/10.1145/321879.321884&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Efficiency of a Good But Not Linear Set Union Algorithm&lt;/a&gt;这篇论文&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>

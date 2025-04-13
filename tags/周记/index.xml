@@ -28,7 +28,7 @@
 &lt;h2 id=&#34;3-4月&#34;&gt;3-4月
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CSAPP&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 6.S081&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS170&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 18.06&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;5月&#34;&gt;5月
@@ -40,8 +40,8 @@
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 期末考试&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CMU 15-445数据库系统&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS170&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS229 机器学习入门&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 6.S081/南大PA&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS189 机器学习入门&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;第一周(1.6-1.12)&lt;/p&gt;
 &lt;ul&gt;
@@ -101,8 +101,16 @@
 &lt;p&gt;第14周(4.7-4.13)&lt;/p&gt;
 &lt;p&gt;之前这几周都是重复csapp，所以没有记录，现在csapp告一段落，最后几讲的线程和Linking听的半懂，之后可以再复习一遍。现在犹豫是要看CS170还是6.S081，170感觉好像数学课，听的有够困的，先听听吧，如果要四月内看完要每周九课，基本不可能。以及课内也在犹豫课内知识应该掌握到什么地步，是要完全掌握还是期末突袭，感觉需要做一次调研啊。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS170(大概率)5课&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成笔记及作业&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS170(大概率)5课&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 完成笔记及作业&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总结：因为前面的课程内容与CS61B有很大重复，所以看得飞快，一星期看了10课，但是进了贪心之后就感觉开始陌生了，特别是今天看查并集的复杂度分析论文看了一天，结果还是拼尽全力无法战胜，希望本月最后一周能看懂这个分析吧。下周还是接着这个进度，争取三周速通170，作业的话选做吧，挑一些有价值的看看。然后五月开144计网&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;第15周(4.14-4.20)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; CS170 10课&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 慢慢读&lt;a class=&#34;link&#34; href=&#34;https://dl.acm.org/doi/pdf/10.1145/321879.321884&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Efficiency of a Good But Not Linear Set Union Algorithm&lt;/a&gt;这篇论文&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>
