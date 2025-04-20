@@ -381,10 +381,10 @@ $$&lt;p&gt;由此，我们可以得出$u,v$的关系：&lt;/p&gt;
 	
 	
 &gt;&lt;/p&gt;
+&lt;p&gt;而操作时间为：&lt;/p&gt;
 $$
 \text{cost}=\text{MakeQ}=\text{n}\cdot \text{Insert(Q,v)+n}\cdot\text{cost(DeleteMin)+O(m)+m}\cdot\text{cost(DecreaseDist)}
-$$&lt;p&gt;
-所以时间最短为$ O((|V| + |E|) \log |V|) $&lt;/p&gt;
+$$&lt;p&gt;所以时间最短为$ O((|V| + |E|) \log |V|) $&lt;/p&gt;
 &lt;h4 id=&#34;由负权重边时&#34;&gt;由负权重边时
 &lt;/h4&gt;&lt;p&gt;这时，如果图不是无环图，则可能出现从一个顶点出发走过一个环回到原点的距离为负数的情况，这种时候没有最小距离，因为可以重复这个环无数遍得到一个负无穷大小。&lt;/p&gt;
 &lt;p&gt;而对于一个无环图，可以使用拓扑的方式，CS61B有讲。&lt;/p&gt;
