@@ -795,12 +795,12 @@ $$<p>
 </span></span><span class="line"><span class="cl">            DecreaseDist(Q, Dist[v]) // record new dist for v
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>| Implementation       | deletemin         | insert/decreasekey | $ |V| \times \text{deletemin} + (|V| + |E|) \times \text{insert} $ |
-|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|
-| Array                | $ O(|V|) $      | $ O(1) $         | $ O(|V|^2) $                                                |
-| Binary heap          | $ O(\log |V|) $ | $ O(\log |V|) $  | $ O((|V| + |E|) \log |V|) $                                |
-| $ d $-ary heap     | $ O\left(\frac{d \log |V|}{\log d}\right) $ | $ O\left(\frac{\log |V|}{\log d}\right) $ | $ O\left((|V| \cdot d + |E|) \frac{\log |V|}{\log d}\right) $ |
-| Fibonacci heap       | $ O(\log |V|) $ | $ O(1) $ (amortized) | $ O(|V| \log |V| + |E|) $                                  |</p>
+</div><p>| Implementation | deletemin                                   | insert/decreasekey                        | $ |V|\times \text{deletemin} + (|V|+ |E|) \times \text{insert} $ |
+| &mdash;&mdash;&mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; |
+| Array          | $ O(|V|) $                                  | $ O(1) $                                  | $ O(|V|^2) $                                                 |
+| Binary heap    | $ O(\log |V|) $                             | $ O(\log |V|) $                           | $ O((|V|+ |E|) \log |V|) $                                   |
+| $ d $-ary heap | $ O\left(\frac{d \log |V|}{\log d}\right) $ | $ O\left(\frac{\log |V|}{\log d}\right) $ | $ O\left((|V|\cdot d + |E|) \frac{\log |V|}{\log d}\right) $ |
+| Fibonacci heap | $ O(\log |V|) $                             | $ O(1) $ (amortized)                      | $ O(|V|\log |V|+ |E|) $                                      |</p>
 $$
 \text{cost}=\text{MakeQ}=\text{n}\cdot \text{Insert(Q,v)+n}\cdot\text{cost(DeleteMin)+O(m)+m}\cdot\text{cost(DecreaseDist)}
 $$<p>
