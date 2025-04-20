@@ -10,7 +10,7 @@
 <meta property='og:description' content="高效算法与棘手问题-建设中">
 <meta property='og:url' content='https://Timlin15.github.io/p/cs170/'>
 <meta property='og:site_name' content='知言的博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='数学' /><meta property='article:tag' content='CS' /><meta property='article:tag' content='算法' /><meta property='article:published_time' content='2025-04-14T00:14:25&#43;08:00'/><meta property='article:modified_time' content='2025-04-14T00:14:25&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='数学' /><meta property='article:tag' content='CS' /><meta property='article:tag' content='算法' /><meta property='article:published_time' content='2025-04-20T23:04:25&#43;08:00'/><meta property='article:modified_time' content='2025-04-20T23:04:25&#43;08:00'/>
 <meta name="twitter:title" content="CS170">
 <meta name="twitter:description" content="高效算法与棘手问题-建设中">
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -319,8 +319,21 @@
           <ul>
             <li><a href="#kruskals-algorithm">Kruskal&rsquo;s algorithm</a></li>
             <li><a href="#disjoint-sets的数据结构">Disjoint Sets的数据结构</a></li>
+            <li><a href="#prims-algorithm">Prim&rsquo;s Algorithm</a></li>
           </ul>
         </li>
+        <li><a href="#huffman-encoding">Huffman encoding</a>
+          <ul>
+            <li><a href="#从压缩的角度看待熵">从压缩的角度看待熵</a></li>
+          </ul>
+        </li>
+        <li><a href="#set-union">Set Union</a></li>
+      </ul>
+    </li>
+    <li><a href="#动态规划">动态规划</a>
+      <ul>
+        <li><a href="#斐波那契数列">斐波那契数列</a></li>
+        <li><a href="#最长递增子序列">最长递增子序列</a></li>
       </ul>
     </li>
   </ul>
@@ -376,7 +389,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-04-14</time>
+                <time class="article-time--published">2025-04-20</time>
             </div>
         
 
@@ -723,7 +736,7 @@ $$
 pre(u)<pre(v)<post(v)<post(u)
 $$<p>
 由此，我们可以得出$u,v$的关系：</p>
-<img src="C:\Users\Matrix\AppData\Roaming\Typora\typora-user-images\image-20250410143807795.png" alt="image-20250410143807795" style="zoom:67%;" />
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410143807795.png" alt="image-20250410143807795" style="zoom:67%;" />
 <h4 id="有向无环图">有向无环图
 </h4><p>有向无环图(Directed acyclic graphs, dag for short)是指没有成环的简单图，可以将图简化为$v_0\rightarrow v_1\rightarrow \cdots\rightarrow v_n$</p>
 <p>一个有向图有环的充分必要条件是DFS找到了一条Back Edge。Dag 可用于表示层级结构，依赖关系等。Dag有诸多性质：</p>
@@ -777,12 +790,12 @@ $$<p>
 </span></span><span class="line"><span class="cl">            DecreaseDist(Q, Dist[v]) // record new dist for v
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>| Implementation | deletemin                                   | insert/decreasekey                        | $ |V| \times \text{deletemin} + (|V| + |E|) \times \text{insert} $ |
-| &mdash;&mdash;&mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; |
-| Array          | $ O(|V|) $                                  | $ O(1) $                                  | $ O(|V|^2) $                                                 |
-| Binary heap    | $ O(\log |V|) $                             | $ O(\log |V|) $                           | $ O((|V| + |E|) \log |V|) $                                  |
-| $ d $-ary heap | $ O\left(\frac{d \log |V|}{\log d}\right) $ | $ O\left(\frac{\log |V|}{\log d}\right) $ | $ O\left((|V| \cdot d + |E|) \frac{\log |V|}{\log d}\right) $ |
-| Fibonacci heap | $ O(\log |V|) $                             | $ O(1) $ (amortized)                      | $ O(|V| \log |V| + |E|) $                                    |</p>
+</div><p>| Implementation       | deletemin         | insert/decreasekey | $ |V| \times \text{deletemin} + (|V| + |E|) \times \text{insert} $ |
+|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|
+| Array                | $ O(|V|) $      | $ O(1) $         | $ O(|V|^2) $                                                |
+| Binary heap          | $ O(\log |V|) $ | $ O(\log |V|) $  | $ O((|V| + |E|) \log |V|) $                                |
+| $ d $-ary heap     | $ O\left(\frac{d \log |V|}{\log d}\right) $ | $ O\left(\frac{\log |V|}{\log d}\right) $ | $ O\left((|V| \cdot d + |E|) \frac{\log |V|}{\log d}\right) $ |
+| Fibonacci heap       | $ O(\log |V|) $ | $ O(1) $ (amortized) | $ O(|V| \log |V| + |E|) $                                  |</p>
 $$
 \text{cost}=\text{MakeQ}=\text{n}\cdot \text{Insert(Q,v)+n}\cdot\text{cost(DeleteMin)+O(m)+m}\cdot\text{cost(DecreaseDist)}
 $$<p>
@@ -954,8 +967,189 @@ $$
 <p>在实际应用中，许多数据结构和算法在最坏情况下某个操作可能会花费较高的时间，但这种情况在连续的多个操作中并不频繁发生。均摊分析正是关注整个操作序列的总开销，然后将总开销均分到每一次操作上，得出“平均”成本。</p>
 <p>并查集在不采用路径压缩等优化时，单次 Find 操作可能为 O(log n)（基于按秩合并）。但当引入路径压缩和其他优化后，均摊成本甚至能摊还到非常低的值，虽然单次操作的实际最坏成本可能较高，但经过均摊分析后，每次操作的平均成本变得十分低。</p>
 </blockquote>
-<p>值得注意的是，路径压缩并不会改变一个节点和根的秩，</p>
-
+<p>值得注意的是，路径压缩并不会改变一个节点和根的秩，此处的分析我还没看懂，暂时搁置，整体来说是<a class="link" href="https://dl.acm.org/doi/pdf/10.1145/321879.321884"  target="_blank" rel="noopener"
+    >Efficiency of a Good But Not Linear Set Union Algorithm</a>这篇论文的思路，不知道有没有机会整理讲解出来。</p>
+<h4 id="prims-algorithm">Prim&rsquo;s Algorithm
+</h4><p>见CS61B笔记</p>
+<h3 id="huffman-encoding">Huffman encoding
+</h3><p>当在压缩一个文件的时候，该如何减少文件编码，比如一串由字母ABCD构成的字符，可以用00，01，10，11分别代表。“Can we do better?”，我们可以尝试用更小位的编码如0，1，01，11代表，但是我们就没有办法分清001是AC还是AAB了。</p>
+<p>我们可以使用无前缀编码(prefix-free encoding)的一个特性——没有一个编码可以成为别的编码的前缀来实现这点</p>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250415150829183.png" alt="image-20250415150829183" style="zoom:33%;" />
+$$
+\text{树的成本}=\sum_{i=1}^{n}f_i\cdot\text{(第}i\text{个符号位于树中的深度)}
+$$<blockquote>
+<p>断言：哈夫曼编码在前缀编码（即无歧义编码）的框架下，是针对给定符号概率分布<strong>平均码长最短</strong>的一种最优编码方案。</p>
+<hr>
+$$
+> \text{cost(v)}=\sum(\text{对于所有非根节点的cost(v)})\\=3f_1+3f_2+2f_3+1f_4
+> $$<p>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250415154130184.png" alt="image-20250415154130184" style="zoom:50%;" /></p>
+$$
+> \text{cost(}T)=\text{cost}(T')+f_1+f_2
+> $$<p>
+证明断言：</p>
+<p>Base case: 对于高度为1的树，必然是最优解</p>
+$$
+> \text{cost(}T)=\text{cost}(T')+f_1+f_2
+> $$$$
+> \text{cost(}T^*)=\text{cost}(T'^*)+f_1+f_2
+> $$$$
+> \text{cost}(T)-\text{cost}(T^*)=\text{cost}(T')-\text{cost}(T'^*)
+> $$<p>
+因为$T^<em>$是最优树所以$T$是最优树，因为$T&rsquo;$是最优树所以$T&rsquo;^</em>$是最优树</p>
+<p>所以拆分完仍然为最优树，是最优编码。</p>
+<p>参考<a class="link" href="https://blog.csdn.net/weixin_42881755/article/details/90714191"  target="_blank" rel="noopener"
+    >哈夫曼树构造过程及最优证明_哈夫曼树证明</a>构造，同时证明了哈夫曼树的展开和合并是互逆的。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">**procedure Huffman(f)**
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Input: An array f[1 \cdots n] of frequencies  
+</span></span><span class="line"><span class="cl">Output: An encoding tree with n leaves  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">let H be a priority queue of integers, ordered by f
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">for i = 1 to n:
+</span></span><span class="line"><span class="cl">    insert(H, i)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">for k = n + 1 to 2n - 1:
+</span></span><span class="line"><span class="cl">    i = deletemin(H), j = deletemin(H)
+</span></span><span class="line"><span class="cl">    create a node numbered k with children i, j
+</span></span><span class="line"><span class="cl">    f[k] = f[i] + f[j]
+</span></span><span class="line"><span class="cl">    insert(H, k)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="从压缩的角度看待熵">从压缩的角度看待熵
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>Outcome</th>
+          <th>Aurora</th>
+          <th>Whirlwind</th>
+          <th>Phantasm</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>first</td>
+          <td>0.15</td>
+          <td>0.30</td>
+          <td>0.20</td>
+      </tr>
+      <tr>
+          <td>second</td>
+          <td>0.10</td>
+          <td>0.05</td>
+          <td>0.30</td>
+      </tr>
+      <tr>
+          <td>third</td>
+          <td>0.70</td>
+          <td>0.25</td>
+          <td>0.30</td>
+      </tr>
+      <tr>
+          <td>other</td>
+          <td>0.05</td>
+          <td>0.40</td>
+          <td>0.20</td>
+      </tr>
+  </tbody>
+</table></div>
+$$
+更易被压缩\equiv 更不混乱\equiv 更可预测
+$$<p>
+假设有$n$个结果，分别是${p_1,p_2,\cdots p_n}$，我们采样$m$次，第$i$种结果大概会出现$mp_i$次，为了简化，设$p_i$都是$\frac 12$的幂。</p>
+$$
+m\sum_{i=1}^{n}p_i\log{\frac{1}{p_i}}
+$$$$
+\sum_{i=1}^{n}p_i\log{\frac{1}{p_i}}
+$$<h3 id="set-union">Set Union
+</h3><p>集合覆盖(Set Union)是有点集$B$，集合$S_1,S_2,\cdots,S_n \subseteq B$，问在完全覆盖点集$B$的条件下选用集合个数最少的个数是多少的问题。</p>
+<p>对于这个问题，贪婪的方法是选择覆盖没被选择过的点集中的点个数最多的集合$S$，这个方法并不能给出完全理想的解法，但是能给出与理想解法$k$个集合数相差不远的解法，切确地说是不差于$k\cdot \ln{n}$个集合数</p>
+<p>证明：令$k$是理想分配的集合个数，$A_t$是经过$t$次集合后的点集，共有$n$个点。</p>
+<p>由于第$k$次选择后剩下点集$A_t$还可以选择$k-t$次，又因贪婪算法总是选择覆盖$A_t$最多点的集合，所以选择的集合一定大于$\frac{1}{k-t}|A_t|$</p>
+$$
+|A_t|\leq n\cdot(1-\frac 1k)^t
+$$$$
+|A_t|\leq n\cdot(1-\frac 1k)^t< n\cdot (e^{-\frac 1k})^t < n \cdot e^{-\frac tk}
+$$$$
+n\cdot e^{-\frac tk}<1\\
+\ln{n}-\frac tk <0\\
+\ln{n}<\frac tk\\
+k\ln{n}<t
+$$<h2 id="动态规划">动态规划
+</h2><p>动态规划有自顶向下(top-down)和自底向上(bottom-up)两种方法，主要适用于那些可以分解为重叠子问题和具有最优子结构的复杂问题。</p>
+<ul>
+<li>
+<p>自顶向下(top-down)</p>
+<p>自顶向下是一种利用记忆体和递归的方法，先想出一个暴力搜索的递归方法，并且利用数据结构(如数组或者哈希表)储存子问题的结果，防止多次计算子问题</p>
+</li>
+<li>
+<p>自底向上(bottom-up)</p>
+<p>从最简单的子问题出发，逐步构造出大问题的解。这种方式通常通过循环结构实现，并且可能比递归更直观和高效。</p>
+</li>
+</ul>
+<h3 id="斐波那契数列">斐波那契数列
+</h3><p>讲解递归的时候最经典的例子便是斐波那契数列。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">def fib(n):
+</span></span><span class="line"><span class="cl">	if i &lt;= 1:
+</span></span><span class="line"><span class="cl">		return 1
+</span></span><span class="line"><span class="cl">	else:
+</span></span><span class="line"><span class="cl">		rertun fib(n - 1) + fib(n - 2)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>但是这个算法具有$O(n^2)$的时间复杂度，非常不理想，稍微大点的输入都会计算很长的时间。那么我们可以使用什么方法来优化这个算法？</p>
+<ol>
+<li>
+<p>自顶向下</p>
+<p>使用递归加上记忆体的方法。如果我们仔细观察这个函数，可以发现</p>
+</li>
+</ol>
+<h3 id="最长递增子序列">最长递增子序列
+</h3><p>给定一个序列$a_1,a_2,a_3\cdots ,a_n$，一个子序列是$a_{i_1},a_{i_2}\cdots ,a_{i_n}$，其中$i_1&lt;i_2&lt;\cdots ,i_n\leq n$。目的是找到长度最长的递增子序列。</p>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250417153945259.png" alt="image-20250417153945259" style="zoom:50%;" />
+<p>可以看到这是一个有向无环图，那么我们可以得到一个朴素的暴力搜索递归算法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">for j = 1, 2, 3, ..., n:
+</span></span><span class="line"><span class="cl">	L(j)= 1 + max{L(i): (i,j) \in E}
+</span></span><span class="line"><span class="cl">return max_j L(j)
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
