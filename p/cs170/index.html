@@ -401,7 +401,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 6 分钟
+                    阅读时长: 15 分钟
                 </time>
             </div>
         
@@ -717,9 +717,10 @@ $$
 <p><em>Cross Edge</em>是指向一个同级的节点</p>
 <img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410143449088.png" alt="image-20250410143449088" style="zoom: 67%;" />
 <p>使用preorder和postorder数组还可用于拓扑排序(Topological Sorting)，比如对于两个节点$u,v$，假设$u$是$v$的祖先节点，则有：</p>
-$$
-\text{pre(u)<pre(v)<post(v)<post(u)}
-$$<p>由此，我们可以得出$u,v$的关系：</p>
+<p>$$
+\text{pre(u)&lt;pre(v)&lt;post(v)&lt;post(u)}</p>
+<p>$$</p>
+<p>由此，我们可以得出$u,v$的关系：</p>
 <img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410143807795.png" alt="image-20250410143807795" style="zoom:67%;" />
 <h4 id="有向无环图">有向无环图
 </h4><p>有向无环图(Directed acyclic graphs, dag for short)是指没有成环的简单图，可以将图简化为$v_0\rightarrow v_1\rightarrow \cdots\rightarrow v_n$</p>
