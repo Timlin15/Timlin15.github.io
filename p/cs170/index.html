@@ -433,19 +433,22 @@
 1234\cdots N
 $$<p>
 相加的时间复杂度最小是$O(N)$，但是一般不会计算加法的时间复杂度，只有在一些数字位数极大的领域才会考虑数字位数的影响，如密码学等，否则将加法视为常数时间。</p>
+<p>而对于乘法来说：</p>
 $$
 1234\cdots N \times
 1234\cdots N
-$$<p>
-使用小学教的竖式法，对于每一个位数都要乘以乘数的所有N位数，所以时间复杂度是$O(N^2)$。那有没有更快的方法呢。</p>
+$$<p>使用小学教的竖式法，对于每一个位数都要乘以乘数的所有N位数，所以时间复杂度是$O(N^2)$。那有没有更快的方法呢。</p>
+<p>实际上，用分治法将两个乘数分为两部分：</p>
 $$
 1234\cdots|\cdots N \times 1234\cdots|\cdots N
-$$$$
+$$<p>将四部分分别视为a,b,c,d。则原式等于：</p>
+$$
 \begin{aligned}
 AB\times CD=&(A\times 10^{\frac N2} + B)\times (C\times 10^{\frac N2}+D)\\
 =&AC\times 10^N+(AD+BC)\times 10^{\frac N2} + CD
 \end{aligned}
-$$$$
+$$<p>因为ABCD四个部分的位长都是$\frac N2$，所以其时间复杂度为：</p>
+$$
 T(n)=\begin{cases}
 C &n=1\\
 4\cdot T(\frac n2)+ C\cdot n &n>1
@@ -461,16 +464,13 @@ T(n)&=4\times T(\frac n2) + CN
 &=n^2+Cn(2n-1)\\
 &=O(n^2)
 \end{aligned}
-$$
-从上往下拆分，每下降一级$T(n)$会变成四份$T(\frac n2)$，并且加上一份与$n$线性相关的$Cn$项来计算求和等工作，每次拆分都会产生一份常数项，到最小的时候$T(n)$为常数项，利用数列求和公式算出其时间复杂度是$O(n^2)$。那这有什么用，如果分治法和最普通的方法时间复杂度相同的话。这时便是Karatsuba算法发挥作用到时候了：
+$$<p>从上往下拆分，每下降一级$T(n)$会变成四份$T(\frac n2)$，并且加上一份与$n$线性相关的$Cn$项来计算求和等工作，每次拆分都会产生一份常数项，到最小的时候$T(n)$为常数项，利用数列求和公式算出其时间复杂度是$O(n^2)$。那这有什么用，如果分治法和最普通的方法时间复杂度相同的话。这时便是Karatsuba算法发挥作用到时候了：</p>
 $$
 AD+BC = (A+B)(C+D)-AB-CD
-$$
-因为我们要计算$AB$和$CD$的大小，可以利用这个关系将计算四项乘法的目标改为计算三项$(A+B)(C+D)$和$AB,CD$。于是可以将递推公式优化为：
+$$<p>因为我们要计算$AB$和$CD$的大小，可以利用这个关系将计算四项乘法的目标改为计算三项$(A+B)(C+D)$和$AB,CD$。于是可以将递推公式优化为：</p>
 $$
 T(n)=3T(\frac n2)+Cn\quad n>1
-$$
-则树的高度仍为$\log_2n$，但是项数变为$3^{\log_2{n}}$
+$$<p>则树的高度仍为$\log_2n$，但是项数变为$3^{\log_2{n}}$</p>
 $$
 \begin{aligned}
 T(n)&=3\times T(\frac n2) + CN
@@ -483,15 +483,16 @@ T(n)&=3\times T(\frac n2) + CN
 &=n^{\log_2{3}}+3Cn^{\log_2{3}}-2Cn\\
 &=O(n^{\log_2{3}})\approx O(1.59)
 \end{aligned}
+$$<h3 id="主定理">主定理
+</h3><p>对于一个大小为$n$的问题，每份分为$a$个大小为$\frac nb$的小问题，需要耗时$O(n^d)$来结合，有主定理(Master Theorem)</p>
 $$
-<h3 id="主定理">主定理
-</h3>$$
 T(n)=\begin{cases}
 O(n^d) &d>\log_b{a}\\
 O(n^d\log{n}) &d=\log_b{a}\\
 O(n^{\log_b{a}}) &d<\log_ba
 \end{cases}
-$$$$
+$$<p>证明：</p>
+$$
 \begin{aligned}
 T(n)&=a\cdot T(\frac nb)+Cn^d\\
 &=a[a\cdot T(\frac{n}{b^2})+C(\frac nb)^d]+Cn^d\\
@@ -514,18 +515,21 @@ $$
 \end{aligned}
 $$<ol start="2">
 <li>
+<p>等比公式不等于1，分两种情况。</p>
 $$
     \begin{aligned}
     原式&=n^{\log_ba}+Cn^d\frac{1-(\frac a{b^d})^{\log_bn}}{1-\frac{a}{b^d}}\\
     \end{aligned}
     $$<ul>
 <li>
+<p>$\frac{a}{b^d}&lt;1$，即$d&gt;\log_ba$。求和公式趋近于1，而且$n^d&gt;n^{\log_ba}$，所以$n^d$占主导地位</p>
 $$
         \begin{aligned}
         原式&=O(n^d)
         \end{aligned}
         $$</li>
 <li>
+<p>$\frac{a}{b^d}&gt;1$，即$d&lt;\log_ba$。又注意到$(\frac{a}{b^d})^{\log_bn}=\frac{n^{\log_ba}}{n^d}$，又有$n^d&lt;n^{\log_ba}$，有原式：</p>
 $$
         \begin{aligned}
         原式&=n^{\log_ba}+C\frac{n^d-n^{\log_ba}}{1-\frac{a}{b^d}}\\
@@ -541,6 +545,7 @@ $$
 <h3 id="确定性算法">确定性算法
 </h3><p>确定性算法（Deterministic Algorithm）指的是在相同输入下，总能按照预先设定好的算法步骤产生相同输出的算法，也就是说，它在执行过程中没有任何随机性或不确定性。有别于随机算法（如 Las Vegas 或 Monte Carlo 算法），Monte Carlo算法有可能有高性能但是有部分概率会失败，Las Vegas算法能保证算法正确但是时间可能有不同。</p>
 <p><strong>Quick Select</strong>就是一种确定性算法，目的是挑选第k大的数字。有着线性的时间复杂度。</p>
+<p>步骤：将数列五五分为一个小组，取每组中的中位数，组成一个新的数组，再取其中的中位数，进行快排，大于这个pivot的进入R数组，小于pivot的进入L数组，此时：</p>
 $$
 \begin{cases}
 \text{if}\,\,k \le |L|\text{: return Select(L,k)}\\
