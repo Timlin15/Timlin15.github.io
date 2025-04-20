@@ -292,9 +292,6 @@
         <li><a href="#快速傅里叶变换">快速傅里叶变换</a></li>
       </ul>
     </li>
-  </ul>
-
-  <ul>
     <li><a href="#图论">图论</a>
       <ul>
         <li><a href="#dfs">DFS</a>
@@ -570,26 +567,7 @@ $$<p>
 <li>多项式的系数$a_0,a_1,a_2\cdots,a_d$</li>
 <li>$A(x_0),A(x_1)\cdots,A(x_d)$的值</li>
 </ol>
-<h1 id="endbmatrix">$$
-\begin{bmatrix}
-1 &amp; x_0 &amp; x_0^2 &amp; \cdots &amp; x_0^{N-1} \
-1 &amp; x_1 &amp; x_1^2 &amp; \cdots &amp; x_1^{N-1} \
-\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \
-1 &amp; x_{N-1} &amp; x_{N-1}^2 &amp; \cdots &amp; x_{N-1}^{N-1}
-\end{bmatrix}
-\begin{bmatrix}
-c_0 \
-c_1 \
-\vdots \
-c_{N-1}
-\end{bmatrix}
-</h1><p>\begin{bmatrix}
-y_0 \
-y_1 \
-\vdots \
-y_{N-1}
-\end{bmatrix}
-$$</p>
+<img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250420232730062.png" alt="image-20250420232730062" style="zoom: 50%;" />
 <p>快速傅里叶变换通过重叠的点来减少计算。</p>
 <p>评估了一下，本处用到的数学工具不是不熟就是没学到，决定弃置于此，前面的知识以后再来探索吧。包含lec4后半部分和lec5前部分</p>
 <h2 id="图论">图论
@@ -619,6 +597,7 @@ $$</p>
 ></p>
 <ol>
 <li>
+<p>通过矩阵</p>
 $$
     a_{ij}=\begin{cases}
     1 \quad \text{如果存在边从}v_i\text{到}v_j\\
@@ -737,10 +716,10 @@ $$
 <p><em>Back Edge</em>指向一个祖先(Ancestor)节点</p>
 <p><em>Cross Edge</em>是指向一个同级的节点</p>
 <img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410143449088.png" alt="image-20250410143449088" style="zoom: 67%;" />
+<p>使用preorder和postorder数组还可用于拓扑排序(Topological Sorting)，比如对于两个节点$u,v$，假设$u$是$v$的祖先节点，则有：</p>
 $$
 pre(u)<pre(v)<post(v)<post(u)
-$$<p>
-由此，我们可以得出$u,v$的关系：</p>
+$$<p>由此，我们可以得出$u,v$的关系：</p>
 <img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410143807795.png" alt="image-20250410143807795" style="zoom:67%;" />
 <h4 id="有向无环图">有向无环图
 </h4><p>有向无环图(Directed acyclic graphs, dag for short)是指没有成环的简单图，可以将图简化为$v_0\rightarrow v_1\rightarrow \cdots\rightarrow v_n$</p>
@@ -795,12 +774,16 @@ $$<p>
 </span></span><span class="line"><span class="cl">            DecreaseDist(Q, Dist[v]) // record new dist for v
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>| Implementation | deletemin                                   | insert/decreasekey                        | $ |V|\times \text{deletemin} + (|V|+ |E|) \times \text{insert} $ |
-| &mdash;&mdash;&mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; |
-| Array          | $ O(|V|) $                                  | $ O(1) $                                  | $ O(|V|^2) $                                                 |
-| Binary heap    | $ O(\log |V|) $                             | $ O(\log |V|) $                           | $ O((|V|+ |E|) \log |V|) $                                   |
-| $ d $-ary heap | $ O\left(\frac{d \log |V|}{\log d}\right) $ | $ O\left(\frac{\log |V|}{\log d}\right) $ | $ O\left((|V|\cdot d + |E|) \frac{\log |V|}{\log d}\right) $ |
-| Fibonacci heap | $ O(\log |V|) $                             | $ O(1) $ (amortized)                      | $ O(|V|\log |V|+ |E|) $                                      |</p>
+</div><p><img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250420232933311.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20250420232933311"
+	
+	
+></p>
 $$
 \text{cost}=\text{MakeQ}=\text{n}\cdot \text{Insert(Q,v)+n}\cdot\text{cost(DeleteMin)+O(m)+m}\cdot\text{cost(DecreaseDist)}
 $$<p>

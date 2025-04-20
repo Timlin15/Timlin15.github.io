@@ -164,26 +164,7 @@ $$&lt;p&gt;
 &lt;li&gt;多项式的系数$a_0,a_1,a_2\cdots,a_d$&lt;/li&gt;
 &lt;li&gt;$A(x_0),A(x_1)\cdots,A(x_d)$的值&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&#34;endbmatrix&#34;&gt;$$
-\begin{bmatrix}
-1 &amp;amp; x_0 &amp;amp; x_0^2 &amp;amp; \cdots &amp;amp; x_0^{N-1} \
-1 &amp;amp; x_1 &amp;amp; x_1^2 &amp;amp; \cdots &amp;amp; x_1^{N-1} \
-\vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \
-1 &amp;amp; x_{N-1} &amp;amp; x_{N-1}^2 &amp;amp; \cdots &amp;amp; x_{N-1}^{N-1}
-\end{bmatrix}
-\begin{bmatrix}
-c_0 \
-c_1 \
-\vdots \
-c_{N-1}
-\end{bmatrix}
-&lt;/h1&gt;&lt;p&gt;\begin{bmatrix}
-y_0 \
-y_1 \
-\vdots \
-y_{N-1}
-\end{bmatrix}
-$$&lt;/p&gt;
+&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250420232730062.png&#34; alt=&#34;image-20250420232730062&#34; style=&#34;zoom: 50%;&#34; /&gt;
 &lt;p&gt;快速傅里叶变换通过重叠的点来减少计算。&lt;/p&gt;
 &lt;p&gt;评估了一下，本处用到的数学工具不是不熟就是没学到，决定弃置于此，前面的知识以后再来探索吧。包含lec4后半部分和lec5前部分&lt;/p&gt;
 &lt;h2 id=&#34;图论&#34;&gt;图论
@@ -213,6 +194,7 @@ $$&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
+&lt;p&gt;通过矩阵&lt;/p&gt;
 $$
     a_{ij}=\begin{cases}
     1 \quad \text{如果存在边从}v_i\text{到}v_j\\
@@ -331,10 +313,10 @@ $$
 &lt;p&gt;&lt;em&gt;Back Edge&lt;/em&gt;指向一个祖先(Ancestor)节点&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Cross Edge&lt;/em&gt;是指向一个同级的节点&lt;/p&gt;
 &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410143449088.png&#34; alt=&#34;image-20250410143449088&#34; style=&#34;zoom: 67%;&#34; /&gt;
+&lt;p&gt;使用preorder和postorder数组还可用于拓扑排序(Topological Sorting)，比如对于两个节点$u,v$，假设$u$是$v$的祖先节点，则有：&lt;/p&gt;
 $$
 pre(u)&lt;pre(v)&lt;post(v)&lt;post(u)
-$$&lt;p&gt;
-由此，我们可以得出$u,v$的关系：&lt;/p&gt;
+$$&lt;p&gt;由此，我们可以得出$u,v$的关系：&lt;/p&gt;
 &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410143807795.png&#34; alt=&#34;image-20250410143807795&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;h4 id=&#34;有向无环图&#34;&gt;有向无环图
 &lt;/h4&gt;&lt;p&gt;有向无环图(Directed acyclic graphs, dag for short)是指没有成环的简单图，可以将图简化为$v_0\rightarrow v_1\rightarrow \cdots\rightarrow v_n$&lt;/p&gt;
@@ -389,12 +371,16 @@ $$&lt;p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            DecreaseDist(Q, Dist[v]) // record new dist for v
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;| Implementation | deletemin                                   | insert/decreasekey                        | $ |V|\times \text{deletemin} + (|V|+ |E|) \times \text{insert} $ |
-| &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash; | &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;- | &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash; | &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash; |
-| Array          | $ O(|V|) $                                  | $ O(1) $                                  | $ O(|V|^2) $                                                 |
-| Binary heap    | $ O(\log |V|) $                             | $ O(\log |V|) $                           | $ O((|V|+ |E|) \log |V|) $                                   |
-| $ d $-ary heap | $ O\left(\frac{d \log |V|}{\log d}\right) $ | $ O\left(\frac{\log |V|}{\log d}\right) $ | $ O\left((|V|\cdot d + |E|) \frac{\log |V|}{\log d}\right) $ |
-| Fibonacci heap | $ O(\log |V|) $                             | $ O(1) $ (amortized)                      | $ O(|V|\log |V|+ |E|) $                                      |&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250420232933311.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250420232933311&#34;
+	
+	
+&gt;&lt;/p&gt;
 $$
 \text{cost}=\text{MakeQ}=\text{n}\cdot \text{Insert(Q,v)+n}\cdot\text{cost(DeleteMin)+O(m)+m}\cdot\text{cost(DecreaseDist)}
 $$&lt;p&gt;
