@@ -680,11 +680,14 @@ $$&lt;h3 id=&#34;set-union&#34;&gt;Set Union
 &lt;p&gt;对于这个问题，贪婪的方法是选择覆盖没被选择过的点集中的点个数最多的集合$S$，这个方法并不能给出完全理想的解法，但是能给出与理想解法$k$个集合数相差不远的解法，切确地说是不差于$k\cdot \ln{n}$个集合数&lt;/p&gt;
 &lt;p&gt;证明：令$k$是理想分配的集合个数，$A_t$是经过$t$次集合后的点集，共有$n$个点。&lt;/p&gt;
 &lt;p&gt;由于第$k$次选择后剩下点集$A_t$还可以选择$k-t$次，又因贪婪算法总是选择覆盖$A_t$最多点的集合，所以选择的集合一定大于$\frac{1}{k-t}|A_t|$&lt;/p&gt;
+&lt;p&gt;则$A_0=n$，$|A_{t+1}|\leq(1-\frac{1}{k-t})|A_t|\leq (1-\frac{1}{k})|A_t|$，便有：&lt;/p&gt;
 $$
 |A_t|\leq n\cdot(1-\frac 1k)^t
-$$$$
+$$&lt;p&gt;又根据$1-x\leq e^{-x}$有&lt;/p&gt;
+$$
 |A_t|\leq n\cdot(1-\frac 1k)^t&lt; n\cdot (e^{-\frac 1k})^t &lt; n \cdot e^{-\frac tk}
-$$$$
+$$&lt;p&gt;当$|A_t|&amp;lt;1$的时候即完全覆盖所有点集&lt;/p&gt;
+$$
 n\cdot e^{-\frac tk}&lt;1\\
 \ln{n}-\frac tk &lt;0\\
 \ln{n}&lt;\frac tk\\
