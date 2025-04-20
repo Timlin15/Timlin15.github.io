@@ -717,9 +717,16 @@ $$
 <p><em>Cross Edge</em>是指向一个同级的节点</p>
 <img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410143449088.png" alt="image-20250410143449088" style="zoom: 67%;" />
 <p>使用preorder和postorder数组还可用于拓扑排序(Topological Sorting)，比如对于两个节点$u,v$，假设$u$是$v$的祖先节点，则有：</p>
-<p>$$
-\text{pre(u)&lt;pre(v)&lt;post(v)&lt;post(u)}</p>
-<p>$$</p>
+<p><img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250420233859706.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20250420233859706"
+	
+	
+></p>
 <p>由此，我们可以得出$u,v$的关系：</p>
 <img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410143807795.png" alt="image-20250410143807795" style="zoom:67%;" />
 <h4 id="有向无环图">有向无环图
@@ -816,7 +823,7 @@ $$<p>所以时间最短为$ O((|V| + |E|) \log |V|) $</p>
 <p>边$X$是在MST上的一边，如果边$e$也是MST上的一边的话则直接成立，无需证明；</p>
 $$
 > \text{weight(T')=weight(T)+}w(e)-w(e')
-> $$<p>
+  $$<p>
 因为有$w(e)\leq w(e&rsquo;),\text{weight}(T&rsquo;)\leq \text{weight}(T)$，因为$T$是一个MST，所以两棵树一定都是MST。可见MST不一定是唯一的。</p>
 <img src="https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250412200044172.png" alt="image-20250412200044172" style="zoom:67%;" />
 </blockquote>

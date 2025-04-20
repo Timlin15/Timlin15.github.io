@@ -314,9 +314,16 @@ $$
 &lt;p&gt;&lt;em&gt;Cross Edge&lt;/em&gt;是指向一个同级的节点&lt;/p&gt;
 &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410143449088.png&#34; alt=&#34;image-20250410143449088&#34; style=&#34;zoom: 67%;&#34; /&gt;
 &lt;p&gt;使用preorder和postorder数组还可用于拓扑排序(Topological Sorting)，比如对于两个节点$u,v$，假设$u$是$v$的祖先节点，则有：&lt;/p&gt;
-&lt;p&gt;$$
-\text{pre(u)&amp;lt;pre(v)&amp;lt;post(v)&amp;lt;post(u)}&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250420233859706.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250420233859706&#34;
+	
+	
+&gt;&lt;/p&gt;
 &lt;p&gt;由此，我们可以得出$u,v$的关系：&lt;/p&gt;
 &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250410143807795.png&#34; alt=&#34;image-20250410143807795&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;h4 id=&#34;有向无环图&#34;&gt;有向无环图
@@ -413,7 +420,7 @@ $$&lt;p&gt;所以时间最短为$ O((|V| + |E|) \log |V|) $&lt;/p&gt;
 &lt;p&gt;边$X$是在MST上的一边，如果边$e$也是MST上的一边的话则直接成立，无需证明；&lt;/p&gt;
 $$
 &gt; \text{weight(T&#39;)=weight(T)+}w(e)-w(e&#39;)
-&gt; $$&lt;p&gt;
+  $$&lt;p&gt;
 因为有$w(e)\leq w(e&amp;rsquo;),\text{weight}(T&amp;rsquo;)\leq \text{weight}(T)$，因为$T$是一个MST，所以两棵树一定都是MST。可见MST不一定是唯一的。&lt;/p&gt;
 &lt;img src=&#34;https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/image-20250412200044172.png&#34; alt=&#34;image-20250412200044172&#34; style=&#34;zoom:67%;&#34; /&gt;
 &lt;/blockquote&gt;
