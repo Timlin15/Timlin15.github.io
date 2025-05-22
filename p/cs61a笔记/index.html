@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://Timlin15.github.io/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://Timlin15.github.io/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://Timlin15.github.io/css/github.min.css' />
+    <link rel="stylesheet" href='https://Timlin15.github.io/css/github-style.css' />
+    <link rel="stylesheet" href='https://Timlin15.github.io/css/light.css' />
+    <link rel="stylesheet" href='https://Timlin15.github.io/css/dark.css' />
+    <link rel="stylesheet" href='https://Timlin15.github.io/css/syntax.css' />
+    <title>CS61A笔记 - 知言的博客</title>
+    
+    <link rel="icon" type="image/x-icon" href='/images/favion.ico'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    
+
+    
+    <meta name="description"
+  content="CS61A Function The principle of designing a function: Give each function exactly a job
+Don&rsquo;t repeat yourself. Implement a process just once, but execute it many times.
+Define functions generally
+Higher-order functions(A function that takes a function as an argument value or returns a function as a return vales): express general methods of computation.
+remove repetition from programs
+separate concerns among functions
+the inner function need to be defined as a real function(f) rather than a value evaluated by the function such as f(x) in a higher-order function. It actually act as a function that its output is some functions.
+" />
+<meta name="keywords"
+  content='' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://Timlin15.github.io/p/cs61a%E7%AC%94%E8%AE%B0/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="CS61A笔记 - 知言的博客" />
+<meta name="twitter:description"
+  content="CS61A Function The principle of designing a function: Give each function exactly a job
+Don&rsquo;t repeat yourself. Implement a process just once, but execute it many times.
+Define functions generally
+Higher-order functions(A function that takes a function as an argument value or returns a function as a return vales): express general methods of computation.
+remove repetition from programs
+separate concerns among functions
+the inner function need to be defined as a real function(f) rather than a value evaluated by the function such as f(x) in a higher-order function. It actually act as a function that its output is some functions.
+" />
+<meta name="twitter:site" content="https://Timlin15.github.io/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://Timlin15.github.io/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="CS61A笔记 - 知言的博客">
+<meta property="og:description"
+  content="CS61A Function The principle of designing a function: Give each function exactly a job
+Don&rsquo;t repeat yourself. Implement a process just once, but execute it many times.
+Define functions generally
+Higher-order functions(A function that takes a function as an argument value or returns a function as a return vales): express general methods of computation.
+remove repetition from programs
+separate concerns among functions
+the inner function need to be defined as a real function(f) rather than a value evaluated by the function such as f(x) in a higher-order function. It actually act as a function that its output is some functions.
+" />
+<meta property="og:url" content="https://Timlin15.github.io/p/cs61a%E7%AC%94%E8%AE%B0/" />
+<meta property="og:site_name" content="CS61A笔记" />
+<meta property="og:image"
+  content="https://Timlin15.github.io/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2025-01-14 11:18:34 &#43;0800 CST" />
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://Timlin15.github.io/">
+        <img class="octicon" height="32" width="32" src="/images/ava.png">
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          
+          <form target="_blank" id="search-form" action="" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+            </label>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://Timlin15.github.io/">
+        <img class="octicon octicon-mark-github v-align-middle" height="32" width="32" src="/images/ava.png">
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+
+  <div id="search-result" class="container-lg px-3 new-discussion-timeline" style="display: none;">
+</div>
+
+  
+<div class="application-main">
+  <div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://Timlin15.github.io/">
+                  <img class=" avatar-user"
+                    src="/images/ava.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://Timlin15.github.io/">知言</a>
+                  </span>
+                  <span class="path-divider">/</span>
+                  <strong class="css-truncate css-truncate-target mr-1" style="max-width: 410px">
+                    <a href="https://Timlin15.github.io/p/cs61a%E7%AC%94%E8%AE%B0/">CS61A笔记</a>
+                  </strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Tue, 14 Jan 2025 11:18:34 &#43;0800"
+                    class="no-wrap">
+                    Tue, 14 Jan 2025 11:18:34 &#43;0800</relative-time>
+
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      1144 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                    
+                    <a class="muted-link mr-3" href="/tags/%E7%AC%94%E8%AE%B0">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      笔记
+                    </a>
+                    
+                    <a class="muted-link mr-3" href="/tags/cs">
+                      <svg class="octicon octicon-tag" viewBox="0 0 16 16" version="1.1" width="16" height="16">
+                        <path fill-rule="evenodd"
+                          d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z">
+                        </path>
+                      </svg>
+                      CS
+                    </a>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><h1 id="cs61a">CS61A</h1>
+<h2 id="function">Function</h2>
+<h3 id="the-principle-of-designing-a-function">The principle of designing a function:</h3>
+<ul>
+<li>
+<p>Give each function exactly a job</p>
+</li>
+<li>
+<p>Don&rsquo;t repeat yourself. Implement a process just once, but execute it many times.</p>
+</li>
+<li>
+<p>Define functions generally</p>
+</li>
+</ul>
+<h3 id="higher-order-functionsa-function-that-takes-a-function-as-an-argument-value-or-returns-a-function-as-a-return-vales">Higher-order functions(A function that takes a function as an argument value or returns a function as a return vales):</h3>
+<ul>
+<li>
+<p>express general methods of computation.</p>
+</li>
+<li>
+<p>remove repetition from programs</p>
+</li>
+<li>
+<p>separate concerns among functions</p>
+</li>
+<li>
+<p>the inner function need to be defined as a real function(f) rather than a value evaluated by the function such as f(x) in a higher-order function. It actually act as a function that its output is some functions.</p>
+</li>
+</ul>
+<h3 id="truefalse">True/False:</h3>
+<ul>
+<li>&lsquo;and&rsquo; will return the first  False value it meets or it will return the last True value</li>
+<li>&lsquo;or&rsquo; will return the first True value</li>
+</ul>
+<h2 id="recursion">Recursion</h2>
+<h3 id="skipping-questions">Skipping questions：</h3>
+<ul>
+<li>Call expressions don&rsquo;t allow you to skip evaluating part of the call expressions</li>
+</ul>
+<p>​	every parts of the statement will be executed</p>
+<ul>
+<li>
+<p>Control expressions(and/or) allow you to skip evaluating some sub-expressions</p>
+<p>​	e.g. return if -100 &gt; 0 and sqrt(-100) &gt; 10 will not lead to a error</p>
+</li>
+</ul>
+<h3 id="difference-between-iteration-and-recursion">difference between iteration and recursion</h3>
+<p>sometimes recursion can simplify the code</p>
+<h2 id="abstraction">Abstraction</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="err">：</span>
+</span></span><span class="line"><span class="cl">    	<span class="k">return</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Is fact implemented correctly?</p>
+<ol>
+<li>Verify the base case.</li>
+<li>Treat fact as a functional abstraction!(focus on what&rsquo;s it function)</li>
+<li>Assume that fact(n-1) is correct.</li>
+<li>Verify that fact(n) is correct, assuming that fact(n-1) correct.</li>
+</ol>
+<h2 id="containers">Containers</h2>
+<h3 id="strings-are-sequences">Strings are Sequences</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="s1">&#39;here&#39;</span> <span class="ow">in</span> <span class="s1">&#39;Where</span><span class="se">\&#39;</span><span class="s1">s Waldo&#39;</span> 
+</span></span><span class="line"><span class="cl"><span class="kc">True</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="mi">234</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="kc">False</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="kc">False</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>In list you can only search for one word each time</p>
+<p>When working with strings, we usually care about whole words more than letters.</p>
+<h3 id="comprehensions">Comprehensions</h3>
+<p>Both list and dictionary can use comprehension to define them</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># dictionary</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span><span class="o">&lt;</span><span class="n">key</span> <span class="n">exp</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">value</span> <span class="n">exp</span><span class="o">&gt;</span> <span class="k">for</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="nb">iter</span> <span class="n">exp</span><span class="o">&gt;</span> <span class="k">if</span> <span class="o">&lt;</span><span class="nb">filter</span> <span class="n">exp</span><span class="o">&gt;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># list</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="o">&lt;</span><span class="n">value</span> <span class="n">exp</span><span class="o">&gt;</span> <span class="k">for</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="nb">iter</span> <span class="n">exp</span><span class="o">&gt;</span> <span class="k">if</span> <span class="o">&lt;</span><span class="nb">filter</span> <span class="n">exp</span><span class="o">&gt;</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The parent frame of the comprehensions is the current frame</p>
+<h2 id="data-abstraction">Data abstraction</h2>
+<h3 id="abstraction-barriers">Abstraction Barriers</h3>
+<img src="/image-20241009092505400.png" alt="image-20241009092505400" style="zoom: 33%;" />
+<blockquote>
+<p>The higher the more abstract. Taking <strong>computing fraction</strong> as example</p>
+</blockquote>
+<img src="/image-20241009093101858.png" alt="image-20241009093101858" style="zoom:50%;" />
+<p>This example violates the abstraction barriers. Here&rsquo;s how</p>
+<ul>
+<li>
+<p><strong>Does not use constructors</strong>: instead of using <code>list</code> &lsquo;[1, 2]&rsquo;, it should use <code>rational</code></p>
+</li>
+<li>
+<p><strong>No selectors</strong>: instead of using <code>list element</code> to imply numer and denom, it should use <code> numer</code> and <code>denom</code></p>
+</li>
+<li>
+<p><strong>No constructor</strong>: use <code>add_rational</code>, this will make your code more readable!</p>
+</li>
+</ul>
+<p>All in all, the data abstraction should make a data/func&rsquo;s detail the same as its name!</p>
+<hr>
+<blockquote>
+<p>An elegant way to obtain the minimum number form <code>cat</code> project</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">minimum_mewtations</span><span class="p">(</span><span class="n">typed</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">limit</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;A diff function that computes the edit distance from TYPED to SOURCE.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    This function takes in a string TYPED, a string SOURCE, and a number LIMIT.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Arguments:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        typed: a starting word
+</span></span></span><span class="line"><span class="cl"><span class="s2">        source: a string representing a desired goal word
+</span></span></span><span class="line"><span class="cl"><span class="s2">        limit: a number representing an upper bound on the number of edits
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; big_limit = 10
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; minimum_mewtations(&#34;cats&#34;, &#34;scat&#34;, big_limit)       # cats -&gt; scats -&gt; scat
+</span></span></span><span class="line"><span class="cl"><span class="s2">    2
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; minimum_mewtations(&#34;purng&#34;, &#34;purring&#34;, big_limit)   # purng -&gt; purrng -&gt; purring
+</span></span></span><span class="line"><span class="cl"><span class="s2">    2
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; minimum_mewtations(&#34;ckiteus&#34;, &#34;kittens&#34;, big_limit) # ckiteus -&gt; kiteus -&gt; kitteus -&gt; kittens
+</span></span></span><span class="line"><span class="cl"><span class="s2">    3
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">typed_words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">typed</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">source_words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">all</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">limit</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span> <span class="c1"># Base cases should go here, you may add more base cases as needed.</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># BEGIN</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;*** YOUR CODE HERE ***&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># END</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Recursive cases should go below here</span>
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">typed_words</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># Feel free to remove or add additional cases</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># BEGIN</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;*** YOUR CODE HERE ***&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">typed</span><span class="p">)</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">source</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">source_words</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">source</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">typed</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># END</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">add</span> <span class="o">=</span> <span class="n">minimum_mewtations</span><span class="p">(</span><span class="n">typed</span><span class="p">[</span><span class="mi">0</span><span class="p">:],</span> <span class="n">source</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">limit</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">typed_words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">source_words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">else</span> <span class="n">minimum_mewtations</span><span class="p">(</span><span class="n">typed</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">source</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">limit</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">remove</span> <span class="o">=</span> <span class="n">minimum_mewtations</span><span class="p">(</span><span class="n">typed</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">source</span><span class="p">[</span><span class="mi">0</span><span class="p">:],</span> <span class="n">limit</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">typed_words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">source_words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">else</span> <span class="n">minimum_mewtations</span><span class="p">(</span><span class="n">typed</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">source</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">limit</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">substitute</span> <span class="o">=</span> <span class="n">minimum_mewtations</span><span class="p">(</span><span class="n">typed</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">source</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">limit</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">typed_words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">source_words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">else</span> <span class="n">minimum_mewtations</span><span class="p">(</span><span class="n">typed</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">source</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">limit</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="n">remove</span><span class="p">,</span> <span class="n">substitute</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># END</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="syntax">Syntax</h2>
+<p>Useful string methods for processing the contents of a file:</p>
+<ul>
+<li>
+<p><strong>.strip()</strong>:return a string without whitespace (spaces, tabs, etc.)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="s1">&#39; hello &#39;</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;hello&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>.split()</strong>:returns a list of strings that were separated by whitespace</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="s1">&#39;hi there&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="s1">&#39;hi&#39;</span><span class="p">,</span> <span class="s1">&#39;there&#39;</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>.replace(a. b)</strong>: returns a string with all instances of string <em>a</em> replaced by string <em>b</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="s1">&#39;2+2&#39;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="s1">&#39; + &#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;2 + 2&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>list</strong>: string can be seen as a string, processing it by slicing</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="s1">&#39;apples&#39;</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;apple&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>.join()</strong>: get the elements in argument separated by the thing before it</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;little&#39;</span><span class="p">,</span> <span class="s1">&#39;bug&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;a little bug&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="lab-05-mutability-iterators">Lab 05 Mutability, Iterators</h2>
+<p>There are many other list mutation methods:</p>
+<ul>
+<li>
+<p><code>append(elem)</code>: Add <code>elem</code> to the end of the list. Return <code>None</code>.</p>
+</li>
+<li>
+<p><code>extend(s)</code>: Add all elements of iterable <code>s</code> to the end of the list. Return <code>None</code>.</p>
+</li>
+<li>
+<p><code>insert(i, elem)</code>: Insert <code>elem</code> at index <code>i</code>. If <code>i</code> is greater than or equal to the length of the list, then <code>elem</code> is inserted at the end. This does not replace any existing elements, but only adds the new element <code>elem</code>. Return <code>None</code>.</p>
+</li>
+<li>
+<p><code>remove(elem)</code>: Remove the first occurrence of <code>elem</code> in list. Return <code>None</code>. Errors if <code>elem</code> is not in the list.</p>
+</li>
+<li>
+<p><code>pop(i)</code>: Remove and return the element at index <code>i</code>.</p>
+</li>
+<li>
+<p><code>pop()</code>: Remove and return the last element.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="mi">2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<p>The difference of Where iteration and For iteration:</p>
+<ul>
+<li>
+<p><strong>Where iteration can be very useful when the range is variable</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">insert_items</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">before</span><span class="p">,</span> <span class="n">after</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Insert after into s after each occurrence of before and then return s.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; test_s = [1, 5, 8, 5, 2, 3]
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; new_s = insert_items(test_s, 5, 7)
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; new_s
+</span></span></span><span class="line"><span class="cl"><span class="s2">    [1, 5, 7, 8, 5, 7, 2, 3]
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; test_s
+</span></span></span><span class="line"><span class="cl"><span class="s2">    [1, 5, 7, 8, 5, 7, 2, 3]
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; new_s is test_s
+</span></span></span><span class="line"><span class="cl"><span class="s2">    True
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; double_s = [1, 2, 1, 2, 3, 3]
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; double_s = insert_items(double_s, 3, 4)
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; double_s
+</span></span></span><span class="line"><span class="cl"><span class="s2">    [1, 2, 1, 2, 3, 4, 3, 4]
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; large_s = [1, 4, 8]
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; large_s2 = insert_items(large_s, 4, 4)
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; large_s2
+</span></span></span><span class="line"><span class="cl"><span class="s2">    [1, 4, 4, 8]
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; large_s3 = insert_items(large_s2, 4, 6)
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; large_s3
+</span></span></span><span class="line"><span class="cl"><span class="s2">    [1, 4, 6, 4, 6, 8]
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &gt;&gt;&gt; large_s3 is large_s
+</span></span></span><span class="line"><span class="cl"><span class="s2">    True
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;*** YOUR CODE HERE ***&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">before</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">s</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">after</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">s</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># if you ues for iteration, the changing length of list s is quite a big problem</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="heading"></h2>
+</article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='https://Timlin15.github.io/js/toc.js'></script>
+<link rel="stylesheet" href='https://Timlin15.github.io/css/toc.css' />
+
+  
+</div>
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://Timlin15.github.io/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Lin</li>
+      
+      <li class="mr-3 mr-lg-0">GitHub and the Invertocat logo are trademarks of <a href="https://github.com/">GitHub, Inc.</a></li>
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+
+</body>
+
+<script type="application/javascript" src="https://Timlin15.github.io/js/github-style.js"></script>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+<script type="application/javascript" src='https://Timlin15.github.io/js/search.js'></script>
+
+
+
+</html>

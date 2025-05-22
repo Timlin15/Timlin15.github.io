@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>算法 on 知言的博客</title>
+    <link>https://Timlin15.github.io/tags/%E7%AE%97%E6%B3%95/</link>
+    <description>Recent content in 算法 on 知言的博客</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>Lin</copyright>
+    <lastBuildDate>Mon, 19 May 2025 13:09:58 +0800</lastBuildDate>
+    <atom:link href="https://Timlin15.github.io/tags/%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CS170</title>
+      <link>https://Timlin15.github.io/p/cs170/</link>
+      <pubDate>Mon, 19 May 2025 13:09:58 +0800</pubDate>
+      <guid>https://Timlin15.github.io/p/cs170/</guid>
+      <description>&lt;h1 id=&#34;cs170&#34;&gt;CS170&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;[!NOTE]&lt;/p&gt;&#xA;&lt;p&gt;本笔记主要由UC Berkeley CS170的课程资料汇总而来，参考了&lt;a href=&#34;https://www.bilibili.com/video/BV1HLSuYtEUL&#34;&gt;高效算法与棘手问题 CS170 2022&lt;/a&gt;，2025年的课程主页&lt;a href=&#34;https://cs170.org/&#34;&gt;CS 170 Spring 2025&lt;/a&gt;和一个伯克利在校学生所做的课堂笔记&lt;a href=&#34;https://smartspot2.github.io/assets/pdf/CS170_Lecture_Notes.pdf&#34;&gt;CS170_Lecture_Notes.pdf&lt;/a&gt;。因为没有找到合适的中文笔记，至动态规划部分的笔记基本上都是自己写的，后部分只要参考了上述笔记进行汉化加上自己的思考。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
