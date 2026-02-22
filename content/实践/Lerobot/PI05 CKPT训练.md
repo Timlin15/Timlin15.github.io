@@ -1,8 +1,8 @@
 本文档计划从简单到详细记录在PI05的一个checkpoint上进行训练中遇到的各种问题等。
 ## 规划
 首先的问题是，任务是什么？训练集哪里来？task的质量决定了训练和方法的价值。由于本次实践的目的是熟悉Lerobot的训练脚本，看有什么潜在的坑，所以采取简单的Libero作为测试项目，并且使用社区开源数据集进行测试。目的是学习掌握
-- [ ]  配置wandb，观察训练期间的loss等数据
-- [ ] 打印一个完整 batch 的所有 key、shape、数值范围 
+- [x]  配置wandb，观察训练期间的loss等数据
+- [x] 打印一个完整 batch 的所有 key、shape、数值范围 
 - [ ] 可视化归一化前后的 action 分布（画直方图） 
 - [ ] 在 forward 里 print flow matching 的 timestep 采样分布 
 - [ ] 比冻结/不冻结 VLM 的训练曲线和 eval 成功率 
@@ -215,4 +215,470 @@ If your dataset uses different observation keys (e.g., cameras named differently
 这会显示键名不一致的问题，采用他推荐的reanem_map则可以成功运行，但是成功率是0%，需要重新训练。
 
 ## 训练及微调
-为了实现
+为了实现PI05在LIBERO上的原生支持，首先需要修改模型的config，让其适配LIBERO环境中双摄像头的设置，同时修改摄像头分辨率等配置。
+
+```json
+{
+    "type": "pi05",
+    "n_obs_steps": 1,
+    "input_features": {
+        "observation.images.base_0_rgb": {
+            "type": "VISUAL",
+            "shape": [
+                3,
+                224,
+                224
+            ]
+        },
+        "observation.images.left_wrist_0_rgb": {
+            "type": "VISUAL",
+            "shape": [
+                3,
+                224,
+                224
+            ]
+        },
+        "observation.images.right_wrist_0_rgb": {
+            "type": "VISUAL",
+            "shape": [
+                3,
+                224,
+                224
+            ]
+        },
+        "observation.state": {
+            "type": "STATE",
+            "shape": [
+                32
+            ]
+        }
+    },
+    "output_features": {
+        "action": {
+            "type": "ACTION",
+            "shape": [
+                32
+            ]
+        }
+    },
+    "device": "mps",
+    "use_amp": false,
+    "push_to_hub": true,
+    "repo_id": null,
+    "private": null,
+    "tags": null,
+    "license": null,
+    "paligemma_variant": "gemma_2b",
+    "action_expert_variant": "gemma_300m",
+    "dtype": "float32",
+    "chunk_size": 50,
+    "n_action_steps": 50,
+    "max_action_dim": 32,
+    "max_state_dim": 32,
+    "num_inference_steps": 10,
+    "time_sampling_beta_alpha": 1.5,
+    "time_sampling_beta_beta": 1.0,
+    "min_period": 0.004,
+    "max_period": 4.0,
+    "image_resolution": [
+        224,
+        224
+    ],
+    "gradient_checkpointing": false,
+    "compile_model": false,
+    "compile_mode": "max-autotune",
+    "optimizer_lr": 2.5e-05,
+    "optimizer_betas": [
+        0.9,
+        0.95
+    ],
+    "optimizer_eps": 1e-08,
+    "optimizer_weight_decay": 0.01,
+    "optimizer_grad_clip_norm": 1.0,
+    "scheduler_warmup_steps": 1000,
+    "scheduler_decay_steps": 30000,
+    "scheduler_decay_lr": 2.5e-06,
+    "tokenizer_max_length": 200
+}
+```
+```json
+{
+    "type": "pi05",
+    "n_obs_steps": 1,
+    "input_features": {
+        "observation.images.image": {
+            "type": "VISUAL",
+            "shape": [
+                3,
+                256,
+                256
+            ]
+        },
+        "observation.images.image2": {
+            "type": "VISUAL",
+            "shape": [
+                3,
+                256,
+                256
+            ]
+        },
+        "observation.state": {
+            "type": "STATE",
+            "shape": [
+                8
+            ]
+        }
+    },
+    "output_features": {
+        "action": {
+            "type": "ACTION",
+            "shape": [
+                7
+            ]
+        }
+    },
+    "empty_cameras": 1,
+    "device": "mps",
+    "use_amp": false,
+    "push_to_hub": true,
+    "repo_id": null,
+    "private": null,
+    "tags": null,
+    "license": null,
+    "paligemma_variant": "gemma_2b",
+    "action_expert_variant": "gemma_300m",
+    "dtype": "float32",
+    "chunk_size": 50,
+    "n_action_steps": 10,
+    "max_action_dim": 32,
+    "max_state_dim": 32,
+    "num_inference_steps": 10,
+    "time_sampling_beta_alpha": 1.5,
+    "time_sampling_beta_beta": 1.0,
+    "min_period": 0.004,
+    "max_period": 4.0,
+    "image_resolution": [
+        224,
+        224
+    ],
+    "gradient_checkpointing": false,
+    "compile_model": false,
+    "compile_mode": "max-autotune",
+    "optimizer_lr": 2.5e-05,
+    "optimizer_betas": [
+        0.9,
+        0.95
+    ],
+    "optimizer_eps": 1e-08,
+    "optimizer_weight_decay": 0.01,
+    "optimizer_grad_clip_norm": 1.0,
+    "scheduler_warmup_steps": 1000,
+    "scheduler_decay_steps": 30000,
+    "scheduler_decay_lr": 2.5e-06,
+    "tokenizer_max_length": 200
+}
+```
+上下两个分别是`pi05_base`和`pi05_libero_finetuned`两个版本的config文件，可以发现除了输入的视频键值、分辨率不一样，以及有一个`"empty_cameras": 1`和输入输出的动作维度不一样。
+
+可以直接在`train_config`中修改这些不同：
+```json
+{
+    "dataset": {
+        "repo_id": "HuggingFaceVLA/libero",
+        "root": null,
+        "episodes": null,
+        "image_transforms": {
+            "enable": false,
+            "max_num_transforms": 3,
+            "random_order": false,
+            "tfs": {
+                "brightness": {
+                    "weight": 1.0,
+                    "type": "ColorJitter",
+                    "kwargs": {
+                        "brightness": [
+                            0.8,
+                            1.2
+                        ]
+                    }
+                },
+                "contrast": {
+                    "weight": 1.0,
+                    "type": "ColorJitter",
+                    "kwargs": {
+                        "contrast": [
+                            0.8,
+                            1.2
+                        ]
+                    }
+                },
+                "saturation": {
+                    "weight": 1.0,
+                    "type": "ColorJitter",
+                    "kwargs": {
+                        "saturation": [
+                            0.5,
+                            1.5
+                        ]
+                    }
+                },
+                "hue": {
+                    "weight": 1.0,
+                    "type": "ColorJitter",
+                    "kwargs": {
+                        "hue": [
+                            -0.05,
+                            0.05
+                        ]
+                    }
+                },
+                "sharpness": {
+                    "weight": 1.0,
+                    "type": "SharpnessJitter",
+                    "kwargs": {
+                        "sharpness": [
+                            0.5,
+                            1.5
+                        ]
+                    }
+                }
+            }
+        },
+        "revision": null,
+        "use_imagenet_stats": true,
+        "video_backend": "torchcodec",
+        "streaming": false
+    },
+    "env": null,
+    "policy": {
+        "type": "pi05",
+        "n_obs_steps": 1,
+        "input_features": {
+            "observation.images.image": {
+                "type": "VISUAL",
+                "shape": [
+                    3,
+                    256,
+                    256
+                ]
+            },
+            "observation.images.image2": {
+                "type": "VISUAL",
+                "shape": [
+                    3,
+                    256,
+                    256
+                ]
+            },
+            "observation.state": {
+                "type": "STATE",
+                "shape": [
+                    8
+                ]
+            },
+            "observation.images.empty_camera_0": {
+                "type": "VISUAL",
+                "shape": [
+                    3,
+                    224,
+                    224
+                ]
+            }
+        },
+        "output_features": {
+            "action": {
+                "type": "ACTION",
+                "shape": [
+                    7
+                ]
+            }
+        },
+        "device": "cuda",
+        "use_amp": false,
+        "push_to_hub": true,
+        "repo_id": "Jianqi-Lin/pi05_libero",
+        "private": null,
+        "tags": null,
+        "license": null,
+        "pretrained_path": "lerobot/pi05_base",
+        "paligemma_variant": "gemma_2b",
+        "action_expert_variant": "gemma_300m",
+        "dtype": "bfloat16",
+        "chunk_size": 50,
+        "n_action_steps": 50,
+        "max_state_dim": 32,
+        "max_action_dim": 32,
+        "num_inference_steps": 10,
+        "time_sampling_beta_alpha": 1.5,
+        "time_sampling_beta_beta": 1.0,
+        "time_sampling_scale": 0.999,
+        "time_sampling_offset": 0.001,
+        "min_period": 0.004,
+        "max_period": 4.0,
+        "image_resolution": [
+            224,
+            224
+        ],
+        "empty_cameras": 1,
+        "tokenizer_max_length": 200,
+        "normalization_mapping": {
+            "ACTION": "MEAN_STD",
+            "STATE": "MEAN_STD",
+            "VISUAL": "IDENTITY"
+        },
+        "gradient_checkpointing": true,
+        "compile_model": true,
+        "compile_mode": "max-autotune",
+        "optimizer_lr": 2.5e-05,
+        "optimizer_betas": [
+            0.9,
+            0.95
+        ],
+        "optimizer_eps": 1e-08,
+        "optimizer_weight_decay": 0.01,
+        "optimizer_grad_clip_norm": 1.0,
+        "scheduler_warmup_steps": 1000,
+        "scheduler_decay_steps": 6000,
+        "scheduler_decay_lr": 2.5e-06
+    },
+    "output_dir": "/mnt/data1/linjianqi/lerobot/outputs/pi05_libero",
+    "job_name": "pi05_multi_newest_8_gpu_30_9",
+    "resume": false,
+    "seed": 1000,
+    "num_workers": 4,
+    "batch_size": 16,
+    "steps": 6000,
+    "eval_freq": 20000,
+    "log_freq": 200,
+    "save_checkpoint": true,
+    "save_freq": 2000,
+    "use_policy_training_preset": true,
+    "optimizer": {
+        "type": "adamw",
+        "lr": 0.0002,
+        "weight_decay": 0.01,
+        "grad_clip_norm": 1.0,
+        "betas": [
+            0.9,
+            0.95
+        ],
+        "eps": 1e-08
+    },
+    "scheduler": {
+        "type": "cosine_decay_with_warmup",
+        "num_warmup_steps": 8000,
+        "num_decay_steps": 48000,
+        "peak_lr": 2.5e-05,
+        "decay_lr": 2.5e-06
+    },
+    "eval": {
+        "n_episodes": 50,
+        "batch_size": 50,
+        "use_async_envs": false
+    },
+    "wandb": {
+        "enable": true,
+        "disable_artifact": false,
+        "project": "lerobot",
+        "entity": null,
+        "notes": null,
+        "run_id": "rzfptgzx",
+        "mode": null
+    }
+}
+```
+首先看policy部分的配置：
+```json
+    "policy": {
+        "type": "pi05",
+        "n_obs_steps": 1,
+        "input_features": {
+            "observation.images.image": {
+                "type": "VISUAL",
+                "shape": [
+                    3,
+                    256,
+                    256
+                ]
+            },
+            "observation.images.image2": {
+                "type": "VISUAL",
+                "shape": [
+                    3,
+                    256,
+                    256
+                ]
+            },
+            "observation.state": {
+                "type": "STATE",
+                "shape": [
+                    8
+                ]
+            },
+            "observation.images.empty_camera_0": {
+                "type": "VISUAL",
+                "shape": [
+                    3,
+                    224,
+                    224
+                ]
+            }
+        },
+        "output_features": {
+            "action": {
+                "type": "ACTION",
+                "shape": [
+                    7
+                ]
+            }
+        },
+        "device": "cuda",
+        "use_amp": false,
+        "push_to_hub": true,
+        "repo_id": "Jianqi-Lin/pi05_libero",
+        "private": null,
+        "tags": null,
+        "license": null,
+        "pretrained_path": "lerobot/pi05_base",
+        "paligemma_variant": "gemma_2b",
+        "action_expert_variant": "gemma_300m",
+        "dtype": "bfloat16",
+        "chunk_size": 50,
+        "n_action_steps": 50,
+        "max_state_dim": 32,
+        "max_action_dim": 32,
+        "num_inference_steps": 10,
+        "time_sampling_beta_alpha": 1.5,
+        "time_sampling_beta_beta": 1.0,
+        "time_sampling_scale": 0.999,
+        "time_sampling_offset": 0.001,
+        "min_period": 0.004,
+        "max_period": 4.0,
+        "image_resolution": [
+            224,
+            224
+        ],
+        "empty_cameras": 1,
+        "tokenizer_max_length": 200,
+        "normalization_mapping": {
+            "ACTION": "MEAN_STD",
+            "STATE": "MEAN_STD",
+            "VISUAL": "IDENTITY"
+        },
+        "gradient_checkpointing": true,
+        "compile_model": true,
+        "compile_mode": "max-autotune",
+        "optimizer_lr": 2.5e-05,
+        "optimizer_betas": [
+            0.9,
+            0.95
+        ],
+        "optimizer_eps": 1e-08,
+        "optimizer_weight_decay": 0.01,
+        "optimizer_grad_clip_norm": 1.0,
+        "scheduler_warmup_steps": 1000,
+        "scheduler_decay_steps": 6000,
+        "scheduler_decay_lr": 2.5e-06
+    },
+```
+先是三个

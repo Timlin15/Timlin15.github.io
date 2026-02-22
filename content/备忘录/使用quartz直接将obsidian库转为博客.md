@@ -61,7 +61,7 @@ jobs:
           rm -rf quartz/content
           mkdir -p quartz/content
           rsync -av \
-            --exclude '私密/' \
+            --exclude '个人/' \
             --exclude '.obsidian/' \
             --exclude '.git/' \
             --exclude '.gitignore' \
