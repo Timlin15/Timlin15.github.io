@@ -3,4 +3,8 @@ title: 你好👋
 ---
 暂时懒，不想写，啥时候写了再说把。 :D
 
-本博客由[Quartz 4](https://quartz.jzhao.xyz/)框架搭建而成，具体细节见[[使用quartz直接将obsidian库转为博客]]
+这个网站是由我的obsidian笔记库组成，不一定是为了发表，更多还是自己的笔记或者碎碎念，有些笔记处于未完工状态，见谅 :P  
+
+如果该笔记由AI撰写会在开头告知，没有就是手打的。或者说写得烂的就是手打的。
+
+本博客由[Quartz 4](https://quartz.jzhao.xyz/)框架全自动搭建而成，具体细节见[[使用quartz全自动将obsidian库转为博客]]

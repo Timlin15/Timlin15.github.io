@@ -681,4 +681,100 @@ If your dataset uses different observation keys (e.g., cameras named differently
         "scheduler_decay_lr": 2.5e-06
     },
 ```
-先是三个
+先是视频的配置和动作状态的配置以及输出维度，使得维度符合要求。同时设置了一个empty_camera，以这个名字开头会自动加上mask，防止影响推理和训练。
+剩余的都是一些模型配置，其中`"normalization_mapping"`是给数据进行预处理的归一化方法。比如说不同的部位可能数据范围有很大的区别，比如关节角度可能是 [-π, π]，夹爪可能是 [0, 1]。用归一化化为相对数据使flow matching过程更稳定。
+以及`dataset`部分，主要就是训练集名字，以及图像增强，包含亮度抖动、对比度抖动、饱和度抖动、色调偏移、锐度抖动。这是对训练集的光照条件的随机化，减少sim to real的gap，此处是关闭的。
+
+配置基本就是这些。
+
+## 训练结果
+
+![image.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/markdown/20260222201446890.png)
+
+训练曲线比较健康，最后进行了6000步的时候loss是0.33461
+### 1. 训练规模
+
+**`batch_size: 16`** × 2GPU = 有效 batch size **32**
+
+配合 `steps: 6000`，总共看到 128 × 6000 = **768,000 个样本**。LIBERO 数据集不大，这意味着数据会被反复遍历多轮。Batch size 影响梯度估计的稳定性——128 对于微调来说算比较大的 batch，梯度噪声小，训练更稳定但探索性也更弱。
+
+### 2. 学习率策略（最核心）
+
+```
+peak_lr:  2.5e-05   （微调用，比预训练小一个数量级）
+decay_lr: 2.5e-06   （最终衰减到的值）
+warmup:   1000 steps
+decay:    6000 steps （= 总步数，全程都在衰减）
+```
+
+这是典型的**保守微调策略**：学习率很低，避免破坏预训练权重（catastrophic forgetting）。warmup 占总训练的 1/6，之后 cosine 衰减到 peak 的 1/10。
+
+`use_policy_training_preset: true` 意味着用的是 policy 内部那套参数（2.5e-5），顶层 `optimizer.lr: 0.0002` 被忽略了。
+
+### 3. Action Chunking
+
+```
+chunk_size: 50
+n_action_steps: 50
+```
+
+模型一次预测 **50 步未来动作**，推理时也执行全部 50 步再重新观测。这是一个比较激进的设置（ACT 论文用的是 100 步但只执行部分）。chunk 越大，动作越连贯流畅，但对环境变化的响应越慢。LIBERO 是仿真且任务相对简单，所以能 hold 住大 chunk。
+
+### 4. Flow Matching 去噪
+
+```
+num_inference_steps: 10
+time_sampling_beta_alpha: 1.5
+time_sampling_beta_beta: 1.0
+```
+
+推理 10 步去噪是速度和质量的折中（扩散模型常用 50-100 步，flow matching 效率更高）。Beta 分布 α=1.5, β=1.0 使训练时的时间步采样**偏向 t 较大的区间**，即更多关注去噪早期（从噪声到粗轮廓），这通常对动作质量影响最大。
+
+### 5. 显存优化
+
+```
+gradient_checkpointing: true   → 省显存，慢约20-30%
+compile_model: true             → torch.compile 加速
+compile_mode: "max-autotune"    → 最激进的编译优化
+dtype: "bfloat16"               → 半精度省一半显存
+use_amp: false                  → 不用自动混合精度（因为已经全用bf16了）
+```
+
+这些决定了你能跑多大的 batch。如果关掉 gradient_checkpointing，batch_size 可能要减半。
+
+### 6. 正则化
+
+```
+weight_decay: 0.01
+grad_clip_norm: 1.0
+```
+
+都是比较标准的值。梯度裁剪 1.0 防止 flow matching 训练中偶尔出现的梯度爆炸。
+
+### 7. 保存和评估策略
+
+```
+save_freq: 2000    → 6000步里存3个checkpoint
+eval_freq: 20000   → 大于总步数，意味着训练期间不做eval
+```
+
+不做在线评估是因为 LIBERO 评估需要启动仿真环境跑 50 个 episode（`eval.n_episodes: 50`），耗时很长。作者选择训练完之后离线评估。
+
+最后通过多GPU训练指令来加快训练
+```bash
+accelerate launch \
+  --multi_gpu \
+  --num_processes=2 \
+  $(which lerobot-train) \
+  --config_path=./my_train_config.json
+```
+
+训练大概花了6个小时完成，最后在LIBERO 10上测得了53%的成功率，确实和社区的92%成功率有区别
+
+![[eval_episode_2.mp4]]
+![[eval_episode_3.mp4]]可以看到最开始的状态并不是模型问题，而是模型不适应，需要在单臂上进行微调。
+
+至于成功率的gap，由于我和官方都用的是LIBERO的开源数据集，数据集一样，所以应该有差别的是训练的参数。主要差别应该是
+- batch size和steps的区别，官方设置的总bs和steps分别是256和30000步，而本次实验设置的bs和steps是32和6000，遍历次数不够，导致成功率有很大差异。
+- 官方的学习率设置的大很多
+- action horizon也是10而非50
