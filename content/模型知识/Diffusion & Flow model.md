@@ -1,6 +1,11 @@
-参考了[Step-by-Step Diffusion: An Elementary Tutorial | PDF](https://arxiv.org/pdf/2406.08929)，[Flow Matching Guide and Code | PDF](https://arxiv.org/pdf/2412.06264)，[An Introduction to Flow Matching and Diffusion Models | PDF](https://arxiv.org/pdf/2506.02070)
+> [!NOTE] Reference
+> 参考了[Step-by-Step Diffusion: An Elementary Tutorial | PDF](https://arxiv.org/pdf/2406.08929)，[Flow Matching Guide and Code | PDF](https://arxiv.org/pdf/2412.06264)，[An Introduction to Flow Matching and Diffusion Models | PDF](https://arxiv.org/pdf/2506.02070)
+
 ## Diffusion model
-生成式模型的**目标**是从多个在未知分布$p^*(x)$中独立同分布的数据中，提取出一个新的样本，是从分布$p^*$中提取的。一种简单的思路，在高阶上，是生成一种转化，把易于采样的分布(如正态分布)转为目标分布$p^*$。Diffusion为生成这种**转化**提供了一种通用模板，其精髓在于把从未知分布$p^*$中采样归纳为一系列简单采样。详见以下的Gaussian Diffusion
+生成式模型的**目标**是：
+> 从多个在未知分布$p^*(x)$中独立同分布的数据中，提取出一个新的样本，是从分布$p^*$中提取的
+
+这一种简单的思路，在高阶上，是生成一种转化，把易于采样的分布(如正态分布)转为目标分布$p^*$。Diffusion为生成这种**转化**提供了一种通用模板，其精髓在于把从未知分布$p^*$中采样归纳为一系列简单采样。详见以下的Gaussian Diffusion
 
 ### Gaussian Diffusion
 对于高斯扩散过程，令 $x_0$ 为 $\mathbb{R}^d$ 中服从目标分布 $p^*$（例如狗的图像）的随机变量。然后通过依次添加具有较小尺度 $\sigma$ 的独立高斯噪声，构造一列随机变量 $x_1, x_2, \ldots, x_T$： $$ \begin{aligned} x_{t+1} &:= x_t + \eta_t, \\ \eta_t &\sim \mathcal{N}(0, \sigma^2). \end{aligned} \tag{1} $$ 这被称为**前向过程**，它将数据分布转化为噪声分布。公式 (1) 定义了所有 $(x_0, x_1, \ldots, x_T)$ 上的联合分布，我们记 $\{p_t\}_{t \in [T]}$ 为每个 $x_t$ 的边缘分布。注意到当步数 $T$ 较大时，分布 $p_T$ 近似于高斯分布，因此我们可以仅通过采样一个高斯分布来近似地从 $p_T$ 中采样。
