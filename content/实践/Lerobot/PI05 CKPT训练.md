@@ -778,3 +778,19 @@ accelerate launch \
 - batch size和steps的区别，官方设置的总bs和steps分别是256和30000步，而本次实验设置的bs和steps是32和6000，遍历次数不够，导致成功率有很大差异。
 - 官方的学习率设置的大很多
 - action horizon也是10而非50
+---
+由于老师的建议，我又再次尝试进行训练，尝试复现社区微调的92%准确度。主要从上述几个方向着手：
+- 修改`batch_size`和`steps`，让训练更加充分。让`steps=36,000`，`batch_size=32`，占用四张卡就是总batch size=128
+- 修改学习率，不像微调那样那么小，把学习率放大了一倍，可以更快地收敛
+- 修改了衰减步数，不会后期衰减
+- 修改了`action_horizon`的窗口，缩小为10，不会查看10步后的差异
+
+按照这个训练配置训练，得到训练图：
+![image.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/markdown/20260301145958461.png)
+可以发现几点不同：
+- 由于高lr，大 batch + action_horizon 缩小到 10，第二次训练比第一次下降地快速许多，到8k steps后趋于平稳，12k steps后几乎不变。由于action_horizon 从大窗口缩小到 10，意味着模型只需要预测近期动作，任务变简单了，loss 自然更低更稳。可以考虑在把`decay_steps`设置为12k steps时，这样lr就会在12k steps左右开始衰减，进一步学习。
+- update time由于batch size的差异和多卡的差异，v1大致为1.5秒，v2为4.6秒左右。
+- train/lr 这是最直接的差异。v2 把学习率翻倍到 ~4.5e-5 并且**去掉了后期衰减**，所以全程恒定。v1 用了 warmup + cosine decay，峰值只有 ~2e-5，后期衰减到接近 0。v2 的策略让模型全程以较大步幅学习，收敛更快。
+- train/grad_norm v2 梯度范数更小更稳定（~1），v1 前期波动大。大 batch（128）天然能平滑梯度估计，减少方差。加上恒定高 lr 让优化轨迹更稳定，不像 v1 小 lr + 小 batch 容易出现梯度尖峰。
+
+最后进行eval，得到最后成功率是95%，比较圆满。
