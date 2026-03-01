@@ -9,6 +9,12 @@
 
 ### Gaussian Diffusion
 对于高斯扩散过程，令 $x_0$ 为 $\mathbb{R}^d$ 中服从目标分布 $p^*$（例如狗的图像）的随机变量。然后通过依次添加具有较小尺度 $\sigma$ 的独立高斯噪声，构造一列随机变量 $x_1, x_2, \ldots, x_T$： $$ \begin{aligned} x_{t+1} &:= x_t + \eta_t, \\ \eta_t &\sim \mathcal{N}(0, \sigma^2). \end{aligned} \tag{1} $$ 这被称为**前向过程**，它将数据分布转化为噪声分布。公式 (1) 定义了所有 $(x_0, x_1, \ldots, x_T)$ 上的联合分布，我们记 $\{p_t\}_{t \in [T]}$ 为每个 $x_t$ 的边缘分布。注意到当步数 $T$ 较大时，分布 $p_T$ 近似于高斯分布，因此我们可以仅通过采样一个高斯分布来近似地从 $p_T$ 中采样。
+实际上，由于不断地加上正态分布会使得方差无限放大，所以会通过加权不同分布的权重来缩放：
+$$
+x_t = \sqrt{1 - \beta_t} x_{t-1} + \sqrt{\beta_t} \epsilon_t
+$$
+
+
 ![image.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/20251025160740.png)
 现在，假设我们可以解决以下子问题：
 
