@@ -93,8 +93,15 @@ $$p(x_{t-\Delta t} \mid x_t) \approx \mathcal{N}(x_{t-\Delta t}; \mu, \sigma_q^2
 
 回顾这一推导过程，其核心思想是：对于足够小的 $\Delta t$，反向过程 $p(x_{t-\Delta t} \mid x_t)$ 的贝叶斯展开主要由前向过程中的 $p(x_t \mid x_{t-\Delta t})$ 项主导。这在直觉上解释了为什么反向过程和前向过程具有相同的函数形式（此处均为高斯分布）。
 
-### 伪代码
-
+### 训练目标
+如此，可以把复杂的生成问题转为一个回归问题，只需要学习$p(x_{t-\Delta t}|x_t)$即可:
+$$
+\begin{aligned}
+	\mu_{t-\Delta t}(z) &:= \mathbb{E}[x_{t-\Delta t} \mid x_t = z] \\
+\implies \mu_{t-1} &= \mathop{\mathrm{argmin}}_{f: \mathbb{R}^d \to \mathbb{R}^d} \mathbb{E}_{x_t, x_{t-\Delta t}} \|f(x_t) - x_{t-\Delta t}\|_2^2\\
+&= \mathop{\mathrm{argmin}}_{f: \mathbb{R}^d \to \mathbb{R}^d} \mathbb{E}_{x_{t-\Delta t}, \eta} \|f(x_{t-\Delta t} + \eta_t) - x_{t-\Delta t})\|_2^2,
+\end{aligned}
+$$
 $$
 \begin{array}{|l|}
 \hline
@@ -148,4 +155,13 @@ $$
 \hline
 \end{array}
 $$
-
+理论上成立，但是用神经网络拟合的时候，$p(x_{t - \Delta t}|x_t)$主要是高斯噪音，模型分不清哪些是要生成的特征，哪些是噪音。将训练目标改为预测$\mathbb{E}[x_0|x_t]$可以有效减小方差（等效地估计所有先前噪声步骤的平均值，而不是估计单个噪声步骤，方差小得多）。
+由于前向过程中每一步的噪音都是相互独立的，单步噪音是总噪音的$\frac{\Delta t}{t}$，由此有：
+$$
+	\mathbb{E}[(x_{t-\Delta t}-x_t)|x_t] =  \frac{\Delta t}{t} \mathbb{E}[(x_0-x_t)|x_t]
+$$
+或等价的：
+$$
+\mathbb{E}[x_{t-\Delta t} \mid x_t] = \frac{\Delta t}{t}\,\mathbb{E}[x_0 \mid x_t] + \left(1 - \frac{\Delta t}{t}\right) x_t
+$$
+但是Diffusion model的工作原理没变，只是预测
