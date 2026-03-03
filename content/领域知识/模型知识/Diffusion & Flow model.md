@@ -49,12 +49,14 @@ $$
 ### 随机采样DDPM成立性证明
 
 $$
-\begin{array}{|l|} \hline \textbf{Algorithm 1: Stochastic Reverse Sampler (DDPM-like)} \\ \hline \text{For input sample } x_t, \text{ and timestep } t, \text{ output:} \\ \\ \quad \hat{x}_{t-\Delta t} \leftarrow \mu_{t-\Delta t}(x_t) + \mathcal{N}(0, \sigma_q^2 \Delta t) \hfill (15) \\ \hline \end{array}
+\begin{array}{|l|} \hline \textbf{Algorithm 1: Stochastic Reverse Sampler (DDPM-like)} \\ \hline \text{For input sample } x_t, \text{ and timestep } t, \text{ output:} \\ \\ \quad \hat{x}_{t-\Delta t} \leftarrow \mu_{t-\Delta t}(x_t) + \mathcal{N}(0, \sigma_q^2 \Delta t) \tag{15} \\ \hline \end{array}
 $$
 这个算法成立的基础是：
 **Claim 1 (Informal).** 令 $p_{t-\Delta t}(x)$ 为 $\mathbb{R}^d$ 上任意足够平滑的密度函数。考虑 $(x_{t-\Delta t}, x_t)$ 的联合分布，其中 $x_{t-\Delta t} \sim p_{t-\Delta t}$ 且 $x_t \sim x_{t-\Delta t} + \mathcal{N}(0, \sigma_q^2 \Delta t)$。那么，对于足够小的 $\Delta t$，下式成立。对于所有条件变量 $z \in \mathbb{R}^d$，存在 $\mu_z$ 使得：
 
-$$p(x_{t-\Delta t} \mid x_t = z) \approx \mathcal{N}(x_{t-\Delta t}; \mu_z, \sigma_q^2 \Delta t) \tag{16}$$
+$$
+p(x_{t-\Delta t} \mid x_t = z) \approx \mathcal{N}(x_{t-\Delta t}; \mu_z, \sigma_q^2 \Delta t) \tag{16}
+$$
 
 其中常数 $\mu_z$ 仅取决于 $z$。此外，取以下定义即可：
 
@@ -68,7 +70,9 @@ $$
 其中 $p_t$ 是 $x_t$ 的边缘分布。
 
 **Proof of Claim 1 (Informal).** 这里有一个启发式论证，说明为什么“分数（score）”会出现在反向过程中。我们基本上只需应用贝叶斯定理，然后进行适当的泰勒展开。我们从贝叶斯定理开始：
-$$p(x_{t-\Delta t} | x_t) = \frac{p(x_t | x_{t-\Delta t}) p_{t-\Delta t}(x_{t-\Delta t})}{p_t(x_t)} \tag{19}$$
+$$
+p(x_{t-\Delta t} | x_t) = \frac{p(x_t | x_{t-\Delta t}) p_{t-\Delta t}(x_{t-\Delta t})}{p_t(x_t)} \tag{19}
+$$
 
 然后对两边取对数。在整个过程中，我们将舍弃对数中的任何加性常数（它们会转化为归一化因子），并舍弃所有 $O(\Delta t)$ 阶的项。注意，在此推导中，我们应将 $x_t$ 视为常数，因为我们想要了解作为 $x_{t-\Delta t}$ 函数的条件概率。现在：
 
@@ -164,4 +168,39 @@ $$
 $$
 \mathbb{E}[x_{t-\Delta t} \mid x_t] = \frac{\Delta t}{t}\,\mathbb{E}[x_0 \mid x_t] + \left(1 - \frac{\Delta t}{t}\right) x_t
 $$
-但是Diffusion model的工作原理没变，只是预测
+但是Diffusion model的工作原理没变，只是预测没一小步的噪音。
+
+### 确定性DDIM正确性证明
+
+但是DDPM因为要细分成很多步，而每步都需要通过神经网络预测方向，这导致速度奇慢。这也提出了新的问题：
+$$
+\text{能否找到确定性的反向采样函数}\, F_t(z)\,\, \text{满足反向采样的需求？}
+$$
+因此提出了确定性的DDIM算法：
+$$
+\begin{array}{|l|}
+\hline
+\textbf{Algorithm 2: Deterministic Reverse Sampler (DDIM-like)} \\
+\hline
+\text{For input sample } x_t \text{, and step index } t \text{, output:} \\
+\\
+\quad \quad \widehat{x}_{t-\Delta t} \leftarrow x_t + \lambda(\mu_{t-\Delta t}(x_t) - x_t) \quad \quad \quad \quad \quad \quad \quad (33) \\
+\\
+\text{where } \lambda := \left( \frac{\sigma_t}{\sigma_{t-\Delta t} + \sigma_t} \right) \text{ and } \sigma_t \equiv \sigma_q \sqrt{t} \text{ from Equation (12).} \\
+\hline
+\end{array}
+$$
+注意：$\lambda$ 是一个缩放系数，这个算法的逻辑是**新位置 = 老位置 + 步长 $\times$ 移动方向**
+
+想要证明这个反向采样器是正确的，因为它是一个确定性的采样器，用类似DDPM那种从 $p(x_{x-\Delta t}| x_t)$ 随机采样是行不通的。只能通过证明**这个方程表示了一个有效的映射，在边际分布 $p_t$ 和$p_{t-\Delta t}$ 间**，即对于：
+$$
+\begin{aligned}
+F_t(z) :&= z + \lambda(\mu_{t-\Delta t}(z) - z) \\ \phantom{F_t(z)} &= z + \lambda(\mathbb{E}[x_{t-\Delta t} \mid x_t = z] - z)
+\end{aligned}
+$$
+我们想证明：
+$$
+\{F(x)\}_{x\sim p_t} \approx p_{t-\Delta t}
+$$
+
+
