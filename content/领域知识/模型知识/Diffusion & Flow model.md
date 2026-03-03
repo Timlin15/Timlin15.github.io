@@ -219,4 +219,55 @@ $$
 > - $G_t(z), \quad z \in \mathbb{R}^d \to \mathbb{R}^d$ 是一个从向量映射到向量的函数，分布中每一个向量通过映射获得新的向量集构成新的分布。
 > - 如果 $z \sim p_t$ 那么 $G_t(z)$ 的分布就是 pushforward 测度 $G_t \sharp p_t$
 
+#### Case1: Single point
+让我们首先尝试目标分布 $p_0$ 是 $R^d$ 中的单点质量的简单情况。不失一般性，我们可以假定那个点是 $x_0=0$。为了验证DDIM算法是准确的，我们希望考虑任意步长 $t$ 下 $x_t$ 和 $x_{t-\Delta t}$ 的分布。根据扩散前向过程，在时刻 $t$ 相关的随机变量为：
+$$
+\begin{aligned}
+x_0 &= 0 \quad \text{（确定性）} \\
+x_{t-\Delta t} &\sim \mathcal{N}(x_0, \sigma_{t-\Delta t}^2) \\
+x_t &\sim \mathcal{N}(x_{t-\Delta t}, \sigma_t^2 - \sigma_{t-\Delta t}^2)
+\end{aligned}
+$$
+$x_{t-\Delta t}$ 的边缘分布是 $p_{t-\Delta t} = \mathcal{N}(0, \sigma_{t-1}^2)$，而 $x_t$ 的边缘分布是 $p_t = \mathcal{N}(0, \sigma_t^2)$。
 
+让我们首先寻找某个确定性函数 $G_t : \mathbb{R}^d \to \mathbb{R}^d$，使得 $G_t \sharp p_t = p_{t-\Delta t}$。虽然有许多可能的函数可行，但最明显的一个是：
+$$
+G_t(z) := \left( \frac{\sigma_{t-\Delta t}}{\sigma_t} \right) z. \tag{37}
+$$
+上述函数 $G_t$  simply 重新缩放 $p_t$ 的高斯分布，以匹配 $p_{t-\Delta t}$ 高斯分布的方差。事实证明，这个 $G_t$ 正好等价于算法 2 所采取的步骤 $F_t$，我们接下来将展示这一点。
+
+断言 3. 当目标分布是一个点质量 $p_0 = \delta_0$ 时，更新 $F_t$（如公式 35 所定义）等价于缩放 $G_t$（如公式 37 所定义）：
+$$
+F_t \equiv G_t. \tag{38}
+$$
+因此，算法 2 定义了针对目标分布 $p_0 = \delta_0$ 的反向采样器。
+证明. 要应用 F_t，我们需要为我们的简单分布计算 $\mathbb{E}[x_{t-\Delta t} \mid x_t]$。由于 $(x_{t-\Delta t}, x_t)$ 是联合高斯分布，因此有：
+$$
+\mathbb{E}[x_{t-\Delta t} \mid x_t] = \left( \frac{\sigma_{t-\Delta t}^2}{\sigma_t^2} \right) x_t. \tag{39}
+$$
+其余部分即是代数运算：
+$$
+\begin{aligned}
+F_t(x_t) &:= x_t + \lambda (\mathbb{E}[x_{t-\Delta t} \mid x_t] - x_t) \\
+&= x_t + \left( \frac{\sigma_t}{\sigma_{t-\Delta t} + \sigma_t} \right) (\mathbb{E}[x_{t-\Delta t} \mid x_t] - x_t) \\
+&= x_t + \left( \frac{\sigma_t}{\sigma_{t-\Delta t} + \sigma_t} \right) \left( \frac{\sigma_{t-\Delta t}^2}{\sigma_t^2} - 1 \right) x_t \\
+&= \left( \frac{\sigma_{t-\Delta t}}{\sigma_t} \right) x_t \\
+&= G_t(x_t).
+\end{aligned}
+$$
+因此我们得出结论：算法 2 是一个正确的反向采样器，因为它等价于 $G_t$，且 $G_t $是有效的。
+$\square$
+
+即使 $x_0$ 是一个任意点而不是 $x_0 = 0$，算法 2 的正确性依然成立，因为所有事物都具有转移对称性。
+
+可以把DDIM的更新视作速度场，使在 $t$ 时刻的点向他们 $t-\Delta t$ 时刻的位置移动，具体来说，可以把向量场定义为：
+$$
+v_t(x_t):=\frac{\lambda}{\Delta t}(\mathbb{E}[x_{t-\Delta t}|x_t]-x_t)
+$$
+于是DDIM更新可以写作：
+$$
+\begin{aligned}
+\hat{x}_{t-\Delta t} :&= x_t + \lambda(\eta_{t-\Delta t}(x_t)-x_t) \\
+&= x_t + v_t(x_t)\Delta t
+\end{aligned}
+$$
