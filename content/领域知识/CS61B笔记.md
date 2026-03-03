@@ -1,21 +1,3 @@
-+++
-date = '2025-05-19T13:09:58+08:00'
-draft = true
-title = 'CS170'
-math = true
-
-summary = "高效算法与棘手问题-beta"
-categories = [
-    "笔记"
-]
-tags = [
-    "数学",
-    "CS",
-    "算法"
-]
-
-+++
-
 # CS170
 
 > [!NOTE]

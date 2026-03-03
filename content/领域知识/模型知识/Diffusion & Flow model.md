@@ -30,6 +30,10 @@ $$
 $$
 x_{t+\Delta t} := x_t + \eta_t, \qquad \eta_t \sim \mathcal{N}(0, \sigma_q^2 \Delta t)
 $$
+同理：
+$$
+x_t \sim \mathcal{N}(x_0, \sigma_t^2), \qquad \text{where} \, \sigma_t := \sigma_q \sqrt{t}
+$$
 ![image.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/20251025160740.png)
 这张图展示了Gaussian Diffusion由一个多峰分布最终转化为一个正态分布的过程。
 
@@ -42,8 +46,11 @@ $$
 为了证明这个反向采样是存在且可行的，先用一个不严谨的例子给一点感觉（intuition）：
 对于较小的 σ 和正向过程中定义的高斯扩散过程，条件分布$p(x_{t-1}|x_t)$本身接近高斯分布。也就是说，对于所有时间 t 和条件 $z \in \mathbb{R}^d$，存在一些平均参数 $\eta \in \mathbb{R}^d$ 使得:
 $$
-p(x_{t-1}|x_t=z)\approx \mathcal{N}(x_{t-1}; \eta, \sigma^2)
+p(x_{t-1}|x_t=z)\approx \mathcal{N}(x_{t-1}; \eta, \sigma^2) \tag{12}
 $$
+
+> [!NOTE] 注
+> $p(x_t)$和$x_t$的分布是一个东西
 
 ![image.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/20251025161523.png)
 ### 随机采样DDPM成立性证明
@@ -93,7 +100,9 @@ $$
 $$
 
 除了加性因子外，这与均值为 $\mu$、方差为 $\sigma_q^2 \Delta t$ 的正态分布的对数密度相同。因此：
-$$p(x_{t-\Delta t} \mid x_t) \approx \mathcal{N}(x_{t-\Delta t}; \mu, \sigma_q^2 \Delta t). \tag{20}$$
+$$
+p(x_{t-\Delta t} \mid x_t) \approx \mathcal{N}(x_{t-\Delta t}; \mu, \sigma_q^2 \Delta t). \tag{20}
+$$
 
 回顾这一推导过程，其核心思想是：对于足够小的 $\Delta t$，反向过程 $p(x_{t-\Delta t} \mid x_t)$ 的贝叶斯展开主要由前向过程中的 $p(x_t \mid x_{t-\Delta t})$ 项主导。这在直觉上解释了为什么反向过程和前向过程具有相同的函数形式（此处均为高斯分布）。
 
@@ -159,7 +168,7 @@ $$
 \hline
 \end{array}
 $$
-理论上成立，但是用神经网络拟合的时候，$p(x_{t - \Delta t}|x_t)$主要是高斯噪音，模型分不清哪些是要生成的特征，哪些是噪音。将训练目标改为预测$\mathbb{E}[x_0|x_t]$可以有效减小方差（等效地估计所有先前噪声步骤的平均值，而不是估计单个噪声步骤，方差小得多）。
+这些算法理论上成立，但是用神经网络拟合的时候，$p(x_{t - \Delta t}|x_t)$主要是高斯噪音，模型分不清哪些是要生成的特征，哪些是噪音。将训练目标改为预测$\mathbb{E}[x_0|x_t]$可以有效减小方差（等效地估计所有先前噪声步骤的平均值，而不是估计单个噪声步骤，方差小得多）。
 由于前向过程中每一步的噪音都是相互独立的，单步噪音是总噪音的$\frac{\Delta t}{t}$，由此有：
 $$
 	\mathbb{E}[(x_{t-\Delta t}-x_t)|x_t] =  \frac{\Delta t}{t} \mathbb{E}[(x_0-x_t)|x_t]
@@ -168,7 +177,7 @@ $$
 $$
 \mathbb{E}[x_{t-\Delta t} \mid x_t] = \frac{\Delta t}{t}\,\mathbb{E}[x_0 \mid x_t] + \left(1 - \frac{\Delta t}{t}\right) x_t
 $$
-但是Diffusion model的工作原理没变，只是预测没一小步的噪音。
+但是Diffusion model的工作原理没变，只是预测每一小步的噪音。
 
 ### 确定性DDIM正确性证明
 
@@ -205,7 +214,9 @@ $$
 \{F(x)\}_{x\sim p_t} =F_t♯p_t \approx p_{t-\Delta t}
 $$
 
-> [!NOTE] 注意
-> $\eta(z)$和DDPM中的神经网络一致
+> [!NOTE] 注
+> - $\eta(z)$和DDPM中的神经网络一致。
+> - $G_t(z), \quad z \in \mathbb{R}^d \to \mathbb{R}^d$ 是一个从向量映射到向量的函数，分布中每一个向量通过映射获得新的向量集构成新的分布。
+> - 如果 $z \sim p_t$ 那么 $G_t(z)$ 的分布就是 pushforward 测度 $G_t \sharp p_t$
 
 
