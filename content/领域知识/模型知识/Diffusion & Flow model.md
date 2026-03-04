@@ -56,7 +56,8 @@ $$
 ### 随机采样DDPM成立性证明
 
 $$
-\begin{array}{|l|} \hline \textbf{Algorithm 1: Stochastic Reverse Sampler (DDPM-like)} \\ \hline \text{For input sample } x_t, \text{ and timestep } t, \text{ output:} \\ \\ \quad \hat{x}_{t-\Delta t} \leftarrow \mu_{t-\Delta t}(x_t) + \mathcal{N}(0, \sigma_q^2 \Delta t) \tag{15} \\ \hline \end{array}
+\begin{array}{|l|} \hline \textbf{Algorithm 1: Stochastic Reverse Sampler (DDPM-like)} \\ \hline \text{For input sample } x_t, \text{ and timestep } t, \text{ output:} \\ \\ \quad \hat{x}_{t-\Delta t} \leftarrow \mu_{t-\Delta t}(x_t) + \mathcal{N}(0, \sigma_q^2 \Delta t) \qquad \qquad \qquad \quad (15)
+\\ \hline \end{array}
 $$
 这个算法成立的基础是：
 **Claim 1 (Informal).** 令 $p_{t-\Delta t}(x)$ 为 $\mathbb{R}^d$ 上任意足够平滑的密度函数。考虑 $(x_{t-\Delta t}, x_t)$ 的联合分布，其中 $x_{t-\Delta t} \sim p_{t-\Delta t}$ 且 $x_t \sim x_{t-\Delta t} + \mathcal{N}(0, \sigma_q^2 \Delta t)$。那么，对于足够小的 $\Delta t$，下式成立。对于所有条件变量 $z \in \mathbb{R}^d$，存在 $\mu_z$ 使得：
@@ -263,7 +264,7 @@ $\square$
 
 可以把DDIM的更新视作速度场，使在 $t$ 时刻的点向他们 $t-\Delta t$ 时刻的位置移动，具体来说，可以把向量场定义为：
 $$
-v_t(x_t):=\frac{\lambda}{\Delta t}(\mathbb{E}[x_{t-\Delta t}|x_t]-x_t)
+v_t(x_t):=\frac{\lambda}{\Delta t}(\mathbb{E}[x_{t-\Delta t}|x_t]-x_t) \tag{40}
 $$
 于是DDIM更新可以写作：
 $$
@@ -273,3 +274,89 @@ $$
 \end{aligned}
 $$
 #### Case2: Two Points
+现在让我们证明当目标分布是两点混合时算法 2 是正确的：
+$$
+p_0:=\frac 12 \delta_a+ \frac 12 \delta_b \tag{43}
+$$
+根据扩散的前向过程，在时间 $t$ 的分布是一个混合高斯分布：
+$$
+p_t:=\frac{1}{2}N(a,\sigma_t^2)+\frac{1}{2}N(b,\sigma_t^2)\tag{44}
+$$
+我们想要证明的是式(40)中的速度场 $v_t$ 可以完成分布转换：$p_t\overset{v_t}{→}p_{t-\Delta t}$。
+
+首先我们尝试构建一个满足反向采样 $p_t\overset{v^*_t}{→}p_{t-\Delta t}$ 的正确的速度场 $v_t^*$。由于 Case1 的结果对单个点是成立的，那么速度场可以将 $\{a,b\}$ 的每个混合分量进行转换。即存在一个速度场 $v_t^{[a]}$：
+$$
+v^a_t(x_t):=\lambda\underset{x_0\in \sigma_a}{E}[x_{t-\Delta t}-x_t|x_t] \tag{45}
+$$
+可以对 $a$ 进行转换：
+$$
+N(a,\sigma_t^2)\overset{v_t^a}{→}N(a,\sigma_{t-\Delta t}^2) \tag{46}
+$$
+同理 $b$ 的速度场 $v_t^{[b]}$ 也成立。
+
+为了将两个速度场合并成 $v_t^*$ 来表示：
+$$
+\underbrace{(\frac{1}{2}N(a,\sigma_t^2)+\frac{1}{2}N(b,\sigma_t^2))}_{p_t}\overset{v_t^*}{→}\underbrace{(\frac{1}{2}N(a,\sigma_{t-\Delta t}^2)+\frac{1}{2}N(b,\sigma_{t-\Delta t}^2))}_{p_{t-\Delta t }} \tag{47}
+$$
+直观地取速度场的平均是错的，应该是独立速度场的加权：
+$$
+\begin{aligned}
+v_t^*(x_t) &= \frac{v_t^a(x_t)\cdot p(x_t|x_0=a)+v_t^b(x_t)\cdot p(x_t|x_0=b)}{p(x_t|x_0=a)+p(x_t|x_0=b)} \\
+&=v_t^a(x_t)\cdotp(x_0=a|x_t)+v_t^b(x_0=b|x_t)
+\end{aligned}
+\tag{48-49}
+$$
+其中，$v_t^a$ 的权重是点从 $a$ 中生成的概率，而不是从 $x_0 = b$ 的概率。
+![image.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/markdown/20260304174840967.png)
+以气体为例子，左图中的左部点虽然针对 $b$ 的速度大于 $a$ 的速度（因为离 $b$ 远，需要加速收敛到 $b$ 的分布内），但是对 $b$ 的权重低（离 $b$ 远，在 $b$ 生成的概率就低）。所以最后在右图生成了一个向 $a$ 的速度。
+
+接下来我们需要证明式子 $(40)$ 和 $v_t^*$ 相同，首先考虑单个向量场 $v_t^a$ 可以写作一个条件期望，根据式(45)中的定义 :
+$$
+\begin{aligned}
+v_t^a(x_t)&=\lambda \underset{x_0\sim \delta _a}{E}[x_{t-\Delta t}-x_t|x_t]\\ &=\lambda \underset{x_0\sim 1/2\delta_a+1/2\delta_b}{E}[x_{t-\Delta t}-x_t|x_0=a,x_t]
+\end{aligned}
+\tag{50-51}
+$$
+那么 $v_t^*$ 可以写为一个条件期望：
+$$
+\begin{aligned}
+v_t^*(x_t)&=v_t^a(x_t)\cdot p(x_0=a|x_t)+v_t^b(x_t)\cdot p(x_0=b|x_t)\\ 
+&=\lambda E[x_{t-\Delta t}-x_t|x_0=a,x_t]\cdot p(x_0=a|x_t)\\
+&+\lambda E[x_{t-\Delta t}-x_t|x_0=b,x_t]\cdot p(x_0=b|x_t) \\ 
+&=\lambda E[x_{t-\Delta t}-x_t|x_t]
+\\&=v_t(x_t)
+\end{aligned}
+\tag{52-55}
+$$
+####  Case3: 任意分布
+现在我们知道如何处理两个点，我们可以将这个想法推广到 $x_0$ 的任意分布。我们不会在这里详细讨论，因为一般证明将包含在后续部分中。事实证明，我们算法 2 的整体证明策略可以显着推广到其他类型的扩散，而无需太多的工作。这就产生了流匹配的想法，我们将在下一节中看到。一旦我们开发了流机制，实际上就可以直接从方程（37）的简单单点缩放算法直接导出 DDIM：请参见附录 B.5
+
+#### SDE视角下的扩散&概率流常微分方程 
+论文中说可选，暂时没读，或许以后还需要深入理解的时候会读。
+
+### DDPM和DDIM
+$$
+\begin{array}{|l|} \hline \textbf{Algorithm 1: Stochastic Reverse Sampler (DDPM-like)} \\ \hline \text{For input sample } x_t, \text{ and timestep } t, \text{ output:} \\ \\ \quad \hat{x}_{t-\Delta t} \leftarrow \mu_{t-\Delta t}(x_t) + \mathcal{N}(0, \sigma_q^2 \Delta t) \qquad \qquad \qquad \quad (15)
+\\ \hline \end{array}
+$$
+$$
+\begin{array}{|l|}
+\hline
+\textbf{Algorithm 2: Deterministic Reverse Sampler (DDIM-like)} \\
+\hline
+\text{For input sample } x_t \text{, and step index } t \text{, output:} \\
+\\
+\quad \quad \widehat{x}_{t-\Delta t} \leftarrow x_t + \lambda(\mu_{t-\Delta t}(x_t) - x_t) \quad \quad \quad \quad \quad \quad \quad (33) \\
+\\
+\text{where } \lambda := \left( \frac{\sigma_t}{\sigma_{t-\Delta t} + \sigma_t} \right) \text{ and } \sigma_t \equiv \sigma_q \sqrt{t} \text{ from Equation (12).} \\
+\hline
+\end{array}
+$$
+$$
+\begin{aligned}
+\mu_z &:= \mathbb{E}_{(x_{t-\Delta t}, x_t)} [x_{t-\Delta t} \mid x_t = z] & (17) \\
+&= z + (\sigma_q^2 \Delta t) \nabla \log p_t(z), & (18)
+\end{aligned}
+$$
+
+前面说到，从DDPM转到DDIM的主要动机
