@@ -181,5 +181,5 @@ title: 你好👋
 
 我的几个朋友的友链：
 -  [Candlest's Blog](https://blog.candlest.cc/)
--  [SOV710's Blog](https://sov710.github.io/)
+-  [SOV710's Blog](https://blog.sov710.org)
 - [Jaison's Blog](https://jaison.ink/)
