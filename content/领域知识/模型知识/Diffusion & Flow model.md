@@ -215,9 +215,10 @@ $$
 $$
 
 > [!NOTE] 注
-> - $\eta(z)$和DDPM中的神经网络一致。
-> - $G_t(z), \quad z \in \mathbb{R}^d \to \mathbb{R}^d$ 是一个从向量映射到向量的函数，分布中每一个向量通过映射获得新的向量集构成新的分布。
-> - 如果 $z \sim p_t$ 那么 $G_t(z)$ 的分布就是 pushforward 测度 $G_t \sharp p_t$
+> - $\eta(z)$和DDPM中的神经网络一致；
+> - $G_t(z), \quad z \in \mathbb{R}^d \to \mathbb{R}^d$ 是一个从向量映射到向量的函数，分布中每一个向量通过映射获得新的向量集构成新的分布；
+> - 如果 $z \sim p_t$ 那么 $G_t(z)$ 的分布就是 pushforward 测度 $G_t \sharp p_t$；
+> - 此部分设计测度论，如果想深入了解可以参阅测度论的教材。
 
 #### Case1: Single point
 让我们首先尝试目标分布 $p_0$ 是 $R^d$ 中的单点质量的简单情况。不失一般性，我们可以假定那个点是 $x_0=0$。为了验证DDIM算法是准确的，我们希望考虑任意步长 $t$ 下 $x_t$ 和 $x_{t-\Delta t}$ 的分布。根据扩散前向过程，在时刻 $t$ 相关的随机变量为：
@@ -271,3 +272,4 @@ $$
 &= x_t + v_t(x_t)\Delta t
 \end{aligned}
 $$
+#### Case2: Two Points
