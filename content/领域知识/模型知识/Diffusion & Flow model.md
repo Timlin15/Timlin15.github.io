@@ -1,5 +1,10 @@
+
+> [!NOTE] TL;DR
+> 
+
 > [!NOTE] Reference
-> 参考了[Step-by-Step Diffusion: An Elementary Tutorial | PDF](https://arxiv.org/pdf/2406.08929)，[Flow Matching Guide and Code | PDF](https://arxiv.org/pdf/2412.06264)，[An Introduction to Flow Matching and Diffusion Models | PDF](https://arxiv.org/pdf/2506.02070)
+> 主要参考了[Step-by-Step Diffusion: An Elementary Tutorial | PDF](https://arxiv.org/pdf/2406.08929)。
+> 同时可以参阅[Flow Matching Guide and Code | PDF](https://arxiv.org/pdf/2412.06264)，[An Introduction to Flow Matching and Diffusion Models | PDF](https://arxiv.org/pdf/2506.02070)。
 
 # Diffusion model
 生成式模型的**目标**是：
@@ -44,9 +49,9 @@ $$
 \{F_t(z):z\sim p_t\} \equiv p_{t-1} 
 $$
 为了证明这个反向采样是存在且可行的，先用一个不严谨的例子给一点感觉（intuition）：
-对于较小的 σ 和正向过程中定义的高斯扩散过程，条件分布$p(x_{t-1}|x_t)$本身接近高斯分布。也就是说，对于所有时间 t 和条件 $z \in \mathbb{R}^d$，存在一些平均参数 $\eta \in \mathbb{R}^d$ 使得:
+对于较小的 σ 和正向过程中定义的高斯扩散过程，条件分布$p(x_{t-1}|x_t)$本身接近高斯分布。也就是说，对于所有时间 t 和条件 $z \in \mathbb{R}^d$，存在一些平均参数 $\mu \in \mathbb{R}^d$ 使得:
 $$
-p(x_{t-1}|x_t=z)\approx \mathcal{N}(x_{t-1}; \eta, \sigma^2) \tag{12}
+p(x_{t-1}|x_t=z)\approx \mathcal{N}(x_{t-1}; \mu, \sigma^2) \tag{12}
 $$
 
 > [!NOTE] 注
@@ -71,11 +76,17 @@ $$
 $$
 \begin{aligned}
 \mu_z &:= \mathbb{E}_{(x_{t-\Delta t}, x_t)} [x_{t-\Delta t} \mid x_t = z] & (17) \\
-&= z + (\sigma_q^2 \Delta t) \nabla \log p_t(z), & (18)
+&= z + (\sigma_q^2 \Delta t) \nabla \log p_t(z) & (18)
 \end{aligned}
 $$
-
 其中 $p_t$ 是 $x_t$ 的边缘分布。
+
+> [!NOTE] 注意
+> $\nabla\log{p_t(z)}$  是Score函数，由Tweedie 公式，可以转化为 
+> $$
+>\nabla_{x_t} \log p_t(x_t) = \frac{\mathbb{E}[x_0 \mid x_t] - x_t}{\sigma_t^2}
+>$$
+> 此处由神经网络等模型拟合。
 
 **Proof of Claim 1 (Informal).** 这里有一个启发式论证，说明为什么“分数（score）”会出现在反向过程中。我们基本上只需应用贝叶斯定理，然后进行适当的泰勒展开。我们从贝叶斯定理开始：
 $$
@@ -112,7 +123,7 @@ $$
 $$
 \begin{aligned}
 	\mu_{t-\Delta t}(z) &:= \mathbb{E}[x_{t-\Delta t} \mid x_t = z] \\
-\implies \mu_{t-1} &= \mathop{\mathrm{argmin}}_{f: \mathbb{R}^d \to \mathbb{R}^d} \mathbb{E}_{x_t, x_{t-\Delta t}} \|f(x_t) - x_{t-\Delta t}\|_2^2\\
+\implies \mu_{t-\Delta t} &= \mathop{\mathrm{argmin}}_{f: \mathbb{R}^d \to \mathbb{R}^d} \mathbb{E}_{x_t, x_{t-\Delta t}} \|f(x_t) - x_{t-\Delta t}\|_2^2\\
 &= \mathop{\mathrm{argmin}}_{f: \mathbb{R}^d \to \mathbb{R}^d} \mathbb{E}_{x_{t-\Delta t}, \eta} \|f(x_{t-\Delta t} + \eta_t) - x_{t-\Delta t})\|_2^2,
 \end{aligned}
 $$
@@ -355,8 +366,10 @@ $$
 $$
 \begin{aligned}
 \mu_z &:= \mathbb{E}_{(x_{t-\Delta t}, x_t)} [x_{t-\Delta t} \mid x_t = z] & (17) \\
-&= z + (\sigma_q^2 \Delta t) \nabla \log p_t(z), & (18)
+&= z + (\sigma_q^2 \Delta t) \nabla \log p_t(z) & (18)
 \end{aligned}
 $$
 
-前面说到，从DDPM转到DDIM的主要动机
+前面说到，从DDPM转到DDIM的主要动机是因为DDPM需要过太多次模型 $\mu_{t - \Delta t}$ 了，但是又不能通过减小步数的方法，因为随机的性质导致减小步数会导致崩坏。而DDIM用确定性的方法规避了这个问题，可以通过减小步骤的方法来减小生成的时间。
+
+# Flow model
