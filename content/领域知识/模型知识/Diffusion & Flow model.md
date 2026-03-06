@@ -1,17 +1,19 @@
 
 > [!NOTE] TL;DR
-> 
+> 本文讲解了 Diffusion 和 Flow model 的数学原理，包括 Diffusion 中的 DDPM 和 DDIM 模型。整体来说，DDPM 至 DDIM 再到 Flow model 呈现清晰的渐进发展的趋势，体现为逐渐舍弃带有随机性的高斯分布的影响，而是在反向过程和正向过程中引入确定性的步骤。推荐将三者作为一个脉络研究。
+> 本文主要从概率角度理解，缺少了 ODE 和 SDE 的视角，未来如果有机会可以考虑补上。
 
 > [!NOTE] Reference
 > 主要参考了[Step-by-Step Diffusion: An Elementary Tutorial | PDF](https://arxiv.org/pdf/2406.08929)。
 > 同时可以参阅[Flow Matching Guide and Code | PDF](https://arxiv.org/pdf/2412.06264)，[An Introduction to Flow Matching and Diffusion Models | PDF](https://arxiv.org/pdf/2506.02070)。
+> 在构建文档的时候部分参考了[一文贯通Diffusion原理：DDPM、DDIM和Flow Matching](https://zhuanlan.zhihu.com/p/12591930520)这篇知乎文章的汉化。
 
 # Diffusion model
 生成式模型的**目标**是：
 
 > 从多个在未知分布$p^*(x)$中独立同分布的数据中，提取出一个新的样本，是从分布$p^*$中提取的
 
-Diffusion model也一样，它想从目标分布（如狗的图像）$p^*$中采样出一个点。但是从初始的简单分布（如高斯分布）中推导到复杂的目标分布根本不可能。所以Diffusion先反过来，研究怎么将一个多峰的复杂分布简化为一个简单的正态分布，再反过来研究怎么反向降噪，实现对复杂分布的采样。
+Diffusion model也一样，它想从目标分布（如狗的图像）$p^*$中采样出一个点。但是从初始的简单分布（如高斯分布）中推导到复杂的目标分布难以实现。所以Diffusion先反过来，研究怎么将一个多峰的复杂分布简化为一个简单的正态分布，再反过来研究怎么反向降噪，实现对复杂分布的采样。
 
 ## Notation
 
@@ -241,13 +243,13 @@ x_{t-\Delta t} &\sim \mathcal{N}(x_0, \sigma_{t-\Delta t}^2) \\
 x_t &\sim \mathcal{N}(x_{t-\Delta t}, \sigma_t^2 - \sigma_{t-\Delta t}^2)
 \end{aligned}
 $$
-$x_{t-\Delta t}$ 的边缘分布是 $p_{t-\Delta t} = \mathcal{N}(0, \sigma_{t-1}^2)$，而 $x_t$ 的边缘分布是 $p_t = \mathcal{N}(0, \sigma_t^2)$。
+$x_{t-\Delta t}$ 的边缘分布是 $p_{t-\Delta t} = \mathcal{N}(0, \sigma_{t-\Delta t}^2)$，而 $x_t$ 的边缘分布是 $p_t = \mathcal{N}(0, \sigma_t^2)$。
 
 让我们首先寻找某个确定性函数 $G_t : \mathbb{R}^d \to \mathbb{R}^d$，使得 $G_t \sharp p_t = p_{t-\Delta t}$。虽然有许多可能的函数可行，但最明显的一个是：
 $$
 G_t(z) := \left( \frac{\sigma_{t-\Delta t}}{\sigma_t} \right) z. \tag{37}
 $$
-上述函数 $G_t$  simply 重新缩放 $p_t$ 的高斯分布，以匹配 $p_{t-\Delta t}$ 高斯分布的方差。事实证明，这个 $G_t$ 正好等价于算法 2 所采取的步骤 $F_t$，我们接下来将展示这一点。
+上述函数 $G_t$  简单地重新缩放 $p_t$ 的高斯分布，以匹配 $p_{t-\Delta t}$ 高斯分布的方差。事实证明，这个 $G_t$ 正好等价于算法 2 所采取的步骤 $F_t$，我们接下来将展示这一点。
 
 断言 3. 当目标分布是一个点质量 $p_0 = \delta_0$ 时，更新 $F_t$（如公式 35 所定义）等价于缩放 $G_t$（如公式 37 所定义）：
 $$
@@ -297,7 +299,7 @@ $$
 
 首先我们尝试构建一个满足反向采样 $p_t\overset{v^*_t}{→}p_{t-\Delta t}$ 的正确的速度场 $v_t^*$。由于 Case1 的结果对单个点是成立的，那么速度场可以将 $\{a,b\}$ 的每个混合分量进行转换。即存在一个速度场 $v_t^{[a]}$：
 $$
-v^a_t(x_t):=\lambda\underset{x_0\in \sigma_a}{E}[x_{t-\Delta t}-x_t|x_t] \tag{45}
+v^a_t(x_t):=\lambda\underset{x_0\sim \sigma_a}{E}[x_{t-\Delta t}-x_t|x_t] \tag{45}
 $$
 可以对 $a$ 进行转换：
 $$
@@ -313,7 +315,7 @@ $$
 $$
 \begin{aligned}
 v_t^*(x_t) &= \frac{v_t^a(x_t)\cdot p(x_t|x_0=a)+v_t^b(x_t)\cdot p(x_t|x_0=b)}{p(x_t|x_0=a)+p(x_t|x_0=b)} \\
-&=v_t^a(x_t)\cdotp(x_0=a|x_t)+v_t^b(x_0=b|x_t)
+&=v_t^a(x_t)\cdotp(x_0=a|x_t)+v_t^b(x^t)\cdot(x_0=b|x_t)
 \end{aligned}
 \tag{48-49}
 $$
@@ -340,12 +342,13 @@ v_t^*(x_t)&=v_t^a(x_t)\cdot p(x_0=a|x_t)+v_t^b(x_t)\cdot p(x_0=b|x_t)\\
 \tag{52-55}
 $$
 ####  Case3: 任意分布
-现在我们知道如何处理两个点，我们可以将这个想法推广到 $x_0$ 的任意分布。我们不会在这里详细讨论，因为一般证明将包含在后续部分中。事实证明，我们算法 2 的整体证明策略可以显着推广到其他类型的扩散，而无需太多的工作。这就产生了流匹配的想法，我们将在下一节中看到。一旦我们开发了流机制，实际上就可以直接从方程（37）的简单单点缩放算法直接导出 DDIM：请参见附录 B.5
+现在我们知道如何处理两个点，我们可以将这个想法推广到 $x_0$ 的任意分布。我们不会在这里详细讨论，因为一般证明将包含在后续部分中。事实证明，我们算法 2 的整体证明策略可以显着推广到其他类型的扩散，而无需太多的工作。这就产生了流匹配的想法，我们将在下一节中看到。一旦我们开发了流机制，实际上就可以直接从方程（37）的简单单点缩放算法直接导出 DDIM：请参见原论文附录 B.5
 
 #### SDE视角下的扩散&概率流常微分方程 
 论文中说可选，暂时没读，或许以后还需要深入理解的时候会读。
 
 ### DDPM和DDIM
+回顾之前提出的公式和算法：
 $$
 \begin{array}{|l|} \hline \textbf{Algorithm 1: Stochastic Reverse Sampler (DDPM-like)} \\ \hline \text{For input sample } x_t, \text{ and timestep } t, \text{ output:} \\ \\ \quad \hat{x}_{t-\Delta t} \leftarrow \mu_{t-\Delta t}(x_t) + \mathcal{N}(0, \sigma_q^2 \Delta t) \qquad \qquad \qquad \quad (15)
 \\ \hline \end{array}
@@ -373,3 +376,102 @@ $$
 前面说到，从DDPM转到DDIM的主要动机是因为DDPM需要过太多次模型 $\mu_{t - \Delta t}$ 了，但是又不能通过减小步数的方法，因为随机的性质导致减小步数会导致崩坏。而DDIM用确定性的方法规避了这个问题，可以通过减小步骤的方法来减小生成的时间。
 
 # Flow model
+
+Flow model 其实是 DDIM 算法的一种泛化，Flow model的核心思想和 DDIM 中介绍的相差不大：
+1. 首先，我们定义了如何生成单点。具体来说，我们构建了向量场 $\{v^{[a]}_t\}_t$，当应用于所有时间步时，将标准高斯分布传输到任意 delta 分布 $δ_a$。  
+2. 其次，我们确定如何将两个矢量场组合成单个有效矢量场。这让我们可以构建从标准高斯到两个点的传输（或者更一般地说，到点上的分布 - 我们的目标分布）。
+其中任意一点都不需要高斯采样，所以可以完全舍弃高斯分布的正向分布，提出Flow model。
+
+## Flow
+首先先定义 Flow 是啥：flow是一个随时间演进的向量场的集合 $v=\{v_t\}_{t\in[0,1]}$ ，换成物理概念可以理解为是一个气体在不同时间 $t$ 构成的集合。任何一个flow都定义了一条从初始点 $x_1$ 到最终的点 $x_0$ 的轨迹。
+对于 flow $v$ 和初始点 $x_1$，考虑常微分方程(ODE)对应的离散时间迭代 $x_{t-\Delta t} \leftarrow x_t + v_t(x_t)\Delta t$： 
+$$
+\frac{dx_t}{dt} = -v_t(x_t) \tag{59} 
+$$ 在 $t=1$ 初始点为 $x_1$，将： 
+$$
+x_t := \text{RunFlow}(v, x_1, t) \tag{60} 
+$$ 看作 flow ODE 在时间 $t$ 的解，终点是 $x_0$。也就是说 RunFlow 是将 $x_1$ 验着 flow $v$ 移动到时间 $t$ 的结果。 flow 不仅定义了初始点和终点的映射，其实也定义了整个分布的转换。如果 $p_1$ 是初始点的分布，那么经过 flow $v$ 终点的分布是： 
+$$
+p_0 = \{\text{RunFlow}(v, x_1, t=0)\}_{x_1 \sim p_1} \tag{61} 
+$$ 在这个过程中，还是用气体来比拟，起点即初始状态是分子服从分布 $p_1$ 的气体，然后气体中的每个分子的轨迹由 flow $v$ 来决定，那么这个气体（这些分子）最终的分布是 $p_0$。 Flow Matching 的最终目标是：学习一个 flow $v^*$ 使得 $q \xrightarrow{v^*} p$，其中 $p$ 是目标数据分布，$q$ 是某个简单的基础分布（比如高斯分布）。如果拥有 $v^*$，我们可以这样从 $p$ 生成样本：先从基础分布 $q$ 中采样得到 $x_1$，然后通过得到的 flow 输入是 $x_1$ 输出是最终的 $x_0$。DDIM 算法这类方法的一个 case，现在我们如何构建更通用的 flow 呢？
+
+### Pointwise Flows & Marginal Flows
+Flow的最基础单元室单点的flow，将一个点 $x_1$ 移动到 $x_0$。直观上，给定一个联系 $x_1$ 和 $x_0$ 的任意路径 $\{x_t\}_{t \in [0,1]}$，一个 pointwise flow 描述了这个轨迹：由给定速度 $v_t(x_t)$ 下的每个点 $x_t$ 构成，如下图所示：
+![image.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/markdown/20260306111131912.png)
+正式的表述：一个 pointwise flow 是起点为 $x_1$、终点为 $x_0$ 且满足式(59)的任意 flow $\{v_t\}_t$，记作 $v^{[x_1,x_0]}$。这样的 pointwise flow 有很多，不是唯一的。
+
+有了逐点的流后，我们可以像 DDIM 的双点的证明一样，我们需要一个 flow $v^*$ 来实现分布间的转换，可以采用加权平均的方式，权重是每个分子通过各自的pointwise flow $v_t^{[x_1,x_0]}$ 在 $x_t$ 出现的概率，即 
+$$
+v_t^*(x_t):=\underset{x_0,x_1|x_t}{E}[v_t^{[x_1,x_0]}(x_t)|x_t] \tag{64}
+$$
+上面的期望关于联合分布 $(x_1,x_0,x_t)$ 的期望：通过采样 $(x_1,x_0)\sim \prod_{q,p}$ 然后得到 $x_t←\text{RunFLow}(v^{[x_1,x_0]},x_1,t)$ 。
+
+这提出了两个问题：
+1. 我们应该选择什么样的pointwise $v^{[x_1,x_0]}$ 和coupling $\prod_{q,p}$
+2. 如何计算marginal flow $v^*$ ? 我们无法直接根据式(64)计算，因为需要在给定的 $x_t$ 从 $p(x_0|x_t)$ 中采样，非常复杂。
+
+这个问题的提出是很自然的：在完全舍弃高斯分布带来的随机性后，提出了两个问题：
+- 要怎么选取原本正向过程会提供的训练集 $\Pi_{q,p}$，简单的是独立采样，各采各的随机配对。但也可以用更聪明的配对（比如 optimal transport coupling），让轨迹更短、训练更高效。
+- 以及 $x_0$ 和 $x_1$ 之间怎么走。最常用的是线性插值 $x_t = (1-t)x_0 + tx_1$，但理论上可以是任意路径。
+
+### Pointwise flow的一种简单选择
+考虑简单的情况，我们需要选择简单的 pointwise flow，基础分布 $q$ 和 coupling $\Pi_{q,p}$。虽然高斯分布是一个简单的基础分布但不是唯一的选择，也有其他的，比如的环形分布也是基础分布。
+
+至于 coupling，最简单的选择是独立 coupling，即从 $p$ 和 $q$ 中各自采样。其中 $p$ 和 $q$ 是终点和起始点的分布。
+
+对于 pointwise，最简单的是 linear pointwise flow：
+
+$$
+\begin{aligned}
+v_t^{[x_1,x_0]}(x_t) &= x_0 - x_1 \\
+\implies \text{RunFlow}(v^{[x_1,x_0]}, x_1, t) &= t x_1 + (1 - t) x_0 
+\end{aligned}
+\tag{65-66}
+$$
+如上式中，只是在 $x_1$ 和 $x_0$ 之间做了线性插值。linear pointwise flow 的一个 marginal flow 例子如下图所示：基础分布 $q$ 是一个环状的均匀分布，目标分布 $p$ 是位于 $x_0$ 的狄拉克函数。灰色箭头描绘了在不同时间 $t$ 的 flow 场。最左边是基础分布，最右边所有点坍缩到一个点即目标点上。这里 $x_0$ 恰好是前面螺旋分布上的一个点。
+![image.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/markdown/20260306113414358.png)
+
+剩下的问题是：在这种情况下，如果所有训练点都是随机抽取的，要怎么实现在训练中的加权呢？
+我们可以借鉴DDIM的解决方法，用我们可以从联合分布 $(x_0,x_t)$ 中采样足够多的样本，然后作为回归问题来解决。类似DDPM中的处理，式(64)中的条件期望函数可以写作：
+$$
+\begin{aligned}
+v_t^*(x_t)&:=\underset{x_0,x_1|x_t}{E}[v_t^{[x_1,x_0]}(x_t)|x_t]\\ \Longrightarrow v_t^*&=\underset{f:R^d→R^d}{\text{argmin}}\underset{(x_0,x_1,x_t)}{E}\|f(x_t)-v_t^{[x_1,x_0]}(x_t)\|_2^2\\
+\end{aligned}
+\tag{67-68}
+$$
+这样，我们就可以把训练集从 $x_t$ 空间中选取点来学习每对 $(x_0, x_1)$ 被采到的概率确实相等。但不同的配对在同一个时间 $t$ 会产生不同位置的 $x_t$。在某些位置，很多条轨迹汇聚经过，网络在那里收到大量不同方向的监督信号。在另一些位置，只有少数轨迹经过，监督信号方向比较一致。
+
+最后模型通过神经网络实现了对加权的拟合，而不是通过建模的方式来实现加权。
+$$
+\begin{array}{|l|}
+\hline
+\textbf{Pseudocode 4: } \text{Flow-matching train loss, generic pointwise flow } \color{red}{\text{[or linear flow]}} \\
+\hline
+\textbf{Input: } \text{Neural network } f_\theta \\
+\textbf{Data: } \text{Sample-access to coupling } \Pi_{q,p}; \\
+\qquad \quad \text{Pointwise flows } \{v_t^{[x_1,x_0]}\} \text{ for all } x_1, x_0. \\
+\textbf{Output: } \text{Stochastic loss } L \\
+1 \quad (x_1, x_0) \leftarrow \text{Sample}(\Pi_{q,p}) \\
+2 \quad t \leftarrow \text{Unif}[0, 1] \\
+3 \quad x_t \leftarrow \underbrace{\text{RunFlow}(v_t^{[x_1,x_0]}, x_1, t)}_{\color{red}{tx_1+(1-t)x_0}} \\
+4 \quad L \leftarrow \left\| f_\theta(x_t, t) - \underbrace{v_t^{[x_1,x_0]}(x_t)}_{\color{red}{(x_0-x_1)}} \right\|_2^2 \\
+5 \quad \textbf{return } L \\
+\hline
+\end{array}
+$$
+$$
+\begin{array}{|l|}
+\hline
+\textbf{Pseudocode 5: } \text{Flow-matching sampling} \\
+\hline
+\textbf{Input: } \text{Trained network } f_\theta \\
+\textbf{Data: } \text{Sample-access to base distribution } q; \text{ step-size } \Delta t. \\
+\textbf{Output: } \text{Sample from target distribution } p. \\
+1 \quad x_1 \leftarrow \text{Sample}(q) \\
+2 \quad \textbf{for } t = 1, (1 - \Delta t), (1 - 2\Delta t), \dots, \Delta t \textbf{ do} \\
+3 \quad \vert \quad x_{t-\Delta t} \leftarrow x_t + f_\theta(x_t, t)\Delta t \\
+4 \quad \textbf{end} \\
+5 \quad \textbf{return } x_0 \\
+\hline
+\end{array}
+$$
