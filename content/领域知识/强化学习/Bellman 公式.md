@@ -32,15 +32,114 @@ $$
 $$
 $V^\pi(s)$ 表示从状态 $s$ 开始并按照策略 $\pi$ 采取动作所获得的折扣奖励的期望总和。\footnote{请注意，这里以 $\pi$ 为条件的写法并不完全正确，因为 $\pi$ 不是随机变量，但这在文献中是相当标准的用法。
 
-有了这个策略后，要怎么估计一个策略的**总价值**呢，不可能真的把所有状态的价值真的按照概率加权，那样太慢了。Bellman 方程就是为了解决这个问题而产生的。
+有了这个策略后，要怎么估计一个策略的**总价值**呢，不可能真的把所有状态的价值真的按照概率加权，那样太慢了。Bellman 方程就是为了解决这个问题而产生的，其利用了 MDP 的马尔可夫性质，即本状态可以只由上个状态决定。
 
 给定一个固定的策略 $\pi$，其价值函数 $V^\pi$ 满足贝尔曼方程 (Bellman equation)：
 $$
-    V^\pi(s) = R(s) + \gamma \sum_{s' \in S} P_{s\pi(s)}(s') V^\pi(s').
+\begin{aligned}
+v_\pi(s) &= \mathbb{E}[R_{t+1}|S_t = s] + \gamma\mathbb{E}[G_{t+1}|S_t = s], \\
+&= \underbrace{\sum_{a \in \mathcal{A}} \pi(a|s) \sum_{r \in \mathcal{R}} p(r|s,a)r}_{\text{mean of immediate rewards}} + \underbrace{\gamma \sum_{a \in \mathcal{A}} \pi(a|s) \sum_{s' \in \mathcal{S}} p(s'|s,a)v_\pi(s')}_{\text{mean of future rewards}} \\
+&= \sum_{a \in \mathcal{A}} \pi(a|s) \left[ \sum_{r \in \mathcal{R}} p(r|s,a)r + \gamma \sum_{s' \in \mathcal{S}} p(s'|s,a)v_\pi(s') \right], \quad \text{for all } s \in \mathcal{S}. 
+\end{aligned}
 $$
 这表明从状态 $s$ 开始的折扣奖励期望总和 $V^\pi(s)$ 由两部分组成：第一部分是从状态 $s$ 开始即刻获得的即时奖励 (immediate reward) $R(s)$；第二部分是未来折扣奖励的期望总和。仔细考察第二项，可以看到上面的求和项可以重写为 $\text{E}_{s' \sim P_{s\pi(s)}}[V^\pi(s')]$。这是从状态 $s'$ 开始的折扣奖励的期望总和，其中 $s'$ 的分布由 $P_{s\pi(s)}$ 给出，也就是在 MDP 中从状态 $s$ 执行第一个动作 $\pi(s)$ 后将到达的状态分布。因此，上面的第二项给出的是在 MDP 中执行第一步后获得的折扣奖励的期望总和。
 
+贝尔曼公式利用了**Bootstrap(自举)** 的思想，它不再依赖长期问题，而是将长期问题分解为下一状态的价值，变成了一种递归的求发。具体来说，其核心为**用当前已有的价值估计，去更新另一个价值估计。** 最后可以有效收敛成正确的奖励。
+
 贝尔曼方程可以有效地用于求解 $V^\pi$。具体来说，在一个有限状态 MDP ($|S| < \infty$) 中，可以为每个状态 $s$ 写出一个关于 $V^\pi(s)$ 的方程。这给出了 $|S|$ 个线性方程组，其中包含 $|S|$ 个变量（未知的 $V^\pi(s)$），可以有效地求解这些变量。
+
+为了表示线性公式，可以把贝尔曼方程拆成：
+$$
+\begin{aligned}
+v_{\pi}(s) &= r_{\pi}(s) + \gamma \sum_{s^{\prime} \in \mathcal{S}} p_{\pi}\left(s^{\prime} \mid s\right) v_{\pi}\left(s^{\prime}\right), \\
+r_{\pi}(s) &\doteq \sum_{a \in \mathcal{A}} \pi(a \mid s) \sum_{r \in \mathcal{R}} p(r \mid s, a) r, \\
+p_{\pi}\left(s^{\prime} \mid s\right) &\doteq \sum_{a \in \mathcal{A}} \pi(a \mid s) p\left(s^{\prime} \mid s, a\right).
+\end{aligned}
+$$
+此时，对于如下图所示系统，可以写出每个状态对应本策略的总奖励：
+![image.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/markdown/20260307121626257.png)
+$$
+\begin{aligned}
+v_{\pi}(s_i) &= r_{\pi}(s_i) + \gamma \sum_{s_j \in \mathcal{S}} p_{\pi}(s_j \mid s_i) v_{\pi}(s_j) \\
+v_{\pi} &= r_{\pi} + \gamma P_{\pi} v_{\pi}
+\end{aligned}
+$$
+$$
+\underbrace{
+\begin{bmatrix}
+v_{\pi}(s_1) \\
+v_{\pi}(s_2) \\
+v_{\pi}(s_3) \\
+v_{\pi}(s_4)
+\end{bmatrix}
+}_{v_{\pi}}
+=
+\underbrace{
+\begin{bmatrix}
+r_{\pi}(s_1) \\
+r_{\pi}(s_2) \\
+r_{\pi}(s_3) \\
+r_{\pi}(s_4)
+\end{bmatrix}
+}_{r_{\pi}}
++
+\gamma
+\underbrace{
+\begin{bmatrix}
+p_{\pi}(s_1|s_1) & p_{\pi}(s_2|s_1) & p_{\pi}(s_3|s_1) & p_{\pi}(s_4|s_1) \\
+p_{\pi}(s_1|s_2) & p_{\pi}(s_2|s_2) & p_{\pi}(s_3|s_2) & p_{\pi}(s_4|s_2) \\
+p_{\pi}(s_1|s_3) & p_{\pi}(s_2|s_3) & p_{\pi}(s_3|s_3) & p_{\pi}(s_4|s_3) \\
+p_{\pi}(s_1|s_4) & p_{\pi}(s_2|s_4) & p_{\pi}(s_3|s_4) & p_{\pi}(s_4|s_4)
+\end{bmatrix}
+}_{P_{\pi}}
+\underbrace{
+\begin{bmatrix}
+v_{\pi}(s_1) \\
+v_{\pi}(s_2) \\
+v_{\pi}(s_3) \\
+v_{\pi}(s_4)
+\end{bmatrix}
+}_{v_{\pi}}.
+$$
+
+$$
+\begin{bmatrix}
+v_{\pi}(s_1) \\
+v_{\pi}(s_2) \\
+v_{\pi}(s_3) \\
+v_{\pi}(s_4)
+\end{bmatrix}
+=
+\begin{bmatrix}
+0.5(0) + 0.5(-1) \\
+1 \\
+1 \\
+1
+\end{bmatrix}
++
+\gamma
+\begin{bmatrix}
+0 & 0.5 & 0.5 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+v_{\pi}(s_1) \\
+v_{\pi}(s_2) \\
+v_{\pi}(s_3) \\
+v_{\pi}(s_4)
+\end{bmatrix}.
+$$
+$P_{\pi}$ 矩阵需要满足两个性质：
+- 非负，因为概率不可能是负数： $P_{\pi}>0$
+- 每行的和为1，因为每个状态的转移概率总和为1 ： $P_{\pi}1=1$
+
+但是现实中不会直接求闭式解，因为求逆会消耗很大算力。实际上是使用迭代的方式，最开始先随便赋值 $v_0$，然后通过：
+$$
+v_{k+1}=r_\pi+\gamma P_\pi v_k,\quad k=0,1,2,\dots
+$$
+来不断更新总价值。最后可以迭代收敛到真正的 $v_\pi$。
 
 同样地，定义最优价值函数 (optimal value function)为
 $$
