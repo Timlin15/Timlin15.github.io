@@ -24,6 +24,43 @@ $$
 $$
     \text{E}\left[R(s_0) + \gamma R(s_1) + \gamma^2 R(s_2) + \dots\right]
 $$
+
+**状态价值函数 $V_\pi(s)$**
+
+**定义：**
+$$
+V_\pi(s) = \mathbb{E}\Bigg[ \sum_{t=0}^\infty \gamma^t r_t \;\Big|\; s_0 = s,\, a_t \sim \pi \Bigg]
+$$
+**含义：**  
+在初始状态为 $s$ 的条件下，遵循策略 $\pi$ 时，期望获得的 **累计折扣回报**。用来衡量某个状态本身的“好坏”。
+
+**状态-动作价值函数 $Q_\pi(s,a)$**
+
+**定义：**
+
+$$Q_\pi(s,a) = \mathbb{E}\Bigg[ \sum_{t=0}^\infty \gamma^t r_t \;\Big|\; s_0 = s,\, a_0 = a,\, a_{1:\infty} \sim \pi \Bigg]$$
+
+**含义：**  
+在状态 $s$下先执行动作 $a$，之后遵循策略 $\pi$，期望获得的 **累计折扣回报**。用来衡量某个动作在某个状态下的“好坏”。
+
+**策略目标函数 $J(\pi)$**
+
+**定义：**
+
+$$J(\pi) = \mathbb{E}_{s_0 \sim \rho_0}\Big[ V_\pi(s_0) \Big] = \mathbb{E}_{s_0:\infty \sim \rho_\pi,\, a_0:\infty \sim \pi}\Bigg[ \sum_{t=0}^\infty \gamma^t r_t \Bigg]$$
+
+**含义：**  
+策略 $\pi$ 在 **整个初始状态分布 $\rho_0$** 下的期望累计回报，是强化学习中需要最大化的最终目标。
+因此，我们的目标是最大化这个函数：(假定所有智能体共享同样的奖励函数)
+$$
+J(\pi) \triangleq \mathbb{E}_{s_{0:\infty} \sim \rho_{\pi}^{0:\infty}, a_{0:\infty} \sim \pi} \left[ \sum_{t=0}^{\infty} \gamma^t r_t \right].$$
+同时定义$A$优势函数，对于单智能体和多智能体，定义分别为：
+$$
+A_{\pi}(s,a) = Q_{\pi}(s,a)-V_{\pi}(s)
+$$
+$$
+A_{\pi}^{i1:m}\left(s, \mathbf{a}^{j1:k}, \mathbf{a}^{i1:m}\right) \triangleq Q_{\pi}^{j1:k,i1:m}\left(s, \mathbf{a}^{j1:k}, \mathbf{a}^{i1:m}\right) - Q_{\pi}^{j1:k}\left(s, \mathbf{a}^{j1:k}\right).$$
+
 ## Bellman 方程
 
 **策略 (policy)** 是一个函数 $\pi: S \mapsto A$，它将状态映射到动作。当处于状态 $s$ 时，如果执行 (executing) 某个策略 $\pi$，则采取动作 $a = \pi(s)$。同时定义策略 $\pi$ 的价值函数 (value function) 为
