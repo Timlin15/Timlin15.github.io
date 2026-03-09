@@ -102,6 +102,10 @@ date: Sat, 14 Feb 2026 08:39:50 GMT
 curl -X PUT http://127.0.0.1:19090/proxies/%F0%9F%9A%80%20%E8%8A%82%E7%82%B9%E9%80%89%E6%8B%A9 \
   -H "Content-Type: application/json" \
   -d '{"name":"🇨🇳 台湾 01"}'
+  
+curl --noproxy '*' -X PUT 'http://127.0.0.1:19090/proxies/%E4%B8%80%E4%BA%91%E6%A2%AF%20web01.1yunti.com' \
+  -H "Content-Type: application/json"   
+  -d '{"name": "[trojan] 台湾 01"}'
 ```
 ![59f51f4ff5cdd936822dc23593f32711.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/markdown/20260214215709870.png)
 
