@@ -228,3 +228,41 @@ $$
 最后当两个值都不再变化后即可判断为收敛了。
 
 可以见书67页的例子，方便理解。
+
+首先，我们通过列出它们的步骤来比较值迭代和策略迭代算法。
+
+- 策略迭代：选择一个任意的初始策略 $\pi_0$。在第 $k$ 次迭代中，执行以下两个步骤。
+  - 步骤1：策略评估（PE）。给定 $\pi_k$，求解 $v_{\pi_k}$：
+    $$
+    v_{\pi_k} = r_{\pi_k} + \gamma P_{\pi_k} v_{\pi_k}.
+    $$
+  - 步骤2：策略改进（PI）。给定 $v_{\pi_k}$，求解 $\pi_{k+1}$：
+    $$
+    \pi_{k+1} = \arg\max_\pi (r_\pi + \gamma P_\pi v_{\pi_k}).
+    $$
+
+- 值迭代：选择一个任意的初始值 $v_0$。在第 $k$ 次迭代中，执行以下两个步骤。
+  - 步骤1：策略更新（PU）。给定 $v_k$，求解 $\pi_{k+1}$：
+    $$
+    \pi_{k+1} = \arg\max_\pi (r_\pi + \gamma P_\pi v_k).
+    $$
+  - 步骤2：值更新（VU）。给定 $\pi_{k+1}$，求解 $v_{k+1}$：
+    $$
+    v_{k+1} = r_{\pi_{k+1}} + \gamma P_{\pi_{k+1}} v_k.
+    $$
+
+上述两种算法的步骤可以用如下方式表示：
+
+$$
+\text{策略迭代：} \pi_0 \xrightarrow{PE} v_{\pi_0} \xrightarrow{PI} \pi_1 \xrightarrow{PE} v_{\pi_1} \xrightarrow{PI} \pi_2 \xrightarrow{PE} v_{\pi_2} \xrightarrow{PI} \cdots
+$$
+$$
+\text{值迭代：} \quad v_0 \xrightarrow{PU} \pi'_1 \xrightarrow{VU} v_1 \xrightarrow{PU} \pi'_2 \xrightarrow{VU} v_2 \xrightarrow{PU} \cdots
+$$
+
+可以看出，两种算法的流程非常相似。
+
+这种策略由于以下几点，不会陷入局部最优解中，虽然其只是贪心地找局部最优中：
+- **Bellman 方程的收缩映射性质（Contraction Mapping）**：Bellman optimality operator $T^*$∗ 是一个 γ-contraction，根据 Banach 不动点定理，反复迭代必然收敛到**唯一的不动点** $V^*$。唯一不动点意味着根本不存在"局部最优"这个概念——最优解只有一个，你一定会收敛到它。
+- **Policy Improvement Theorem**：对 Policy Iteration 来说，每次 greedy improvement 保证 $V^{\pi'}(s) \geq V^\pi(s)$ 对所有 $s$ 成立。这个不等式意味着 value 是 **单调不减**的。而有限 MDP 的策略数量有限（$|A|^{|S|}$ 个），单调不减 + 有限集合 = 必然在有限步内收敛到全局最优 $π∗\pi^*$。
+- **本质原因——问题结构的凸性**：在 tabular MDP 中，value function 关于 policy 的优化问题可以等价为一个**线性规划（LP）**。LP 的可行域是凸的，所以任何局部最优就是全局最优。这也是为什么贪心在这里是安全的。
