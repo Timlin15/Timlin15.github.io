@@ -216,3 +216,13 @@ $$
 V^*(s) = \max_a Q^*(s, a)
 $$
 至于为什么是最优，最优是否是唯一的等问题，可以看书。
+
+随之可以自然地推出 Value iteration 和 Policy iteration 的方程：
+$$
+V_{k+1}(s) = \max_a \left[ R(s,a) + \gamma \sum_{s'} P(s'|s,a) \, V_k(s') \right]
+$$
+通过这个 Value iteration 方程迭代后可以用 Policy iteration 同时更新局部最佳策略：
+$$
+\pi_{k+1}(s) = \arg\max_a \left[ R(s,a) + \gamma \sum_{s'} P(s'|s,a) \, V^{\pi_k}(s') \right]
+$$
+最后当两个值都不再变化后再
