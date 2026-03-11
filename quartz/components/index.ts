@@ -1,6 +1,7 @@
 import Content from "./pages/Content"
 import TagContent from "./pages/TagContent"
 import FolderContent from "./pages/FolderContent"
+import TimelineContent from "./pages/TimelineContent"
 import NotFound from "./pages/404"
 import ArticleTitle from "./ArticleTitle"
 import Darkmode from "./Darkmode"
@@ -24,12 +25,14 @@ import Comments from "./Comments"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
 import SocialLinks from "./SocialLinks"
+import NavLinks from "./NavLinks"
 
 export {
   ArticleTitle,
   Content,
   TagContent,
   FolderContent,
+  TimelineContent,
   Darkmode,
   ReaderMode,
   Head,
@@ -52,4 +55,5 @@ export {
   Flex,
   ConditionalRender,
   SocialLinks,
+  NavLinks,
 }

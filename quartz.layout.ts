@@ -58,6 +58,11 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
+    Component.NavLinks({
+      links: [
+        { title: "时间线", slug: "timeline" },
+      ],
+    }),
     Component.Explorer(),
   ],
   right: [
@@ -100,6 +105,11 @@ export const defaultListPageLayout: PageLayout = {
           grow: true,
         },
         { Component: Component.Darkmode() },
+      ],
+    }),
+    Component.NavLinks({
+      links: [
+        { title: "时间线", slug: "timeline" },
       ],
     }),
     Component.Explorer(),
