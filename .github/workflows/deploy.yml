@@ -21,6 +21,14 @@ jobs:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0 # Fetch all history for git info
+      - name: Restore file modification times from git
+        run: |
+          git ls-files -z | while IFS= read -r -d '' file; do
+            time=$(git log -1 --format="%ai" -- "$file" 2>/dev/null)
+            if [ -n "$time" ]; then
+              touch -d "$time" "$file" 2>/dev/null || true
+            fi
+          done
       - uses: actions/setup-node@v6
         with:
           node-version: 22

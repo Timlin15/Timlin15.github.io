@@ -87,10 +87,7 @@ export default ((opts?: Partial<TimelineContentOptions>) => {
 
     return (
       <div class="timeline-container popover-hint">
-        <div class="timeline-header">
-          <h1>时间线</h1>
-          <p class="timeline-stats">共 {totalPosts} 篇文章</p>
-        </div>
+        <p class="timeline-stats">共 {totalPosts} 篇文章</p>
 
         <div class="timeline">
           {groupedData.map(({ year, months }) => (
@@ -156,19 +153,9 @@ export default ((opts?: Partial<TimelineContentOptions>) => {
   margin: 0 auto;
 }
 
-.timeline-header {
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--lightgray);
-}
-
-.timeline-header h1 {
-  margin: 0 0 0.5rem 0;
-}
-
 .timeline-stats {
   color: var(--gray);
-  margin: 0;
+  margin: 0 0 1.5rem 0;
 }
 
 .timeline {
