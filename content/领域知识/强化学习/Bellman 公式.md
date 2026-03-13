@@ -263,6 +263,6 @@ $$
 可以看出，两种算法的流程非常相似。
 
 这种策略由于以下几点，不会陷入局部最优解中，虽然其只是贪心地找局部最优中：
-- **Bellman 方程的收缩映射性质（Contraction Mapping）**：Bellman optimality operator $T^*$∗ 是一个 γ-contraction，根据 Banach 不动点定理，反复迭代必然收敛到**唯一的不动点** $V^*$。唯一不动点意味着根本不存在"局部最优"这个概念——最优解只有一个，你一定会收敛到它。
+- **Bellman 方程的收缩映射性质（Contraction Mapping）**：Bellman optimality operator $T^*$ 是一个 γ-contraction，根据 Banach 不动点定理，反复迭代必然收敛到**唯一的不动点** $V^*$。唯一不动点意味着根本不存在"局部最优"这个概念——最优解只有一个，你一定会收敛到它。
 - **Policy Improvement Theorem**：对 Policy Iteration 来说，每次 greedy improvement 保证 $V^{\pi'}(s) \geq V^\pi(s)$ 对所有 $s$ 成立。这个不等式意味着 value 是 **单调不减**的。而有限 MDP 的策略数量有限（$|A|^{|S|}$ 个），单调不减 + 有限集合 = 必然在有限步内收敛到全局最优 $π∗\pi^*$。
 - **本质原因——问题结构的凸性**：在 tabular MDP 中，value function 关于 policy 的优化问题可以等价为一个**线性规划（LP）**。LP 的可行域是凸的，所以任何局部最优就是全局最优。这也是为什么贪心在这里是安全的。
