@@ -3,21 +3,17 @@
 > 至于代码实现，可以查看[[PI05代码分析]] 和 [[Lerobot Policy抽象基类]]
 ```mermaid
 flowchart TD
-    %% 根节点
     Root["PI05@lerobot理解"]
 
-    %% 左侧分支
     Theory[模型理论]
     PI_Policy[PI系列policy]
     Diffusion["Diffusion & flow model"]
     CS336[CS336 Assignment 1]
 
-    %% 右侧分支
     Engineering[代码工程实现]
     Abstract[lerobot抽象层设计]
     CodeAnalysis[PI05代码分析]
 
-    %% 连接关系
     Root --> Theory
     Theory --> PI_Policy
     PI_Policy --> Diffusion
