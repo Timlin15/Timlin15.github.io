@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git config:*)",
+      "Bash(chmod:*)",
+      "Bash(systemctl:*)",
+      "Bash(systemctl --user enable:*)",
+      "Bash(loginctl enable-linger:*)",
+      "Bash(\"/home/matrix/Documents/Obsidian Vault/.scripts/obsidian-backup.sh\")",
+      "Bash(cat:*)",
+      "Bash(ssh:*)"
+    ]
+  }
+}

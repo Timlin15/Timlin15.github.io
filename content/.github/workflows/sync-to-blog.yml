@@ -1,0 +1,42 @@
+name: Sync to Quartz Blog
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '私密/**'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout vault
+        uses: actions/checkout@v4
+        with:
+          path: vault
+
+      - name: Checkout quartz
+        uses: actions/checkout@v4
+        with:
+          repository: Timlin15/Timlin15.github.io
+          token: ${{ secrets.QUARTZ_PAT }}
+          path: quartz
+
+      - name: Sync content
+        run: |
+          rm -rf quartz/content
+          mkdir -p quartz/content
+          rsync -av \
+            --exclude '私密/' \
+            --exclude '.obsidian/' \
+            --exclude '.git/' \
+            --exclude '.gitignore' \
+            vault/ quartz/content/
+
+      - name: Push to Quartz repo
+        run: |
+          cd quartz
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "sync: update blog content $(date -u +%Y-%m-%d)"
+          git push
