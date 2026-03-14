@@ -77,7 +77,7 @@ $$
 $$
 \mathbf{A}_t^\tau = \tau \mathbf{A}_t + (1-\tau)\boldsymbol{\epsilon}, \quad \boldsymbol{\epsilon} \sim \mathcal{N}(0, \mathbf{I})
 $$
-然后用模型输出 $\mathbf{v}_\theta(\mathbf{A}_t^\tau, \mathbf{o}_t)$ 来拟合去噪速度场 $\mathbf{u}(\mathbf{A}_t^\tau | \mathbf{A}_t) = \boldsymbol{\epsilon} - \mathbf{A}_t$ （由$\frac{dx_t}{dt} = -v_t(x_t)$获得去噪速度场）。
+然后用模型输出 $\mathbf{v}_\theta(\mathbf{A}_t^\tau, \mathbf{o}_t)$ 来拟合去噪速度场 $\mathbf{u}(\mathbf{A}_t^\tau | \mathbf{A}_t) = \boldsymbol{\epsilon} - \mathbf{A}_t$ （这里这个负号不知道哪里来的）。
 
 在推理中，使用随机噪音 $\mathbf{A}_t^0 \sim \mathcal{N}(\mathbf{0}, \mathbf{I})$，然后使用欧拉积分法来推理：
 $$
