@@ -26,6 +26,7 @@ import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
 import SocialLinks from "./SocialLinks"
 import NavLinks from "./NavLinks"
+import TotalWordCount from "./TotalWordCount"
 
 export {
   ArticleTitle,
@@ -56,4 +57,5 @@ export {
   ConditionalRender,
   SocialLinks,
   NavLinks,
+  TotalWordCount,
 }
