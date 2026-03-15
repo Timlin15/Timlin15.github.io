@@ -1,10 +1,14 @@
+
+> [!NOTE] 注意
+> 本文档基于Lerobot 0.5.0 版本（2026.3）进行分析，请注意是否过时
+
 要在 `lerobot` 中实现一个新的策略 (Policy)，你需要定义两个主要类：一个 **配置 (Configuration)** 类和一个 **策略 (Policy)** 类。这两个类分别对应训练和运行策略所需的数据结构和逻辑。
 
 基类提供了抽象层，它们位于：
 - `lerobot.configs.policies.PreTrainedConfig`: 基础配置类。
 - `lerobot.policies.pretrained.PreTrainedPolicy`: 基础策略类。
 
-以下是每个类极简实现的详细要求分解。
+
 
 ## 1. 配置类 (`MyPolicyConfig`)
 
@@ -22,9 +26,20 @@ from dataclasses import dataclass
 class MyPolicyConfig(PreTrainedConfig):
     ...
 ```
-### 必须接受的属性
-在抽象基类中定义的几个属性
-
+### 类属性
+在抽象基类中定义的几个属性，主要是关于模型的元信息，选取几个作为例子：
+```Python
+@dataclass
+class PreTrainedConfig(draccus.ChoiceRegistry, HubMixin, abc.ABC):
+    n_obs_steps: int = 1
+    input_features: dict[str, PolicyFeature] | None = field(default_factory=dict)
+    output_features: dict[str, PolicyFeature] | None = field(default_factory=dict)
+    device: str | None = None  # e.g. "cuda", "cuda:0", "cpu", or "mps"
+    # Add tags to your policy on the hub.
+    license: str | None = None
+    pretrained_path: Path | None = None
+```
+大部分都是可选的，子类也可以自行创建。
 
 ### 必须实现的抽象方法与属性
 你必须实现以下方法以满足 `PreTrainedConfig` 抽象类的要求：
@@ -56,6 +71,12 @@ class MyPolicyConfig(PreTrainedConfig):
 ### 隐式要求
 -   你的类名应该通过继承 `PreTrainedConfig` 自动注册到 `draccus`。`type` 属性会根据类名或注册键自动处理，但你应该确保命名唯一。
 
+### 装饰器
+本库中大量运用到了 Python 的装饰器这一语法糖，包括：
+- `@property` 将一个类函数转为类属性，即把一个本来要调用函数改为调用类属性，但是同时仍然会进行函数运算。可以做到动态生成；写入时可以进行校验和拦截；支持只读保护；可以控制删除：
+- `@dataclass`装饰器的核心作用就是**自动生成样板代码**，减少一堆重复的 `__init__`、`__repr__` 等方法。
+- ` @abc.abstractmethod`的作用是**强制子类必须实现某个方法**，否则子类无法被实例化。它是定义"接口契约"的机制。
+
 ---
 
 ## 2. 策略类 (`MyPolicy`)
@@ -73,6 +94,7 @@ from torch import Tensor, nn
 class MyPolicy(PreTrainedPolicy):
     ...
 ```
+`PreTrainedPolicy`是继承自`nn.Module`、`HubMixin`、`abc.ABC`，使得其首先是个抽象基类，其次具备了`nn.Module`的性质，包括优化器，反向求导和进行推理的函数，以及可以从 huggingface 数据格式中读取权重的能力。
 
 ### 必要的类属性
 1.  **`config_class`**:
