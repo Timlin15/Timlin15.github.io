@@ -22,6 +22,7 @@ from dataclasses import dataclass
 class MyPolicyConfig(PreTrainedConfig):
     ...
 ```
+### 必须接受的属性
 
 ### 必须实现的抽象方法与属性
 你必须实现以下方法以满足 `PreTrainedConfig` 抽象类的要求：
