@@ -32,7 +32,8 @@ $$J(\pi) = \mathbb{E}_{s_0 \sim \rho_0}\Big[ V_\pi(s_0) \Big] = \mathbb{E}_{s_0:
 策略 $\pi$ 在 **整个初始状态分布 $\rho_0$** 下的期望累计回报，是强化学习中需要最大化的最终目标。
 因此，我们的目标是最大化这个函数：(假定所有智能体共享同样的奖励函数)
 $$
-J(\pi) \triangleq \mathbb{E}_{s_{0:\infty} \sim \rho_{\pi}^{0:\infty}, a_{0:\infty} \sim \pi} \left[ \sum_{t=0}^{\infty} \gamma^t r_t \right].$$
+J(\pi) \triangleq \mathbb{E}_{s_{0:\infty} \sim \rho_{\pi}^{0:\infty}, a_{0:\infty} \sim \pi} \left[ \sum_{t=0}^{\infty} \gamma^t r_t \right].
+$$
 同时定义$A$优势函数，对于单智能体和多智能体，定义分别为：
 $$
 A_{\pi}(s,a) = Q_{\pi}(s,a)-V_{\pi}(s)
@@ -88,7 +89,8 @@ $$
 ### HATRPO/HAPPO
 算法1使用的是散度$D_{KL}^{max}$，难估计且不光滑。同TRPO中的方法，将这个约束转为
 $$
-\mathbb{E}_{s \sim \rho_{π_{θ_k}}} \left[ D_{KL}(\pi_{θ_k}^{i_m}(·|s) \| π_{θ}^{i_m}(·|s)) \right] ≤ δ.$$
+\mathbb{E}_{s \sim \rho_{π_{θ_k}}} \left[ D_{KL}(\pi_{θ_k}^{i_m}(·|s) \| π_{θ}^{i_m}(·|s)) \right] ≤ δ.
+$$
 最后的目标变成了求以下这个目标的最大值：
 $$
 \begin{aligned}
@@ -104,6 +106,8 @@ $$
 $$
 最后一步是求$\mathbb{E}_{\mathbf{a}^{i1:m-1} \sim \pi_{\theta_k^{i1:m-1}}, a^{im} \sim \pi_{\theta^{im}}^{im}} \left[ A_{\pi_{\theta_k}}^{im}(s, \mathbf{a}^{i1:m-1}, a^{im}) \right],$之后没看懂总之
 HAPPO的目标是最大化
-$$\mathbb{E}_{s \sim \rho_{\pi_{\theta_k}}, \mathbf{a} \sim \pi_{\theta_k}} \left[ \min \left( \frac{\pi_{\theta^{i_m}}^{i_m}(a^{i_m}|s)}{\pi_{\theta_k^{i_m}}^{i_m}(a^{i_m}|s)} M^{i1:m}(s, \mathbf{a}), \text{clip}\left(\frac{\pi_{\theta^{i_m}}^{i_m}(a^{i_m}|s)}{\pi_{\theta_k^{i_m}}^{i_m}(a^{i_m}|s)}, 1 \pm \epsilon \right) M^{i1:m}(s, \mathbf{a}) \right) \right].$$
+$$
+\mathbb{E}_{s \sim \rho_{\pi_{\theta_k}}, \mathbf{a} \sim \pi_{\theta_k}} \left[ \min \left( \frac{\pi_{\theta^{i_m}}^{i_m}(a^{i_m}|s)}{\pi_{\theta_k^{i_m}}^{i_m}(a^{i_m}|s)} M^{i1:m}(s, \mathbf{a}), \text{clip}\left(\frac{\pi_{\theta^{i_m}}^{i_m}(a^{i_m}|s)}{\pi_{\theta_k^{i_m}}^{i_m}(a^{i_m}|s)}, 1 \pm \epsilon \right) M^{i1:m}(s, \mathbf{a}) \right) \right].
+$$
 
 
