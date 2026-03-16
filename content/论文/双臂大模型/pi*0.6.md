@@ -1,6 +1,6 @@
 ---
 date: 2026-01-22
-lastmod: 2026-01-24
+lastmod: 2026-03-16
 ---
 $\pi^*_{0.6}$是基于$\pi_{0.5}$增大vlm骨干并支持多样化的条件输出的$\pi_{0.6}$并加上强化训练而来的模型。其融合了前人的value function、advantage conditioning、offline RL、人工干预等并进行了创新性地融合得到了RECAP这个方法。
 

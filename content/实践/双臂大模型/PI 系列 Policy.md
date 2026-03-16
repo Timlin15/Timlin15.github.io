@@ -1,6 +1,6 @@
 ---
 date: 2026-03-13
-lastmod: 2026-03-14
+lastmod: 2026-03-16
 ---
 > [!NOTE] 注意
 > 本笔记是针对 OpenPI 实验室的 PI 系列建模进行分析，更偏重理论层面，由于PI系列是基于 VLA 的模型，所以需要 Transformers [[CS336 Assignment 1]] 基础和 Flow model [[Diffusion & Flow model]] 才能看懂。

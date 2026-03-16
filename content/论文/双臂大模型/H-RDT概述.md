@@ -1,6 +1,6 @@
 ---
 date: 2026-01-07
-lastmod: 2025-11-09
+lastmod: 2026-03-16
 ---
 论文原文：([H-RDT: Human Manipulation Enhanced Bimanual Robotic Manipulation | PDF](https://arxiv.org/pdf/2507.23523))
 本文章希望能根据[[论文切入口]]的思路来完成。

@@ -1,6 +1,6 @@
 ---
 date: 2026-01-07
-lastmod: 2025-10-10
+lastmod: 2026-03-16
 ---
 [CS285_Notes.pdf](https://patrickyin.me/undergrad_notes/img/CS285_Notes.pdf)
 考虑一个离散MDP过程，有时间跨度$T$，存在一个专家策略$\pi^*$，模仿学习的目标是学习一个策略$\pi^{\theta}$，尽量模仿专家，使其满足：

@@ -1,6 +1,6 @@
 ---
 date: 2026-03-03
-lastmod: 2026-03-03
+lastmod: 2026-03-16
 ---
 # Note of Computer System: a Programmer's perspective.
 
