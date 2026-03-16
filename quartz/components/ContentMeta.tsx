@@ -30,7 +30,17 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
       const segments: (string | JSX.Element)[] = []
 
       if (fileData.dates) {
-        segments.push(<Date date={getDate(cfg, fileData)!} locale={cfg.locale} />)
+        segments.push(<Date date={fileData.dates.created} locale={cfg.locale} />)
+        const created = fileData.dates.created
+        const modified = fileData.dates.modified
+        if (modified && modified.getTime() !== created.getTime()) {
+          segments.push(
+            <span class="content-meta-modified">
+              {"更新于 "}
+              <Date date={modified} locale={cfg.locale} />
+            </span>,
+          )
+        }
       }
 
       // Display reading time if enabled

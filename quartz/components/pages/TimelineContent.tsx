@@ -101,12 +101,23 @@ export default ((opts?: Partial<TimelineContentOptions>) => {
                       {pages.map((page) => {
                         const title = page.frontmatter?.title
                         const tags = page.frontmatter?.tags ?? []
-                        const date = getDate(cfg, page)
+                        const createdDate = page.dates?.created
+                        const modifiedDate = page.dates?.modified
+                        const showModified =
+                          modifiedDate &&
+                          createdDate &&
+                          modifiedDate.getTime() !== createdDate.getTime()
 
                         return (
                           <li class="timeline-post" key={page.slug}>
                             <div class="post-date">
-                              {date && <Date date={date} locale={cfg.locale} />}
+                              {createdDate && <Date date={createdDate} locale={cfg.locale} />}
+                              {showModified && (
+                                <span class="post-modified">
+                                  {"更新: "}
+                                  <Date date={modifiedDate!} locale={cfg.locale} />
+                                </span>
+                              )}
                             </div>
                             <div class="post-content">
                               <a
@@ -233,9 +244,18 @@ export default ((opts?: Partial<TimelineContentOptions>) => {
 
 .post-date {
   flex-shrink: 0;
-  width: 100px;
+  width: 130px;
   font-size: 0.85rem;
   color: var(--gray);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.post-modified {
+  font-size: 0.75rem;
+  color: var(--gray);
+  opacity: 0.75;
 }
 
 .post-content {
