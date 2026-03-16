@@ -152,20 +152,10 @@ class PreTrainedPolicy(nn.Module, HubMixin, abc.ABC):
 
     def __init__(self, config: PreTrainedConfig, *inputs, **kwargs):
         super().__init__()
-        if not isinstance(config, PreTrainedConfig):
-            raise ValueError(
-                f"Parameter config in `{self.__class__.__name__}(config)` should be an instance of class "
-                "`PreTrainedConfig`. To create a model from a pretrained model use "
-                f"`model = {self.__class__.__name__}.from_pretrained(PRETRAINED_MODEL_NAME)`"
-            )
         self.config = config
 
     def __init_subclass__(cls, **kwargs):
         super().__init_subclass__(**kwargs)
-        if not getattr(cls, "config_class", None):
-            raise TypeError(f"Class {cls.__name__} must define 'config_class'")
-        if not getattr(cls, "name", None):
-            raise TypeError(f"Class {cls.__name__} must define 'name'")
 
     def _save_pretrained(self, save_directory: Path) -> None:
         self.config._save_pretrained(save_directory)
@@ -192,69 +182,12 @@ class PreTrainedPolicy(nn.Module, HubMixin, abc.ABC):
         The policy is set in evaluation mode by default using `policy.eval()` (dropout modules are
         deactivated). To train it, you should first set it back in training mode with `policy.train()`.
         """
-        if config is None:
-            config = PreTrainedConfig.from_pretrained(
-                pretrained_name_or_path=pretrained_name_or_path,
-                force_download=force_download,
-                resume_download=resume_download,
-                proxies=proxies,
-                token=token,
-                cache_dir=cache_dir,
-                local_files_only=local_files_only,
-                revision=revision,
-                **kwargs,
-            )
-        model_id = str(pretrained_name_or_path)
-        instance = cls(config, **kwargs)
-        if os.path.isdir(model_id):
-            print("Loading weights from local directory")
-            model_file = os.path.join(model_id, SAFETENSORS_SINGLE_FILE)
-            policy = cls._load_as_safetensor(instance, model_file, config.device, strict)
-        else:
-            try:
-                model_file = hf_hub_download(
-                    repo_id=model_id,
-                    filename=SAFETENSORS_SINGLE_FILE,
-                    revision=revision,
-                    cache_dir=cache_dir,
-                    force_download=force_download,
-                    proxies=proxies,
-                    resume_download=resume_download,
-                    token=token,
-                    local_files_only=local_files_only,
-                )
-                policy = cls._load_as_safetensor(instance, model_file, config.device, strict)
-            except HfHubHTTPError as e:
-                raise FileNotFoundError(
-                    f"{SAFETENSORS_SINGLE_FILE} not found on the HuggingFace Hub in {model_id}"
-                ) from e
-
         policy.to(config.device)
         policy.eval()
         return policy
 
     @classmethod
     def _load_as_safetensor(cls, model: T, model_file: str, map_location: str, strict: bool) -> T:
-        # Create base kwargs
-        kwargs = {"strict": strict}
-
-        # Add device parameter for newer versions that support it
-        if packaging.version.parse(safetensors.__version__) >= packaging.version.parse("0.4.3"):
-            kwargs["device"] = map_location
-
-        # Load the model with appropriate kwargs
-        missing_keys, unexpected_keys = load_model_as_safetensor(model, model_file, **kwargs)
-        log_model_loading_keys(missing_keys, unexpected_keys)
-
-        # For older versions, manually move to device if needed
-        if "device" not in kwargs and map_location != "cpu":
-            logging.warning(
-                "Loading model weights on other devices than 'cpu' is not supported natively in your version of safetensors."
-                " This means that the model is loaded on 'cpu' first and then copied to the device."
-                " This leads to a slower loading time."
-                " Please update safetensors to version 0.4.3 or above for improved performance."
-            )
-            model.to(map_location)
         return model
 
     @abc.abstractmethod
@@ -304,64 +237,9 @@ class PreTrainedPolicy(nn.Module, HubMixin, abc.ABC):
         """
         raise NotImplementedError
 
-    def push_model_to_hub(
-        self,
-        cfg: TrainPipelineConfig,
-    ):
-        api = HfApi()
-        repo_id = api.create_repo(
-            repo_id=self.config.repo_id, private=self.config.private, exist_ok=True
-        ).repo_id
-
-        # Push the files to the repo in a single commit
-        with TemporaryDirectory(ignore_cleanup_errors=True) as tmp:
-            saved_path = Path(tmp) / repo_id
-
-            self.save_pretrained(saved_path)  # Calls _save_pretrained and stores model tensors
-
-            card = self.generate_model_card(
-                cfg.dataset.repo_id, self.config.type, self.config.license, self.config.tags
-            )
-            card.save(str(saved_path / "README.md"))
-
-            cfg.save_pretrained(saved_path)  # Calls _save_pretrained and stores train config
-
-            commit_info = api.upload_folder(
-                repo_id=repo_id,
-                repo_type="model",
-                folder_path=saved_path,
-                commit_message="Upload policy weights, train config and readme",
-                allow_patterns=["*.safetensors", "*.json", "*.yaml", "*.md"],
-                ignore_patterns=["*.tmp", "*.log"],
-            )
-
-            logging.info(f"Model pushed to {commit_info.repo_url.url}")
-
-    def generate_model_card(
-        self, dataset_repo_id: str, model_type: str, license: str | None, tags: list[str] | None
-    ) -> ModelCard:
-        base_model = "lerobot/smolvla_base" if model_type == "smolvla" else None  # Set a base model
-
-        card_data = ModelCardData(
-            license=license or "apache-2.0",
-            library_name="lerobot",
-            pipeline_tag="robotics",
-            tags=list(set(tags or []).union({"robotics", "lerobot", model_type})),
-            model_name=model_type,
-            datasets=dataset_repo_id,
-            base_model=base_model,
-        )
-
-        template_card = (
-            files("lerobot.templates").joinpath("lerobot_modelcard_template.md").read_text(encoding="utf-8")
-        )
-        card = ModelCard.from_template(card_data, template_str=template_card)
-        card.validate()
-        return card
-
 ```
 
-此代码来自policies文件夹中的`pretrained.py`这个文件，主要是一个抽象基类，规定了policy需要有什么基本函数。其中最重要的
+此代码来自policies文件夹中的`pretrained.py`这个文件，省略了大量检测错误代码。主要是一个抽象基类，规定了policy需要有什么基本函数。其中最重要的
 
 | 方法                                     | 作用                                                         |
 | ---------------------------------------- | ------------------------------------------------------------ |
