@@ -1,3 +1,7 @@
+---
+date: 2026-01-07
+lastmod: 2025-10-26
+---
 要求完成：
 - `cs285/scripts/run_hw2.py`
 - `cs285/agents/pg_agent.py`

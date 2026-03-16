@@ -1,3 +1,7 @@
+---
+date: 2026-01-26
+lastmod: 2026-02-11
+---
 Lerobot的核心代码在`src/lerobot`中，这个文件夹下有：
 - async_inference  
 - **datasets**     

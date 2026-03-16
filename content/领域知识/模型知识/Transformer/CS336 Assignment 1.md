@@ -1,3 +1,8 @@
+---
+date: 2026-01-07
+lastmod: 2026-03-16
+---
+
 ## Transformer概述
 以原始Transformer为例，讲解一遍其中的子层和各部分有什么用：
 ![image.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/20250926220425.png)

@@ -1,3 +1,7 @@
+---
+date: 2026-01-21
+lastmod: 2026-01-22
+---
 $\pi_{0.5}$的目的是构建一个健壮的VLA模型，能应对zero-shot场景。
 先从模型架构说起，$\pi_{0.5}$是基于$\pi_0$的模型架构，即一个VLM加动作专家模组。pi0的部分有待之后补上
 ![image.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/markdown/20260121161301023.png)

@@ -1,3 +1,7 @@
+---
+date: 2026-01-07
+lastmod: 2026-03-12
+---
 
 > [!NOTE] Reference
 > [CS229笔记]([main_notes.pdf](https://cs229.stanford.edu/main_notes.pdf))第15章和[中文翻译仓库](https://github.com/Na-moe/CS229_CN/blob/main)以及[强化学习的数学原理](https://github.com/MathFoundationRL/Book-Mathematical-Foundation-of-Reinforcement-Learning)这本书

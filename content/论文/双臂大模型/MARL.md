@@ -1,3 +1,7 @@
+---
+date: 2026-03-07
+lastmod: 2026-03-07
+---
 在多个智能体的情况下进行强化学习，MDP和policy gradiant都不能很好胜任，因此[Trust Region Policy Optimisation in Multi-Agent Reinforcement Learning | PDF](https://arxiv.org/pdf/2109.11251)提出HATRPO/HAPPO训练方式。同时参考了Numerical Optimization
 
 **状态价值函数 $V_\pi(s)$**

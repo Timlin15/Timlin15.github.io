@@ -1,3 +1,7 @@
+---
+date: 2026-02-09
+lastmod: 2026-03-16
+---
 > [!NOTE] 注意
 > 本笔记是针对 OpenPI 实验室的 PI 系列建模进行分析的一部分，主要负责对 [Lerobot](https://github.com/huggingface/lerobot) 的 Policy 类进行分析，更偏重代码层面。
 > 本文档基于Lerobot 0.5.0 版本（2026.3）进行分析，请注意是否过时。
@@ -40,6 +44,7 @@ LeRobot 的 Policy 系统围绕两个基类构建：
 |---|---|---|
 |`PreTrainedConfig`|`lerobot.configs.policies`|**描述策略"是什么"**：超参数、特征定义、优化器预设、归一化方式|
 |`PreTrainedPolicy`|`lerobot.policies.pretrained`|**描述策略"做什么"**：前向传播、损失计算、动作推理、权重存取|
+
 两者的关系是：**Config 先行，Policy 依赖 Config**。每个 Policy 实例在构造时必须传入一个匹配的 Config 对象，Config 决定了网络的形状和训练的行为，Policy 基于这些配置构建实际的神经网络并执行计算。
 
 ```
@@ -251,31 +256,13 @@ class PreTrainedPolicy(nn.Module, HubMixin, abc.ABC):
     def __init_subclass__(cls, **kwargs):
         super().__init_subclass__(**kwargs)
 
-    def _save_pretrained(self, save_directory: Path) -> None:
-        self.config._save_pretrained(save_directory)
-        model_to_save = self.module if hasattr(self, "module") else self
-        save_model_as_safetensor(model_to_save, str(save_directory / SAFETENSORS_SINGLE_FILE))
-
     @classmethod
-    def from_pretrained(
-        cls: builtins.type[T],
-        pretrained_name_or_path: str | Path,
-        *,
-        config: PreTrainedConfig | None = None,
-        force_download: bool = False,
-        resume_download: bool | None = None,
-        proxies: dict | None = None,
-        token: str | bool | None = None,
-        cache_dir: str | Path | None = None,
-        local_files_only: bool = False,
-        revision: str | None = None,
-        strict: bool = False,
-        **kwargs,
-    ) -> T:
+    def from_pretrained(...)
         """
         The policy is set in evaluation mode by default using `policy.eval()` (dropout modules are
         deactivated). To train it, you should first set it back in training mode with `policy.train()`.
         """
+        ...
         policy.to(config.device)
         policy.eval()
         return policy
@@ -283,21 +270,6 @@ class PreTrainedPolicy(nn.Module, HubMixin, abc.ABC):
     @classmethod
     def _load_as_safetensor(cls, model: T, model_file: str, map_location: str, strict: bool) -> T:
         return model
-
-    @abc.abstractmethod
-    def get_optim_params(self) -> dict:
-        """
-        Returns the policy-specific parameters dict to be passed on to the optimizer.
-        """
-        raise NotImplementedError
-
-    @abc.abstractmethod
-    def reset(self):
-        """To be called whenever the environment is reset.
-
-        Does things like clearing caches.
-        """
-        raise NotImplementedError
 
     # TODO(aliberts, rcadene): split into 'forward' and 'compute_loss'?
     @abc.abstractmethod

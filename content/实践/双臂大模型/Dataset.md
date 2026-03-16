@@ -1,3 +1,7 @@
+---
+date: 2026-01-07
+lastmod: 2025-11-24
+---
 参考：![15c65b20fac07a1fc5348948ed0fe2ca.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/test/15c65b20fac07a1fc5348948ed0fe2ca.png)
 1. behavior-1k
 	[Dataset - BEHAVIOR](https://behavior.stanford.edu/challenge/dataset.html)是仿真数据。使用Lerobot数据格式包含语言标注，数据，元数据，视频`data(.parquet)`，`videos(.mp4*9)`,`mata,annotation(.json)`。大小大约1.5T，还有700G的[behavior-1k/2025-challenge-rawdata at main](https://huggingface.co/datasets/behavior-1k/2025-challenge-rawdata/tree/main)（.hdf5）

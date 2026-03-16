@@ -1,3 +1,7 @@
+---
+date: 2026-01-22
+lastmod: 2026-01-24
+---
 $\pi^*_{0.6}$是基于$\pi_{0.5}$增大vlm骨干并支持多样化的条件输出的$\pi_{0.6}$并加上强化训练而来的模型。其融合了前人的value function、advantage conditioning、offline RL、人工干预等并进行了创新性地融合得到了RECAP这个方法。
 
 论文先总结了前人的不同rl方法的弊端，如使用PPO没法有效scale和拓展到真实世界或在预训练好的VLA模型上训练，也就是要么训练一个残差策略（训练$a_{final} = a_{vla} + \Delta a_{rl}$中的残差部分）或者干预diffusion的噪声空间来优化。在这基础上，0.6用离线rl进行端到端训练，也就是进行全量更新；并且是使用的flow base model，更具有表现力；这些通过**优势加权策略提取** (Advantage-conditioned extraction)来实现，使得RL可以scale了，因为这种方法不需要计算策略梯度。

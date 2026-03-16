@@ -1,3 +1,7 @@
+---
+date: 2026-03-13
+lastmod: 2026-03-14
+---
 > [!NOTE] 注意
 > 本笔记是针对 OpenPI 实验室的 PI 系列建模进行分析，更偏重理论层面，由于PI系列是基于 VLA 的模型，所以需要 Transformers [[CS336 Assignment 1]] 基础和 Flow model [[Diffusion & Flow model]] 才能看懂。
 > 至于代码实现，可以查看[[PI05代码分析]]、[[Lerobot Policy 抽象层分析]]和[[Lerobot Script 抽象层分析]]]
