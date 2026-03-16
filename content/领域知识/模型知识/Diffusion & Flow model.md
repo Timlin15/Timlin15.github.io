@@ -390,7 +390,8 @@ Flow model 其实是 DDIM 算法的一种泛化，Flow model的核心思想和 D
 对于 flow $v$ 和初始点 $x_1$，考虑常微分方程(ODE)对应的离散时间迭代 $x_{t-\Delta t} \leftarrow x_t + v_t(x_t)\Delta t$： 
 $$
 \frac{dx_t}{dt} = -v_t(x_t) \tag{59} 
-$$ 在 $t=1$ 初始点为 $x_1$，将： 
+$$ 
+在 $t=1$ 初始点为 $x_1$，将： 
 $$
 x_t := \text{RunFlow}(v, x_1, t) \tag{60} 
 $$
