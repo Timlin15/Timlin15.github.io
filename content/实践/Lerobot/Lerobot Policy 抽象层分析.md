@@ -1,14 +1,66 @@
-
 > [!NOTE] 注意
-> 本文档基于Lerobot 0.5.0 版本（2026.3）进行分析，请注意是否过时
+> 本笔记是针对 OpenPI 实验室的 PI 系列建模进行分析的一部分，主要负责对 [Lerobot](https://github.com/huggingface/lerobot) 的 Policy 类进行分析，更偏重代码层面。
+> 本文档基于Lerobot 0.5.0 版本（2026.3）进行分析，请注意是否过时。
+> 理论层面可以查看[[PI 系列 Policy]]、[[Diffusion & Flow model]]、[[CS336 Assignment 1]]
+```mermaid
+flowchart TD
+    Root["PI05@lerobot解析"]
 
-要在 `lerobot` 中实现一个新的策略 (Policy)，你需要定义两个主要类：一个 **配置 (Configuration)** 类和一个 **策略 (Policy)** 类。这两个类分别对应训练和运行策略所需的数据结构和逻辑。
+    Theory[模型理论]
+    PI_Policy[PI系列policy]
+    Diffusion["Diffusion & flow model"]
+    CS336[CS336 Assignment 1]
 
-基类提供了抽象层，它们位于：
-- `lerobot.configs.policies.PreTrainedConfig`: 基础配置类。
-- `lerobot.policies.pretrained.PreTrainedPolicy`: 基础策略类。
+    Engineering[代码工程实现]
+    Abstract[lerobot抽象层设计]
+    CodeAnalysis[PI05代码分析]
+    abstract1[lerobot policy抽象层分析]
+    abstract2[lerobot script抽象层分析]
 
+    Root --> Theory
+    Theory --> PI_Policy
+    PI_Policy --> Diffusion
+    PI_Policy --> CS336
 
+    Root --> Engineering
+    Engineering --> Abstract
+    Abstract --> abstract1
+    Abstract --> abstract2
+    Engineering --> CodeAnalysis
+```
+
+## 0. 总论：LeRobot Policy 抽象层的设计思路
+
+LeRobot 支持多种截然不同的策略架构——ACT、Diffusion Policy、π0/π0.5 等——但训练脚本和评估脚本只需各写一份。这背后的核心设计就是 **抽象层**：用统一的接口屏蔽不同策略的实现细节，让上层代码面向"抽象的 Policy"编程，而非面向"具体的 π0.5"编程。
+
+### 核心双类结构
+LeRobot 的 Policy 系统围绕两个基类构建：
+
+|基类|位置|职责|
+|---|---|---|
+|`PreTrainedConfig`|`lerobot.configs.policies`|**描述策略"是什么"**：超参数、特征定义、优化器预设、归一化方式|
+|`PreTrainedPolicy`|`lerobot.policies.pretrained`|**描述策略"做什么"**：前向传播、损失计算、动作推理、权重存取|
+两者的关系是：**Config 先行，Policy 依赖 Config**。每个 Policy 实例在构造时必须传入一个匹配的 Config 对象，Config 决定了网络的形状和训练的行为，Policy 基于这些配置构建实际的神经网络并执行计算。
+
+```
+Config (数据容器，纯描述)
+  │
+  │  决定了
+  ▼
+Policy (nn.Module，实际计算)
+  │
+  │  被调用于
+  ▼
+训练脚本 / 评估脚本 (只依赖抽象接口)
+```
+
+### 关键 OOP 设计手法
+这两个基类综合运用了以下设计模式，形成了 LeRobot 抽象层的骨架：
+- **抽象基类（ABC）**：`PreTrainedConfig` 和 `PreTrainedPolicy` 都继承了 `abc.ABC`，通过 `@abc.abstractmethod` 强制子类实现特定方法（如 `forward`、`select_action`、`validate_features`）。任何子类遗漏了这些方法都无法实例化，从而在开发阶段就暴露错误。
+- **Mixin 多继承**：`PreTrainedPolicy` 同时继承 `nn.Module`（PyTorch 参数管理）、`HubMixin`（HuggingFace Hub 读写）和 `abc.ABC`（抽象约束），将三种独立能力拼装到同一个类上。
+- **Config/Model 分离**：配置可以独立序列化为 `config.json`、独立传输和复用，不依赖模型实例的存在。这也是 HuggingFace Transformers 库的核心设计惯例。
+- **工厂方法**：`from_pretrained` 作为 `@classmethod`，将"构造对象 → 下载权重 → 加载权重 → 设为 eval 模式"打包为一步操作。
+- **`__init_subclass__` 检查**：在子类**定义时**（而非实例化时）就检查是否声明了 `config_class` 和 `name` 属性，相当于类属性级别的 `@abc.abstractmethod`。
 
 ## 1. 配置类 (`MyPolicyConfig`)
 
@@ -41,6 +93,15 @@ class PreTrainedConfig(draccus.ChoiceRegistry, HubMixin, abc.ABC):
 ```
 大部分都是可选的，子类也可以自行创建。
 
+这些 property 从 `input_features` / `output_features` 中按类型过滤，方便子类和训练代码快速获取：
+
+| 属性                  | 作用                           |
+| --------------------- | ------------------------------ |
+| `robot_state_feature` | 提取机器人本体状态（关节角等） |
+| `image_features`      | 提取所有视觉输入               |
+| `action_feature`      | 提取动作输出特征               |
+| `env_state_feature`   | 提取环境状态（如果有）         |
+
 ### 必须实现的抽象方法与属性
 你必须实现以下方法以满足 `PreTrainedConfig` 抽象类的要求：
 
@@ -67,6 +128,39 @@ class PreTrainedConfig(draccus.ChoiceRegistry, HubMixin, abc.ABC):
 6.  **`get_scheduler_preset`**:
     -   返回默认的学习率调度器配置。如果默认不使用调度器，则返回 `None`。
     -   签名: `def get_scheduler_preset(self) -> LRSchedulerConfig | None:`
+
+
+这意味着每个具体策略（ACT、Diffusion、VLA）都要声明自己需要什么样的优化配置和归一化方式。
+
+几个带有delta的函数是**"差分归一化"**——指定哪些维度在归一化时用**相邻帧的差值**而不是绝对值。
+
+举个例子，假设动作是 `[x, y, z, gripper]` 共 4 维：
+
+- `action_delta_indices = [0, 1, 2]` 表示 x/y/z 位置维度要做差分（`a_t - a_{t-1}`），转化为类似速度的量再归一化
+- `gripper`（第3维）不在列表里，因为它是开合状态（0/1），差分没意义
+
+为什么要这样做？因为**绝对位置**的分布范围可能很大且依赖初始位置，差分后数据分布更稳定，归一化效果更好。返回 `None` 表示该策略不用差分归一化。
+
+
+
+而优化器/调度器预设是因为不同策略的训练超参差异很大：
+
+- **ACT**：用 AdamW，lr=1e-5，较小的 weight_decay
+- **Diffusion Policy**：lr 可能 1e-4，配合 cosine scheduler
+- **VLA 微调**：可能冻结 backbone，只有 action head 用较大 lr
+
+把这些 "推荐配置" 封装在 config 里，训练循环不需要针对每种策略写不同的优化器代码，直接调用即可。
+
+
+
+最后一个函数在构建策略前检查 `input_features` / `output_features` 的配置是否合法。比如：
+
+- ACT 要求必须有且仅有一个 `ACTION` 类型的输出
+- 某些策略要求图像输入必须是特定分辨率
+- SmolVLA 可能要求必须有至少一个视觉输入
+
+如果配置不合法就直接报错，**fail fast**，避免跑到训练中途才崩。
+
 
 ### 隐式要求
 -   你的类名应该通过继承 `PreTrainedConfig` 自动注册到 `draccus`。`type` 属性会根据类名或注册键自动处理，但你应该确保命名唯一。
@@ -139,7 +233,7 @@ class MyPolicy(PreTrainedPolicy):
 
 ---
 
-## 代码骨架
+### 代码骨架
 
 ```python
 class PreTrainedPolicy(nn.Module, HubMixin, abc.ABC):
@@ -251,275 +345,34 @@ class PreTrainedPolicy(nn.Module, HubMixin, abc.ABC):
 
 `select_action` 和 `predict_action_chunk` 的分离设计是关键——`predict_action_chunk` 负责模型推理出一整段动作序列，`select_action` 负责从缓存中逐步取出单步动作，实现了 **action chunking** 的统一抽象。
 
+这个文件主要负责实现读取和缓存，创建一个实例的函数。因为 Policy 的骨干完全没有填充，以下讲解一下我觉得比较值得注意一些函数。
 
+`from_pretrained`是一个**工厂函数**，它是一个类函数，因为有时候"创建一个可用对象"需要好几步——先读 config、再构造网络、再下载权重、再加载权重、再设成 eval 模式。如果让用户自己写这五步，容易出错。所以框架提供一个 `classmethod`，把这些步骤打包成"一步到位"的工厂方法。
 
-```Python
-@dataclass
-class PreTrainedConfig(draccus.ChoiceRegistry, HubMixin, abc.ABC):  # type: ignore[misc,name-defined] #TODO: draccus issue
-    """
-    Base configuration class for policy models.
+同时在`__init_subclass__()`会检验子类的属性是否具有`config_class`和`name`这类属性，没有则直接退出，预防 bug 的出现。这个相当于类属性的`@abc.abstractmethod`。
 
-    Args:
-        n_obs_steps: Number of environment steps worth of observations to pass to the policy (takes the
-            current step and additional steps going back).
-        input_shapes: A dictionary defining the shapes of the input data for the policy.
-        output_shapes: A dictionary defining the shapes of the output data for the policy.
-        input_normalization_modes: A dictionary with key representing the modality and the value specifies the
-            normalization mode to apply.
-        output_normalization_modes: Similar dictionary as `input_normalization_modes`, but to unnormalize to
-            the original scale.
-    """
+### Peft
 
-    n_obs_steps: int = 1
+Peft 是Parameter-Efficient Fine-Tuning，比如 Lora 等轻量微调。这个文件直接完成了返回由第三方库`peft`包装的模型。不过需要训练时提供 peft 的 config，否则从默认值开始构建。
 
-    input_features: dict[str, PolicyFeature] = field(default_factory=dict)
-    output_features: dict[str, PolicyFeature] = field(default_factory=dict)
+流程为：
+  1. 确定最终配置：
+    - 若传入了 peft_config，直接用（可再叠加 CLI overrides）
+    - 否则调用 _build_peft_config 从默认值 + CLI overrides 构建
+  2. 调用 _validate_peft_config 验证配置合法性
+  3. 冻结所有基础参数：p.requires_grad_(False)，只训练 adapter 参数
+  4. 若有 pretrained_path，赋给 self.name_or_path（供 PEFT 内部使用）
+  5. 调用 get_peft_model(self, final_config) 包裹模型
+  6. 标记 config.use_peft = True，供后续加载时识别
 
-    device: str | None = None  # e.g. "cuda", "cuda:0", "cpu", or "mps"
-    # `use_amp` determines whether to use Automatic Mixed Precision (AMP) for training and evaluation. With AMP,
-    # automatic gradient scaling is used.
-    use_amp: bool = False
-
-    push_to_hub: bool = True  # type: ignore[assignment] # TODO: use a different name to avoid override
-    repo_id: str | None = None
-
-    # Upload on private repository on the Hugging Face hub.
-    private: bool | None = None
-    # Add tags to your policy on the hub.
-    tags: list[str] | None = None
-    # Add tags to your policy on the hub.
-    license: str | None = None
-    # Either the repo ID of a model hosted on the Hub or a path to a directory containing weights
-    # saved using `Policy.save_pretrained`. If not provided, the policy is initialized from scratch.
-    pretrained_path: Path | None = None
-
-    def __post_init__(self) -> None:
-        if not self.device or not is_torch_device_available(self.device):
-            auto_device = auto_select_torch_device()
-            logger.warning(f"Device '{self.device}' is not available. Switching to '{auto_device}'.")
-            self.device = auto_device.type
-
-        # Automatically deactivate AMP if necessary
-        if self.use_amp and not is_amp_available(self.device):
-            logger.warning(
-                f"Automatic Mixed Precision (amp) is not available on device '{self.device}'. Deactivating AMP."
-            )
-            self.use_amp = False
-
-    @property
-    def type(self) -> str:
-        choice_name = self.get_choice_name(self.__class__)
-        if not isinstance(choice_name, str):
-            raise TypeError(f"Expected string from get_choice_name, got {type(choice_name)}")
-        return choice_name
-
-    @property
-    @abc.abstractmethod
-    def observation_delta_indices(self) -> list | None:  # type: ignore[type-arg] #TODO: No implementation
-        raise NotImplementedError
-
-    @property
-    @abc.abstractmethod
-    def action_delta_indices(self) -> list | None:  # type: ignore[type-arg]    #TODO: No implementation
-        raise NotImplementedError
-
-    @property
-    @abc.abstractmethod
-    def reward_delta_indices(self) -> list | None:  # type: ignore[type-arg]    #TODO: No implementation
-        raise NotImplementedError
-
-    @abc.abstractmethod
-    def get_optimizer_preset(self) -> OptimizerConfig:
-        raise NotImplementedError
-
-    @abc.abstractmethod
-    def get_scheduler_preset(self) -> LRSchedulerConfig | None:
-        raise NotImplementedError
-
-    @abc.abstractmethod
-    def validate_features(self) -> None:
-        raise NotImplementedError
-
-    @property
-    def robot_state_feature(self) -> PolicyFeature | None:
-        for ft_name, ft in self.input_features.items():
-            if ft.type is FeatureType.STATE and ft_name == OBS_STATE:
-                return ft
-        return None
-
-    @property
-    def env_state_feature(self) -> PolicyFeature | None:
-        for _, ft in self.input_features.items():
-            if ft.type is FeatureType.ENV:
-                return ft
-        return None
-
-    @property
-    def image_features(self) -> dict[str, PolicyFeature]:
-        return {key: ft for key, ft in self.input_features.items() if ft.type is FeatureType.VISUAL}
-
-    @property
-    def action_feature(self) -> PolicyFeature | None:
-        for ft_name, ft in self.output_features.items():
-            if ft.type is FeatureType.ACTION and ft_name == ACTION:
-                return ft
-        return None
-
-    def _save_pretrained(self, save_directory: Path) -> None:
-        with open(save_directory / CONFIG_NAME, "w") as f, draccus.config_type("json"):
-            draccus.dump(self, f, indent=4)
-
-    @classmethod
-    def from_pretrained(
-        cls: builtins.type[T],
-        pretrained_name_or_path: str | Path,
-        *,
-        force_download: bool = False,
-        resume_download: bool | None = None,
-        proxies: dict[Any, Any] | None = None,
-        token: str | bool | None = None,
-        cache_dir: str | Path | None = None,
-        local_files_only: bool = False,
-        revision: str | None = None,
-        **policy_kwargs: Any,
-    ) -> T:
-        model_id = str(pretrained_name_or_path)
-        config_file: str | None = None
-        if Path(model_id).is_dir():
-            if CONFIG_NAME in os.listdir(model_id):
-                config_file = os.path.join(model_id, CONFIG_NAME)
-            else:
-                logger.error(f"{CONFIG_NAME} not found in {Path(model_id).resolve()}")
-        else:
-            try:
-                config_file = hf_hub_download(
-                    repo_id=model_id,
-                    filename=CONFIG_NAME,
-                    revision=revision,
-                    cache_dir=cache_dir,
-                    force_download=force_download,
-                    proxies=proxies,
-                    resume_download=resume_download,
-                    token=token,
-                    local_files_only=local_files_only,
-                )
-            except HfHubHTTPError as e:
-                raise FileNotFoundError(
-                    f"{CONFIG_NAME} not found on the HuggingFace Hub in {model_id}"
-                ) from e
-
-        # HACK: Parse the original config to get the config subclass, so that we can
-        # apply cli overrides.
-        # This is very ugly, ideally we'd like to be able to do that natively with draccus
-        # something like --policy.path (in addition to --policy.type)
-        with draccus.config_type("json"):
-            orig_config = draccus.parse(cls, config_file, args=[])
-
-        if config_file is None:
-            raise FileNotFoundError(f"{CONFIG_NAME} not found in {model_id}")
-
-        with open(config_file) as f:
-            config = json.load(f)
-
-        config.pop("type")
-        with tempfile.NamedTemporaryFile("w+", delete=False, suffix=".json") as f:
-            json.dump(config, f)
-            config_file = f.name
-
-        cli_overrides = policy_kwargs.pop("cli_overrides", [])
-        with draccus.config_type("json"):
-            return draccus.parse(orig_config.__class__, config_file, args=cli_overrides)
-
+代码依赖为：
 ```
-
-这段代码来自`lerobot/configs/policies.py`中，是所有策略配置的基类，本质上是一个 **dataclass + HuggingFace Hub 集成 + 注册机制**，用来描述"一个策略需要知道的所有静态信息"。
-
-### 核心字段
-
-```python
-n_obs_steps: int = 1                          # 观测窗口长度（用几步历史观测）
-input_features: dict[str, PolicyFeature]       # 输入特征定义（图像、关节状态等）
-output_features: dict[str, PolicyFeature]      # 输出特征定义（动作）
-device: str | None = None                      # 运行设备
-use_amp: bool = False                          # 是否用混合精度训练
+  wrap_with_peft
+  ├── 有 peft_config → _apply_peft_cli_overrides → _preprocess_peft_cli_overrides
+  └── 无 peft_config → _build_peft_config → _preprocess_peft_cli_overrides
+                                          → _get_default_peft_targets (子类实现)
+           ↓
+      _validate_peft_config (子类可重写)
+           ↓
+      get_peft_model (peft 库)
 ```
-
-`input_features` 和 `output_features` 是最关键的——它们定义了策略的输入输出"模态接口"，比如哪些 key 是图像、哪些是机器人状态、动作维度是多少等。
-
-### 重要的便捷属性
-
-这些 property 从 `input_features` / `output_features` 中按类型过滤，方便子类和训练代码快速获取：
-
-| 属性                  | 作用                           |
-| --------------------- | ------------------------------ |
-| `robot_state_feature` | 提取机器人本体状态（关节角等） |
-| `image_features`      | 提取所有视觉输入               |
-| `action_feature`      | 提取动作输出特征               |
-| `env_state_feature`   | 提取环境状态（如果有）         |
-
-### 子类必须实现的抽象方法
-
-python
-
-```python
-# delta indices —— 哪些维度需要做差分归一化（位置→速度）
-observation_delta_indices → list | None
-action_delta_indices → list | None
-reward_delta_indices → list | None
-
-# 优化器/调度器预设（不同策略用不同的lr、weight_decay等）
-get_optimizer_preset() → OptimizerConfig
-get_scheduler_preset() → LRSchedulerConfig | None
-
-# 检查 features 配置是否合法
-validate_features() → None
-```
-
-这意味着每个具体策略（ACT、Diffusion、VLA）都要声明自己需要什么样的优化配置和归一化方式。
-
-几个带有delta的函数是**"差分归一化"**——指定哪些维度在归一化时用**相邻帧的差值**而不是绝对值。
-
-举个例子，假设动作是 `[x, y, z, gripper]` 共 4 维：
-
-- `action_delta_indices = [0, 1, 2]` 表示 x/y/z 位置维度要做差分（`a_t - a_{t-1}`），转化为类似速度的量再归一化
-- `gripper`（第3维）不在列表里，因为它是开合状态（0/1），差分没意义
-
-为什么要这样做？因为**绝对位置**的分布范围可能很大且依赖初始位置，差分后数据分布更稳定，归一化效果更好。返回 `None` 表示该策略不用差分归一化。
-
-
-
-而优化器/调度器预设是因为不同策略的训练超参差异很大：
-
-- **ACT**：用 AdamW，lr=1e-5，较小的 weight_decay
-- **Diffusion Policy**：lr 可能 1e-4，配合 cosine scheduler
-- **VLA 微调**：可能冻结 backbone，只有 action head 用较大 lr
-
-把这些 "推荐配置" 封装在 config 里，训练循环不需要针对每种策略写不同的优化器代码，直接调用即可。
-
-
-
-最后一个函数在构建策略前检查 `input_features` / `output_features` 的配置是否合法。比如：
-
-- ACT 要求必须有且仅有一个 `ACTION` 类型的输出
-- 某些策略要求图像输入必须是特定分辨率
-- SmolVLA 可能要求必须有至少一个视觉输入
-
-如果配置不合法就直接报错，**fail fast**，避免跑到训练中途才崩。
-
-### `from_pretrained` —— 比较 hacky 但重要
-
-这个方法的流程：
-
-1. 从本地或 HF Hub 下载 `config.json`
-2. 先用 draccus 解析一遍，拿到具体子类类型（比如 `ACTConfig`）
-3. 再用那个子类重新解析，支持 CLI 覆盖参数
-
-代码里自己也标了 `# HACK`，说明这块是为了解决 draccus 不支持"从文件推断子类类型"的限制而做的 workaround。
-
-### `draccus.ChoiceRegistry` 的作用
-
-这是注册机制的核心——所有 config 子类通过这个 registry 注册后，可以用字符串名字（如 `"act"`、`"diffusion"`）来实例化对应配置。`type` 属性就是返回这个注册名。这让 YAML/CLI 配置能通过 `policy.type: act` 自动选择正确的 config 类。
-
-### 总结
-
-`PreTrainedConfig` 的角色是：**策略的完整元数据描述** —— 输入输出是什么、怎么归一化、用什么优化器、跑在什么设备上。它和 `PreTrainedPolicy` 配合，实现了"config 描述策略 → policy 执行策略"的分离，同时通过注册机制让整个框架可以用字符串配置驱动。
