@@ -38,8 +38,10 @@ $$
 $$
 A_{\pi}(s,a) = Q_{\pi}(s,a)-V_{\pi}(s)
 $$
+
 $$
-A_{\pi}^{i1:m}\left(s, \mathbf{a}^{j1:k}, \mathbf{a}^{i1:m}\right) \triangleq Q_{\pi}^{j1:k,i1:m}\left(s, \mathbf{a}^{j1:k}, \mathbf{a}^{i1:m}\right) - Q_{\pi}^{j1:k}\left(s, \mathbf{a}^{j1:k}\right).$$
+A_{\pi}^{i1:m}\left(s, \mathbf{a}^{j1:k}, \mathbf{a}^{i1:m}\right) \triangleq Q_{\pi}^{j1:k,i1:m}\left(s, \mathbf{a}^{j1:k}, \mathbf{a}^{i1:m}\right) - Q_{\pi}^{j1:k}\left(s, \mathbf{a}^{j1:k}\right).
+$$
 ### 信赖域算法
 信赖域方法是一类用于数值优化的迭代算法。它的核心思想是：  
 - 在每一步迭代时，不是直接在全局搜索下降方向，而是在当前点附近建立一个**局部近似模型**（通常是二次模型），然后只在一个“可信”的区域（trust region）内对这个近似模型进行优化。
