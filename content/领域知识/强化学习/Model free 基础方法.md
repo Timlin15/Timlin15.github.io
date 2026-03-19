@@ -132,4 +132,50 @@ $$
 可以发现求增量平均和 SGD 方法中的参数 $\frac 1n$ 满足其本身是级数发散，平方是级数收敛，正好满足 RM 算法对参数的要求。
 
 
+## TD 算法
+
+把随机近似应用到 model free 估计中就可以得到 TD(Temporal-Difference) 方法。不同于 MC 方法使用统计学的方法，TD 方法采用基于动态规划的随机近似，即基于上文中阐述的随机近似方法。
+$$
+\begin{aligned}
+v_{t+1}\left(s_t\right) & =v_t\left(s_t\right)-\alpha_t\left(s_t\right)\left[v_t\left(s_t\right)-\left(r_{t+1}+\gamma v_t\left(s_{t+1}\right)\right)\right] \\
+v_{t+1}(s) & =v_t(s), \quad \text { for all } s \neq s_t
+\end{aligned}
+$$
+这是由于 $v_\pi(s)=\mathbb{E}\left[R_{t+1}+\gamma v_\pi\left(S_{t+1}\right) \mid S_t=s\right], \quad s \in \mathcal{S} .$ 因此这就是和求增量平均那个随机近似方法一样，用新的采样和上一步参数来估计下一步参数：$w_{k+1}=w_k -\frac 1k (w_k-x_k).$
+
+$$
+\underbrace{v_{t+1}\left(s_t\right)}_{\text {new estimate }}=\underbrace{v_t\left(s_t\right)}_{\text {current estimate }}-\alpha_t\left(s_t\right)[\overbrace{v_t\left(s_t\right)-(\underbrace{r_{t+1}+\gamma v_t\left(s_{t+1}\right)}_{\text {TD target } \bar{v}_t})}^{\text {TD error } \delta_t}],
+$$
+这个方程中：
+$$
+\bar{v}_t \doteq r_{t+1}+\gamma v_t\left(s_{t+1}\right)
+$$
+被称为 *TD target* ，同时：
+$$
+\delta_t \doteq v\left(s_t\right)-\bar{v}_t=v_t\left(s_t\right)-\left(r_{t+1}+\gamma v_t\left(s_{t+1}\right)\right)
+$$
+被称为 *TD error*，因为 *TD error* 度量的是 Bellman 方程的残差，真值 $v_\pi(s_t)$  满足：
+$$
+v_\pi(s) = \mathbb{E}[R_{t+1} + \gamma v_\pi(S_{t+1}) | S_t = s]
+$$
+所以当 $v_t = v_\pi$ 时，$\mathbb{E}[\delta_t | S_t = s_t] = v_\pi(s_t) - \mathbb{E}[R_{t+1} + \gamma v_\pi(S_{t+1}) | S_t = s_t] = 0$。同时
+$$
+\left|v_{t+1}\left(s_t\right)-\bar{v}_t\right|=\left|1-\alpha_t\left(s_t\right)\right|\left|v_t\left(s_t\right)-\bar{v}_t\right| .
+$$
+所以有：
+$$
+\left|v_{t+1}\left(s_t\right)-\bar{v}_t\right|<\left|v_t\left(s_t\right)-\bar{v}_t\right|
+$$
+可以保证新的估计值比旧的估计值更接近真值，因此，这个方程可以肯定最后是可以收敛到结果中的。
+
+| TD学习                                                                                                                                   | MC学习                                                                                                                                                                                                                                                        |
+| -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **增量式（Incremental）**：TD学习是增量式的。它可以在接收到一个经验样本后立即更新状态/动作值。                                                                               | **非增量式（Non-incremental）**：MC学习是非增量式的。它必须等待一个完整的回合（episode）被收集完毕。这是因为必须计算该回合的折扣回报。                                                                                                                                                                           |
+| **持续任务（Continuing tasks）**：由于TD学习是增量式的，它可以处理回合制和持续性任务。持续性任务可能没有终止状态。                                                                   | **回合制任务（Episodic tasks）**：由于MC学习是非增量式的，它只能处理在有限步数后终止的回合制任务。                                                                                                                                                                                                 |
+| **自举（Bootstrapping）**：TD学习使用自举，因为状态/动作值的更新依赖于该值的先前估计。因此，TD学习需要对值进行初始猜测。                                                                | **非自举（Non-bootstrapping）**：MC学习不使用自举，因为它可以直接估计状态/动作值，而无需初始猜测。                                                                                                                                                                                               |
+| **低估计方差（Low estimation variance）**：TD的估计方差低于MC，因为它涉及的随机变量更少。例如，为了估计动作值 $q_\pi(s_t, a_t)$，Sarsa仅需三个随机变量的样本：$R_{t+1}, S_{t+1}, A_{t+1}$。 | **高估计方差（High estimation variance）**：MC的估计方差更高，因为涉及许多随机变量。例如，为了估计 $q_\pi(s_t, a_t)$，我们需要样本 $R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \cdots$。假设每个回合的长度为 $L$，且每个状态的动作数量为 $\|\mathcal{A}\|$，那么在软策略下，有 $\|\mathcal{A}\|^L$ 种可能的回合。如果仅用少数几个回合来估计，估计方差自然会很高。 |
+TD 算法的成立性证明见课本。
+
+但是只有价值函数没法在 model free 的环境中指导动作选择，需要获得状态动作价值函数 $q(s,a)$ 才可以，把 TD 算法自然外推，就可以很自然地得到求 $q(s,a)$：
+
 
