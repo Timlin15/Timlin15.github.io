@@ -38,7 +38,7 @@ $$
 $$
 \text{Collect sufficiently many episodes starting from } (s, a) \text{ by following } \pi_k 
 $$
-这步的采样深度 $\text{episode length}$ 也会极大影响质量，即从 $(s,a)$ 出发，走几步才停止采样？
+这步的采样深度 $\text{episode length}$ 也会极大影响质量，即从 $(s,a)$ 出发，走几步才停止采样。
 
 整体来说，MC basic 方法过于原始，工程上会采取许多优化方法。比如说把一个策略的 episode 多次利用：
 $$
@@ -177,5 +177,38 @@ $$
 TD 算法的成立性证明见课本。
 
 但是只有价值函数没法在 model free 的环境中指导动作选择，需要获得状态动作价值函数 $q(s,a)$ 才可以，把 TD 算法自然外推，就可以很自然地得到求 $q(s,a)$：
+$$
+\begin{array}{l}{{q_{t+1}(s_{t},a_{t})=q_{t}(s_{t},a_{t})-\alpha_{t}(s_{t},a_{t})\biggl[q_{t}(s_{t},a_{t})-(r_{t+1}+\gamma q_{t}(s_{t+1},a_{t+1})\biggr],}}\\ {{q_{t+1}(s,a)=q_{t}(s,a),\quad\mathrm{for~all~}(s,a)\not=(s_{t},a_{t}),}}\end{array}
+$$
+同 TD algo 一样，Sarsa 是 Bellman 方程的随机近似：
+$$
+q_{\pi}(s,a)=\mathbb{E}\left[R+\gamma q_{\pi}(S^{\prime},A^{\prime})|s,a\right],\quad{\mathrm{for~all~}}\left(s,a\right).
+$$
 
+$$
+\begin{array}{l}
+\textbf{Algorithm 7.1: Optimal policy learning by Sarsa} \\
+\\
+\textbf{Initialization: } \alpha_t(s,a) = \alpha > 0 \text{ for all } (s,a) \text{ and all } t. \; \epsilon \in (0,1). \text{ Initial } q_0(s,a) \text{ for all } (s,a).\\ \text{ Initial } \epsilon\text{-greedy policy } \pi_0 \text{ derived from } q_0. \\
+\\
+\textbf{Goal: } \text{Learn an optimal policy that can lead the agent to the target state from an initial state } s_0. \\
+\\
+\text{For each episode, do} \\
+\quad \text{Generate } a_0 \text{ at } s_0 \text{ following } \pi_0(s_0) \\
+\quad \text{If } s_t \ (t = 0,1,2,\ldots) \text{ is not the target state, do} \\
+\qquad \text{Collect an experience sample } (r_{t+1}, s_{t+1}, a_{t+1}) \text{ given } (s_t, a_t): \text{ generate } r_{t+1}, s_{t+1} \\
+\qquad \text{by interacting with the environment; generate } a_{t+1} \text{ following } \pi_t(s_{t+1}). \\
+\qquad \text{Update } q\text{-value for } (s_t, a_t): \\
+\qquad\qquad q_{t+1}(s_t, a_t) = q_t(s_t, a_t) - \alpha_t(s_t, a_t) \left[ q_t(s_t, a_t) - (r_{t+1} + \gamma q_t(s_{t+1}, a_{t+1})) \right] \\
+\qquad \text{Update policy for } s_t: \\
+\qquad\qquad \pi_{t+1}(a|s_t) = 1 - \dfrac{\epsilon}{|\mathcal{A}(s_t)|}(|\mathcal{A}(s_t)| - 1) \quad \text{if } a = \arg\max_a q_{t+1}(s_t, a) \\
+\qquad\qquad \pi_{t+1}(a|s_t) = \dfrac{\epsilon}{|\mathcal{A}(s_t)|} \quad \text{otherwise} \\
+\qquad s_t \leftarrow s_{t+1}, \; a_t \leftarrow a_{t+1}
+\end{array}
+$$
+可以在书上 P.136 查看例子。
 
+TD learning 可以增大采样深度，即不止依赖下一步的回报值，而是依赖多步的回报：
+$$
+\begin{array}{c}{{q_{t+n}(s_{t},a_{t})=q_{t+n-1}(s_{t},a_{t})}}\\ {{-\,\alpha_{t+n-1}(s_{t},a_{t})\Big[q_{t+n-1}(s_{t},a_{t})-\big(r_{t+1}+\gamma r_{t+2}+\cdots+\gamma^{n}q_{t+n-1}(s_{t+n},a_{t+n})\Big)\Big].}}\end{array}
+$$
