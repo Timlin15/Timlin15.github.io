@@ -176,15 +176,17 @@ $$
 | **低估计方差（Low estimation variance）**：TD的估计方差低于MC，因为它涉及的随机变量更少。例如，为了估计动作值 $q_\pi(s_t, a_t)$，Sarsa仅需三个随机变量的样本：$R_{t+1}, S_{t+1}, A_{t+1}$。 | **高估计方差（High estimation variance）**：MC的估计方差更高，因为涉及许多随机变量。例如，为了估计 $q_\pi(s_t, a_t)$，我们需要样本 $R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \cdots$。假设每个回合的长度为 $L$，且每个状态的动作数量为 $\|\mathcal{A}\|$，那么在软策略下，有 $\|\mathcal{A}\|^L$ 种可能的回合。如果仅用少数几个回合来估计，估计方差自然会很高。 |
 TD 算法的成立性证明见课本。
 
-但是只有价值函数没法在 model free 的环境中指导动作选择，需要获得状态动作价值函数 $q(s,a)$ 才可以，把 TD 算法自然外推，就可以很自然地得到求 $q(s,a)$：
+但是只有价值函数没法在 model free 的环境中指导动作选择，需要获得状态动作价值函数 $q(s,a)$ 才可以，把 TD 算法自然外推，为了实现自举，需要 $\left(s_{t},a_{t},r_{t+1},s_{t+1},a_{t+1}\right)$ 这几个状态值，前四个都很好求，都是可以直接由状态或模型得到的，但是最后一个 $a_{t+1}$ 这个下一步动作需要怎么求，这个问题衍生出两个算法，一是 Sarsa 算法，二是 Q-learning 算法。
+### Sarsa 算法
+在 $a_{t+1}$ 如何求解这个问题上，Sarsa 算法决定使用模型给出的策略进行更新：
 $$
 \begin{array}{l}{{q_{t+1}(s_{t},a_{t})=q_{t}(s_{t},a_{t})-\alpha_{t}(s_{t},a_{t})\biggl[q_{t}(s_{t},a_{t})-(r_{t+1}+\gamma q_{t}(s_{t+1},a_{t+1})\biggr],}}\\ {{q_{t+1}(s,a)=q_{t}(s,a),\quad\mathrm{for~all~}(s,a)\not=(s_{t},a_{t}),}}\end{array}
 $$
-同 TD algo 一样，Sarsa 是 Bellman 方程的随机近似：
+同 TD algo 一样，$Sarsa$ 是 Bellman 方程的随机近似：
 $$
 q_{\pi}(s,a)=\mathbb{E}\left[R+\gamma q_{\pi}(S^{\prime},A^{\prime})|s,a\right],\quad{\mathrm{for~all~}}\left(s,a\right).
 $$
-
+之所以要叫 $Sarsa$ 算法是因为这个算法需要 $\left(s_{t},a_{t},r_{t+1},s_{t+1},a_{t+1}\right)$ 这几个状态值。
 $$
 \begin{array}{l}
 \textbf{Algorithm 7.1: Optimal policy learning by Sarsa} \\
@@ -215,3 +217,92 @@ q_{t+n}(s_{t},a_{t})&=q_{t+n-1}(s_{t},a_{t})\\ &{{-\,\alpha_{t+n-1}(s_{t},a_{t})
 \end{aligned}
 $$
 这个方法兼采了 MC 方法和 TD 方法的特点，n 愈大，算法愈趋向于 MC 算法，方差大但是 bias 小。
+![image.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/markdown/20260320181706507.png)
+可以看到有几步奖励函数掉的非常厉害，这是因为 $\epsilon$-Greedy 选取了次优的动作，导致走向一个很差的轨迹。
+
+### Q-learning
+同时，为了下一步 $a_{t+1}$ 如何求解上， Q-learning 选择直接使用 $s_{t+1}$ 这个状态空间的 $q$ 值最高的动作：
+$$
+\begin{aligned}
+q_{t+1}(s_{t},a_{t})&=q_{t}(s_{t},a_{t})-\alpha_{t}(s_{t},a_{t})\left[q_{t}(s_{t},a_{t})-\left(r_{t+1}+\gamma\operatorname*{max}_{a\in{\cal A}(s_{t+1})}q_{t}(s_{t+1},a)\right)\right],\\
+q_{t+1}\bigl(s,a\bigr)&=q_{t}\bigl(s,a\bigr),\;\;\;\mathrm{for~all~}\bigl(s,a\bigr)\neq\bigl(s_{t},a_{t}\bigr),
+\end{aligned}
+$$
+这个迭代方式其实是求下列方程的随机近似过程：
+$$
+q(s,a)=\mathbb{E}\left[R_{t+1}+\gamma\, \operatorname*{max}_{a}q(S_{t+1},a)| S_{t}=s,A_{t}=a\right].
+$$
+
+可以看到 Sarsa 算法依赖自己这个策略来更新，而 Q-learning 单纯使用下一步中的动作空间中状态动作奖励值最大的动作。这实际上是 On-policy 和 Off-policy 的差异。
+
+任何 RL agent 都同时涉及两个策略：**行为策略（behavior policy）** $\mu$ — 用来和环境交互、产生数据的策略；**目标策略（target policy）** $\pi$ — 你真正想学/想评估的策略。
+
+**On-policy（SARSA）：$\mu = \pi$**
+
+行为策略和目标策略是同一个。你用 $\epsilon$-greedy 探索，你评估的也是这个 $\epsilon$-greedy 策略的 $q_\pi$。所以 SARSA 的更新里用 $a_{t+1}$ 是完全自洽的 — $a_{t+1}$ 是从 $\pi$ 采样的，而你要学的就是 $\pi$ 的价值。
+
+这带来一个后果：每次你改进策略（比如降低 $\epsilon$），之前收集的数据就"过时"了，因为那些数据是旧策略产生的。所以 on-policy 算法通常不能复用历史数据，sample efficiency 比较差。并且这个 动作状态奖励值是使用 $\epsilon$-Greedy 探索而来的，带有一定探索带来的负担，不一定是最佳的。
+
+**Off-policy（Q-learning）：$\mu \neq \pi$**
+
+行为策略和目标策略是分开的。你可以用任意策略 $\mu$（比如 $\epsilon$-greedy，甚至纯随机）来探索，但你学的是贪心最优策略 $\pi_* = \arg\max_a q(s,a)$ 的价值。
+
+Q-learning 能做到这一点，关键就在 $\max$ 操作。它在算 target 的时候完全不看 $\mu$ 实际选了什么 $a_{t+1}$，直接取 $\max$，相当于隐式地把目标策略定义为贪心策略。所以不管数据是谁产生的，target 的计算都和行为策略无关。
+
+**最根本的原因是：** Q-learning 求解的是 BoE 的最优解，而 Sarsa 求解的是一个给定策略的 贝尔曼方程。
+
+另外不要和 *online/offline* 弄混了，这个指的是更新策略的时机。这两个算法都是 online 的算法。
+
+$$
+\begin{array}{l}
+\textbf{Algorithm 7.2: Optimal policy learning via Q-learning (on-policy version)} \\
+\\
+\textbf{Initialization: } \alpha_t(s,a) = \alpha > 0 \text{ for all } (s,a) \text{ and all } t. \; \epsilon \in (0,1). \text{ Initial } q_0(s,a) \text{ for all } (s,a).\\ \text{ Initial } \epsilon\text{-greedy policy } \pi_0 \text{ derived from } q_0. \\
+\\
+\textbf{Goal: } \text{Learn an optimal path that can lead the agent to the target state from an initial state } s_0. \\
+\\
+\text{For each episode, do} \\
+\quad \text{If } s_t \ (t = 0,1,2,\ldots) \text{ is not the target state, do} \\
+\qquad \text{Collect the experience sample } (a_t, r_{t+1}, s_{t+1}) \text{ given } s_t: \text{ generate } a_t \text{ following } \pi_t(s_t); \\
+\qquad \text{generate } r_{t+1}, s_{t+1} \text{ by interacting with the environment.} \\
+\qquad \text{Update } q\text{-value for } (s_t, a_t): \\
+\qquad\qquad q_{t+1}(s_t, a_t) = q_t(s_t, a_t) - \alpha_t(s_t, a_t) \left[ q_t(s_t, a_t) - (r_{t+1} + \gamma \max_a q_t(s_{t+1}, a)) \right] \\
+\qquad \text{Update policy for } s_t: \\
+\qquad\qquad \pi_{t+1}(a|s_t) = 1 - \dfrac{\epsilon}{|\mathcal{A}(s_t)|}(|\mathcal{A}(s_t)| - 1) \quad \text{if } a = \arg\max_a q_{t+1}(s_t, a) \\
+\qquad\qquad \pi_{t+1}(a|s_t) = \dfrac{\epsilon}{|\mathcal{A}(s_t)|} \quad \text{otherwise}
+\end{array}
+$$
+$$
+\begin{array}{l}
+\textbf{Algorithm 7.3: Optimal policy learning via Q-learning (off-policy version)} \\
+\\
+\textbf{Initialization: } \text{Initial guess } q_0(s,a) \text{ for all } (s,a). \text{ Behavior policy } \pi_b(a|s) \text{ for all } (s,a). \\
+\alpha_t(s,a) = \alpha > 0 \text{ for all } (s,a) \text{ and all } t. \\
+\\
+\textbf{Goal: } \text{Learn an optimal target policy } \pi_T \text{ for all states from the experience samples generated by } \pi_b. \\
+\\
+\text{For each episode } \{s_0, a_0, r_1, s_1, a_1, r_2, \ldots\} \text{ generated by } \pi_b, \text{ do} \\
+\quad \text{For each step } t = 0,1,2,\ldots \text{ of the episode, do} \\
+\qquad \text{Update } q\text{-value for } (s_t, a_t): \\
+\qquad\qquad q_{t+1}(s_t, a_t) = q_t(s_t, a_t) - \alpha_t(s_t, a_t) \left[ q_t(s_t, a_t) - (r_{t+1} + \gamma \max_a q_t(s_{t+1}, a)) \right] \\
+\qquad \text{Update target policy for } s_t: \\
+\qquad\qquad \pi_{T,t+1}(a|s_t) = 1 \quad \text{if } a = \arg\max_a q_{t+1}(s_t, a) \\
+\qquad\qquad \pi_{T,t+1}(a|s_t) = 0 \quad \text{otherwise}
+\end{array}
+$$
+![image.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/markdown/20260320181855137.png)
+可以看到 Q-learning 没有陡峭的奖励曲线崩溃，不像 Sarsa，它求得是动作空间中的最优值。
+
+| Algorithm | Expression of the TD target $\bar{q}_t$ in (7.20) |
+|----------|---------------------------------------------------|
+| Sarsa | $\bar{q}_t = r_{t+1} + \gamma q_t(s_{t+1}, a_{t+1})$ |
+| $n$-step Sarsa | $\bar{q}_t = r_{t+1} + \gamma r_{t+2} + \cdots + \gamma^n q_t(s_{t+n}, a_{t+n})$ |
+| Q-learning | $\bar{q}_t = r_{t+1} + \gamma \max_a q_t(s_{t+1}, a)$ |
+| Monte Carlo | $\bar{q}_t = r_{t+1} + \gamma r_{t+2} + \gamma^2 r_{t+3} + \cdots$ |
+
+| Algorithm | Equation to be solved |
+|----------|------------------------|
+| Sarsa | BE: $q_\pi(s,a) = \mathbb{E}[R_{t+1} + \gamma q_\pi(S_{t+1}, A_{t+1}) \mid S_t = s, A_t = a]$ |
+| $n$-step Sarsa | BE: $q_\pi(s,a) = \mathbb{E}[R_{t+1} + \gamma R_{t+2} + \cdots + \gamma^n q_\pi(S_{t+n}, A_{t+n}) \mid S_t = s, A_t = a]$ |
+| Q-learning | BOE: $q(s,a) = \mathbb{E}[R_{t+1} + \gamma \max_a q(S_{t+1}, a) \mid S_t = s, A_t = a]$ |
+| Monte Carlo | BE: $q_\pi(s,a) = \mathbb{E}[R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \cdots \mid S_t = s, A_t = a]$ |
