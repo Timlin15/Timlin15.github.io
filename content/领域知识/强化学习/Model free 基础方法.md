@@ -210,5 +210,8 @@ $$
 
 TD learning 可以增大采样深度，即不止依赖下一步的回报值，而是依赖多步的回报：
 $$
-\begin{array}{c}{{q_{t+n}(s_{t},a_{t})=q_{t+n-1}(s_{t},a_{t})}}\\ {{-\,\alpha_{t+n-1}(s_{t},a_{t})\Big[q_{t+n-1}(s_{t},a_{t})-\big(r_{t+1}+\gamma r_{t+2}+\cdots+\gamma^{n}q_{t+n-1}(s_{t+n},a_{t+n})\Big)\Big].}}\end{array}
+\begin{aligned}
+q_{t+n}(s_{t},a_{t})&=q_{t+n-1}(s_{t},a_{t})\\ &{{-\,\alpha_{t+n-1}(s_{t},a_{t})\Big[q_{t+n-1}(s_{t},a_{t})-\big(r_{t+1}+\gamma r_{t+2}+\cdots+\gamma^{n}q_{t+n-1}(s_{t+n},a_{t+n})\Big)\Big].}}
+\end{aligned}
 $$
+这个方法兼采了 MC 方法和 TD 方法的特点，n 愈大，算法愈趋向于 MC 算法，方差大但是 bias 小。
