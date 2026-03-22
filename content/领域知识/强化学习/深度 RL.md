@@ -149,3 +149,76 @@ $$
 \end{array}
 $$
 
+
+## Policy Gradiant
+
+本文前部分讲了如何把奖励函数由表格变为函数，此前讲解的策略也大部分是通过查表选最大值的表格形式，深度 RL 也需要将策略转为函数形式：$\pi(a|s,\theta),\quad \theta \in \mathbb{R}^m$。这个函数可能是接受一个 $(s,a)$ 输出下一步策略，也可能是输入 $s$ 输出动作空间中的全部策略。
+
+随之而来的问题是如何权衡**最优的策略**？在表格中，最优策略可以找到：**让每一个状态的 value 都最大**。这可以做到，因为存在一个策略同时在所有状态上最优。但是在参数化的策略中，参数维度有限，你没法让每个状态的 value 都同时最大。这时候你需要一个 **单一的数字**来评价整个策略的好坏，然后对这个数字做梯度上升。这个数字就是 scalar metric $J(\theta)$。更新策略也从直接修改表格值变为更新函数权重。
+
+定义好 scalar metric $J(\theta)$，就可以通过[[Model free 基础方法]]中讲到的随机近似方法来去最优参数：
+$$
+\theta_{t+1}=\theta_{t}+\alpha\nabla_{\theta}J(\theta_{t}),
+$$
+定义这个 scalar metric 很重要，一般有几种定义方式：
+
+第一种是**平均状态价值**：
+$$
+\bar{v}_{\pi}\,=\,\mathbb{E}_{S\sim d}[v_{\pi}(S)].
+$$
+此处关于 $d$ 的分布可以是平均分布，即 $d_0(s)=1/|\mathcal{S}|$ 或者对一个特定的状态感兴趣的话，比如总是从一个状态出发则可以使 $d(s_0)=1,\quad d_0(s\neq s_0)=0$。
+
+也可以是静态分布，即上文讲的，找到 $d_{\pi}^{I}P_{\pi}=d_{\pi}^{I}$ ，后利用这个分布计算。静态分布会带来很多有利于推导的性质：
+- $J(\theta) = \mathbb{E}\left[ \sum_{t=0}^{\infty} \gamma^tR_{t+1} \right] =\bar{v}_\pi = \sum_s d(s) v_\pi(s)$ 即目标函数是关于奖励函数的加权平均，而奖励函数是回报的累计折扣回报期望；
+- $\bar{v}_\pi = d^T v_\pi$ 这是把求和写成向量内积的形式。它的用处是**方便后面求梯度**。
+
+第二种方法是**平均回报值**：
+$$
+J(\theta) = \lim_{n \to \infty} \frac{1}{n} \mathbb{E}\left[\sum_{t=0}^{n-1} R_{t+1}\right]
+$$
+这个式子可以化成：
+$$
+\operatorname*{lim}_{n\rightarrow\infty}\frac{1}{n}\mathbb{E}\left[\sum_{t=0}^{n-1}R_{t+1}\right]=\sum_{s\in S}d_{\pi}(s)r_{\pi}(s)=\bar{r}_{\pi}=\sum_{s\in \mathcal{S}}d_{\pi}(s)r_\pi(s)=\mathbb{E}_{S\sim d_\pi}\left[r_\pi(S)\right]=d_\pi^T r_\pi
+$$
+可以注意到平均回报值是严格依赖策略的静态分布的，因为他就是沿着策略求平均回报，并且其不带衰减，这使得这种目标函数相比第一种更加远视，适用于无终止的任务。
+
+$$
+\begin{array}{|c|c|c|c|}
+\hline
+\text{Metric} & \text{Expression 1} & \text{Expression 2} & \text{Expression 3} \\
+\hline
+\bar{v}_\pi & \displaystyle\sum_{s \in \mathcal{S}} d(s) v_\pi(s) & \mathbb{E}_{S \sim d}[v_\pi(S)] & \displaystyle\lim_{n \to \infty} \mathbb{E}\left[\sum_{t=0}^{n-1} \gamma^t R_{t+1}\right] \\
+\hline
+\bar{r}_\pi & \displaystyle\sum_{s \in \mathcal{S}} d_\pi(s) r_\pi(s) & \mathbb{E}_{S \sim d_\pi}[r_\pi(S)] & \displaystyle\lim_{n \to \infty} \frac{1}{n} \mathbb{E}\left[\sum_{t=0}^{n-1} R_{t+1}\right] \\
+\hline
+\end{array}
+$$
+### metircs 的梯度
+
+定义好了目标函数 $J(\theta)$，下一步就是对其求梯度。这部分的核心结论是**策略梯度定理（Policy Gradient Theorem）**：
+$$
+\nabla_\theta J(\theta) = \sum_{s \in \mathcal{S}} \eta(s) \sum_{a \in \mathcal{A}} \nabla_\theta \pi(a|s, \theta) q_\pi(s, a),
+$$
+其中 $\eta$ 是状态分布，$\nabla_\theta \pi$ 是策略对参数的梯度。更实用的是它的紧凑期望形式：
+$$
+\nabla_\theta J(\theta) = \mathbb{E}_{S \sim \eta,\, A \sim \pi(S,\theta)} \left[ \nabla_\theta \ln \pi(A, S, \theta) \, q_\pi(S, A) \right].
+$$
+期望形式更受偏爱，原因是它可以用随机梯度来近似——用采样代替精确期望，这正是本章要讨论的内容。
+
+**为什么可以这么变形？** 关键在于一个对数求导技巧：
+$$
+\nabla_\theta \ln \pi(a|s, \theta) = \frac{\nabla_\theta \pi(a|s, \theta)}{\pi(a|s, \theta)},
+$$
+因此：
+$$
+\nabla_\theta \pi(a|s, \theta) = \pi(a|s, \theta) \nabla_\theta \ln \pi(a|s, \theta).
+$$
+将这个代入原始的求和式，$\pi(a|s,\theta)$ 就把对 $a$ 的求和自然地转成了对策略的期望，从而得到上面的紧凑形式。
+
+另一个需要注意的前提是：$\pi(a|s,\theta)$ 对所有 $(s,a)$ 必须严格为正，这样 $\ln \pi$ 才有意义。实现这一点的标准做法是用 softmax 函数：
+$$
+\pi(a|s, \theta) = \frac{e^{h(s,a,\theta)}}{\sum_{a' \in \mathcal{A}} e^{h(s,a',\theta)}}, \quad a \in \mathcal{A},
+$$
+其中 $h(s,a,\theta)$ 是神经网络输出的偏好值。Softmax 天然满足 $\pi \in (0,1)$ 且所有动作概率之和为 1，同时让策略保持随机性，这意味着策略会持续探索而不会提前坍缩成确定性选择——这是一个自带探索的好性质。
+
+
