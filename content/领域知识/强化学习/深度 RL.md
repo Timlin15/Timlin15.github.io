@@ -221,4 +221,58 @@ $$
 $$
 其中 $h(s,a,\theta)$ 是神经网络输出的偏好值。Softmax 天然满足 $\pi \in (0,1)$ 且所有动作概率之和为 1，同时让策略保持随机性，这意味着策略会持续探索而不会提前坍缩成确定性选择——这是一个自带探索的好性质。
 
+> [!NOTE] 注意
+> 书中从200页至210页左右推导不同的 metric 形式的导数，包括：
+> - Average statue value $\bar{v}_\pi = \sum_s d(s) v_\pi(s)$：包括静态分布和与策略无关 $d_0$ 两种分布
+> -  Average reward $\bar{r}_\pi = \sum_s d_\pi(s) r_\pi(s)$
+> - 然后按照是否是 discount 分类：
+> 	- undiscounted $\gamma < 1$：Lemma 9.1 证明 $\bar{r}_\pi = (1-\gamma)\bar{v}_\pi$，所以两个 metric 等价，梯度方向一样。Theorem 9.2 给出 $\bar{v}_\pi$​ 的梯度，Theorem 9.3 给出 $\bar{r}_\pi $ 的梯度。
+> 	- Undiscounted（$gamma = 1$）：$\sum R_t$​ 会发散，必须重新定义 $v_\pi(s)$（每步减去 $\bar{r}_\pi$​，即 Poisson equation），然后推出 Theorem 9.5。
+> 
+> 三种情况推出来的梯度形式几乎一样，全部被 Theorem 9.1 统一，此处省略。
 
+$$
+\begin{aligned}
+\theta_{t+1}&=\theta_{t}+\alpha{\nabla}_{\theta}J(\theta_{t})\\  &=\theta_{t}+\alpha\mathbb{E}\Big[\nabla_{\theta}\ln\pi(A|S,\theta_{t})q_{\pi}(S,A)\Big],
+\end{aligned}
+$$
+由于真正的梯度是不知道的，所以我们可以通过用采样的方式来随机近似逼近真实的最优参数：
+$$
+\theta_{t+1}=\theta_{t}+\alpha\nabla_{\theta}\ln\pi(a_{t}|s_{t},\theta_{t})q_{t}(s_{t},a_{t}),
+$$
+用 $q_t(s_t,a_t)$ 来近似 $q_\pi(s_t,a_t)$。如果前者是通过蒙特卡洛方法得到的估计，这个算法就叫作 *REINFORCE* 或者 *Monte Carlo policy gradient* 。
+
+因为 $\nabla \ln{\pi(a_t|s_t,\theta_t)} = \frac{q_t(s_t, a_t)}{\pi(a_t|s_t, \theta_t)}$，可以把上式重新写成：
+$$
+\theta_{t+1}=\theta_{t}+\alpha\underbrace{\left(\frac{q_{t}(s_{t},a_{t})}{\pi(a_{t}|s_{t},\theta_{t})}\right)}_{\beta_t}\nabla_{\theta}\pi(a_{t}|s_{t},\theta_{t}),
+$$
+则当 $\beta_t\ge 0$ 时，选择 $(s_t,a_t)$ 的概率提升：
+$$
+\pi(a_{t}|s_{t},\theta_{t+1})\geq\pi(a_{t}|s_{t},\theta_{t}).
+$$
+反之，当 $\beta_t < 0$ 时，选择 $(s_t,a_t)$ 的概率下降：
+$$
+\pi(a_{t}|s_{t},\theta_{t+1})<\pi(a_{t}|s_{t},\theta_{t}).
+$$
+ $\beta_t = \frac{q_t(s_t, a_t)}{\pi(a_t|s_t, \theta_t)}$ 同时包含了 exploit 和 explore 两个效果。
+
+**Exploit 来自分子 $q_t(s_t, a_t)$**：$q$ 值越大，$\beta_t$ 越大，更新幅度越猛，这个动作的概率被提升得越多。所以算法倾向于强化高回报的动作，这就是 exploitation。
+
+**Explore 来自分母 $\pi(a_t|s_t, \theta_t)$**：假设某个动作 $q > 0$ 但当前概率很低，那分母小，$\beta_t$ 就会被放大。也就是说，一个被冷落但实际不错的动作，反而会得到更强的概率提升。反过来，一个已经高概率的好动作，分母大，$\beta_t$ 被压小，提升幅度不会太大。
+$$
+\begin{array}{l}
+\textbf{Algorithm 9.1: Policy Gradient by Monte Carlo (REINFORCE)} \\
+\\
+\textbf{Initialization: } \text{Initial parameter } \theta; \; \gamma \in (0,1); \; \alpha > 0. \\
+\\
+\textbf{Goal: } \text{Learn an optimal policy for maximizing } J(\theta). \\
+\\
+\text{For each episode, do} \\
+\quad \text{Generate an episode } \{s_0, a_0, r_1, \ldots, s_{T-1}, a_{T-1}, r_T\} \text{ following } \pi(\theta). \\
+\quad \text{For } t = 0,1,\ldots,T-1: \\
+\qquad \text{Value update: } q_t(s_t, a_t) = \displaystyle\sum_{k=t+1}^{T} \gamma^{k-t-1} r_k \\
+\qquad \text{Policy update: } \theta \leftarrow \theta + \alpha \nabla_\theta \ln \pi(a_t|s_t, \theta) q_t(s_t, a_t)
+\end{array}
+$$
+
+## Actor-critic 
