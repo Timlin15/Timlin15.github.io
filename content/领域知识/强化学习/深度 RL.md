@@ -363,3 +363,22 @@ q_{\pi}(s_{t},a_{t})-v_{\pi}(s_{t})&=\mathbb{E}\Big[R_{t+1}+\gamma v_{\pi}(S_{t+
 \end{aligned}
 $$
 这使得我们可以仅靠维持一个神经网络追踪优势值就可以运行算法，而不是同时运行两个神经网络。当基线使用的是 TD error 的时候算法也可以被叫作 *TD actor-critic*。
+$$
+\begin{array}{l}
+\textbf{Algorithm 10.2: Advantage actor-critic (A2C) or TD actor-critic} \\
+\\
+\textbf{Initialization: } \text{A policy function } \pi(a|s, \theta_0) \text{ where } \theta_0 \text{ is the initial parameter.} \\
+\quad \text{A value function } v(s, w_0) \text{ where } w_0 \text{ is the initial parameter. } \alpha_w, \alpha_\theta > 0. \\
+\\
+\textbf{Goal: } \text{Learn an optimal policy to maximize } J(\theta). \\
+\\
+\text{At time step } t \text{ in each episode, do} \\
+\quad \text{Generate } a_t \text{ following } \pi(a|s_t, \theta_t) \text{ and then observe } r_{t+1}, s_{t+1}. \\
+\quad \text{Advantage (TD error):} \\
+\qquad \delta_t = r_{t+1} + \gamma v(s_{t+1}, w_t) - v(s_t, w_t) \\
+\quad \text{Actor (policy update):} \\
+\qquad \theta_{t+1} = \theta_t + \alpha_\theta \delta_t \nabla_\theta \ln \pi(a_t|s_t, \theta_t) \\
+\quad \text{Critic (value update):} \\
+\qquad w_{t+1} = w_t + \alpha_w \delta_t \nabla_w v(s_t, w_t)
+\end{array}
+$$
