@@ -332,7 +332,7 @@ b^*(s)=
 \mathbb E_{A\sim\pi}\!\left[\|\nabla_\theta \ln \pi(A|s,\theta_t)\|^2\right]
 }. \quad s\in \mathcal{S}
 $$
-但是这个基线计算太复杂了，如果将 $\|\nabla_\theta \ln \pi(A|s,\theta_t)\|^2$ 删掉，也可以得到一个次优的基线：
+但是这个基线计算太复杂了o，如果将 $\|\nabla_\theta \ln \pi(A|s,\theta_t)\|^2$ 删掉，也可以得到一个次优的基线：
 $$
 b^\dagger(s)=\mathbb E_{A\sim\pi}[q_\pi(s,A)]=v_\pi(s).
 $$
