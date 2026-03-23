@@ -353,4 +353,13 @@ $$
 &= \theta_t + \alpha \nabla_\theta \ln \pi(a_t|s_t, \theta_t) \delta_t(s_t, a_t),
 \end{aligned}
 $$
-即 A2C 不再看一个动作的绝对回报，而是看这个动作
+即 A2C 不再看一个动作的绝对回报，而是看这个动作相对这个状态平均回报的相对值，直觉上来讲降低了方差。当 $q_t(s_t,a_t)$ 和 $v_t(s_t)$ 是通过蒙特卡罗方法估计的时候，这个策略叫作 *REINFORCE with baseline*，当两者是由 TD learning 估计的时候，这个算法才被叫作 A2C。
+
+同时可以注意到这里的优势函数是由 *TD error* 近似而来的：
+$$
+\begin{aligned}
+q_{t}\bigl(s_{t},a_{t}\bigr)-v_{t}\bigl(s_{t}\bigr)&\approx r_{t+1}+\gamma v_{t}\bigl(s_{t+1}\bigr)-v_{t}\bigl(s_{t}\bigr).\\
+q_{\pi}(s_{t},a_{t})-v_{\pi}(s_{t})&=\mathbb{E}\Big[R_{t+1}+\gamma v_{\pi}(S_{t+1})-v_{\pi}(S_{t})\big|S_{t}=s_{t},A_{t}=a_{t}\Big],
+\end{aligned}
+$$
+这使得我们可以仅靠维持一个神经网络追踪优势值就可以运行算法，而不是同时运行两个神经网络。当基线使用的是 TD error 的时候算法也可以被叫作 *TD actor-critic*。
