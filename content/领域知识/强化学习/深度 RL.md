@@ -276,3 +276,81 @@ $$
 $$
 
 ## Actor-critic 
+
+现在所学的策略大致分为两种： **policy-based** 和 **value based**。前者比如 REINFORCE，Policy Gradiant 算法是直接更新模型参数，后者比如 DQN，Q-learning 直接更新价值函数。
+
+现在的随机近似方法也大致分为两类：蒙特卡罗方法和 TD learning。上一章讲的 REINFORCE和 Policy Gradiant 都是蒙特卡洛方法，当把 TD 基础的近似方法用于 Policy gradiant 算法后可以得出 Actor-critic 算法。
+
+$$
+\begin{array}{l}
+\textbf{Algorithm 10.1: The simplest actor-critic algorithm (QAC)} \\
+\\
+\textbf{Initialization: } \text{A policy function } \pi(a|s, \theta_0) \text{ where } \theta_0 \text{ is the initial parameter.} \\
+\quad \text{A value function } q(s,a,w_0) \text{ where } w_0 \text{ is the initial parameter. } \alpha_w, \alpha_\theta > 0. \\
+\\
+\textbf{Goal: } \text{Learn an optimal policy to maximize } J(\theta). \\
+\\
+\text{At time step } t \text{ in each episode, do} \\
+\quad \text{Generate } a_t \text{ following } \pi(a|s_t, \theta_t), \text{ observe } r_{t+1}, s_{t+1}, \text{ and then generate } a_{t+1} \text{ following } \pi(a|s_{t+1}, \theta_t). \\
+\quad \text{Actor (policy update):} \\
+\qquad \theta_{t+1} = \theta_t + \alpha_\theta \nabla_\theta \ln \pi(a_t|s_t, \theta_t) q(s_t, a_t, w_t) \\
+\quad \text{Critic (value update):} \\
+\qquad w_{t+1} = w_t + \alpha_w \left[ r_{t+1} + \gamma q(s_{t+1}, a_{t+1}, w_t) - q(s_t, a_t, w_t) \right] \nabla_w q(s_t, a_t, w_t)
+\end{array}
+$$
+这个算法就是将 TD base 近似方法代入了 Policy Gradiant 后加上了一个 Sarsa 算法来更新价值函数。也就是 QAC 使用 Sarsa 算法提供的 Q 值来更新策略神经网络，相比 REINFORCE 算法直接采样一个很长的 Q 值来更新，这个算法用 Sarsa 提供的期望 Q 值来更新策略神经网络，这极大减小了方差。
+
+上式中的 Sarsa 和前几章讲解的表格式 Sarsa 更新方式不一样，因为这个 Sarsa 也是函数式的，采用减小平方误差的方式来优化：
+$$
+w_{t+1} = w_t + \alpha_w \underbrace{\left[ r_{t+1} + \gamma q(s_{t+1}, a_{t+1}, w_t) - q(s_t, a_t, w_t) \right]}_{\text{TD error } \delta_t} \nabla_w q(s_t, a_t, w_t)
+$$
+### 优势 Actor-Critic
+
+Advantage actor-critic(A2C) 的核心思想就是通过引入一个 baseline 来减小估计的方差，即：
+$$
+\mathbb{E}_{S\sim\eta, A\sim\pi}\big[\nabla_\theta \ln \pi(A|S,\theta)\, q_\pi(S,A)\big]
+=
+\mathbb{E}_{S\sim\eta, A\sim\pi}\big[\nabla_\theta \ln \pi(A|S,\theta)\, (q_\pi(S,A)-b(S))\big]
+$$
+在末尾加上一个参数不会改变期望值，因为：
+$$
+\begin{aligned}
+\mathbb{E}_{S \sim \eta, A \sim \pi} \left[ \nabla_\theta \ln \pi(A|S, \theta_t) b(S) \right] 
+&= \sum_{s \in \mathcal{S}} \eta(s) \sum_{a \in \mathcal{A}} \pi(a|s, \theta_t) \nabla_\theta \ln \pi(a|s, \theta_t) b(s) \\
+&= \sum_{s \in \mathcal{S}} \eta(s) \sum_{a \in \mathcal{A}} \nabla_\theta \pi(a|s, \theta_t) b(s) \\
+&= \sum_{s \in \mathcal{S}} \eta(s) b(s) \sum_{a \in \mathcal{A}} \nabla_\theta \pi(a|s, \theta_t) \\
+&= \sum_{s \in \mathcal{S}} \eta(s) b(s) \nabla_\theta \sum_{a \in \mathcal{A}} \pi(a|s, \theta_t) \\
+&= \sum_{s \in \mathcal{S}} \eta(s) b(s) \nabla_\theta 1 = 0.
+\end{aligned}
+$$
+但是可以有效改变方差，可以证明最优的 baseline 是：
+$$
+b^*(s)=
+\frac{
+\mathbb E_{A\sim\pi}\!\left[\|\nabla_\theta \ln \pi(A|s,\theta_t)\|^2 q_\pi(s,A)\right]
+}{
+\mathbb E_{A\sim\pi}\!\left[\|\nabla_\theta \ln \pi(A|s,\theta_t)\|^2\right]
+}. \quad s\in \mathcal{S}
+$$
+但是这个基线计算太复杂了，如果将 $\|\nabla_\theta \ln \pi(A|s,\theta_t)\|^2$ 删掉，也可以得到一个次优的基线：
+$$
+b^\dagger(s)=\mathbb E_{A\sim\pi}[q_\pi(s,A)]=v_\pi(s).
+$$
+
+证明见书P.219。
+
+引入基线后，更新方式变为了：
+$$
+\begin{aligned}
+\theta_{t+1} &= \theta_t + \alpha \mathbb{E}\left[ \nabla_\theta \ln \pi(A|S, \theta_t) \left( q_\pi(S, A) - v_\pi(S) \right) \right] \\
+\quad &\doteq \theta_t + \alpha \mathbb{E}\left[ \nabla_\theta \ln \pi(A|S, \theta_t) \delta_\pi(S, A) \right].
+\end{aligned}
+$$
+其中 $\delta_\pi(S, A)\doteq q_\pi(S, A) - v_\pi(S)$，这被称为优势函数，这个更新的随机方式为：
+$$
+\begin{aligned}
+\theta_{t+1} &= \theta_t + \alpha \nabla_\theta \ln \pi(a_t|s_t, \theta_t) \left[ q_t(s_t, a_t) - v_t(s_t) \right] \\
+&= \theta_t + \alpha \nabla_\theta \ln \pi(a_t|s_t, \theta_t) \delta_t(s_t, a_t),
+\end{aligned}
+$$
+即 A2C 不再看一个动作的绝对回报，而是看这个动作
