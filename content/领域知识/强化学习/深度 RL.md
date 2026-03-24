@@ -416,3 +416,6 @@ $$
 \qquad w_{t+1} = w_t + \alpha_w \dfrac{\pi(a_t|s_t, \theta_t)}{\beta(a_t|s_t)} \delta_t \nabla_w v(s_t, w_t)
 \end{array}
 $$
+
+
+此处还有 Deterministic Policy Gradients 部分，但是目前和方向关系较弱，看了看没记笔记。
