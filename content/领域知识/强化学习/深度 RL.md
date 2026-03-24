@@ -382,3 +382,37 @@ $$
 \qquad w_{t+1} = w_t + \alpha_w \delta_t \nabla_w v(s_t, w_t)
 \end{array}
 $$
+### off-policy policy gradient
+
+Policy based 算法基本上天生就是 On policy 的算法，如果没有针对自己的 Policy 求梯度的话，就不是针对自己的策略优化，这使得一个 Policy 只能针对现在的参数生成的轨迹求梯度，变了点参数又不能用了，使得 on-policy 的策略利用率较低。
+
+从直觉上来说，因为 AC 是利用下一个动作的 $q(a,c)$ 来优化动作的，所以只要两个策略对于同一个状态的动作状态价值函数 $q(s,a)$ 是一样的话，在一个状态的到的导数应该是一样的，只不过因为取到这个动作的概率和这个状态在静态分布中的概率不同，所以乘上不同概率的权重即可：
+$$
+\underbrace{\mathbb{E}_{S\sim d_\pi, A\sim\pi}}_{\text{要求的分布}}\left[\underbrace{\nabla_\theta \ln\pi(A|S,\theta) \cdot q_\pi(S,A)}_{f(S,A,\theta)：给定 (s,a) 后是确定的}\right]= \mathbb{E}_{S\sim d_\beta, A\sim\beta}\left[\frac{\pi(A|S)}{\beta(A|S)} \cdot f(S,A,\theta)\right]
+$$
+但是上述要求的 $q_\pi(a,c)=q_\beta(a,c)$ 并不被 Sarsa 满足，有几种方法：
+第一种，critic 改用 Q-learning（$r_{t+1} + \gamma \max_{a'} q(s_{t+1}, a', w)$）。这样 critic 估计的是 $q_*$​，不依赖任何策略，天然 off-policy。
+
+第二种，critic 也加 importance sampling 修正。在 TD target 里对后续动作的采样也乘权重，让估计值收敛到 $q_\pi$​ 而非 $q_\beta$​。
+
+第三种，也是实践中最主流的：让 $\beta$ 和 $\pi$ 不要差太远。PPO 就是这个思路——$\beta$ 是上一轮的旧策略 $\pi_{\text{old}}$​，用 clipping 保证新旧策略差距小，这样 $q_{\pi_{\text{old}}} \approx q_\pi$​，误差可控。严格说不完全对，但实践中足够好。
+
+$$
+\begin{array}{l}
+\textbf{Algorithm 10.3: Off-policy actor-critic based on importance sampling} \\
+\\
+\textbf{Initialization: } \text{A given behavior policy } \beta(a|s). \text{ A target policy } \pi(a|s, \theta_0) \text{ where } \theta_0 \text{ is the initial parameter.} \\
+\quad \text{A value function } v(s, w_0) \text{ where } w_0 \text{ is the initial parameter. } \alpha_w, \alpha_\theta > 0. \\
+\\
+\textbf{Goal: } \text{Learn an optimal policy to maximize } J(\theta). \\
+\\
+\text{At time step } t \text{ in each episode, do} \\
+\quad \text{Generate } a_t \text{ following } \beta(s_t) \text{ and then observe } r_{t+1}, s_{t+1}. \\
+\quad \text{Advantage (TD error):} \\
+\qquad \delta_t = r_{t+1} + \gamma v(s_{t+1}, w_t) - v(s_t, w_t) \\
+\quad \text{Actor (policy update):} \\
+\qquad \theta_{t+1} = \theta_t + \alpha_\theta \dfrac{\pi(a_t|s_t, \theta_t)}{\beta(a_t|s_t)} \delta_t \nabla_\theta \ln \pi(a_t|s_t, \theta_t) \\
+\quad \text{Critic (value update):} \\
+\qquad w_{t+1} = w_t + \alpha_w \dfrac{\pi(a_t|s_t, \theta_t)}{\beta(a_t|s_t)} \delta_t \nabla_w v(s_t, w_t)
+\end{array}
+$$
