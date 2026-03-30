@@ -488,3 +488,74 @@ $$
 \hline
 \end{array}
 $$
+最基础的 Flow matching 代码：
+```Python
+# code 1 Standalone Flow Matching code
+# flow_matching/examples/standalone_flow_matching.ipynb
+
+import torch
+from torch import nn, Tensor
+import matplotlib.pyplot as plt
+from sklearn.datasets import make_moons
+
+class Flow(nn.Module):
+    def __init__(self, dim: int = 2, h: int = 64):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(dim + 1, h),
+            nn.ELU(),
+            nn.Linear(h, h),
+            nn.ELU(),
+            nn.Linear(h, dim),
+        )
+
+    def forward(self, x_t: Tensor, t: Tensor) -> Tensor:
+        return self.net(torch.cat((t, x_t), -1))
+
+    def step(self, x_t: Tensor, t_start: Tensor, t_end: Tensor) -> Tensor:
+        # Euler's method with midpoint ODE solver in this example
+        # For simplicity, using midpoint ODE solver in this example
+        x_mid = (t_end - t_start) / 2
+        x_t += (t_end - t_start) * self(x_t + self(x_t, t_start) * x_mid, t_start + x_mid)
+        return x_t
+
+# training
+flow = Flow()
+optimizer = torch.optim.Adam(flow.parameters(), 1e-2)
+loss_fn = nn.MSELoss()
+
+for _ in range(10000):
+    x_1 = Tensor(make_moons(256, noise=0.05)[0])
+    x_0 = torch.randn_like(x_1)
+    t = torch.rand(256, 1)
+    x_t = (1 - t) * x_0 + t * x_1
+    dx_t = x_1 - x_0
+    optimizer.zero_grad()
+    loss = loss_fn(flow(x_t, t), dx_t)
+    loss.backward()
+    optimizer.step()
+
+# sampling
+n_steps = 8
+x = torch.randn(300, 2)
+time_steps = torch.linspace(0, 1, n_steps + 1, device=x.device)
+
+fig, axes = plt.subplots(1, n_steps + 1, figsize=(30, 4), sharex=True, sharey=True)
+for i, t in enumerate(time_steps):
+    axes[i].scatter(x[:, 0], x[:, 1], s=10)
+    axes[i].set_title(f't = {t:.2f}')
+    axes[i].set_xlim(-3, 3)
+    axes[i].set_ylim(-3, 3)
+
+for i in range(n_steps):
+    x = flow.step(x, time_steps[i], time_steps[i + 1])
+
+axes[-1].scatter(x[:, 0], x[:, 1], s=10)
+axes[-1].set_title(f't = {time_steps[-1]:.2f}')
+axes[-1].set_xlim(-3, 3)
+axes[-1].set_ylim(-3, 3)
+
+plt.tight_layout()
+plt.show()
+```
+![Figure_1.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/markdown/Figure_1.png)
