@@ -1,5 +1,7 @@
-# Unitree G1 ROS2 连接配置指南
 
+
+> [!NOTE] Refrence
+> 本文基于和 Claude Opus 4.6 的聊天总结而成
 ## 背景知识
 
 ### SSH vs ROS2
@@ -163,3 +165,4 @@ ros2 topic echo /dex3/right/state  # 右手状态
 - `source setup.sh` 只对当前终端生效，新终端需要重新 source
 - 不建议将 unitree_ros2 workspace 的 source 写入 `.bashrc`，避免与其他用户冲突
 - 系统级依赖（ROS2 安装、网络配置）共用，workspace 各建各的
+
