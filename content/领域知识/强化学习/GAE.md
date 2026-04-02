@@ -28,3 +28,4 @@ $$
 
 ## GAE
 $TD(\lambda)$ 是用于估计价值函数的方法，GAE则把这个方法与 Actor-Critic方法做了结合。
+
