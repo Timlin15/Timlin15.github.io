@@ -1,6 +1,6 @@
 ---
 date: 2026-02-14
-lastmod: 2026-03-16
+lastmod: 2026-03-30
 ---
 > [!NOTE] TL;DR
 > 本文讲解了 Diffusion 和 Flow model 的数学原理，包括 Diffusion 中的 DDPM 和 DDIM 模型。整体来说，DDPM 至 DDIM 再到 Flow model 呈现清晰的渐进发展的趋势，体现为逐渐舍弃带有随机性的高斯分布的影响，而是在反向过程和正向过程中引入确定性的步骤。推荐将三者作为一个脉络研究。

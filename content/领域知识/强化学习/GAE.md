@@ -1,3 +1,7 @@
+---
+date: 2026-03-28
+lastmod: 2026-04-02
+---
 > [!NOTE] Reference
 > [GAE原始论文](http://arxiv.org/abs/1506.02438)
 ## TD(0) 到 n-step return
