@@ -1,6 +1,6 @@
 ---
 date: 2026-02-21
-lastmod: 2026-03-16
+lastmod: 2026-04-07
 ---
 在配置好obsidian的git插件后，我想能不能直接将笔记库的文件直接转化为可读的博客页面，并且全程要用GitHub Actions自动配置，不用我打一个指令。毕竟前面几次博客都是这么荒废的。
 并且这个博客最好原生支持obsidian特殊的语法，比如[[]]内联其他文件，以及文件夹嵌套文件夹的文本储存方式。
@@ -33,7 +33,7 @@ npx quartz build --serve
 1. 当在obsidian中更新文件并自动同步到GitHub repo后，触发GitHub Actions使quartz的仓库同步更新。这步是选做，但是如果你不做就无法做到无缝同步；
 2. quartz的特性是只要你content文件夹更新并push到GitHub中后，可以[利用GitHub Actions直接更新静态页面](https://quartz.jzhao.xyz/hosting)，不需要自行更新静态页面。这步是必须的。
 
-先从第一步讲起：为了实现两个仓库的联动，需要前往 [Developer Settings](https://github.com/settings/apps)中`Personal access tokens->Fine-grained tokens`创建一个token。需要给出名字，过期日期，Repository access（此处推荐只有你的博客这个repo），并给出code, repository advisories, 和workflows的读写权利，metadata的读权利应该是自行给予的。
+先从第一步讲起：为了实现两个仓库的联动，需要前往 [Developer Settings](https://github.com/settings/apps)中`Personal access tokens->Fine-grained tokens`创建一个token。需要给出名字，过期日期，Repository access（此处推荐只有你的博客这个repo），并给出Contents的读写权利，metadata的读权利应该是自行给予的。
 有了这个token后，前往你的obsidian的文本GitHub repo，去到`Settings->secrets and variables->Actions`中创建一个secret，填入token，比如此处我取名叫`QUARTZ_PAT`
 然后在本地文件处创建一个`.github/workflows/sync.yml`
 ```yml
