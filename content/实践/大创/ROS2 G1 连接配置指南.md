@@ -1,6 +1,6 @@
 ---
 date: 2026-04-01
-lastmod: 2026-04-01
+lastmod: 2026-04-07
 ---
 > [!NOTE] Refrence
 > 本文基于和 Claude Opus 4.6 的聊天总结而成
