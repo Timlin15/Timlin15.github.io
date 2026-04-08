@@ -74,5 +74,34 @@ $$
 $$
 g^\gamma := \mathbb{E}_{\substack{s_{0:\infty} \\ a_{0:\infty}}} \left[ \sum_{t=0}^{\infty} A^{\pi, \gamma}(s_t, a_t) \nabla_\theta \log \pi_\theta(a_t \mid s_t) \right].
 $$
-接下来证明这个估计是一个有偏（但是不太过有偏）的 $A^{\pi,\gamma}$ 估计:
+接下来找出 $\hat{A}_t$ 估计是一个有偏（但是不太过有偏）的 $A^{\pi,\gamma}$ 估计。其中找 $\hat{A}_t$ 是因为 $A^{\pi,\gamma}$ 是一个空间极大的，只能用估计的方式，所以实践中采用函数 $\hat{A}_t$ 用于估计。当这个估计函数取代 $A^{\pi,\gamma}$ 时不引入偏差，则称其为 $\gamma$-just 的。
 
+如果 $\hat{A}_t$ 满足 $\gamma$-just 条件，则：
+$$
+\mathbb{E}_{\substack{s_{0:\infty} \\ a_{0:\infty}}} \left[ \hat{A}_t(s_{0:\infty}, a_{0:\infty})
+\nabla_\theta \log \pi_\theta(a_t \mid s_t) \right] = \mathbb{E}_{\substack{s_{0:\infty} \\ a_{0:\infty}}} \left[ A^{\pi,\gamma}(s_t, a_t)
+\nabla_\theta \log \pi_\theta(a_t \mid s_t) \right].
+$$
+即如果 $\hat{A}_t$ 是 对于所有 $t$ 满足 $\gamma$-just 的话，则
+$$
+\mathbb{E}_{\substack{s_{0:\infty} \\ a_{0:\infty}}} \left[ \sum_{t=0}^\infty \hat{A}_t(s_{0:\infty}, a_{0:\infty})
+abla_\theta \log \pi_\theta(a_t \mid s_t) \right] = g^\gamma
+$$
+可以证明如果 $\hat{A}_t$ 可以写成如下形式，且满足 $(s_t, a_t)$ 的条件，那么 $\hat{A}$ 是 $\gamma$-just。
+$$
+\begin{aligned}
+\hat{A}_t(s_{0:\infty}, a_{0:\infty}) &= Q_t(s_{t:\infty}, a_{t:\infty}) - b_t(s_{0:t}, a_{0:t-1})\\
+\mathbb{E}_{s_{t+1:\infty}, a_{t+1:\infty} \mid s_t, a_t} [Q_t(s_{t:\infty}, a_{t:\infty})] &= Q^{\pi, \gamma}(s_t, a_t)
+\end{aligned}
+$$
+则这几个表达都是 $\gamma$-just 的：
+* $\sum_{l=0}^{\infty} \gamma^l r_{t+l}$
+* $Q^{\pi,\gamma}(s_t, a_t)$
+* $A^{\pi,\gamma}(s_t, a_t)$
+* $r_t + \gamma V^{\pi,\gamma}(s_{t+1}) - V^{\pi,\gamma}(s_t).$
+
+作者在这里引入了两层 bias，即两层估计。第一层是使用 $g^\gamma$ 来代替 $g$，这个是明确引入了 bias 了。而第二层是使用 $\hat{A}_t$ 代替了 $g^\gamma$ 中的 $A^{\pi,\gamma}$，这里在找到一个没有偏差的估计。
+
+## 优势函数估计
+
+接下来找到一个准确的估计 $\hat{A}_t$。
