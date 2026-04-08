@@ -74,4 +74,5 @@ $$
 $$
 g^\gamma := \mathbb{E}_{\substack{s_{0:\infty} \\ a_{0:\infty}}} \left[ \sum_{t=0}^{\infty} A^{\pi, \gamma}(s_t, a_t) \nabla_\theta \log \pi_\theta(a_t \mid s_t) \right].
 $$
-接下来证明这个估计是一个有偏（但是不太过有偏）的 $A^{\pi,\gamma}$ 估计
+接下来证明这个估计是一个有偏（但是不太过有偏）的 $A^{\pi,\gamma}$ 估计:
+
