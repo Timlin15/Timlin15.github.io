@@ -1,6 +1,6 @@
 ---
 date: 2026-04-08
-lastmod: 2026-04-08
+lastmod: 2026-04-09
 ---
 > [!NOTE] Reference
 > [GAE原始论文](http://arxiv.org/abs/1506.02438)
@@ -87,7 +87,7 @@ $$
 \mathbb{E}_{\substack{s_{0:\infty} \\ a_{0:\infty}}} \left[ \sum_{t=0}^\infty \hat{A}_t(s_{0:\infty}, a_{0:\infty})
 abla_\theta \log \pi_\theta(a_t \mid s_t) \right] = g^\gamma
 $$
-可以证明如果 $\hat{A}_t$ 可以写成如下形式，且满足 $(s_t, a_t)$ 的条件，那么 $\hat{A}$ 是 $\gamma$-just。
+可以证明如果 $\hat{A}_t$ 可以写成如下形式，且满足 $(s_t, a_t)$ 的条件，那么 $\hat{A}$ 是 $\gamma$-just。此处 $Q_t$ 是个
 $$
 \begin{aligned}
 \hat{A}_t(s_{0:\infty}, a_{0:\infty}) &= Q_t(s_{t:\infty}, a_{t:\infty}) - b_t(s_{0:t}, a_{0:t-1})\\
@@ -104,4 +104,44 @@ $$
 
 ## 优势函数估计
 
-接下来找到一个准确的估计 $\hat{A}_t$，用于估计优势函数 $A^{\pi,\gamma}$。由[[深度 RL|优势函数是由 *TD error* 近似]]的结论，可以尝试使用 TD error 来估计。特别的，对于价值函数 $V$，
+接下来找到一个准确的估计 $\hat{A}_t$，用于估计优势函数 $A^{\pi,\gamma}$。由[[深度 RL|优势函数是由 *TD error* 近似]]的结论，可以尝试使用 TD error 来估计。特别的，对于价值函数 $V$，定义该价值函数的 *TD error* 为：$\delta_t^V=r_t+\gamma V(s_{t+1})-V(s_t)$。*TD error* 可以看作一个动作的优势函数的估计，如果使用正确的价值函数 $V=V^{\pi,\gamma}$，则 *TD error* 是一个 $\gamma$-just 优势函数估计并且是 $A^{\pi,\gamma}$ 的无偏估计。
+$$
+\begin{aligned}
+\mathbb{E}_{s_{t+1}} \left[ \delta_t^{V^{\pi, \gamma}} \right] &= \mathbb{E}_{s_{t+1}} [r_t + \gamma V^{\pi, \gamma}(s_{t+1}) - V^{\pi, \gamma}(s_t)] \\
+&= \mathbb{E}_{s_{t+1}} [Q^{\pi, \gamma}(s_t, a_t) - V^{\pi, \gamma}(s_t)] = A^{\pi, \gamma}(s_t, a_t).
+\end{aligned}
+$$
+然而这只对 $V = V^{\pi,\gamma}$ 是 $\gamma$-just 的，其他都不能保证。
+
+再引入 telescoping sum，标注为 $\hat{A}_t^{(k)}$，这是一种降低 bias 的方法。
+$$
+\hat{A}_t^{(k)} := \sum_{l=0}^{k-1} \gamma^l \delta_{t+l}^V = -V(s_t) + r_t + \gamma r_{t+1} + \dots + \gamma^{k-1} r_{t+k-1} + \gamma^k V(s_{t+k})
+$$
+当 $k \to \infty$ 时， 有：
+$$
+\hat{A}_t^{(\infty)} = \sum_{l=0}^{\infty} \gamma^l \delta_{t+l}^V = -V(s_t) + \sum_{l=0}^{\infty} \gamma^l r_{t+l},
+$$
+再引入 n-steps return 的思路，可以得到*泛化优势估计*（generalized advantage estimator）：$GAE(\gamma,\lambda)$ 
+$$
+\begin{aligned}
+\hat{A}_t^{\mathrm{GAE}(\gamma,\lambda)} &:= (1-\lambda)\left(\hat{A}_t^{(1)} + \lambda\hat{A}_t^{(2)} + \lambda^2\hat{A}_t^{(3)} + \dots\right) \\
+&= (1-\lambda)\left(\delta_t^V + \lambda(\delta_t^V + \gamma\delta_{t+1}^V) + \lambda^2(\delta_t^V + \gamma\delta_{t+1}^V + \gamma^2\delta_{t+2}^V) + \dots\right) \\
+&= (1-\lambda)\left(\delta_t^V(1 + \lambda + \lambda^2 + \dots) + \gamma\delta_{t+1}^V(\lambda + \lambda^2 + \lambda^3 + \dots) \right. \\
+&\quad \left. + \gamma^2\delta_{t+2}^V(\lambda^2 + \lambda^3 + \lambda^4 + \dots) + \dots\right) \\
+&= (1-\lambda)\left(\delta_t^V\left(\frac{1}{1-\lambda}\right) + \gamma\delta_{t+1}^V\left(\frac{\lambda}{1-\lambda}\right) + \gamma^2\delta_{t+2}^V\left(\frac{\lambda^2}{1-\lambda}\right) + \dots\right) \\
+&= \sum_{l=0}^{\infty}(\gamma\lambda)^l \delta_{t+l}^V
+\end{aligned}
+$$
+同样的：
+- $\lambda = 0$：退化为 $\delta_t=r_t+\gamma V(s_{t+1})-V(s_t)$​
+- $\lambda = 1$：$\hat{A}_t := \sum_{l=0}^{\infty} \gamma^l \delta_{t+l} = \sum_{l=0}^{\infty} \gamma^l r_{t+l} - V(s_t)$
+
+后者无论什么价值函数 $V$ 都是 $\gamma$-just 的，但是引入了高方差，前者只对 $V=V^{\pi,\gamma}$ 是 $\gamma$-just 的。
+$$
+V^{\pi,\gamma}(s) = \mathbb{E}\left[\sum_{l=0}^{\infty} \gamma^l r_{t+l} \,\Big|\, s_t = s, \pi\right]
+$$
+这在实践中基本不可能实现一个逐点相等的价值函数。
+
+> [!NOTE] 这段的总结
+> 我们描述了具有两个独立参数 γ 和 λ 的优势估计器，这两个参数在使用近似值函数时都有助于偏差-方差权衡。然而，它们有不同的目的，并且在不同的值范围下效果最好。 γ 最重要的是决定了价值函数 $V^{π,γ}$ 的尺度，它不依赖于 λ。无论价值函数的准确性如何，采用 ​​γ < 1 都会在策略梯度估计中引入偏差。另一方面，仅当价值函数不准确时，λ < 1 才会引入偏差。根据经验，我们发现 λ 的最佳值远低于 γ 的最佳值，这可能是因为对于相当准确的值函数，λ 引入的偏差远小于 γ。
+
