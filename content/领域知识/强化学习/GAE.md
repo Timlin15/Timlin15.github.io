@@ -145,3 +145,49 @@ $$
 > [!NOTE] 这段的总结
 > 我们描述了具有两个独立参数 γ 和 λ 的优势估计器，这两个参数在使用近似值函数时都有助于偏差-方差权衡。然而，它们有不同的目的，并且在不同的值范围下效果最好。 γ 最重要的是决定了价值函数 $V^{π,γ}$ 的尺度，它不依赖于 λ。无论价值函数的准确性如何，采用 ​​γ < 1 都会在策略梯度估计中引入偏差。另一方面，仅当价值函数不准确时，λ < 1 才会引入偏差。根据经验，我们发现 λ 的最佳值远低于 γ 的最佳值，这可能是因为对于相当准确的值函数，λ 引入的偏差远小于 γ。
 
+## INTERPRETATION AS REWARD SHAPING
+
+本段提供了另一种视角观察参数 $\lambda$，暂时先跳过。
+
+## Value Function Estimation
+
+在估计价值函数的时候会遇到以下几个问题：
+- **目标在漂移**：策略 $\pi$ 在不断更新，$V^{\pi,\gamma}$ 这个回归目标也在漂移，critic 永远在追一个移动靶。
+- **数据分布在漂移**：每次迭代用的是新策略收集的数据，旧数据和新数据分布不同。
+- **过拟合到最近批次**：如果对最近一批数据优化得过于激进，critic 会遗忘之前学到的全局结构，在下一次迭代时给出质量很差的估计。
+- **critic 崩坏的连锁反应**：critic 变差 → advantage 估计变差 → 策略梯度变差 → 策略更新方向错误 → 收集到的数据质量更差 → critic 更难学。这是一个正反馈失控循环。
+
+一个朴素的解决方法是直接求解：
+$$
+\text{minimize}_\phi \sum_{n=1}^N \|V_\phi(s_n) - \hat{V}_n\|^2
+$$
+其中 $\hat{V}_n = \sum_{l=0}^\infty \gamma^l r_{t+l}$ 表示蒙特卡洛采样，虽然是无偏采样，但是因为整条轨迹的随机性累积导致方差大，且存在前面说的过拟合问题。并没有解决上述的问题。
+
+于是论文引入了信赖域算法：
+$$
+\begin{aligned}
+\underset{\phi}{\text{minimize}} \quad & \sum_{n=1}^N |V_\phi(s_n) - \hat{V}n|^2 \\
+\text{subject to} \quad & \frac{1}{N}\sum_{n=1}^N \frac{|V_\phi(s_n) - V_{\phi_\text{old}}(s_n)|^2}{2\sigma^2} \leq \epsilon
+\end{aligned}
+$$
+其中 $\sigma^2 = \frac{1}{N}\sum_n \|V_{\phi_\text{old}}(s_n) - \hat{V}_n\|^2$，$\phi_{\text{old}}$ 表示的是旧的参数，此约束等价于约束新旧 value function 之间的平均 KL 散度小于 $\epsilon$，如果将 value function 解释为一个条件高斯分布 $\mathcal{N}(V_\phi(s),\sigma^2)$ 的均值，具体来说，两个同方差高斯分布 $\mathcal{N}(\mu_1, \sigma^2)$ 和 $\mathcal{N}(\mu_2, \sigma^2)$ 之间的 KL 散度为：
+$$
+\text{KL} = \frac{(\mu_1 - \mu_2)^2}{2\sigma^2}
+$$
+因此有：
+$$
+\frac{1}{N}\sum_n \frac{\|V_\phi(s_n) - V_{\phi_\text{old}}(s_n)\|^2}{2\sigma^2} = \mathbb{E}_n[\text{KL}(p_\text{old}(s_n) \| p_\text{new}(s_n))]
+$$
+这是一个自适应归一化：如果旧 critic 的预测误差本来就很大（$\sigma^2$ 大），说明问题本身噪声大，允许较大的参数更新；如果旧 critic 已经很准（$\sigma^2$ 小），则更新应该更保守。
+
+这个信赖域的求解非常复杂，因此论文将这个优化问题转为线性化和二次近似的方法：
+$$
+\begin{aligned}
+\underset{\phi}{\text{minimize}} \quad & g^T(\phi - \phi_\text{old}) \\
+\text{subject to} \quad & \frac{1}{N}\sum_{n=1}^N (\phi - \phi_\text{old})^T H (\phi - \phi_\text{old}) \leq \epsilon
+\end{aligned}
+$$
+其中：
+- $g = \nabla_\phi \sum_n \|V_\phi(s_n) - \hat{V}_n\|^2 \big|_{\phi = \phi_\text{old}}$ 是目标函数的梯度。
+- $H = \frac{1}{N}\sum_n j_n j_n^T$，而 $j_n = \nabla_\phi V_\phi(s_n)$ 是每个样本预测值对参数的梯度。
+Q
