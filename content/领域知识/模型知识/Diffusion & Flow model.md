@@ -1,6 +1,6 @@
 ---
 date: 2026-02-14
-lastmod: 2026-04-07
+lastmod: 2026-04-20
 ---
 > [!NOTE] TL;DR
 > 本文讲解了 Diffusion 和 Flow model 的数学原理，包括 Diffusion 中的 DDPM 和 DDIM 模型。整体来说，DDPM 至 DDIM 再到 Flow model 呈现清晰的渐进发展的趋势，体现为逐渐舍弃带有随机性的高斯分布的影响，而是在反向过程和正向过程中引入确定性的步骤。推荐将三者作为一个脉络研究。
@@ -559,3 +559,12 @@ plt.tight_layout()
 plt.show()
 ```
 ![Figure_1.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/markdown/Figure_1.png)
+代码中流匹配函数的`step`采用以下复杂形式的原因是不同于普通的欧拉法 ODE $x_{t+\Delta t} = x_t + \Delta t \cdot v_\theta(x_t,\ t)$，采用中点法的 ODE 求解器 $x_{t+\Delta t} = x_t + \Delta t \cdot v_\theta\!\left(x_{\text{mid}},\ t_{\text{mid}}\right)$ 可以获得更高的精度。
+```Python
+    def step(self, x_t: Tensor, t_start: Tensor, t_end: Tensor) -> Tensor:
+        # Euler's method with midpoint ODE solver in this example
+        # For simplicity, using midpoint ODE solver in this example
+        x_mid = (t_end - t_start) / 2
+        x_t += (t_end - t_start) * self(x_t + self(x_t, t_start) * x_mid, t_start + x_mid)
+        return x_t
+```
