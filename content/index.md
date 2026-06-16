@@ -1,6 +1,6 @@
 ---
 date: 2026-02-21
-lastmod: 2026-04-07
+lastmod: 2026-06-16
 
 title: 你好👋
 ---
@@ -171,7 +171,7 @@ title: 你好👋
     <div class="tool-item">
       <div class="tool-icon"><img src="/static/icons/Fedora.svg" alt="fedora"></div>
       <div class="tool-info">
-        <span class="tool-name">Fedora 43 Kde</span>
+        <span class="tool-name">Fedora 44 Niri</span>
         <span class="tool-desc">It just works</span>
       </div>
     </div>
