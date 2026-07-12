@@ -85,5 +85,5 @@ Huggingface 仓库：
 不同的CoT Pattern会对模型懂推荐的能力产生较大的影响，目前 Baseline 懂推荐数据给出的 CoT Pattern整体上
 是按照“兴趣归纳->行为模式->预测总结”三段式总结的，CoT Pattern存在较大优化的空间。可以参考 OneReason
 技术报告和沙龙分享，也更加鼓励选手自己探索更有效的 CoT Pattern，以及更合理的 CoT 和 UnCoT 的配比。
-沙龙：[新郎财经](https://finance.sina.com.cn/wm/2026-06-10/doc-iniaxvfp1173962.shtml)
+沙龙：[新浪财经](https://finance.sina.com.cn/wm/2026-06-10/doc-iniaxvfp1173962.shtml)
 获取可以去查看官方论文。
