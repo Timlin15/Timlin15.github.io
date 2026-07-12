@@ -87,3 +87,9 @@ Huggingface 仓库：
 技术报告和沙龙分享，也更加鼓励选手自己探索更有效的 CoT Pattern，以及更合理的 CoT 和 UnCoT 的配比。
 沙龙：[新浪财经](https://finance.sina.com.cn/wm/2026-06-10/doc-iniaxvfp1173962.shtml)
 获取可以去查看官方论文。
+
+
+## 问题
+
+1. 数据配比，数据质量，数据类型，多样性
+2. RL
