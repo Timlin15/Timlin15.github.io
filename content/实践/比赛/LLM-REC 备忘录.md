@@ -1,6 +1,6 @@
 ---
 date: 2026-07-12
-lastmod: 2026-07-12
+lastmod: 2026-07-13
 ---
 ## 背景文档/仓库
 文档：[语雀文档](https://docs.qingque.cn/d/home/eZQAVR10RNyGdtIrSA08YFfr5?identityId=2J04lZy9e9D#section=h.hm62y5djc9a6)
@@ -94,3 +94,5 @@ Huggingface 仓库：
 1. 数据配比，数据质量，数据类型，多样性
 2. RL
 3. 洗数据（我的
+
+用duckdb读parquet 文件需要
