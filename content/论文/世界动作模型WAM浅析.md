@@ -1,6 +1,6 @@
 ---
 date: 2026-07-20
-lastmod: 2026-07-20
+lastmod: 2026-07-21
 ---
 本文根据[Awesome-WAM GitHub仓库/论文](https://github.com/OpenMOSS/Awesome-WAM)进行整理阅读WAM模型。该论文将WAM分为两类，分别是
 - **Cascaded WAM**：显式因式分解 $p(o^′,a|o,l)=p(a|o^′,o,l)·p(o^′|o,l)$，先合成未来状态表征，再从中推导动作，两阶段解耦。其中再细分为
@@ -62,9 +62,34 @@ UWM, Unified World Stream 采用双流扩散模型，同时具有 action 和 vid
 ![1784563065576533859.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/markdown/20260720235746238.png)
 核心是利用 $\tau=T$（纯噪声）等价于对该模态边缘化（不提供），$\tau=0$（无噪声）等价于将其作为条件输入。通过独立调节两个时间步，可在 policy（video→action）、forward dynamics（action→video）、video prediction 等模式间连续切换，无需为每种模式单独设计架构。
 
-UWM 有两个输出头：  
+UWM 有两个输出头以及两个模态输入：  
 - 一个头输出action 的去噪预测  
 - 一个头输出video/image 的去噪预测  
   
 当图像时间固定并且清晰，则可以预测动作action，就变成了普通的policy模型。  
-当动作时间固定并且清晰，则变成了正向动力学模型，即给定当前状态和动作预测下一帧。
+当图像时间固定为 $T$，则变成了逆向动力学模型，即给定当前状态和动作预测下一帧。
+
+在训练中，使用对两个时间步随机采样，随机混合的方式进行训练。
+
+Motus 采用 MoT（Mixture-of-Transformer）设计，并且使用光流作为表征。本文章也是直接继承自上一篇UWM。
+![image.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/markdown/20260721101721736.png)
+MoT 设计集成 understanding、action、video generation 三个专家，经 tri-model joint attention 交互。采用 UniDiffuser 风格调度器，video 与 action 各自拥有独立时间步 $\tau_v$、$\tau_a$​
+
+其中，模型对光流采用类似 VAE 风格的 压缩处理，将不同的光流压缩到codebook中，并且在 Action Expert中使用 latent action 进行训练
+![image.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/markdown/20260721102546025.png)
+
+
+WorldVLA，使用Transformer base 的方法，将图像、文本、动作各用**独立 tokenizer** 编码，但三种模态 token **共享同一个词表空间**，从而可在统一的 LLM 式架构中直接做下一 token 预测，无需单独的 latent action 中间层。
+
+单一自回归 Transformer，以OpenVLA的方式将动作变为 Token，使用VQ-GAN编码图片。通过数据配比的方式，同时对世界模型和动作模型类型数据进行训练：
+```
+样本类型 A（Action Model 数据）：
+[BOS]{text: "What action should robot take to <task>?"}[BOI]{image}...{image}[EOI][EOS]
+[BOA]{action}...{action}[EOA][EOS]
+   → 只在这些 action token 位置计算 loss
+
+样本类型 B（World Model 数据）：
+[BOS]{text: "Generate the next frame..."}[BOI]{image}[EOI][BOA]{action}[EOA][EOS]
+[BOI]{image}[EOI][EOS]
+   → 只在这些 image token 位置计算 loss
+```
