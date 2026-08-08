@@ -1,6 +1,6 @@
 ---
 date: 2026-07-20
-lastmod: 2026-07-21
+lastmod: 2026-08-08
 ---
 本文根据[Awesome-WAM GitHub仓库/论文](https://github.com/OpenMOSS/Awesome-WAM)进行整理阅读WAM模型。该论文将WAM分为两类，分别是
 - **Cascaded WAM**：显式因式分解 $p(o^′,a|o,l)=p(a|o^′,o,l)·p(o^′|o,l)$，先合成未来状态表征，再从中推导动作，两阶段解耦。其中再细分为
@@ -9,7 +9,7 @@ lastmod: 2026-07-21
 - **Joint WAM** —— 直接建模联合分布 $p(o^′,a|o,l)$，状态预测与动作生成在共享表征空间中协同优化。
 	- **Autoregressive Generation**：离散 token 自回归
 	- Diffusion-based Generation：分为Unified Stream 和 MultiStream
-![image.png](https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/markdown/20260720181709150.png)
+![image.png]()https://typora-1344509263.cos.ap-guangzhou.myqcloud.com/markdown/20260720181709150.png
 相关：[[Diffusion & Flow model]], [[CS336 Assignment 1]]
 ## Cascaded WAM
 ### Implicit(LAPA, villa-X)
