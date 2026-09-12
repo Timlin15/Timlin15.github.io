@@ -1,8 +1,8 @@
 ---
 date: 2026-07-20
-lastmod: 2026-08-08
+lastmod: 2026-09-12
 ---
-本文根据[Awesome-WAM GitHub仓库/论文](https://github.com/OpenMOSS/Awesome-WAM)进行整理阅读WAM模型。该论文将WAM分为两类，分别是
+本文根据[Awesome-WAM GitHub 仓库/论文](https://github.com/OpenMOSS/Awesome-WAM)进行整理阅读WAM模型。该论文将WAM分为两类，分别是
 - **Cascaded WAM**：显式因式分解 $p(o^′,a|o,l)=p(a|o^′,o,l)·p(o^′|o,l)$，先合成未来状态表征，再从中推导动作，两阶段解耦。其中再细分为
 	- **Explicit**：以渲染出的像素/几何作为未来中介
 	- **Implicit**：以隐/预测性表征而非渲染像素作为未来，用于条件化策略
