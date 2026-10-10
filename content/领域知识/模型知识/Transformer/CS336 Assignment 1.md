@@ -1,6 +1,6 @@
 ---
 date: 2026-01-07
-lastmod: 2026-03-16
+lastmod: 2026-10-10
 ---
 
 ## Transformer概述
@@ -433,6 +433,12 @@ $$
 
 同时要求对$A$的每个头的query和key向量加上rope position embedding。
 
+26.10.10注：
+由于需要将一个注意力权重拆成多个多头的注意力权重，但是我们不需要拆开分别计算，只需要一起计算：
+$$
+ \underbrace{W_Q}_{(h,d_k)\times d_\text{model}} \times \underbrace{x}_{d_\text{model}} = \underbrace{q}_{h,d_k}
+$$
+其中 `h` 就是多头注意力的头数，可以使用`einops.rearrange`获得每个头的结果
 ## The Full Transformer LM
 完成了所有子层后，就可以着手组装完整的大语言模型。
 
