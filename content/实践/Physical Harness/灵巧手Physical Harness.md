@@ -1,8 +1,8 @@
 ---
 date: 2026-11-02
-lastmod: 2026-11-02
+lastmod: 2026-11-03
 ---
-在 Physical harness 领域上周调研了三篇工作：[RPent](https://github.com/RLinf/RPent)、[PyRUA](https://dagroup-pku.github.io/PyRUA-Lean/)、[RoboDoctor](https://arxiv.org/pdf/2610.35604v1)。三者都是基于夹爪泛化的 harness 框架。其中比较侧重上层 VLM（astra）和下层 VLA 的架构设计。
+在 Physical harness 领域上周调研了三篇工作：[RPent](https://github.com/RLinf/RPent)、[PyRUA](https://dagroup-pku.github.io/PyRUA-Lean/)、[RoboDoctor](https://arxiv.org/pdf/2610.35604v1)。三者都是基于夹爪泛化的 harness 框架。其中我比较侧重查看上层 VLM（astra）和下层 VLA 的架构设计。
 
 ## RPent
 RPent 这篇工作比较强调「动作原语」，即指**构成复杂操作任务的最基本、不可再分的原子级动作单元**，比如「move to」、「grab」这类原子动作。
